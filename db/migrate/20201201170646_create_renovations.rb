@@ -1,22 +1,22 @@
 class CreateRenovations < ActiveRecord::Migration[5.2]
   def change
     create_table :renovations do |t|
-      t.int :total_renovation_cost
-      t.int :demolition_cost
-      t.int :preparation_cost
-      t.int :carpentry_cost
-      t.int :plastering_cost
-      t.int :electricity_cost
-      t.int :plumbing_cost
-      t.int :wall_ceiling_cost
-      t.int :painting_cost
-      t.int :flooring_cost
-      t.int :kitchen_cost
-      t.int :furniture_cost
-      t.int :facade_cost
-      t.int :security_cost
-      t.int :masonry_cost
-      t.int :covering_cost
+      t.integer :total_renovation_cost
+      t.integer :demolition_cost
+      t.integer :preparation_cost
+      t.integer :carpentry_cost
+      t.integer :plastering_cost
+      t.integer :electricity_cost
+      t.integer :plumbing_cost
+      t.integer :wall_ceiling_cost
+      t.integer :painting_cost
+      t.integer :flooring_cost
+      t.integer :kitchen_cost
+      t.integer :furniture_cost
+      t.integer :facade_cost
+      t.integer :security_cost
+      t.integer :masonry_cost
+      t.integer :covering_cost
 
       t.timestamps
     end
