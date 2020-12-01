@@ -11,32 +11,30 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.string :longitude
       t.string :latitude
       t.datetime :visit_date,             null: false
-      t.boolean :is_confirmed,            null: false, default: false
-      t.int :old_information_id
+      t.boolean :is_confirmed,            null: false, default: false     
       t.text :physical_description,       limit: 500
       t.text :geographical_description,   limit: 500  
-      t.text :potential_description,      limit: 500           
-      t.int :total_monthly_charges
-      t.int :water_cost
-      t.int :electricity_cost
-      t.int :union_charges_cost
-      t.int :common_charges_cost
-      t.int :total_buying_price
-      t.int :seller_price
-      t.int :estimated_negociation
-      t.int :notary_charges
-      t.int :property_taxes
-      t.int :renovation_union
-      t.int :renovation_id
-      t.int :new_information_id
-      t.int :pno_insurance_cost,          null: false
-      t.int :rent_annual_estimation_id
+      t.text :potential_description,      limit: 500 
+      t.integer :old_information_id          
+      t.integer :total_monthly_charge
+      t.integer :water_cost
+      t.integer :electricity_cost
+      t.integer :union_charges_cost
+      t.integer :common_charges_cost
+      t.integer :total_buying_price
+      t.integer :seller_price
+      t.integer :estimated_negociation
+      t.integer :notary_charges
+      t.integer :property_taxes
+      t.integer :renovation_union
+      t.integer :renovation_id
+      t.integer :new_information_id
+      t.integer :pno_insurance_cost,          null: false
+      t.integer :rent_annual_estimations_total_cost
+      t.integer :month_count
+      t.integer :total_rent_monthly
       t.float :renta_brut
       t.float :renta_net
-      t.references :room_id,              foreign_key: true
-      t.int :rent_annual_estimations_total_cost
-      t.int :month_count
-      t.int :total_rent_monthly
 
       t.timestamps
     end

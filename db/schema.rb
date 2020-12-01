@@ -10,10 +10,110 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_165145) do
+ActiveRecord::Schema.define(version: 2020_12_01_170646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cases", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "case_reference", default: "Matthieu Gilette", null: false
+    t.text "contact_referent", null: false
+    t.string "street_number", null: false
+    t.string "street_name", null: false
+    t.string "city", null: false
+    t.string "zipcode", limit: 5, null: false
+    t.string "longitude"
+    t.string "latitude"
+    t.datetime "visit_date", null: false
+    t.boolean "is_confirmed", default: false, null: false
+    t.text "physical_description"
+    t.text "geographical_description"
+    t.text "potential_description"
+    t.integer "total_monthly_charge"
+    t.integer "water_cost"
+    t.integer "electricity_cost"
+    t.integer "union_charges_cost"
+    t.integer "common_charges_cost"
+    t.integer "total_buying_price"
+    t.integer "seller_price"
+    t.integer "estimated_negociation"
+    t.integer "notary_charges"
+    t.integer "property_taxes"
+    t.integer "renovation_union"
+    t.integer "renovation_id"
+    t.integer "new_information_id"
+    t.integer "pno_insurance_cost", null: false
+    t.integer "rent_annual_estimation_id"
+    t.float "renta_brut"
+    t.float "renta_net"
+    t.integer "rent_annual_estimations_total_cost"
+    t.integer "month_count"
+    t.integer "total_rent_monthly"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "new_informations", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "type_id"
+    t.integer "surface", null: false
+    t.integer "rooms_count", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "old_informations", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.integer "type_id", null: false
+    t.integer "surface", null: false
+    t.integer "rooms_count", null: false
+    t.bigint "cases_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cases_id"], name: "index_old_informations_on_cases_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "renovations", force: :cascade do |t|
+    t.integer "total_renovation_cost"
+    t.integer "demolition_cost"
+    t.integer "preparation_cost"
+    t.integer "carpentry_cost"
+    t.integer "plastering_cost"
+    t.integer "electricity_cost"
+    t.integer "plumbing_cost"
+    t.integer "wall_ceiling_cost"
+    t.integer "painting_cost"
+    t.integer "flooring_cost"
+    t.integer "kitchen_cost"
+    t.integer "furniture_cost"
+    t.integer "facade_cost"
+    t.integer "security_cost"
+    t.integer "masonry_cost"
+    t.integer "covering_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "rent_monthly", null: false
+    t.bigint "cases_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cases_id"], name: "index_rooms_on_cases_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
@@ -36,4 +136,5 @@ ActiveRecord::Schema.define(version: 2020_11_30_165145) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "rooms", "cases", column: "cases_id"
 end
