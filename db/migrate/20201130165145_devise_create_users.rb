@@ -10,6 +10,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :lastname              
       t.string :phone_number       
       t.integer :role,              default: 0
+      t.boolean :approved,          default: false, null: false
+      
 
       t.timestamps null: false
 
