@@ -47,6 +47,11 @@
     #sessions_new .main-part-center-home .p-text-home-page {
         color:white;
     }
+
+    #sessions_new > section {
+        padding-bottom:132px;
+        margin-top: -50px;
+    } 
   }
 
   @media only screen and (max-width: 1024px) {
