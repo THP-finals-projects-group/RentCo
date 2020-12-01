@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_165145) do
     t.string "lastname"
     t.string "phone_number"
     t.integer "role", default: 0
+    t.boolean "approved", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
