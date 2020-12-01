@@ -10,7 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery.min
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require bootstrap.bundle.min
+//= require flickity.pkgd.min
+//= require flickity-fade
+//= require parallax.min
+//= require jquery.waypoints.min
+//= require inview.min
+//= require scrolloverflow.min
+//= require fullpage.min
+//= require highlight.pack.min
+//= require theme.min
