@@ -69,7 +69,4 @@ gem 'devise'
 gem 'faker'
 gem 'table_print'
 gem 'dotenv-rails'
-<<<<<<< HEAD
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
-=======
->>>>>>> development
