@@ -14,7 +14,21 @@
 <div class="container">
   <div class="row justify-content-center align-items-center">
     <div class="main-part-center-home">
+        <div>
+            <% flash.each do |type, msg| %>
+              <div>
+                <%= msg %>
+              </div>
+            <% end %>
 
+            <% if current_user %>
+              <p>Vous êtes connectés</p>
+            <%else%>
+              <p> Vous n'êtes pas connecté<p>
+            <%end%>
+
+            <%= link_to 'Deconnexion', destroy_user_session_path(current_user), method: 'DELETE', :class => "btn btn-danger btn-outline btn-lg" %>
+        </div>
         <div class="col-md-8 col-lg-7">
             <h2 class="title-home-page">RentCo.</h2>
             <p class="p-text-home-page">Calculer la rentabilité d'un bien immobilié</p>
