@@ -11,7 +11,10 @@
 
   <body>
 
-  <%= render 'layouts/navbar' %>
+    <% unless action_name == "new" %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
+  
 
     <%= yield %>
 
