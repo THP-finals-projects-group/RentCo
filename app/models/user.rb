@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-  validates_presence_of :firstname, :lastname, :phone_number
+  enum role: [ :user, :admin ]
+  
+  validates_presence_of :firstname, :lastname, :phone_number, :role
 end
 
