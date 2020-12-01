@@ -11,7 +11,7 @@
 
   <body>
 
-    <% unless action_name == "new" %>
+    <% unless action_name == "new" && !current_user %>
       <%= render 'layouts/navbar' %>
     <% end %>
   
