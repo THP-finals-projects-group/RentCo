@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 2020_11_30_165145) do
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
-    t.string "firstname", null: false
-    t.string "lastname", null: false
-    t.string "phone_number", null: false
-    t.integer "role", default: 0, null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone_number"
+    t.integer "role", default: 0
+    t.boolean "approved", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
