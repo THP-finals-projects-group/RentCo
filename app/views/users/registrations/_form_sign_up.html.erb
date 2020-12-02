@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="main-part-center-home"> 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "form-styled bg-white" }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: new_user_registration_path(resource_name), :html => { :class => "form-styled bg-white" }) do |f| %>
           <h4 class="text-center mb-4">
             Bienvenue, inscrivez vous
           </h4>
