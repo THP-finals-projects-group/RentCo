@@ -123,6 +123,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.string "phone_number"
     t.integer "role", default: 0
     t.boolean "approved", default: false, null: false
+    t.string "hunter"
+    t.string "agency"
+    t.string "notary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
