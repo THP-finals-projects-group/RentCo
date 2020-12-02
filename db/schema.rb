@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.text "physical_description"
     t.text "geographical_description"
     t.text "potential_description"
+    t.integer "old_information_id"
     t.integer "total_monthly_charge"
     t.integer "water_cost"
     t.integer "electricity_cost"
@@ -44,12 +45,11 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.integer "renovation_id"
     t.integer "new_information_id"
     t.integer "pno_insurance_cost", null: false
-    t.integer "rent_annual_estimation_id"
-    t.float "renta_brut"
-    t.float "renta_net"
     t.integer "rent_annual_estimations_total_cost"
     t.integer "month_count"
     t.integer "total_rent_monthly"
+    t.float "renta_brut"
+    t.float "renta_net"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -123,6 +123,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.string "phone_number"
     t.integer "role", default: 0
     t.boolean "approved", default: false, null: false
+    t.string "hunter"
+    t.string "agency"
+    t.string "notary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
