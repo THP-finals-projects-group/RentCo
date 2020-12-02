@@ -14,19 +14,49 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.boolean :is_confirmed,                           null: false, default: false     
       t.text :physical_description,                      limit: 500
       t.text :geographical_description,                  limit: 500  
-      t.text :potential_description,                     limit: 500 
+      t.text :potential_description,                     limit: 500
+      # old_information
+      t.integer :old_surface,                            null: false
+      t.integer :old_rooms_count,                        null: false
+      t.string :old_type,                                null: false
+      t.string :old_project,                             null: false
+      # BELOW ADMIN PART // ABOVE USER PART
+      # monthly charges
       t.integer :total_monthly_charge
       t.integer :water_cost
       t.integer :electricity_cost
       t.integer :union_charges_cost
       t.integer :common_charges_cost
+      # buying price
       t.integer :total_buying_price
       t.integer :seller_price
       t.integer :estimated_negociation
       t.integer :notary_charges
       t.integer :property_taxes
       t.integer :renovation_union
-      t.integer :pno_insurance_cost,                      null: false
+      # renovation
+      t.integer :pno_insurance_cost
+      t.integer :total_renovation_cost
+      t.integer :renovation_demolition_cost,              default: 0
+      t.integer :renovation_preparation_cost,             default: 0
+      t.integer :renovation_carpentry_cost,               default: 0
+      t.integer :renovation_plastering_cost,              default: 0
+      t.integer :renovation_electricity_cost,             default: 0
+      t.integer :renovation_plumbing_cost,                default: 0
+      t.integer :renovation_wall_ceiling_cost,            default: 0
+      t.integer :renovation_painting_cost,                default: 0
+      t.integer :renovation_flooring_cost,                default: 0
+      t.integer :renovation_kitchen_cost,                 default: 0
+      t.integer :renovation_furniture_cost,               default: 0
+      t.integer :renovation_facade_cost,                  default: 0
+      t.integer :renovation_security_cost,                default: 0
+      t.integer :renovation_masonry_cost,                 default: 0
+      t.integer :renovation_covering_cost,                default: 0      
+      # new_information
+      t.integer :new_surface                             
+      t.integer :new_rooms_count                         
+      t.string :new_type                                 
+      t.string :new_project     
       t.integer :rent_annual_estimations_total_cost
       t.integer :month_count
       t.integer :total_rent_monthly
@@ -34,9 +64,6 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.float :renta_net
 
       t.references :user,                                 foreign_key: true, null: false
-      t.belongs_to :renovation
-      t.belongs_to :old_information
-      t.belongs_to :new_information
       
       t.timestamps
     end
