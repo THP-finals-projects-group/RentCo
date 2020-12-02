@@ -17,4 +17,8 @@ class AdminMailer < Devise::Mailer
   def account_approval(email)
     mail(from: "admin-rentco@yopmail.com", to: email, subject: "Votre compte est activé")
   end
+
+  def new_case(cases)
+    mail(from: "admin-rentco@yopmail.com", to: cases.user.email, subject: "#{cases.user.email} à soumis un nouveau dossier")
+  end
 end

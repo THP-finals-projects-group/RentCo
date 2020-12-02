@@ -10,6 +10,16 @@ class User < ApplicationRecord
 
   has_many :cases, dependent: :destroy
   
+  # VALIDATES
+  validates_presence_of   :firstname, :lastname, :phone_number, :profession, :role
+
+  validates               :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Entrez une adresse email valide" }
+  validates               :firstname, length: {in: 3...64}, presence: true 
+  validates               :lastname, length: {in: 3...64}, presence: true
+  validates               :phone_number, uniqueness: {case_sensitive: false}, format: { with: /\A(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})\z/, message: "Entrez un numéro de téléphone français valide" }
+  validates               :profession, presence: true
+  # validates               :role, default: 0
+
   def active_for_authentication? 
     super && approved? 
   end 
@@ -36,7 +46,5 @@ class User < ApplicationRecord
   #   end
   #   recoverable
   # end
-
-  #validates_presence_of :firstname, :lastname, :phone_number, :role
 end
 
