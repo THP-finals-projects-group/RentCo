@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="main-part-center-home"> 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "form-styled bg-white" }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => "form-styled bg-white" }) do |f| %>
           <h4 class="text-center mb-4">
             Bienvenue, inscrivez vous
           </h4>
@@ -36,7 +36,7 @@
               <div class="field from-group">
                 <%= f.label :prénom%><br />
                 <div class="input-group">
-                  <%= f.text_field :firstname, class: "form-control order-1" %>
+                  <%= f.text_field :firstname, class: "form-control order-1", required: true %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                       <svg class="input-group-icon icon-offset icon icon-person" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -53,7 +53,7 @@
               <div class="field from-group">
                 <%= f.label :nom%><br />
                 <div class="input-group">
-                  <%= f.text_field :lastname, class: "form-control order-1" %>
+                  <%= f.text_field :lastname, class: "form-control order-1", required: true %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                       <svg class="input-group-icon icon-offset icon icon-person" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -72,7 +72,7 @@
               <div class="field form-group">
                 <%= f.label :email %><br />
                 <div class="input-group">
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control order-1", required: true %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                       <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -89,7 +89,7 @@
               <div class="field form-group">
                 <%= f.label :Teléphone %><br />
                 <div class="input-group">
-                  <%= f.telephone_field :phone_number, class: "form-control order-1" %>
+                  <%= f.telephone_field :phone_number, class: "form-control order-1", required: true %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@
               <div class="field from-group">
                 <%= f.label :mot_de_passe%><br />
                 <div class="input-group">
-                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control order-1" %>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control order-1", required: true %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                       <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -123,7 +123,7 @@
               <div class="field from-group">
                 <%= f.label :confirmer%><br />
                 <div class="input-group">
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control order-1" %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control order-1", required: true %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                       <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

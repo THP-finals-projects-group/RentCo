@@ -8,11 +8,16 @@ class  UsersController < ApplicationController
         end
     end
 
+    def show
+        @user = User.find(params[:id])
+    end
+
     def update
         @user = User.find(params[:id])
         if @user.update(approved: true)
+            User.send_account_approval_mail(@user.email)
             respond_to do |format|
-                format.html { redirect_to users_path, notice: 'compte utilisateur confirmé'}
+                format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé'}
                 format.js { }
             end
         else
@@ -22,10 +27,5 @@ class  UsersController < ApplicationController
             end
         end
     end
-    
-private
-
-    def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :phone_number, :lastname, :firstname, :hunter, :notary, :agency)
-    end
 end
+    
