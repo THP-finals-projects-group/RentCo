@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.text "physical_description"
     t.text "geographical_description"
     t.text "potential_description"
-    t.integer "old_information_id"
     t.integer "total_monthly_charge"
     t.integer "water_cost"
     t.integer "electricity_cost"
@@ -42,12 +41,16 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.integer "notary_charges"
     t.integer "property_taxes"
     t.integer "renovation_union"
-    t.integer "pno_insurance_cost", null: false
+    t.integer "pno_insurance_cost"
     t.integer "rent_annual_estimations_total_cost"
     t.integer "month_count"
     t.integer "total_rent_monthly"
     t.float "renta_brut"
     t.float "renta_net"
+    t.bigint "user_id", null: false
+    t.bigint "renovation_id"
+    t.bigint "old_information_id"
+    t.bigint "new_information_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["new_information_id"], name: "index_cases_on_new_information_id"
@@ -122,9 +125,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
-    t.string "firstname"
-    t.string "lastname"
-    t.string "phone_number"
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.string "phone_number", null: false
     t.integer "role", default: 0
     t.boolean "approved", default: false, null: false
     t.string "hunter"

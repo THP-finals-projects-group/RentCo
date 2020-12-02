@@ -26,7 +26,7 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.integer :notary_charges
       t.integer :property_taxes
       t.integer :renovation_union
-      t.integer :pno_insurance_cost,                      null: false
+      t.integer :pno_insurance_cost
       t.integer :rent_annual_estimations_total_cost
       t.integer :month_count
       t.integer :total_rent_monthly
