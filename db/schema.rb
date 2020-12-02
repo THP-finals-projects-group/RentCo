@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.text "physical_description"
     t.text "geographical_description"
     t.text "potential_description"
+    t.integer "old_information_id"
     t.integer "total_monthly_charge"
     t.integer "water_cost"
     t.integer "electricity_cost"
@@ -47,10 +48,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.integer "total_rent_monthly"
     t.float "renta_brut"
     t.float "renta_net"
-    t.bigint "user_id", null: false
-    t.bigint "renovation_id"
-    t.bigint "old_information_id"
-    t.bigint "new_information_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["new_information_id"], name: "index_cases_on_new_information_id"
@@ -130,6 +127,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.string "phone_number"
     t.integer "role", default: 0
     t.boolean "approved", default: false, null: false
+    t.string "hunter"
+    t.string "agency"
+    t.string "notary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"

@@ -49,14 +49,29 @@
     }
 
     #sessions_new > section {
-        padding-bottom:132px;
+        padding-bottom:153px;
         margin-top: -50px;
     } 
-  }
+}
 
-  @media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
     #sessions_new > section {
         padding-top:20px;
         padding-bottom:20px;
     }
-  }
+}
+
+/* PAGE CONNEXION REGISTRATION NEW */
+
+@media only screen and (min-width: 1024px) {
+    #registration_new > section {
+        padding-bottom:109px;
+        margin-top: -60px;
+    } 
+
+    #registration_new .custom-control {
+        padding-top: 30px;
+        padding-right: 500px;
+    }
+}
+
