@@ -1,0 +1,77 @@
+/* NAVBAR */
+
+
+
+
+/* FOOTER si existant */
+
+
+
+
+/* STYLE BOUTON */
+
+
+
+/* PAGE CONNEXION SESSION NEW */
+
+#sessions_new {
+    background-color:var(--gray-dark);
+}
+
+#sessions_new .btn-checkbox-login {
+    margin-top:15px;
+}
+
+#sessions_new .main-part-center-home .title-home-page {
+    font-size:40px;
+    color:white;
+}
+
+#sessions_new .main-part-center-home .p-text-home-page {
+    color:white;
+    margin-bottom:50px;
+}
+
+@media only screen and (min-width: 1024px) {
+    #sessions_new .main-part-center-home {
+        display:flex;
+        justify-content:space-evenly;
+        align-items:center;
+    }
+    
+    #sessions_new .main-part-center-home .title-home-page {
+        font-size:40px;
+        color:white;
+    }
+    
+    #sessions_new .main-part-center-home .p-text-home-page {
+        color:white;
+    }
+
+    #sessions_new > section {
+        padding-bottom:153px;
+        margin-top: -50px;
+    } 
+}
+
+@media only screen and (max-width: 1024px) {
+    #sessions_new > section {
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+}
+
+/* PAGE CONNEXION REGISTRATION NEW */
+
+@media only screen and (min-width: 1024px) {
+    #registration_new > section {
+        padding-bottom:109px;
+        margin-top: -60px;
+    } 
+
+    #registration_new .custom-control {
+        padding-top: 30px;
+        padding-right: 500px;
+    }
+}
+
