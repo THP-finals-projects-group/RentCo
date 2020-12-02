@@ -15,6 +15,7 @@ class  UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(approved: true)
+            User.send_account_approval_mail(@user.email)
             respond_to do |format|
                 format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé'}
                 format.js { }
