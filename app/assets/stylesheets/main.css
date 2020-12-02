@@ -1,7 +1,14 @@
 /* NAVBAR */
 
+#navbar img{
+    width: 70%;
+    border-radius: 5px;
+    height: 42px;
+}
 
-
+#navbar .collapse {
+    margin-right: 180px;
+}
 
 /* FOOTER si existant */
 
@@ -76,6 +83,7 @@
 }
 
 /* PAGE PROFIL USERS SHOW */
+
 #user_show .container  {
     display: flex;
     justify-content: center;
@@ -86,8 +94,10 @@
 
 #user_show .card {
     background-color: white;
+    border-radius: 10px;
 }
 
 #user_show .list-group {
     margin-top: -25px;
 }
+
