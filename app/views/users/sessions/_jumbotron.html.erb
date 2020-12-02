@@ -1,7 +1,7 @@
 <section class="section section-top section-full">
 
 <!-- Cover -->
-<div class="bg-cover" style="background-image: url(Maison.jpg);"></div>
+<div class="bg-cover"></div>
 
 <!-- Overlay -->
 <div class="bg-overlay"></div>
@@ -9,21 +9,6 @@
 <!-- Triangles -->
 <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
 <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
-<div>
-            <% flash.each do |type, msg| %>
-              <div>
-                <%= msg %>
-              </div>
-            <% end %>
-
-            <% if current_user %>
-              <p>Vous êtes connectés</p>
-            <%else%>
-              <p> Vous n'êtes pas connecté<p>
-            <%end%>
-
-            <%= link_to 'Deconnexion', destroy_user_session_path(current_user), method: 'DELETE', :class => "btn btn-danger btn-outline btn-lg" %>
-        </div>
 <!-- Content -->
 <div class="container">
   <div class="row justify-content-center align-items-center">

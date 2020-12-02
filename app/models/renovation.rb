@@ -1,0 +1,2 @@
+class Renovation < ApplicationRecord
+end
