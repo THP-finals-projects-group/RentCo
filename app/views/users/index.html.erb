@@ -1,9 +1,11 @@
-<table>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %>
-        <td><%= user.approved %>
-        <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %>
-      </tr>
-    <% end %>
-</table>
+<body>
+  <table>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %>
+          <td><%= user.approved %>
+          <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %>
+        </tr>
+      <% end %>
+  </table>
+</body>
