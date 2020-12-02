@@ -1,0 +1,2 @@
+class OldInformation < ApplicationRecord
+end
