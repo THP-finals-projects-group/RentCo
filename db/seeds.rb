@@ -41,6 +41,22 @@ p "DONE"
 p "-----------------------"
 p "-----------------------"
 
+# PASS ONLY VALIDATIONS
+p "-----------------------"
+p "Validation Only passed ?"
+User.create!(firstname: "AllValid", lastname: "IPassed", email: "validation@test.passed", password: "password", phone_number: "0639629030").cases.create!(
+  title: "#{Faker::Address.community} - ValidTest",
+  visit_date: Faker::Date.between(from: 2.days.ago, to: Date.today),
+  case_reference: "Matthieu Gillet",
+  street_number: Faker::Address.building_number,
+  street_name: Faker::Address.street_name,
+  city: Faker::Address.city,
+  zipcode: "50400",
+  contact_referent: "Matt"
+)
+p "Done"
+p "-----------------------"
+
 
 # Cases
 
@@ -133,6 +149,20 @@ p "DONE"
 p "-----------------------"
 p "-----------------------"
 
+i = 1
+users.each do |user|
+  user.cases.each do |case_update|
+    case_update.update(
+      old_information_id: OldInformation.find(i).id,
+      new_information_id: NewInformation.find(i).id,
+      renovation_id: Renovation.find(i).id
+    )
+    NewInformation.find(i).rooms_count.times do
+      case_update.rooms.create!(rent_monthly: rand(150..500))
+    end
+    i += 1
+  end
+end
 p " ********************************* "
 p " *                               * "
 p " *          END OF SEED          * "
