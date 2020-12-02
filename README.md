@@ -1,4 +1,5 @@
 ![logotype a happy-07](https://d29md5j3ph8xfz.cloudfront.net/100_percent/upload/Content/82047/THP_logoblock_grey.png)
+![logotype a happy-07](https://www.rentco.com.au/v2/wp-content/uploads/2016/03/rentco_logo_v2_1.3.png)
 # Welcome on your final group project with THE HACKING PROJECT
 ## Description :
 ### Tools :
