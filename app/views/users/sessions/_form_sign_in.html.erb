@@ -1,70 +1,64 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "form-styled bg-white" }) do |f| %>
-  <!-- Heading -->
   <h4 class="text-center mb-4">
-  Bienvenue, connectez-vous
+    Bienvenue, connectez-vous
   </h4>
-  
-  <!-- Subheading -->
   <p class="text-center text-muted mb-5">
-      Remplissez le formulaire ci-dessous pour se connecter à votre compte
+    Remplissez le formulaire ci-dessous pour se connecter à votre compte
   </p>
-  
   <div class="field form-group">
     <%= f.label :email %><br />
     <div class="input-group">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
-        <div class="input-group-append order-0">
-          <div class="input-group-text">
-            <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <path transform="translate(3 3)" d="
-                M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
-              </path>
-            </svg>
-          </div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+      <div class="input-group-append order-0">
+        <div class="input-group-text">
+          <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path transform="translate(3 3)" d="
+              M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+            </path>
+          </svg>
         </div>
+      </div>
     </div>
   </div>
-
   <div class="field from-group">
     <%= f.label :password %><br />
     <div class="input-group">
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control order-1" %>
-        <div class="input-group-append order-0">
-            <div class="input-group-text">
-              <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path transform="translate(3 3)" d="
-                  M25 50 V 20 A 25 25 0 0 1 50 0 A 25 25 0 0 1 75 20 V 50 H 90 V 100 H 10 V 50 H 75 M50 85 A 5 5 0 0 1 45 80 V 70 A 5 5 0 0 1 50 65 A 5 5 0 0 1 55 70 V 80 A 5 5 0 0 1 50 85">
-                </path>
-              </svg>
-            </div>
-          </div>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control order-1" %>
+      <div class="input-group-append order-0">
+        <div class="input-group-text">
+          <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path transform="translate(3 3)" d="
+              M25 50 V 20 A 25 25 0 0 1 50 0 A 25 25 0 0 1 75 20 V 50 H 90 V 100 H 10 V 50 H 75 M50 85 A 5 5 0 0 1 45 80 V 70 A 5 5 0 0 1 50 65 A 5 5 0 0 1 55 70 V 80 A 5 5 0 0 1 50 85">
+            </path>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
-
   <div class="form-row align-items-center btn-checkbox-login">
     <div class="col-md-auto">
-        <div class="custom-control custom-checkbox mb-3 mb-md-0">
-            <% if devise_mapping.rememberable? %>
-                <div class="field">
-                    <%= f.check_box :remember_me, class: "custom-control-input", id: "sign-in-checkbox" %>
-                    <%= f.label :remember_me, class: "custom-control-label" %>
-                </div>
-            <% end %>
-        </div>
+      <div class="custom-control custom-checkbox mb-3 mb-md-0">
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me, class: "custom-control-input", id: "sign-in-checkbox" %>
+            <%= f.label :remember_me, class: "custom-control-label" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <div class="col-md">
-        <div class="text-center text-md-right">
-            <div class="actions">
-                <%= f.submit "Log in", class: "btn btn-outline-primary" %>
-            </div>
-            <% end %>
-        </div>
+  </div>
+  <div class="col-md">
+    <div class="text-center text-md-right">
+      <div class="actions">
+        <%= f.submit "Se connecter", class: "btn btn-outline-primary" %>
+      </div>
     </div>
-</div>
-
-<p class="text-center text-muted mt-5 mb-0">
-    <small>
-        <%= render "users/shared/links" %>
-    </small>
-</p> 
+  </div>
+<% end %>
+<small>
+  <p class="text-center text-muted mt-5 mb-0">
+    Pas encore inscrit ?
+    <%= render "users/shared/links_sign_up" %>
+    <%= render "users/shared/links" %>
+  </p>
+</small>
