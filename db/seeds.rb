@@ -33,7 +33,7 @@ users = []
     lastname: names[1],
     email: "#{names[0]}.#{names[1]}0#{n}@yopmail.com",
     password: "#{names[0]}#{names[1]}",
-    phone_number: "0750439050#{n}",
+    phone_number: "+3375043905#{n}",
     profession: professions[rand(0..(professions.length - 1))]
   )
 end
@@ -56,7 +56,7 @@ User.create!(firstname: "AllValid", lastname: "IPassed", email: "validation@test
   street_name: Faker::Address.street_name,
   city: Faker::Address.city,
   zipcode: "50400",
-  contact_referent: "Matt",
+  contact_referent: "Matthieu Gillet Matthieu Gillet Matthieu Gillet Matthieu Gillet",
   old_surface: rand(8..150),
   old_rooms_count: rand(1..10),
   old_type: types[rand(0..types.length - 1)],
@@ -84,7 +84,7 @@ users.each do |user|
       potential_description: Faker::TvShows::Suits.quote,
       latitude: Faker::Address.latitude,
       longitude: Faker::Address.longitude,
-      contact_referent: "Matt",
+      contact_referent: "Matthieu Gillet Matthieu Gillet Matthieu Gillet Matthieu Gillet",
       old_surface: rand(8..150),
       old_rooms_count: rand(1..10),
       old_type: types[rand(0..types.length - 1)],
