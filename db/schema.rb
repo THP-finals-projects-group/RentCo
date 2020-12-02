@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.integer "notary_charges"
     t.integer "property_taxes"
     t.integer "renovation_union"
-    t.integer "renovation_id"
-    t.integer "new_information_id"
     t.integer "pno_insurance_cost", null: false
     t.integer "rent_annual_estimations_total_cost"
     t.integer "month_count"
@@ -52,26 +50,32 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.float "renta_net"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["new_information_id"], name: "index_cases_on_new_information_id"
+    t.index ["old_information_id"], name: "index_cases_on_old_information_id"
+    t.index ["renovation_id"], name: "index_cases_on_renovation_id"
+    t.index ["user_id"], name: "index_cases_on_user_id"
   end
 
   create_table "new_informations", force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "type_id"
     t.integer "surface", null: false
     t.integer "rooms_count", null: false
+    t.bigint "type_id"
+    t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_new_informations_on_project_id"
+    t.index ["type_id"], name: "index_new_informations_on_type_id"
   end
 
   create_table "old_informations", force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "type_id", null: false
     t.integer "surface", null: false
     t.integer "rooms_count", null: false
-    t.bigint "cases_id"
+    t.bigint "type_id"
+    t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cases_id"], name: "index_old_informations_on_cases_id"
+    t.index ["project_id"], name: "index_old_informations_on_project_id"
+    t.index ["type_id"], name: "index_old_informations_on_type_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -82,31 +86,31 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
 
   create_table "renovations", force: :cascade do |t|
     t.integer "total_renovation_cost"
-    t.integer "demolition_cost"
-    t.integer "preparation_cost"
-    t.integer "carpentry_cost"
-    t.integer "plastering_cost"
-    t.integer "electricity_cost"
-    t.integer "plumbing_cost"
-    t.integer "wall_ceiling_cost"
-    t.integer "painting_cost"
-    t.integer "flooring_cost"
-    t.integer "kitchen_cost"
-    t.integer "furniture_cost"
-    t.integer "facade_cost"
-    t.integer "security_cost"
-    t.integer "masonry_cost"
-    t.integer "covering_cost"
+    t.integer "demolition_cost", default: 0
+    t.integer "preparation_cost", default: 0
+    t.integer "carpentry_cost", default: 0
+    t.integer "plastering_cost", default: 0
+    t.integer "electricity_cost", default: 0
+    t.integer "plumbing_cost", default: 0
+    t.integer "wall_ceiling_cost", default: 0
+    t.integer "painting_cost", default: 0
+    t.integer "flooring_cost", default: 0
+    t.integer "kitchen_cost", default: 0
+    t.integer "furniture_cost", default: 0
+    t.integer "facade_cost", default: 0
+    t.integer "security_cost", default: 0
+    t.integer "masonry_cost", default: 0
+    t.integer "covering_cost", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|
     t.integer "rent_monthly", null: false
-    t.bigint "cases_id"
+    t.bigint "case_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cases_id"], name: "index_rooms_on_cases_id"
+    t.index ["case_id"], name: "index_rooms_on_case_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -139,5 +143,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "rooms", "cases", column: "cases_id"
+  add_foreign_key "cases", "users"
+  add_foreign_key "rooms", "cases"
 end

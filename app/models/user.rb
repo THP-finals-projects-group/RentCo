@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :confirmable
 
   enum role: { user: 0, administrator: 1 }
+
+  has_many :cases, dependent: :destroy
   
   def active_for_authentication? 
     super && approved? 
