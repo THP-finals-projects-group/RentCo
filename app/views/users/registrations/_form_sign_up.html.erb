@@ -13,23 +13,6 @@
           <p class="text-center text-muted mb-5">
             Remplissez le formulaire ci-dessous pour créer un compte
           </p>
-          <div class="row">
-            <div class="col-md-4 col-lg-4">
-              <div class="field from-group">
-                Chasseur de bien : <%= f.check_box :hunter %><br/>
-              </div>
-            </div>
-            <div class="col-md-4 col-lg-4">
-              <div class="field from-group">
-                Agence immobilière : <%= f.check_box :agency %><br/>
-              </div>
-            </div>
-            <div class="col-md-4 col-lg-4">
-              <div class="field from-group">
-                Notaire : <%= f.check_box :notary  %><br/>
-              </div>
-            </div>
-          </div>
           <br>
           <div class="row">
             <div class="col-md-8 col-lg-6">
@@ -135,6 +118,17 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-8 col-lg-6">
+              <div class="field from-group">
+                <%= f.label :métier %><br />
+                  <div class="input-group">
+                    <%= f.select :profession,['Chasseur de bien', 'Agent Immobilier', 'Notaire'], class: "form-control order-1",  required: true %>
+                  </div>
+                </div>
             </div>
           </div>
           <div class="custom-control custom-checkbox ">
