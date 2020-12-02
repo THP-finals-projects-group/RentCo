@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_170646) do
+ActiveRecord::Schema.define(version: 2020_12_01_165943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.text "physical_description"
     t.text "geographical_description"
     t.text "potential_description"
+    t.integer "old_surface", null: false
+    t.integer "old_rooms_count", null: false
+    t.string "old_type", null: false
+    t.string "old_project", null: false
     t.integer "total_monthly_charge"
     t.integer "water_cost"
     t.integer "electricity_cost"
@@ -42,70 +46,35 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.integer "property_taxes"
     t.integer "renovation_union"
     t.integer "pno_insurance_cost"
+    t.integer "total_renovation_cost"
+    t.integer "renovation_demolition_cost", default: 0
+    t.integer "renovation_preparation_cost", default: 0
+    t.integer "renovation_carpentry_cost", default: 0
+    t.integer "renovation_plastering_cost", default: 0
+    t.integer "renovation_electricity_cost", default: 0
+    t.integer "renovation_plumbing_cost", default: 0
+    t.integer "renovation_wall_ceiling_cost", default: 0
+    t.integer "renovation_painting_cost", default: 0
+    t.integer "renovation_flooring_cost", default: 0
+    t.integer "renovation_kitchen_cost", default: 0
+    t.integer "renovation_furniture_cost", default: 0
+    t.integer "renovation_facade_cost", default: 0
+    t.integer "renovation_security_cost", default: 0
+    t.integer "renovation_masonry_cost", default: 0
+    t.integer "renovation_covering_cost", default: 0
+    t.integer "new_surface"
+    t.integer "new_rooms_count"
+    t.string "new_type"
+    t.string "new_project"
     t.integer "rent_annual_estimations_total_cost"
     t.integer "month_count"
     t.integer "total_rent_monthly"
     t.float "renta_brut"
     t.float "renta_net"
     t.bigint "user_id", null: false
-    t.bigint "renovation_id"
-    t.bigint "old_information_id"
-    t.bigint "new_information_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["new_information_id"], name: "index_cases_on_new_information_id"
-    t.index ["old_information_id"], name: "index_cases_on_old_information_id"
-    t.index ["renovation_id"], name: "index_cases_on_renovation_id"
     t.index ["user_id"], name: "index_cases_on_user_id"
-  end
-
-  create_table "new_informations", force: :cascade do |t|
-    t.integer "surface", null: false
-    t.integer "rooms_count", null: false
-    t.bigint "type_id"
-    t.bigint "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_new_informations_on_project_id"
-    t.index ["type_id"], name: "index_new_informations_on_type_id"
-  end
-
-  create_table "old_informations", force: :cascade do |t|
-    t.integer "surface", null: false
-    t.integer "rooms_count", null: false
-    t.bigint "type_id"
-    t.bigint "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_old_informations_on_project_id"
-    t.index ["type_id"], name: "index_old_informations_on_type_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "renovations", force: :cascade do |t|
-    t.integer "total_renovation_cost"
-    t.integer "demolition_cost", default: 0
-    t.integer "preparation_cost", default: 0
-    t.integer "carpentry_cost", default: 0
-    t.integer "plastering_cost", default: 0
-    t.integer "electricity_cost", default: 0
-    t.integer "plumbing_cost", default: 0
-    t.integer "wall_ceiling_cost", default: 0
-    t.integer "painting_cost", default: 0
-    t.integer "flooring_cost", default: 0
-    t.integer "kitchen_cost", default: 0
-    t.integer "furniture_cost", default: 0
-    t.integer "facade_cost", default: 0
-    t.integer "security_cost", default: 0
-    t.integer "masonry_cost", default: 0
-    t.integer "covering_cost", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -116,12 +85,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.index ["case_id"], name: "index_rooms_on_case_id"
   end
 
-  create_table "types", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", null: false
@@ -130,9 +93,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
     t.string "phone_number", null: false
     t.integer "role", default: 0
     t.boolean "approved", default: false, null: false
-    t.string "hunter"
-    t.string "agency"
-    t.string "notary"
+    t.string "profession", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
