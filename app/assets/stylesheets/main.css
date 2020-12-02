@@ -75,3 +75,19 @@
     }
 }
 
+/* PAGE PROFIL USERS SHOW */
+#user_show .container  {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 285px;
+    background-color: white;
+}
+
+#user_show .card {
+    background-color: white;
+}
+
+#user_show .list-group {
+    margin-top: -25px;
+}
