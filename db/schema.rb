@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_170646) do
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
