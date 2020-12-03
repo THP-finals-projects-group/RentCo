@@ -9,14 +9,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#" id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Créer un dossier
-            </a>
+            <%= link_to 'Creer un dossier',  new_case_path,:class => "nav-link" %>  
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="navbarLandings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Liste des dossiers
-            </a>
+            <%= link_to 'Liste des dossiers', cases_path,:class => "nav-link" %> 
           </li>
           <li class="nav-item-divider">
             <span class="nav-link">
@@ -27,9 +23,7 @@
               <%= link_to 'Deconnexion', destroy_user_session_path, :class => "nav-link" %>  
           </li>
           <li class="nav-item">
-              <a href="https://themes.getbootstrap.com/product/incline-landing-page-set/" target="_blank" class="nav-link">
-                Panel d'administration
-              </a>
+              <%= link_to "Confirmer les comptes", users_path, class: "nav-link"%>
           </li>
         </ul>
       </div> 
