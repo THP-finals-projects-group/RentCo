@@ -1,24 +1,60 @@
-# README
+![logotype a happy-07](https://d29md5j3ph8xfz.cloudfront.net/100_percent/upload/Content/82047/THP_logoblock_grey.png)
+![logotype a happy-07](https://www.rentco.com.au/v2/wp-content/uploads/2016/03/rentco_logo_v2_1.3.png)
+# Welcome on your final group project with THE HACKING PROJECT
+## Description :
+### Tools :
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Bootstrap
+* Ruby on Rails 
+* Active Storage
 
-Things you may want to cover:
+### APIs :
 
-* Ruby version
+* MailJet
+* Amazon S3
 
-* System dependencies
+## How to use it :
 
-* Configuration
+### By Going Online:
 
-* Database creation
+ - [RentCo](https://rent-co.herokuapp.com/)
 
-* Database initialization
+### By Cloning the repository :
 
-* How to run the test suite
+#### Get  the repository :
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+git clone https://github.com/THP-finals-projects-group/RentCo.git
+cd RentCo
+```
 
-* Deployment instructions
+#### Install requirements :
 
-* ...
+```bash
+bundle install
+bundle update
+```
+
+#### Create the Database :
+
+```bash
+rails db:create
+rails db:migrate
+rails db:seed
+```
+
+#### Running rails server :
+
+```bash
+rails server
+```
+
+##### Its Up !
+
+ - Go see in ur favorite browser with a click [here](http://localhost:3000/)
+
+## License :
+
+[MIT]
+
+
