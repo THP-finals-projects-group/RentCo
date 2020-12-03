@@ -122,7 +122,7 @@
 
 #edit {
     padding-right: 120px;
-    padding-top: 100px;
+    padding-top: 200px;
 }
 
 #edit .padding-back-button {
@@ -139,3 +139,22 @@
     margin-bottom: -30px;
 }
 
+#edit .card-body .placeholder {
+    background-color: blue;
+  }
+
+  ::-webkit-input-placeholder {
+    color:transparent;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    color:transparent; 
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    color:transparent; 
+ }
+ 
+ :-ms-input-placeholder {  
+    color:transparent;
+ }
