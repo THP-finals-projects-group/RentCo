@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do
-    root to: "devise/sessions#new"
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users/:id' => 'users#show', as: :profile
   end
+
+  resources :cases, only: [:index, :show]
+  root to: "cases#index"
 end
