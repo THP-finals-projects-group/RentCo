@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_143703) do
 
   create_table "cases", force: :cascade do |t|
     t.string "title", null: false
-    t.string "case_reference", default: "Matthieu Gilette", null: false
-    t.text "contact_referent", null: false
+    t.string "case_reference", null: false
+    t.text "contact_referent", default: "Matthieu Gilette", null: false
     t.string "street_number", null: false
     t.string "street_name", null: false
     t.string "city", null: false
