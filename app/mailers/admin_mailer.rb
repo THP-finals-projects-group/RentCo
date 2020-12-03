@@ -19,6 +19,7 @@ class AdminMailer < Devise::Mailer
   end
 
   def new_case(cases)
-    mail(from: "admin-rentco@yopmail.com", to: cases.user.email, subject: "#{cases.user.email} à soumis un nouveau dossier")
+    @case = cases
+    mail(from: "admin-rentco@yopmail.com", to: @case.user.email, subject: "#{@case.user.email} à soumis un nouveau dossier")
   end
 end

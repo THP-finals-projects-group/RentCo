@@ -1,1 +1,9 @@
-HELLO in txt
+Un nouveau dossier "<%= @case.title %>" ajouté
+
+Par <%= @case.user.firstname %> <%= @case.user.lastname %> (<%= @case.user.email %>) - <%= @case.user.phone_number %> (<%= @case.user.profession %>)
+
+Référence : <%= @case.case_reference %>
+
+Date de visite : <%= @case.visit_date %>
+
+Adresse du bien : <%= @case.street_number %> <%= @case.street_name %>, <%= @case.city %> <%= @case.zipcode %> 

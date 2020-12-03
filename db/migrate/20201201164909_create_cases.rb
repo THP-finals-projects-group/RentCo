@@ -16,24 +16,26 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.text :geographical_description,                  limit: 500
       t.text :potential_description,                     limit: 500
       # old_information
-      t.integer :old_surface,                            null: false
-      t.integer :old_rooms_count,                        null: false
-      t.string :old_type,                                null: false
-      t.string :old_project,                             null: false
+      t.integer :old_surface,                             null: false, default: 0
+      t.integer :old_rooms_count,                         null: false, default: 0
+      t.string :old_type,                                 null: false
+      t.string :old_project,                              null: false
       # BELOW ADMIN PART // ABOVE USER PART
       # monthly charges
-      t.integer :total_monthly_charge
-      t.integer :water_cost
-      t.integer :electricity_cost
-      t.integer :union_charges_cost
-      t.integer :common_charges_cost
+      t.integer :total_monthly_charges
+      t.integer :water_cost,                              default: 0
+      t.integer :heater_cost,                             default: 0
+      t.integer :electricity_cost,                        default: 0
+      t.integer :union_charges_cost,                      default: 0
+      t.integer :common_charges_cost,                     default: 0
       # buying price
       t.integer :total_buying_price
-      t.integer :seller_price
-      t.integer :estimated_negociation
-      t.integer :notary_charges
-      t.integer :property_taxes
-      t.integer :renovation_union
+      t.integer :seller_price,                            default: 0
+      t.integer :estimated_negociation,                   default: 0
+      t.integer :notary_charges,                          default: 0
+      t.integer :property_taxes,                          default: 0
+      t.integer :agency_charges,                         default: 0
+      t.integer :renovation_union,                        default: 0
       # renovation
       t.integer :pno_insurance_cost
       t.integer :total_renovation_cost
@@ -53,12 +55,12 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.integer :renovation_masonry_cost,                 default: 0
       t.integer :renovation_covering_cost,                default: 0      
       # new_information
-      t.integer :new_surface                             
-      t.integer :new_rooms_count                         
+      t.integer :new_surface,                             default: 0
+      t.integer :new_rooms_count,                         default: 0 
       t.string :new_type                                 
       t.string :new_project     
-      t.integer :rent_annual_estimations_total_cost
-      t.integer :month_count
+      t.integer :total_rent_annual_estimations
+      t.integer :month_count,                             default: 0
       t.integer :total_rent_monthly
       t.float :renta_brut
       t.float :renta_net

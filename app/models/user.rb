@@ -7,8 +7,9 @@ class User < ApplicationRecord
          :confirmable
 
   enum role: { user: 0, administrator: 1 }
-
-  has_many :cases, dependent: :destroy
+  
+  # DB RELATIONS
+  has_many :cases
   
   # VALIDATES
   validates_presence_of   :firstname, :lastname, :phone_number, :profession, :role
@@ -18,7 +19,6 @@ class User < ApplicationRecord
   validates               :lastname, length: {in: 3...64}, presence: true
   validates               :phone_number, uniqueness: {case_sensitive: false}, format: { with: /\A(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})\z/, message: "Entrez un numéro de téléphone français valide" }
   validates               :profession, presence: true
-  # validates               :role, default: 0
 
   def active_for_authentication? 
     super && approved? 
