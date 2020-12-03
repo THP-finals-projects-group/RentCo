@@ -1,4 +1,6 @@
-<h2>Forgot your password?</h2>
+<div class="bg-overlay bg-dark"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
