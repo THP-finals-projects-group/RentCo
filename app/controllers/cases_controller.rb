@@ -1,4 +1,5 @@
 class CasesController < ApplicationController
+    before_action: new edit
 
     def new
         @case = Case.new
