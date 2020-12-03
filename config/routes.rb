@@ -13,6 +13,5 @@ Rails.application.routes.draw do
     get '/users/:id' => 'users#show', as: :profile
   end
 
-  resources :cases, only: [:index, :show]
   root to: "cases#index"
 end

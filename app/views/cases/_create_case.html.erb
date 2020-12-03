@@ -69,7 +69,7 @@
 
                                 <%= form.label 'Date de visite' %>
                                 <div class="input-group">
-                                    <%= form.datetime_select :visit_date, autofocus: true, class: "form-control order-1" %>
+                                    <%= form.datetime_select(:visit_date, {:autofocus => true}, {:class => 'custom-select'} )%>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,8 @@
     
                                     <%= form.label 'Type de bien' %>
                                     <div class="input-group">
-                                       <%= form.select :old_project ,["Maison", "Appartement", "Local commercial"], require: true %>
+                                       <%= form.select(:old_project ,["Maison", "Appartement", "Local commercial"], {require: true}, {class: "custom-select"}) %>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +201,7 @@
                                 <div class="field form-group">
                                     <%= form.label 'Type de logement' %><br/>
                                       <div class="input-group">
-                                          <%= form.select :old_type ,["T1", "T2", "T3", "T4"], require: true %>
+                                        <%= form.select(:old_type ,["T1", "T2", "T3", "T4"], {require: true}, {class: "custom-select"})%>
                                       </div>
                                 </div>
                             </div>
@@ -314,7 +315,7 @@
     
                                     <%= form.label "Frais d'agence" %>
                                     <div class="input-group">
-                                        <%= form.number_field :notary_charges, autofocus: true, class: "form-control order-1" %>
+                                        <%= form.number_field :agency_charges, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -409,7 +410,7 @@
 
                                     <%= form.label 'Chauffage' %>
                                     <div class="input-group">
-                                        <%= form.number_field :title, autofocus: true, class: "form-control order-1" %>
+                                        <%= form.number_field :heater_cost, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -814,7 +815,7 @@
             
                                             <%= form.label 'Type de bien' %>
                                             <div class="input-group">
-                                                <%= form.select :old_project ,["Maison", "Appartement", "Local commercial"], require: true %>
+                                                <%= form.select(:old_project,["Maison", "Appartement", "Local commercial"], { :required => true }, { :class => 'custom-select' }) %>
                                             </div>
                                         </div>
                                     </div>
@@ -824,7 +825,7 @@
             
                                             <%= form.label 'Type de logement' %>
                                             <div class="input-group">
-                                                <%= form.select :old_type ,["T1", "T2", "T3", "T4"], require: true %>
+                                                <%= form.select(:old_type,["T1", "T2", "T3", "T4"], { :required => true }, { :class => 'custom-select' })%>
                                             </div>
                                         </div>
                                     </div>
@@ -899,7 +900,7 @@
                         <!-- Button -->
                         <div class="text-center text-md-right">
                             <div class="actions">
-                                <%= form.submit "Créer dossier", class: "btn btn-outline-primary" %>
+                                <%= form.submit @s_button_submit, class: "btn btn-outline-primary" %>
                             </div>
                         </div>
                     </div>

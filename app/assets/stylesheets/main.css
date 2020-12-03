@@ -21,48 +21,48 @@
 
 /* PAGE CONNEXION SESSION NEW */
 
-#sessions_edit_new {
+#sessions_new {
     background-color:var(--gray-dark);
 }
 
-#sessions_edit_new .btn-checkbox-login {
+#sessions_new .btn-checkbox-login {
     margin-top:15px;
 }
 
-#sessions_edit_new .main-part-center-home .title-home-page {
+#sessions_new .main-part-center-home .title-home-page {
     font-size:40px;
     color:white;
 }
 
-#sessions_edit_new .main-part-center-home .p-text-home-page {
+#sessions_new .main-part-center-home .p-text-home-page {
     color:white;
     margin-bottom:50px;
 }
 
 @media only screen and (min-width: 1024px) {
-    #sessions_edit_new .main-part-center-home {
+    #sessions_new .main-part-center-home {
         display:flex;
         justify-content:space-evenly;
         align-items:center;
     }
     
-    #sessions_edit_new .main-part-center-home .title-home-page {
+    #sessions_new .main-part-center-home .title-home-page {
         font-size:40px;
         color:white;
     }
     
-    #sessions_edit_new .main-part-center-home .p-text-home-page {
+    #sessions_new .main-part-center-home .p-text-home-page {
         color:white;
     }
 
-    #sessions_edit_new > section {
+    #sessions_new > section {
         padding-bottom:153px;
         margin-top: -50px;
     } 
 }
 
 @media only screen and (max-width: 1024px) {
-    #sessions_edit_new > section {
+    #sessions_new > section {
         padding-top:20px;
         padding-bottom:20px;
     }
@@ -101,15 +101,6 @@
     margin-top: -25px;
 }
 
-
-/* PAGE CRÉATION EDIT CASE */
-
-#sessions_edit_new .separator-user-admin {
-    height:8px;
-    margin-top:40px;
-    margin-bottom:30px;
-    background-color:var(--primary);
-}
 /* PAGE EDIT REGISTRATION EDIT */
 
 #edit .card {

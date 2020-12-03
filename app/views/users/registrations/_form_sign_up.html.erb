@@ -126,7 +126,7 @@
               <div class="field from-group">
                 <%= f.label :métier %><br>
                   <div class="input-group">
-                    <%= f.select :profession,['Chasseur de bien', 'Agent Immobilier', 'Notaire'], class: "form-control order-1",  required: true %>
+                    <%= f.select(:profession, ['Chasseur de bien', 'Agent Immobilier', 'Notaire'], { :required => true }, { :class => 'custom-select' }) %>
                   </div>
                 </div>
             </div>
