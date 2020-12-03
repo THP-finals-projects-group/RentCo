@@ -1,0 +1,520 @@
+<section class="section section-top section-full">
+
+    <!-- Cover -->
+    <div class="bg-cover"></div>
+    
+    <!-- Overlay -->
+    <div class="bg-overlay"></div>
+    
+    <!-- Triangles -->
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+    <!-- Content -->
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8 col-lg-12">
+
+                <%= form_tag cases_path(action: 'create'), class: "form-styled bg-white", method: "post" do %>
+                    <h4 class="text-center mb-4">
+                        Création d'un nouveau dossier
+                    </h4>
+                    <p class="text-center text-muted mb-5">
+                    Veuillez remplir le dossier ci-dessous afin d'ouvrir un nouveau dossier
+                    </p>
+                    <fieldset class="col-md-8 col-lg-12">
+                    <legend>Informations relative au dossier</legend>
+                    <div class="row">
+                    
+                        <div class="col-md-8 col-lg-8">
+                            <div class="field form-group">
+
+                                <%= label_tag 'Nom du dossier' %>
+                                <div class="input-group">
+                                    <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                    <div class="input-group-append order-0">
+                                        <div class="input-group-text">
+                                            <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <path transform="translate(3 3)" d="
+                                                M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 col-lg-4">
+                            <div class="field form-group">
+
+                                <%= label_tag 'Référence' %>
+                                <div class="input-group">
+                                    <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                    <div class="input-group-append order-0">
+                                        <div class="input-group-text">
+                                            <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <path transform="translate(3 3)" d="
+                                                M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 col-lg-4">
+                            <div class="field form-group">
+
+                                <%= label_tag 'Date de visite' %>
+                                <div class="input-group">
+                                    <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                    <div class="input-group-append order-0">
+                                        <div class="input-group-text">
+                                            <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <path transform="translate(3 3)" d="
+                                                M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    
+                    </div>
+                    </fieldset>
+
+                    <fieldset class="col-md-8 col-lg-12">
+                        <legend>Informations relative à la localisation du bien</legend>
+                        <div class="row">
+                        
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Numéro de rue' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-8">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Rue' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Ville' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Code postal' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset class="col-md-8 col-lg-12">
+                        <legend>Informations relative au bien en l'état</legend>
+                        <div class="row">
+                        
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Type de bien' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Surface totale' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+                                    <%= label_tag 'Type de logement' %><br />
+                                      <div class="input-group">
+                                          <%= select_tag :old_type ,["T1", "T2", "T3", "T4"] %>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Nombre de chambres' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset class="col-md-8 col-lg-12">
+                        <legend>Informations relative au prix du bien</legend>
+                        <div class="row">
+                        
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Prix' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Négociation (estimée)' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Taxe foncière' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Syndic de copropriété' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag "Frais d'agence" %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Frais de notaire' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Eau' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Electricité' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Entretiens communs' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Chauffage' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset class="col-md-8 col-lg-12">
+                        <legend>Description supplémentaires et commentaires</legend>
+                        <div class="row">
+                        
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Description physique' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Description géographique' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= label_tag 'Description quant au potentiel du bien' %>
+                                    <div class="input-group">
+                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        
+                        </div>
+                    </fieldset>
+
+
+                <% end %>
+
+
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+
+</section>
