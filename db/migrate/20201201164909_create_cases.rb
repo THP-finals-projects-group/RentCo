@@ -2,8 +2,8 @@ class CreateCases < ActiveRecord::Migration[5.2]
   def change
     create_table :cases do |t|
       t.string :title,                                   unique: true, null: false 
-      t.string :case_reference,                          null: false, default: "Matthieu Gilette"
-      t.text :contact_referent,                          null: false
+      t.string :case_reference,                          null: false
+      t.text :contact_referent,                          null: false, default: "Matthieu Gilette"
       t.string :street_number,                           null: false
       t.string :street_name,                             null: false 
       t.string :city,                                    null: false
