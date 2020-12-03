@@ -3,9 +3,9 @@
     <table>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.email %>
-            <td><%= user.approved %>
-            <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %>
+            <td><%= user.email %></td>
+            <td><%= user.approved %></td>
+            <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %></td>
           </tr>
         <% end %>
     </table>
