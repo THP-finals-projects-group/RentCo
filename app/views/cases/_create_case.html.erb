@@ -11,10 +11,11 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <!-- Content -->
     <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-8 col-lg-12">
 
-                <%= form_tag cases_path(action: 'create'), class: "form-styled bg-white", method: "post" do %>
+        <%= form_with(model: @case, local: true, class: "form-styled bg-white") do |form| %>
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-8 col-lg-12">
+
                     <h4 class="text-center mb-4">
                         Création d'un nouveau dossier
                     </h4>
@@ -28,9 +29,9 @@
                         <div class="col-md-8 col-lg-8">
                             <div class="field form-group">
 
-                                <%= label_tag 'Nom du dossier' %>
+                                <%= form.label 'Nom du dossier' %>
                                 <div class="input-group">
-                                    <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                    <%= form.text_field :title, autofocus: true, class: "form-control order-1" %>
                                     <div class="input-group-append order-0">
                                         <div class="input-group-text">
                                             <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -47,9 +48,9 @@
                         <div class="col-md-8 col-lg-4">
                             <div class="field form-group">
 
-                                <%= label_tag 'Référence' %>
+                                <%= form.label 'Référence' %>
                                 <div class="input-group">
-                                    <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                    <%= form.text_field :case_reference, autofocus: true, class: "form-control order-1" %>
                                     <div class="input-group-append order-0">
                                         <div class="input-group-text">
                                             <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -66,9 +67,9 @@
                         <div class="col-md-8 col-lg-4">
                             <div class="field form-group">
 
-                                <%= label_tag 'Date de visite' %>
+                                <%= form.label 'Date de visite' %>
                                 <div class="input-group">
-                                    <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                    <%= form.text_field :visit_date, autofocus: true, class: "form-control order-1" %>
                                     <div class="input-group-append order-0">
                                         <div class="input-group-text">
                                             <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -93,9 +94,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Numéro de rue' %>
+                                    <%= form.label 'Numéro de rue' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :street_number, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -112,9 +113,9 @@
                             <div class="col-md-8 col-lg-8">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Rue' %>
+                                    <%= form.label 'Rue' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :street_name, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -131,9 +132,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Ville' %>
+                                    <%= form.label 'Ville' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :city, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -150,9 +151,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Code postal' %>
+                                    <%= form.label 'Code postal' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :zipcode, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -178,9 +179,19 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Type de bien' %>
+                                    <%= form.label 'Type de bien' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                       <%= form.select :old_project ,["Maison", "Appartement", "Local commercial"], require: true %>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    
+                                    <%= form.label 'Surface totale' %>
+                                    <div class="input-group">
+                                        <%= form.text_field :old_surface, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -196,28 +207,9 @@
     
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
-    
-                                    <%= label_tag 'Surface totale' %>
-                                    <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
-                                        <div class="input-group-append order-0">
-                                            <div class="input-group-text">
-                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <path transform="translate(3 3)" d="
-                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <div class="col-md-8 col-lg-4">
-                                <div class="field form-group">
-                                    <%= label_tag 'Type de logement' %><br />
+                                    <%= form.label 'Type de logement' %><br/>
                                       <div class="input-group">
-                                          <%= select_tag :old_type ,["T1", "T2", "T3", "T4"] %>
+                                          <%= form.select :old_type ,["T1", "T2", "T3", "T4"], require: true %>
                                       </div>
                                 </div>
                             </div>
@@ -225,9 +217,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Nombre de chambres' %>
+                                    <%= form.label 'Nombre de chambres' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :old_rooms_count, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -253,9 +245,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Prix' %>
+                                    <%= form.label 'Prix' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :seller_price, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -272,9 +264,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Négociation (estimée)' %>
+                                    <%= form.label 'Négociation (estimée)' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :estimated_negociation, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -291,28 +283,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Taxe foncière' %>
+                                    <%= form.label 'Taxe foncière' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
-                                        <div class="input-group-append order-0">
-                                            <div class="input-group-text">
-                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <path transform="translate(3 3)" d="
-                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-8 col-lg-4">
-                                <div class="field form-group">
-    
-                                    <%= label_tag 'Syndic de copropriété' %>
-                                    <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :property_taxes, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -329,9 +302,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag "Frais d'agence" %>
+                                    <%= form.label 'Syndic de copropriété' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :renovation_union, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -348,9 +321,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Frais de notaire' %>
+                                    <%= form.label "Frais d'agence" %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :notary_charges, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -367,9 +340,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Eau' %>
+                                    <%= form.label 'Frais de notaire' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :notary_charges, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -386,9 +359,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Electricité' %>
+                                    <%= form.label 'Eau' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :water_cost, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -405,9 +378,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Entretiens communs' %>
+                                    <%= form.label 'Electricité' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :electricity_cost, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -424,9 +397,28 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Chauffage' %>
+                                    <%= form.label 'Entretiens communs' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :common_charges_cost, autofocus: true, class: "form-control order-1" %>
+                                        <div class="input-group-append order-0">
+                                            <div class="input-group-text">
+                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <path transform="translate(3 3)" d="
+                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8 col-lg-4">
+                                <div class="field form-group">
+    agency_charges
+                                    <%= form.label 'Chauffage' %>
+                                    <div class="input-group">
+                                        <%= form.text_field :title, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -452,9 +444,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Description physique' %>
+                                    <%= form.label 'Description physique' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :physical_description, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -471,9 +463,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Description géographique' %>
+                                    <%= form.label 'Description géographique' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :geographical_description, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -490,9 +482,9 @@
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
     
-                                    <%= label_tag 'Description quant au potentiel du bien' %>
+                                    <%= form.label 'Description quant au potentiel du bien' %>
                                     <div class="input-group">
-                                        <%= text_field_tag 'title', @case.title, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
+                                        <%= form.text_field :potential_description, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -509,12 +501,442 @@
                         </div>
                     </fieldset>
 
+                </div>
+            </div> <!-- / .row -->
 
-                <% end %>
+            
+            
+
+                    <% if current_user.administrator? %>
+
+                    <div class="separator-user-admin"></div>
+
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-8 col-lg-12">
+
+                            <h4 class="text-center mb-4">
+                                Partie administrateur
+                            </h4>
+                            <p class="text-center text-muted mb-5">
+                            Les données ci-dessous ne seront visibles que par un administrateur
+                            </p>
+                            <fieldset class="col-md-8 col-lg-12">
+                            <legend>Projection travaux</legend>
+                            <div class="row">
+                            
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Démolition' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_demolition_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Préparation' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_preparation_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Menuiserie' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_carpentry_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Platerie et isolation' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_plastering_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Électricité' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_electricity_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Plomberie' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_plumbing_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Mur et plafond' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_wall_ceiling_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Peinture' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_painting_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Sol' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_flooring_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Cuisine' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_kitchen_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Mobilier' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_furniture_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Façade' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_facade_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Sécurité' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_security_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Maçonnerie' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_masonry_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-8 col-lg-4">
+                                    <div class="field form-group">
+        
+                                        <%= form.label 'Couverture' %>
+                                        <div class="input-group">
+                                            <%= form.text_field :renovation_covering_cost, autofocus: true, class: "form-control order-1" %>
+                                            <div class="input-group-append order-0">
+                                                <div class="input-group-text">
+                                                    <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <path transform="translate(3 3)" d="
+                                                        M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                        </path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            
+                            </div>
+                            </fieldset>
 
 
-            </div>
-        </div> <!-- / .row -->
+                            <fieldset class="col-md-8 col-lg-12">
+                                <legend>Projection du bien en lui-même</legend>
+                                <div class="row">
+                                
+                                    <div class="col-md-8 col-lg-4">
+                                        <div class="field form-group">
+            
+                                            <%= form.label 'Type de bien' %>
+                                            <div class="input-group">
+                                                <%= form.text_field :new_type , autofocus: true, class: "form-control order-1" %>
+                                                <div class="input-group-append order-0">
+                                                    <div class="input-group-text">
+                                                        <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                            <path transform="translate(3 3)" d="
+                                                            M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-md-8 col-lg-4">
+                                        <div class="field form-group">
+            
+                                            <%= form.label 'Type de logement' %>
+                                            <div class="input-group">
+                                                <%= form.text_field :new_project, autofocus: true, class: "form-control order-1" %>
+                                                <div class="input-group-append order-0">
+                                                    <div class="input-group-text">
+                                                        <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                            <path transform="translate(3 3)" d="
+                                                            M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8 col-lg-4">
+                                        <div class="field form-group">
+            
+                                            <%= form.label 'Nouvelle surface' %>
+                                            <div class="input-group">
+                                                <%= form.text_field :new_surface, autofocus: true, class: "form-control order-1" %>
+                                                <div class="input-group-append order-0">
+                                                    <div class="input-group-text">
+                                                        <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                            <path transform="translate(3 3)" d="
+                                                            M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                    <div class="col-md-8 col-lg-4">
+                                        <div class="field form-group">
+            
+                                            <%= form.label 'Nombre de chambre' %>
+                                            <div class="input-group">
+                                                <%= form.text_field :new_rooms_count, autofocus: true, class: "form-control order-1" %>
+                                                <div class="input-group-append order-0">
+                                                    <div class="input-group-text">
+                                                        <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                            <path transform="translate(3 3)" d="
+                                                            M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-md-8 col-lg-4">
+                                        <div class="field form-group">
+            
+                                            <%= form.label 'Nombre de mois estimée' %>
+                                            <div class="input-group">
+                                                <%= form.text_field :month_count, autofocus: true, class: "form-control order-1" %>
+                                                <div class="input-group-append order-0">
+                                                    <div class="input-group-text">
+                                                        <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                            <path transform="translate(3 3)" d="
+                                                            M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                                                            </path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>         
+                                
+                                </div>
+                                </fieldset>
+
+                        </div>
+                    </div> <!-- / .row -->
+
+                    <% end %>
+
+                    <!-- SUBMIT -->
+                    <div class="col-md">
+                        <!-- Button -->
+                        <div class="text-center text-md-right">
+                            <div class="actions">
+                                <%= form.submit "Créer dossier", class: "btn btn-outline-primary" %>
+                            </div>
+                        </div>
+                    </div>
+
+                
+
+        <% end %>
+
+
+            
     </div> <!-- / .container -->
 
 </section>

@@ -13,7 +13,7 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.datetime :visit_date,                            null: false
       t.boolean :is_confirmed,                           null: false, default: false     
       t.text :physical_description,                      limit: 500
-      t.text :geographical_description,                  limit: 500  
+      t.text :geographical_description,                  limit: 500
       t.text :potential_description,                     limit: 500
       # old_information
       t.integer :old_surface,                            null: false
