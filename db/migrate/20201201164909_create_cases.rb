@@ -10,11 +10,11 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.string :zipcode,                                 null: false, limit: 5
       t.string :longitude
       t.string :latitude
-      t.datetime :visit_date,                             null: false
-      t.boolean :is_confirmed,                            null: false, default: false     
-      t.text :physical_description,                       limit: 500
-      t.text :geographical_description,                   limit: 500  
-      t.text :potential_description,                      limit: 500
+      t.datetime :visit_date,                            null: false
+      t.boolean :is_confirmed,                           null: false, default: false     
+      t.text :physical_description,                      limit: 500
+      t.text :geographical_description,                  limit: 500
+      t.text :potential_description,                     limit: 500
       # old_information
       t.integer :old_surface,                             null: false, default: 0
       t.integer :old_rooms_count,                         null: false, default: 0

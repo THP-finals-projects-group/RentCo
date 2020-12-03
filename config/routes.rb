@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :cases
+
   scope "/admin" do
     resources :users, only: [:index, :update]
   end
@@ -11,6 +13,5 @@ Rails.application.routes.draw do
     get '/users/:id' => 'users#show', as: :profile
   end
 
-  resources :cases, only: [:index, :show]
   root to: "cases#index"
 end

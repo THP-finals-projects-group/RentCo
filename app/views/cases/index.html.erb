@@ -7,7 +7,12 @@
   	        <h5 class="card-title"><%= c.title %></h5>
   	        <h6 class="card-subtitle mb-2 text-muted"><%= c.visit_date %></h6>
   	        <p class="card-text"><%= c.city %></p>
-  	        <%= link_to "Voir le dossier", case_path(c.id),class: "card-link"%>
+			<%= link_to "Voir le dossier", case_path(c.id),class: "card-link"%>
+			<% if current_user.administrator? %>
+				<%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' } do %>
+					Détruire ce dossier
+				<% end %>
+			<% end %>
   	      </div>
   	    </div>
   	  <% end %>
