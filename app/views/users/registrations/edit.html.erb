@@ -1,43 +1,51 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+<div class="bg-overlay bg-dark"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+<div id="edit">
+  <div class="container">
+    <%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
+      <div class="card" style="width: 104%;">
+        <div class="card-body text-center padding-title">
+          <h3 class="card-title">Modification du profil </h3>
+        </div>
+        <div class="text-center">
+          <%= render "users/shared/error_messages", resource: resource %>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-8 col-lg-6">      
+            <div class="card-body text-center">
+              <%= f.label :Prénom %>
+              <%= f.text_field :firstname, class: 'form-control', autofocus: true, required: true %><br>      
+              <%= f.label :Nom %>
+              <%= f.text_field :lastname, class: 'form-control', autofocus: true, required: true %><br>            
+              <%= f.label :Email %>
+              <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+            </div>
+          </div>
+          <hr>
+          <div class="col-md-8 col-lg-6">
+            <div class="card-body text-center">       
+              <%= f.label :Mot_de_passe_actuel %> 
+              <%= f.password_field :current_password, class: 'form-control', style: 'width: 100%;' %><br>              
+              <%= f.label :nouveau_mot_de_passe %> <i>(Laisser vide si vous ne voulez pas le changer)</i>
+              <%= f.password_field :password, class: 'form-control', style: 'width: 100%;', placeholder: '6 caractère minimum', autocomplete: "new-password" %><br>             
+              <%= f.label :Confirmer %>
+              <%= f.password_field :password_confirmation, class: 'form-control', style: 'width: 100%;', autocomplete: "new-password" %>        
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="text-center padding-edit-button">
+          <%= f.submit "Modifier", class:"btn btn-primary btn-outline btn-sm" %>
+        </div>
+        <div class="text-left padding-back-button">
+          <%= link_to "Retour", profile_path(current_user), class:"btn btn-secondary btn-outline btn-sm" %>
+        </div>
+      </div>
     <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  Currently waiting confirmation for: <% resource.unconfirmed_email %>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  </div>
+</div>

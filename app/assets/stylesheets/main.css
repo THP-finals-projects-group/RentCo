@@ -1,0 +1,141 @@
+/* NAVBAR */
+
+#navbar img{
+    width: 70%;
+    border-radius: 5px;
+    height: 42px;
+}
+
+#navbar .collapse {
+    margin-right: 180px;
+}
+
+/* FOOTER si existant */
+
+
+
+
+/* STYLE BOUTON */
+
+
+
+/* PAGE CONNEXION SESSION NEW */
+
+#sessions_new {
+    background-color:var(--gray-dark);
+}
+
+#sessions_new .btn-checkbox-login {
+    margin-top:15px;
+}
+
+#sessions_new .main-part-center-home .title-home-page {
+    font-size:40px;
+    color:white;
+}
+
+#sessions_new .main-part-center-home .p-text-home-page {
+    color:white;
+    margin-bottom:50px;
+}
+
+@media only screen and (min-width: 1024px) {
+    #sessions_new .main-part-center-home {
+        display:flex;
+        justify-content:space-evenly;
+        align-items:center;
+    }
+    
+    #sessions_new .main-part-center-home .title-home-page {
+        font-size:40px;
+        color:white;
+    }
+    
+    #sessions_new .main-part-center-home .p-text-home-page {
+        color:white;
+    }
+
+    #sessions_new > section {
+        padding-bottom:153px;
+        margin-top: -50px;
+    } 
+}
+
+@media only screen and (max-width: 1024px) {
+    #sessions_new > section {
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+}
+
+/* PAGE CONNEXION REGISTRATION NEW */
+
+@media only screen and (min-width: 1024px) {
+    #registration_new > section {
+        padding-bottom:109px;
+        margin-top: -60px;
+    } 
+
+    #registration_new .custom-control {
+        padding-top: 30px;
+        padding-right: 500px;
+    }
+}
+
+/* PAGE PROFIL USERS SHOW */
+
+#user_show .container  {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 285px;
+    background-color: white;
+}
+
+#user_show .card {
+    background-color: white;
+    border-radius: 10px;
+}
+
+#user_show .list-group {
+    margin-top: -25px;
+}
+
+/* PAGE EDIT REGISTRATION EDIT */
+
+#edit .card {
+    background-color: white;
+    border-radius: 10px;
+}
+
+#edit .align-center {
+    align-content: center ;  
+}
+
+#edit .form-control {
+    text-align: center;
+}
+
+#edit .form-label {
+    text-align: center;
+}
+
+#edit {
+    padding-right: 120px;
+    padding-top: 100px;
+}
+
+#edit .padding-back-button {
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+#edit .padding-edit-button {
+    padding-top: 15px;
+}
+
+#edit .padding-title {
+    margin-bottom: -30px;
+}
+

@@ -1,0 +1,13 @@
+<body>
+  <div class="card" style="margin-top: 8em;">
+    <table>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %>
+            <td><%= user.approved %>
+            <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+</body>

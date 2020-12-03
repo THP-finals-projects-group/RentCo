@@ -1,0 +1,36 @@
+<div class="bg-cover"></div>
+<div class="bg-overlay bg-dark"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+<div id="user_show">
+  <div class="container">
+    <div class="row">
+      <div class="card text-center" style="width: 50rem;">
+        <div class="card-body">
+          <h3 class="card-title">Profil de <%= @user.lastname %> <%= @user.firstname %> </h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Email : 
+            <div class="text-primary">
+              <%= @user.email %>
+            </div>
+          </li>
+          <li class="list-group-item">Numéro de téléphone : 
+            <div class="text-primary">
+              <%= @user.phone_number %>
+            </div>
+          </li>
+            <li class="list-group-item">Vous êtes enregistré en tant que : 
+              <div class="text-primary"> 
+                <%=@user.profession %>
+              </div>
+            </li>
+        </ul>
+        <div class="card-body">
+          <%= link_to 'Modifier mon profil', edit_user_registration_path, class:"btn btn-primary btn-outline btn-lg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+             
