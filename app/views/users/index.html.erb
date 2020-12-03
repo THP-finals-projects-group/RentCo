@@ -3,7 +3,7 @@
     <table>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.email %></td>
+            <td><%=link_to "#{user.email}", profile_path(user.id) %></td>
             <td><%= user.approved %></td>
             <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %></td>
           </tr>
