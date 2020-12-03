@@ -101,3 +101,41 @@
     margin-top: -25px;
 }
 
+/* PAGE EDIT REGISTRATION EDIT */
+
+#edit .card {
+    background-color: white;
+    border-radius: 10px;
+}
+
+#edit .align-center {
+    align-content: center ;  
+}
+
+#edit .form-control {
+    text-align: center;
+}
+
+#edit .form-label {
+    text-align: center;
+}
+
+#edit {
+    padding-right: 120px;
+    padding-top: 100px;
+}
+
+#edit .padding-back-button {
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+#edit .padding-edit-button {
+    padding-top: 15px;
+}
+
+#edit .padding-title {
+    margin-bottom: -30px;
+}
+

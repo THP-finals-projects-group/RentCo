@@ -54,7 +54,7 @@ p "Validation Only passed ?"
 User.create!(
   firstname: "AllValid",
   lastname: "IPassed",
-  email: "validation@test.passed",
+  email: "validation@yopmail.com",
   password: "password",
   phone_number: "0639629030",
   profession: professions[rand(0..(professions.length - 1))]

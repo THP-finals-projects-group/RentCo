@@ -20,27 +20,11 @@
               <%= @user.phone_number %>
             </div>
           </li>
-          <%if @user.hunter == "1"%>
             <li class="list-group-item">Vous êtes enregistré en tant que : 
               <div class="text-primary"> 
-                Chasseur de bien
+                <%=@user.profession %>
               </div>
             </li>
-          <%end%>
-          <%if @user.agency == "1"%>
-            <li class="list-group-item">Vous êtes enregistré en tant que :
-              <div class="text-primary"> 
-                Agence immobilière
-              </div>
-            </li>
-          <%end%>
-          <%if @user.notary == "1"%>
-            <li class="list-group-item">Vous êtes enregistré en tant que : 
-              <div class="text-primary"> 
-                Notaire
-              </div>
-            </li>
-          <%end%>
         </ul>
         <div class="card-body">
           <%= link_to 'Modifier mon profil', edit_user_registration_path, class:"btn btn-primary btn-outline btn-lg" %>
