@@ -11,12 +11,14 @@
 
   <body>
 
-    <%if current_user %>
+    <% unless action_name == "new" && !current_user %>
       <%= render 'layouts/navbar' %>
     <% end %>
   
 
     <%= yield %>
+
+    <%= render 'layouts/devhelper' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 

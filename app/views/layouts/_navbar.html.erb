@@ -9,9 +9,6 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to 'Profil',  profile_path(current_user.id),:class => "nav-link" %>  
-          </li>
-          <li class="nav-item">
             <%= link_to 'Creer un dossier',  new_case_path,:class => "nav-link" %>  
           </li>
           <li class="nav-item">
@@ -25,11 +22,9 @@
           <li class="nav-item">
               <%= link_to 'Deconnexion', destroy_user_session_path, :class => "nav-link" %>  
           </li>
-          <% if current_user.administrator? %>
-            <li class="nav-item">
-                <%= link_to "Confirmer les comptes", users_path, class: "nav-link"%>
-            </li>
-          <% end %>
+          <li class="nav-item">
+              <%= link_to "Confirmer les comptes", users_path, class: "nav-link"%>
+          </li>
         </ul>
       </div> 
     </div>     
