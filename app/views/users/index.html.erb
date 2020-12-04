@@ -5,16 +5,13 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
     <div class="container">
       <div class="card bg-white">
-        <div class="card-header" style="margin-top: 10px;">
+        <div class="card-header">
           <div class="row">
-            <div class="col-md-4">
-              Email
+            <div class="col-md-4 margin-card-header">
+              Compte 
             </div>
-            <div class="col-md-4">
-              Validé ?
-            </div>
-            <div class="col-md-4">
-              Confirmer
+            <div class="col-md-4 margin-card-header">
+              Status 
             </div>
           </div>
         </div>
@@ -22,16 +19,22 @@
           <% @users.each do |user| %>
             <div class="row">
               <div class="col-md-4">
-                <%=link_to "#{user.email}", user_path(user.id) %>
+                <p><%= user.lastname %> <%= user.firstname %><p>
+                <%=link_to user.email, user_path(user.id) %>
               </div>
-              <div class="col-md-4">
-                <%= user.approved %>
+              <div class="col-md-4 margin-status">
+                <% if user.approved == true %>
+                  <p class="text-success"><i class="fas fa-check-circle fa-2x"></i></p>
+                <%else%>
+                  <p class="text-danger"><i class="fas fa-times-circle fa-2x"></i></p>
+                <%end%>
               </div>
-              <div class="col-md-4">
-                <%= link_to "Confirmer", user_path(user.id), method: :put %>
+              <div class="col-md-4 margin-confirmed">
+                <%= link_to "Confirmer", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
               </div>
             </div>
             <hr>
+            <br>
           <% end %>
         </div>
       </div>
