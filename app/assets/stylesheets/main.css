@@ -61,26 +61,7 @@
     } 
 }
 
-@media only screen and (max-width: 1024px) {
-    #sessions_new > section {
-        padding-top:20px;
-        padding-bottom:20px;
-    }
-}
 
-/* PAGE CONNEXION REGISTRATION NEW */
-
-@media only screen and (min-width: 1024px) {
-    #registration_new > section {
-        padding-bottom:109px;
-        margin-top: -60px;
-    } 
-
-    #registration_new .custom-control {
-        padding-top: 30px;
-        padding-right: 500px;
-    }
-}
 
 /* PAGE PROFIL USERS SHOW */
 
@@ -187,3 +168,51 @@
     padding-right: 200px;
 }
 
+
+/* PAGE CASE SHOW */
+
+#show-cases .text-primary {
+    margin-top:50px;
+}
+
+#show-cases h3 {
+    width:100%;
+    margin-top:100px;
+    text-decoration: underline;
+}
+
+#show-cases .btn-outline-primary {
+    color: white;
+}
+
+#show-cases .btn-outline-primary:hover {
+    color: var(--primary);
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+    #sessions_new > section {
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+
+    #show-cases .text-primary {
+        margin-top:15px;
+    }
+}
+
+/* PAGE CONNEXION REGISTRATION NEW */
+
+@media only screen and (min-width: 1024px) {
+    #registration_new > section {
+        padding-bottom:109px;
+        margin-top: -60px;
+    } 
+
+    #registration_new .custom-control {
+        padding-top: 30px;
+        padding-right: 500px;
+    }
+}
