@@ -70,4 +70,11 @@ gem 'faker'
 gem 'table_print'
 gem 'dotenv-rails'
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
+<<<<<<< HEAD
 gem 'aws-sdk-s3'
+=======
+gem 'aws-sdk-s3'
+gem 'image_processing', '~> 1.2'
+gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
+gem 'activestorage-validator'
+>>>>>>> development

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :cases do
     resources :rooms, only: [:edit, :update]
+    member do
+      delete :delete_video_attachment
+    end
   end
   
   resources :users, only: [:show, :index, :update]
