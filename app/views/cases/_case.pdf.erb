@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<h1 style="color: red;"><%= @case.title %> </h1>
+<p><p><%= @case.street_number %> <%= @case.street_name %>, <%= @case.zipcode %> <%= @case.city %></p>
+<p><%= @case.case_reference %></p>
+<div class="card bg-dark">
+<p class="card-text"><%= @case.new_type %></p>
+<p><%= @case.new_project %></p>
+<p><%= @case.new_surface %></p>
+</div>
+<p><%= @case.new_rooms_count %></p>
+<p><%= @case.seller_price %></p>
+<p><%= @case.physical_description %></p>
+<p><%= @case.total_buying_price %></p>
+<p><%= @case.total_monthly_charges %></p>
+<p><%= @case.total_renovation_cost %></p>
+<p><%= @case.notary_charges %></p>
+<p><%= @case.property_taxes %></p>
+<p><%= @case.total_rent_annual_estimations %></p>
+<p><%= @case.pno_insurance_cost %></p>
+<p><%= @case.renta_brut %></p>
+<p><%= @case.renta_net %></p>

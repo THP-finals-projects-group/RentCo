@@ -1,6 +1,6 @@
 class CasesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_case, only: [:show, :edit, :update, :destroy]
+    before_action :set_case, only: [:show, :edit, :update, :destroy, :generate_pdf]
     
 
     def index
@@ -40,6 +40,12 @@ class CasesController < ApplicationController
 
         @case.renta_net = (@case.total_rent_annual_estimations - @case.total_buying_price - @case.pno_insurance_cost) / ((@case.total_buying_price + @case.total_renovation_cost) / 10)
 	end
+
+    def generate_pdf
+        html = render_to_string(partial: "cases/case.pdf.erb")
+        pdf = WickedPdf.new.pdf_from_string(html, title: "#{@case.id}_dossier")
+        send_data pdf, filename: "#{@case.id}_dossier"
+    end
 
     def new
         @case = Case.new

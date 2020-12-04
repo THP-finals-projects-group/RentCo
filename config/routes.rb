@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show, :index, :update]
-
+  
+  get '/cases/:id/pdf' => 'cases#generate_pdf'
   root to: "cases#index"
 end
