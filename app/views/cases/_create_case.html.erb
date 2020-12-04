@@ -17,7 +17,7 @@
                 <div class="col-md-8 col-lg-12">
 
                     <h4 class="text-center mb-4">
-                        Création d'un nouveau dossier
+                    <%= @s_title_document %>
                     </h4>
                     <p class="text-center text-muted mb-5">
                     Veuillez remplir le dossier ci-dessous afin d'ouvrir un nouveau dossier
@@ -69,7 +69,7 @@
 
                                 <%= form.label 'Date de visite' %>
                                 <div class="input-group">
-                                    <%= form.datetime_select(:visit_date, {:autofocus => true}, {:class => 'custom-select'} )%>
+                                    <%= form.date_field :visit_date, autofocus: true, class: "form-control order-1", require: true %>
                                 </div>
                             </div>
                         </div>
@@ -296,7 +296,7 @@
     
                                     <%= form.label 'Syndic de copropriété' %>
                                     <div class="input-group">
-                                        <%= form.number_field :renovation_union, autofocus: true, class: "form-control order-1" %>
+                                        <%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -430,7 +430,7 @@
 
 
                     <fieldset class="col-md-8 col-lg-12">
-                        <legend>Description supplémentaires et commentaires</legend>
+                        <legend>Descriptions supplémentaires et commentaires</legend>
                         <div class="row">
                         
                             <div class="col-md-8 col-lg-12">
@@ -488,11 +488,33 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>    
-                        
+                            </div>
+
+                            <div class="col-md-8 col-lg-12">
+                                <div class="field form-group">
+                                    <fieldset>
+                                        <legend><%= form.label :videos %></legend>
+                                        <% if @case.videos.attached? %>
+                                            Nombre de videos: <%= @case.videos.length %>
+                                        <%else%>
+                                        Veuillez ajouter une vidéo au dossier
+                                        <%end%>
+                                        <%= form.file_field :videos, multiple: true, class: 'form-control'%>
+                                        <% @case.videos.each do |video|%>
+                                            <% if video.representable? %>
+                                                <%= image_tag(video.representation(resize: '200x200')) %>
+                                                <%= link_to video.filename, video %>
+                                                <%= link_to 'Supprimer', delete_video_attachment_case_path(video.id),
+                                                       method: :delete,
+                                                       data: { confirm: 'Etes_vous sûr?' } %>
+                                            <% end %>
+                                        <% end %>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            
                         </div>
                     </fieldset>
-
                 </div>
             </div> <!-- / .row -->
 

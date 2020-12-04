@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_143703) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "rent_monthly", null: false
+    t.integer "rent_monthly"
     t.bigint "case_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

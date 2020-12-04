@@ -1,13 +1,40 @@
-<body>
-  <div class="card" style="margin-top: 8em;">
-    <table>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.email %></td>
-            <td><%= user.approved %></td>
-            <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %></td>
-          </tr>
-        <% end %>
-    </table>
-  </div>
-</body>
+<div id="index_user">
+  <section class="section section-top section-full">
+    <div class="bg-overlay bg-dark bg"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
+    <div class="container">
+      <div class="card bg-white">
+        <div class="card-header" style="margin-top: 10px;">
+          <div class="row">
+            <div class="col-md-4">
+              Email
+            </div>
+            <div class="col-md-4">
+              Validé ?
+            </div>
+            <div class="col-md-4">
+              Confirmer
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <% @users.each do |user| %>
+            <div class="row">
+              <div class="col-md-4">
+                <%=link_to "#{user.email}", user_path(user.id) %>
+              </div>
+              <div class="col-md-4">
+                <%= user.approved %>
+              </div>
+              <div class="col-md-4">
+                <%= link_to "Confirmer", user_path(user.id), method: :put %>
+              </div>
+            </div>
+            <hr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

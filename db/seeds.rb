@@ -28,21 +28,21 @@ types = ["T1", "T2", "T3", "T4"]
 projects = ["Maison", "Appartement", "Local commercial"]
 def generate_quote_sv
   quote = ""
-  while quote.length < 26 && quote.length >= 500
+  while quote.length < 26 || quote.length >= 500
     quote = Faker::TvShows::SiliconValley.quote
   end
   quote
 end
 def generate_quote_vfv
   quote = ""
-  while quote.length < 26 && quote.length >= 500
+  while quote.length < 26 || quote.length >= 500
     quote = Faker::Movies::VForVendetta.quote
   end
   quote
 end
 def generate_quote_s
   quote = ""
-  while quote.length < 26 && quote.length >= 500
+  while quote.length < 26 || quote.length >= 500
     quote = Faker::TvShows::Suits.quote
   end
   quote

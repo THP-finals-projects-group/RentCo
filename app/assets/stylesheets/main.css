@@ -61,26 +61,7 @@
     } 
 }
 
-@media only screen and (max-width: 1024px) {
-    #sessions_new > section {
-        padding-top:20px;
-        padding-bottom:20px;
-    }
-}
 
-/* PAGE CONNEXION REGISTRATION NEW */
-
-@media only screen and (min-width: 1024px) {
-    #registration_new > section {
-        padding-bottom:109px;
-        margin-top: -60px;
-    } 
-
-    #registration_new .custom-control {
-        padding-top: 30px;
-        padding-right: 500px;
-    }
-}
 
 /* PAGE PROFIL USERS SHOW */
 
@@ -139,22 +120,120 @@
     margin-bottom: -30px;
 }
 
-#edit .card-body .placeholder {
-    background-color: blue;
-  }
+/* PAGE FORGOT PASSWORD EMAIL SENDER */
 
-  ::-webkit-input-placeholder {
-    color:transparent;
- }
- 
- :-moz-placeholder { /* Firefox 18- */
-    color:transparent; 
- }
- 
- ::-moz-placeholder {  /* Firefox 19+ */
-    color:transparent; 
- }
- 
- :-ms-input-placeholder {  
-    color:transparent;
- }
+#forgot_password_email .card {
+    background-color: white;
+    border-radius: 10px;
+}
+
+#forgot_password_email .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 285px;
+    margin-right: 250px;
+}
+
+#forgot_password_email .margin-title {
+    margin-bottom: -30px;
+}
+
+#forgot_password_email .margin-email {
+    margin-top: -30px;
+}
+
+#forgot_password_email .margin-button {
+    padding-top: 9px;
+}
+
+#forgot_password_email .padding-back-button {
+    padding-left: 56px;
+    padding-bottom: 10px;
+}
+
+#forgot_password_email .container {
+    padding-left: 50px;
+}
+
+#forgot_password .padding-button {
+    padding-top: 10px;
+}
+
+#forgot_password .padding-button-back {
+    padding-left: 415px;
+}
+
+#forgot_password .container {
+    padding-right: 200px;
+}
+
+
+/* PAGE CASE SHOW */
+
+#show-cases .text-primary {
+    margin-top:50px;
+}
+
+#show-cases h3 {
+    width:100%;
+    margin-top:100px;
+    text-decoration: underline;
+}
+
+#show-cases .btn-outline-primary {
+    color: white;
+}
+
+#show-cases .btn-outline-primary:hover {
+    color: var(--primary);
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+    #sessions_new > section {
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+
+    #show-cases .text-primary {
+        margin-top:15px;
+    }
+}
+
+/* PAGE CONNEXION REGISTRATION NEW */
+
+@media only screen and (min-width: 1024px) {
+    #registration_new > section {
+        padding-bottom:109px;
+        margin-top: -60px;
+    } 
+
+    #registration_new .custom-control {
+        padding-top: 30px;
+        padding-right: 500px;
+    }
+}
+
+/*  PAGE INDEX USER */
+
+#index_user .bg {
+    height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+#index_user .card {
+    border-radius: 10px;
+}
+
+#index_user .car {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+
+
