@@ -1,8 +1,11 @@
-<body  style="margin-top: 10em;">
-  <h1>Cases Index</h1>
-  	<div style="margin-left: 20%; margin-right: 20%; display: flex; flex-wrap: wrap">
+<section class="section section-top section-full">
+<div class="bg-overlay bg-dark"></div>
+  <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+  <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+  <div class="container">
+	  	<div style="margin-left: 10%; margin-right: 10%; display: flex; flex-wrap: wrap">
   		<% @cases.each do |c| %>
-  			<div class="card" style="width: 18rem; margin: 2px 2px 2px 2px;">
+  			<div class="card bg-white" style="width: 18rem; margin: 4px;">
   	  		<div class="card-body">
   	        <h5 class="card-title"><%= c.title %></h5>
   	        <h6 class="card-subtitle mb-2 text-muted"><%= c.visit_date %></h6>
@@ -17,4 +20,5 @@
   	    </div>
   	  <% end %>
   	</div>
-</body>
+	</div>
+</section>	

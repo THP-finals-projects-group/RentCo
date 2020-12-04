@@ -139,22 +139,51 @@
     margin-bottom: -30px;
 }
 
-#edit .card-body .placeholder {
-    background-color: blue;
-  }
+/* PAGE FORGOT PASSWORD EMAIL SENDER */
 
-  ::-webkit-input-placeholder {
-    color:transparent;
- }
- 
- :-moz-placeholder { /* Firefox 18- */
-    color:transparent; 
- }
- 
- ::-moz-placeholder {  /* Firefox 19+ */
-    color:transparent; 
- }
- 
- :-ms-input-placeholder {  
-    color:transparent;
- }
+#forgot_password_email .card {
+    background-color: white;
+    border-radius: 10px;
+}
+
+#forgot_password_email .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 285px;
+    margin-right: 250px;
+}
+
+#forgot_password_email .margin-title {
+    margin-bottom: -30px;
+}
+
+#forgot_password_email .margin-email {
+    margin-top: -30px;
+}
+
+#forgot_password_email .margin-button {
+    padding-top: 9px;
+}
+
+#forgot_password_email .padding-back-button {
+    padding-left: 56px;
+    padding-bottom: 10px;
+}
+
+#forgot_password_email .container {
+    padding-left: 50px;
+}
+
+#forgot_password .padding-button {
+    padding-top: 10px;
+}
+
+#forgot_password .padding-button-back {
+    padding-left: 415px;
+}
+
+#forgot_password .container {
+    padding-right: 200px;
+}
+
