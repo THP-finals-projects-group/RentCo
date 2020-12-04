@@ -7,9 +7,9 @@
     <table>
         <% @users.each do |user| %>
           <tr>
-            <td><%=link_to "#{user.email}", profile_path(user.id) %></td>
+            <td><%=link_to "#{user.email}", user_path(user.id) %></td>
             <td><%= user.approved %></td>
-            <td><%= link_to "Confirmer", user_path(user.id), method: 'PUT' %></td>
+            <td><%= link_to "Confirmer", user_path(user.id), method: :put %></td>
           </tr>
         <% end %>
     </table>
