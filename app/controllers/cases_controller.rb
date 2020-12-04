@@ -1,5 +1,5 @@
 class CasesController < ApplicationController
-    before_action :set_case, only: [:show, :edit, :update, :destroy]
+    before_action :set_case, only: [:show, :edit, :update, :destroy, :generate_pdf]
     before_action :authenticate_user!
 
     def index
@@ -16,10 +16,9 @@ class CasesController < ApplicationController
 	end
 
     def generate_pdf
-        html = 
-        pdf = WickedPdf.new.pdf_from_string(html)
-        send_data pdf
-        redirect_to cases_path
+        html = render_to_string(partial: "cases/case.pdf.erb")
+        pdf = WickedPdf.new.pdf_from_string(html, title: "#{@case.id}_dossier")
+        send_data pdf, filename: "#{@case.id}_dossier"
     end
 
     def new
