@@ -4,12 +4,20 @@ class CasesController < ApplicationController
     
 
     def index
-		@user = current_user
+        @user = current_user
+        @case_statu = ""
 		if @user.administrator?
 			@cases = Case.all
 		else
 			@cases = Case.where(user_id:@user.id)
-		end
+        end
+        Case.all.each do |each_case|
+            if each_case.is_confirmed == true 
+                @case_statu = "Ouvert"
+            elsif each_case.is_confirmed == false
+                @case_statu = "Fermé"
+            end
+        end
 	end
 
 	def show
@@ -36,10 +44,11 @@ class CasesController < ApplicationController
         @case.total_rent_annual_estimations = @case.total_rent_monthly * @case.month_count
 
         # Calcul de rentabilité
-        @case.renta_brut = (@case.total_rent_annual_estimations * 10) / (@case.total_buying_price + @case.total_renovation_cost)
+        @case.renta_brut = (@case.total_rent_annual_estimations * 10).to_f / (@case.total_buying_price + @case.total_renovation_cost).to_f
 
-        @case.renta_net = (@case.total_rent_annual_estimations - @case.total_buying_price - @case.pno_insurance_cost) / ((@case.total_buying_price + @case.total_renovation_cost) / 10)
-	end
+        @case.renta_net = (@case.total_rent_annual_estimations - @case.property_taxes - @case.pno_insurance_cost).to_f / ((@case.total_buying_price + @case.total_renovation_cost) / 10).to_f
+        @case.save
+    end
 
     def generate_pdf
         html = render_to_string(partial: "cases/case.pdf.erb")
@@ -50,11 +59,14 @@ class CasesController < ApplicationController
     def new
         @case = Case.new
         @s_button_submit = "Créer dossier"
+        @s_title_document = "Création d'un nouveau dossier"
     end
 
     def create
         @case = User.find(current_user.id).cases.new(cases_params)
-
+        @case.new_rooms_count.times do |room|
+            Room.create(case_id: @case.id)
+        end
         if @case.save 
             redirect_to root_path, notice: 'Votre dossier à bien été ouvert.'
         else 
@@ -66,7 +78,12 @@ class CasesController < ApplicationController
 
     def edit 
         @case = Case.find(params[:id])
-        @s_button_submit = "Modifier dossier"
+        if (current_user.user? && @case.is_confirmed == false) || current_user.administrator?
+            @s_button_submit = "Modifier dossier"
+            @s_title_document = "Modification du dossier"
+        else
+            redirect_to root_path, notice: "Vous n'êtes pas autorisé à modifier le dossier !"
+        end
     end
 
     def update 

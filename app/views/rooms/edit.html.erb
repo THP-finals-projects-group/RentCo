@@ -1,4 +1,15 @@
 <section class="section section-top section-full">
+
+    <!-- Cover -->
+    <div class="bg-cover bg-dark"></div>
+    
+    <!-- Overlay -->
+    <div class="bg-overlay"></div>
+    
+    <!-- Triangles -->
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+<section class="section section-top section-full">
     <div class="container">
         <%= form_with(url: case_room_path, method: "put") do %>    
             <div class="row justify-content-center align-items-center", style="margin-top: 150px;">
@@ -7,9 +18,9 @@
                         <% @case_rooms.each_with_index do |room, ind| %>
                             <div class="col-md-8 col-lg-4">
                                 <div class="field form-group">
-                                    <%= label_tag "Chambre numéro :#{ind}", nil, class: 'white' %><br />
+                                    <%= label_tag "Chambre numéro :#{ind+1}", nil, class: 'white' %><br />
                                     <div class="input-group">
-                                        <%= number_field_tag room.rent_monthly, nil, class: 'form-control order-1', required: true %>
+                                        <%= number_field_tag room.rent_monthly, nil, class: 'form-control order-1', required: true, data: {autocomplete_source: room.rent_monthly} %>
                                         <div class="input-group-append order-0">
                                             <div class="input-group-text">
                                                 <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -35,4 +46,5 @@
             </div>
         <% end %>
     </div>
+</section>
 </section>
