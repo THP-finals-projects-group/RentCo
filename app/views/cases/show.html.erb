@@ -1,15 +1,33 @@
-<section class="section section-top section-full">
-<div class="bg-cover" style="bground-image: url(<%= asset_path('48.jpg') %>);"></div>
-  <div class="bg-overlay"></div>
-  <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"div>
-  <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
-  iv class="container"> =ent-center align-i8em-center">
-    itsb= 
-        <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
-        <%=tiase_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
-            Mtdi %>t
-      </div>t- / .row -->- t/container -->
-</section>tTItORELATIVE A LA PERSONNE
+<div id="show-cases">
+  <section class="section section-top section-full">
+    <div class="bg-cover" style="background-image: url(<%= asset_path('48.jpg') %>);"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-7">
+          <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
+              Créé le <%= @case.created_at %>
+          </p>
+          <h1 class="text-white text-center mb-4" data-toggle="animation" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="load">
+              <%= @case.title %>
+          </h1>
+          <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
+            Référence du dossier : <%= @case.case_reference %>
+          </p>
+          <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
+            Date de visite du bien : <%= @case.visit_date %>
+          </p>
+          <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
+          <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
+              Mettre à jour le dossier
+          <% end %>
+          </p>
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->
+  </section>
 ============tss="section bg-light">
   <div class="line line-top"></div>
 <div ctables="bg-triangle bg-triangle-dark bg-triangle-top bg-triangle-left"></div>
