@@ -15,6 +15,13 @@ class CasesController < ApplicationController
 		@case = Case.find(params[:id])
 	end
 
+    def generate_pdf
+        html = 
+        pdf = WickedPdf.new.pdf_from_string(html)
+        send_data pdf
+        redirect_to cases_path
+    end
+
     def new
         @case = Case.new
         @s_button_submit = "Créer dossier"
