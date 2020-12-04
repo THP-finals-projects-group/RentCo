@@ -96,6 +96,16 @@ class CasesController < ApplicationController
             Room.create(case_id: @case.id)
         end
 
+        if params[:origin] == "checkbox" then
+            (!params[:c])? (@case.update(is_confirmed: false)):(@case.update(is_confirmed: true))
+            respond_to do |format|
+                format.html {
+                  flash[:notice] = "Task Status edited"
+                redirect_to root_path }
+                format.js { flash[:notice] = "Task Status edited"}
+            end
+        end
+
         redirect_to root_path
     end
 

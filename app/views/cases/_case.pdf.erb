@@ -1,36 +1,89 @@
+<meta charset="UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
 <h3><%= @case.title %> <%= @case.case_reference %></h3>
 <p>Adresse : <%= @case.street_number %> <%= @case.street_name %>, <%= @case.zipcode %> <%= @case.city %></p>
 <br>
-<div class="card bg-light">
-  <p>
-    Le futur type : <%= @case.new_type %>               |  Le futur projet : <%= @case.new_project %>
-  </p>
-  <p>
-    Surface du futur bien : <%= @case.new_surface %> m² |  Nombre de chambre prévu <%= @case.new_rooms_count %> 
-  </p>
-  <p>
-    Prix de l'acheteur : <%= @case.seller_price %> €    |  Prix total : <%= @case.total_buying_price %> €
-  </p>
-</div>
-
-
-<br>
-<p class="text-center"><%= @case.physical_description %></p>
-<br>
-<div class="card bg-light">
-  <p>
-    Charge notarial : <%= @case.notary_charges %> €     |  Taxes foncières : <%= @case.property_taxes %> €
-  </p>
+<div class="container ">
+  <div class="card border-dark">
+    <div class="col-md-3">
+      <div class="card-body">
+        <p>
+          Le futur type : <%= @case.new_type %>       |       Le futur projet : <%= @case.new_project %>
+        </p>
+      </div>
+    </div>
+  </div>
+  
   <br>
-  <p>
-    Estimations des revenus annuels : <%= @case.total_rent_annual_estimations %> €  | Assurance PNO : <%= @case.pno_insurance_cost %> €
-  </p>
+
+  <div class="card border-dark">
+    <div class="col-md-3">
+      <div class="card-body">
+        <p>
+          Surface du futur bien : <%= @case.new_surface %> m² |  Nombre de chambre prévu <%= @case.new_rooms_count %> 
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card border-dark">
+    <div class="col-md-3">
+      <div class="card-body">
+      <p>
+        Prix de l'acheteur : <%= @case.seller_price %> €    |  Prix total : <%= @case.total_buying_price %> €
+      </p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card border-dark">
+    <div class="col-md-3">
+      <div class="card-body">
+        <p class="text-center"><%= @case.physical_description %></p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card border-dark">
+    <div class="col-md-3">
+      <div class="card-body">
+      <p>
+        Charge notarial : <%= @case.notary_charges %> €     |  Taxes foncières : <%= @case.property_taxes %> €
+      </p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card border-dark">
+    <div class="col-md-3">
+      <div class="card-body">
+        <p>
+          Estimations des revenus annuels : <%= @case.total_rent_annual_estimations %> €  | Assurance PNO : <%= @case.pno_insurance_cost %> €
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card border-dark">
+    <div class="col-md-3">
+      <div class="card-body">
+        <p> 
+          Rentabilité brut :<strong> <%= (@case.renta_brut*100).round(2) %> %</strong>
+          Rentabilité net :<strong> <%= (@case.renta_net*100).round(2) %> %<strong>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
-<br>
-<div class="card bg-light">
-  <p> 
-    Rentabilité brut :<strong> <%= (@case.renta_brut*100).round(2) %> %</strong>
-    Rentabilité net :<strong> <%= (@case.renta_net*100).round(2) %> %<strong>
-  </p>
-</div>
+</body>
