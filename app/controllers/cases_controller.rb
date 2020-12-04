@@ -39,7 +39,13 @@ class CasesController < ApplicationController
 
     def update 
         @case = Case.find(params[:id])
+        @case.rooms.each do |room_completed|
+            room_completed.destroy
+        end
         @case.update(cases_params)
+        @case.new_rooms_count.times do |room|
+            Room.create(case_id: @case.id)
+        end
         redirect_to root_path
     end
 

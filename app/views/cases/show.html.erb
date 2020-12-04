@@ -1,0 +1,4 @@
+<h4 class="text-center mb-4"> <%= @case.title %> </h4>
+<p class="text-center text-muted mb-5"> Dossier numéro : <%= @case.id %> </p>
+
+<%= link_to "Remplir les loyés estimés pour chaque chambre", edit_case_room_path(@case.id),class: "card-link"%>
