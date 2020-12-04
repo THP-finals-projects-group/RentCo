@@ -430,7 +430,7 @@
 
 
                     <fieldset class="col-md-8 col-lg-12">
-                        <legend>Description supplémentaires et commentaires</legend>
+                        <legend>Descriptions supplémentaires et commentaires</legend>
                         <div class="row">
                         
                             <div class="col-md-8 col-lg-12">
@@ -488,11 +488,33 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>    
-                        
+                            </div>
+
+                            <div class="col-md-8 col-lg-12">
+                                <div class="field form-group">
+                                    <fieldset>
+                                        <legend><%= form.label :videos %></legend>
+                                        <% if @case.videos.attached? %>
+                                            Nombre de videos: <%= @case.videos.length %>
+                                        <%else%>
+                                        Veuillez ajouter une vidéo au dossier
+                                        <%end%>
+                                        <%= form.file_field :videos, multiple: true, class: 'form-control'%>
+                                        <% @case.videos.each do |video|%>
+                                            <% if video.representable? %>
+                                                <%= image_tag(video.representation(resize: '200x200')) %>
+                                                <%= link_to video.filename, video %>
+                                                <%= link_to 'Supprimer', delete_video_attachment_case_path(video.id),
+                                                       method: :delete,
+                                                       data: { confirm: 'Etes_vous sûr?' } %>
+                                            <% end %>
+                                        <% end %>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            
                         </div>
                     </fieldset>
-
                 </div>
             </div> <!-- / .row -->
 

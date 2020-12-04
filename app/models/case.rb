@@ -68,6 +68,9 @@ class Case < ApplicationRecord
     validates :total_rent_monthly, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :renta_brut, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :renta_net, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
+    # videos
+    #validates :videos, presence: true, blob: { content_type: ['video/mp4', 'video/avi'], size_range: 1..20.megabytes }
+
 
     private
   
