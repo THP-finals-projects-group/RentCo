@@ -3,6 +3,9 @@
 
 # Welcome on our final group project with THE HACKING PROJECT
 
+RentCo, a real estate company, is involved in all stages of a real estate project. She works with property hunters, investors and contractors for renovations. **The goal is to simplify the exchanges between the various stakeholders of the project**. The application takes care of interpreting and returning processed data to the actors concerned. It will not be available to the general public, so we will talk about an extranet application reserved for the actors of the different projects.
+
+
 ## Description :
 
 ### Developpers :
