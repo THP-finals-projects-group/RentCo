@@ -11,13 +11,12 @@
 
   <body data-turbolinks="false">
 
-    <%if current_user %>
+    <% unless action_name == "new" && !current_user %>
       <%= render 'layouts/navbar' %>
     <% end %>
   
 
     <%= yield %>
-
 
   </body>
     <script src="https://kit.fontawesome.com/5069487eeb.js" crossorigin="anonymous"></script>

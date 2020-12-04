@@ -1,7 +1,20 @@
 ![logotype a happy-07](https://d29md5j3ph8xfz.cloudfront.net/100_percent/upload/Content/82047/THP_logoblock_grey.png)
 ![logotype a happy-07](https://www.rentco.com.au/v2/wp-content/uploads/2016/03/rentco_logo_v2_1.3.png)
-# Welcome on your final group project with THE HACKING PROJECT
+
+# Welcome on our final group project with THE HACKING PROJECT
+
 ## Description :
+
+RentCo, a real estate company, is involved in all stages of a real estate project. She works with property hunters, investors and contractors for renovations. **The goal is to simplify the exchanges between the various stakeholders of the project**. The application takes care of interpreting and returning processed data to the actors concerned. It will not be available to the general public, so we will talk about an extranet application reserved for the actors of the different projects.
+
+### Developpers :
+
+- [Dan](https://github.com/)
+- [Jérémy](https://github.com/)
+- [Manu](https://github.com/)
+- [Quentin](https://github.com/qdtrl)
+- [Vincent](https://github.com/)
+
 ### Tools :
 
 * Bootstrap

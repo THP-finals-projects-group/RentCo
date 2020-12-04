@@ -216,3 +216,24 @@
         padding-right: 500px;
     }
 }
+
+/*  PAGE INDEX USER */
+
+#index_user .bg {
+    height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+#index_user .card {
+    border-radius: 10px;
+}
+
+#index_user .car {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+
+
