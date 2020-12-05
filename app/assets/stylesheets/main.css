@@ -76,10 +76,15 @@
 #user_show .card {
     background-color: white;
     border-radius: 10px;
+    margin-right: 40px;
 }
 
 #user_show .list-group {
     margin-top: -25px;
+}
+
+#user_show .col-md-1 {
+    padding-bottom: 20px;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */
