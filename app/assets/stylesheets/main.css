@@ -182,6 +182,32 @@
     top: 0;
 }
 
+#index_case .card {
+    border-radius: 10px;
+}
+
+#index_case .margin {
+    margin-top: 10px;
+}
+
+#index_case .btn-primary {
+    margin-left: 25px;
+    color: white;
+}
+
+#index_case .btn-primary:hover {
+    color: black
+}
+
+#index_case .btn-danger {
+    margin-left: 20px;
+    color: white;
+}
+
+#index_case .btn-danger:hover {
+    color: black;
+}
+
 /* PAGE CASE SHOW */
 
 #show-cases .text-primary {
