@@ -168,6 +168,14 @@
     padding-right: 200px;
 }
 
+/* PAGE CASE INDEX */
+
+#index_case .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
 
 /* PAGE CASE SHOW */
 
@@ -249,6 +257,8 @@
 #index_user .margin-confirmed {
     margin-top: 10px;
 }
+
+
 
 
 
