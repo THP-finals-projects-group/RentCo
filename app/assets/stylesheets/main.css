@@ -21,6 +21,10 @@
 
 /* PAGE CONNEXION SESSION NEW */
 
+#sessions_new .form-styled {
+    border-radius: 10px;
+}
+
 #sessions_new {
     background-color:var(--gray-dark);
 }
@@ -244,14 +248,19 @@
 
 @media only screen and (min-width: 1024px) {
     #registration_new > section {
-        padding-bottom:109px;
-        margin-top: -60px;
+        padding-bottom: 109px;
+        margin-top: -179px;
     } 
 
     #registration_new .custom-control {
         padding-top: 30px;
         padding-right: 500px;
     }
+
+    #registration_new .form-styled {
+        border-radius: 10px;
+    }
+
 }
 
 /*  PAGE INDEX USER */
