@@ -196,7 +196,7 @@
 }
 
 #index_case .btn-primary:hover {
-    color: black
+    color: var(--primary)
 }
 
 #index_case .btn-danger {
@@ -205,7 +205,7 @@
 }
 
 #index_case .btn-danger:hover {
-    color: black;
+    color: var(--danger);
 }
 
 /* PAGE CASE SHOW */
