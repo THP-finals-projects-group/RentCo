@@ -6,7 +6,7 @@
 		<div class="container">
 			<div style="margin-left: 10%; margin-right: 10%; display: flex; flex-wrap: wrap">
 				<% @cases.each do |c| %>
-					<div class="card bg-white" style="width: 18rem; margin: 4px;">
+					<div class="card " style="width: 18rem; margin: 4px;">
 						<% if current_user.administrator? %>
 							<!-- <div class="cart-header">
 								<div class="custom-control custom-switch">
@@ -17,20 +17,23 @@
 							<%= check_box_tag :c, c.is_confirmed , data: { remote: true, url: edit_case_path(c.id), params: { id: c.id, origin: "checkbox"}.to_param, method: "put" }%>
 						<% end %>
 						<div class="card-body">
-							<h6 class="card-header text-center" style="font-size: 13px"><%= c.title %></h6>
+							<h6 class="card-header text-center" style="font-size: 12px"><%= c.title %></h6>
 							<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= c.visit_date %></h6>
 							<p class="card-text"><u><%= c.city %></u></p>
+							<hr>
 							<div class ="row text-center">
 								<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm"%><br>
 								<% if current_user.administrator? %>
 									<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-danger btn-outline btn-sm"%>
 								<% end %>
 							</div>
+							<hr>
 							<% if @case_statu == "Ouvert"%>
 								<p class="card-text margin">État du dossier : <span class="text-success""><%= @case_statu %></span></p>
 							<%else%>
 								<p class="card-text margin text-warning">État du dossier : <span class="text-warning""><%= @case_statu %></span></p>
 							<%end%>
+							<p id="muted" class="text-muted">&copy RentCo.</p>						
 						</div>
 					</div>
 				<% end %>
