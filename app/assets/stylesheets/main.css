@@ -3,7 +3,7 @@
 #navbar img{
     width: 70%;
     border-radius: 5px;
-    height: 42px;
+    height: 38px;
 }
 
 #navbar .collapse {
@@ -20,6 +20,10 @@
 
 
 /* PAGE CONNEXION SESSION NEW */
+
+#sessions_new .form-styled {
+    border-radius: 10px;
+}
 
 #sessions_new {
     background-color:var(--gray-dark);
@@ -76,10 +80,15 @@
 #user_show .card {
     background-color: white;
     border-radius: 10px;
+    margin-right: 40px;
 }
 
 #user_show .list-group {
     margin-top: -25px;
+}
+
+#user_show .col-md-1 {
+    padding-bottom: 20px;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */
@@ -168,6 +177,40 @@
     padding-right: 200px;
 }
 
+/* PAGE CASE INDEX */
+
+#index_case .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+#index_case .card {
+    border-radius: 10px;
+}
+
+#index_case .margin {
+    margin-top: 10px;
+}
+
+#index_case .btn-primary {
+    margin-left: 25px;
+    color: white;
+}
+
+#index_case .btn-primary:hover {
+    color: var(--primary)
+}
+
+#index_case .btn-danger {
+    margin-left: 20px;
+    color: white;
+}
+
+#index_case .btn-danger:hover {
+    color: var(--danger);
+}
 
 /* PAGE CASE SHOW */
 
@@ -190,8 +233,6 @@
 }
 
 
-
-
 @media only screen and (max-width: 1024px) {
     #sessions_new > section {
         padding-top:20px;
@@ -207,33 +248,58 @@
 
 @media only screen and (min-width: 1024px) {
     #registration_new > section {
-        padding-bottom:109px;
-        margin-top: -60px;
+        padding-bottom: 109px;
+        margin-top: -179px;
     } 
 
     #registration_new .custom-control {
         padding-top: 30px;
         padding-right: 500px;
     }
+
+    #registration_new .form-styled {
+        border-radius: 10px;
+    }
+
 }
 
 /*  PAGE INDEX USER */
 
 #index_user .bg {
     height: 100%;
-  width: 100%;
-  position: fixed;
-  top: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 #index_user .card {
     border-radius: 10px;
 }
 
-#index_user .car {
-    background-color: gray;
+#index_user .card-header {
+    background-color: var(--dark);
     border-radius: 10px;
 }
+
+#index_user .margin-card-header {
+    margin-top: 10px;
+    color: white;
+}
+
+#index_user .margin-card-body {
+    margin-top: 10px;
+}
+
+#index_user .margin-status {
+    margin-top: 20px;
+}
+
+#index_user .margin-confirmed {
+    margin-top: 10px;
+}
+
+
+
 
 
 
