@@ -1,25 +1,45 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<div class="bg-overlay bg-dark"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+<div id="forgot_password_email">
+  <div id="forgot_password">
+    <div class="container">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.hidden_field :reset_password_token %>
+        <div class="card" style="width: 100%;">
+          <div class="card-body text-center margin-title">
+            <h3 class="card-title">Changement de mot de passe </h3><br>
+          </div>
+          <%= render "users/shared/error_messages", resource: resource %>
+          <hr>
+          <div class="row">
+            <div class="col-md-8 col-lg-4 margin-email">      
+              <div class="card-body text-center">
+                <%= f.label :password, "Nouveau mot de passe" %><br />
+                <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: '6 caractères minimum' %>
+              </div>
+            </div>
+            <div class="col-md-8 col-lg-4 margin-email">      
+              <div class="card-body text-center">
+                <%= f.label :password_confirmation, "Confirmer" %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+              </div>
+            </div>
+            <div class="col-md-8 col-lg-4 padding-button">      
+              <div class="card-body text-center">
+                <%= f.submit "Modifier", class:"btn btn-outline-primary btn-sm" %>                
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8 col-lg-6 ">
+              <div class="card-body padding-button-back">
+                <%= link_to "Retour", new_user_session_path, class:"btn btn-secondary btn-outline btn-sm" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
