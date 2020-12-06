@@ -188,6 +188,7 @@
 
 #index_case .card {
     border-radius: 10px;
+    background-color: whitesmoke;
 }
 
 #index_case .margin {
@@ -210,6 +211,16 @@
 
 #index_case .btn-danger:hover {
     color: var(--danger);
+}
+
+#index_case .card-header {
+    height: 10px;
+    margin-top: -20px;
+}
+
+#index_case #muted {
+    margin-bottom: -20px;
+    font-size: 10px;
 }
 
 /* PAGE CASE SHOW */
