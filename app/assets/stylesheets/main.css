@@ -78,7 +78,7 @@
 }
 
 #user_show .card {
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 10px;
     margin-right: 40px;
 }
@@ -89,6 +89,21 @@
 
 #user_show .col-md-1 {
     padding-bottom: 20px;
+}
+
+#user_show .card-header {
+    height: 100px;
+    background-color: var(--secondary);
+    border-radius: 10px;
+    margin: -1px;
+}
+
+#user_show .card-title {
+    margin-top: 20px;
+}
+
+#user_show .list-group {
+    margin-top: 15px;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */
@@ -290,6 +305,7 @@
 #index_user .card-header {
     background-color: var(--dark);
     border-radius: 10px;
+    margin: -1px
 }
 
 #index_user .margin-card-header {
