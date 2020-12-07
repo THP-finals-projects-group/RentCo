@@ -66,7 +66,6 @@
 }
 
 
-
 /* PAGE PROFIL USERS SHOW */
 
 #user_show .container  {
@@ -78,9 +77,11 @@
 }
 
 #user_show .card {
+    background-size: cover;
     background-color: whitesmoke;
     border-radius: 10px;
     margin-right: 40px;
+    width: 50rem;
 }
 
 #user_show .list-group {
@@ -93,13 +94,15 @@
 
 #user_show .card-header {
     height: 100px;
-    background-color: var(--secondary);
+    background-color: var(--dark);
     border-radius: 10px;
     margin: -1px;
+    color: white;
 }
 
 #user_show .card-title {
     margin-top: 20px;
+    color: white;
 }
 
 #user_show .list-group {
@@ -367,13 +370,13 @@
 }
 
 #edit_rooms .card {
-    background-image: url(https://casper.imgix.net/assets/products_new/2020-Gallery-Images/Gallery/Original-Foam-Gallery-3.jpg?auto=compress,format&q=65&w=1200);
     border-radius: 10px;
     background-size: cover;
     margin: 0 auto; 
     float: none; 
     margin-bottom: 10px;
-    margin-top: -50px; 
+    margin-top: -50px;
+    width: 50%; 
 }
 
 #edit_rooms .card-header {
