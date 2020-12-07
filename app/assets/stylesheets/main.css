@@ -239,14 +239,15 @@
 #index_case h1 {
     margin-top: -50px;
     margin-bottom: 50px;
+
 }
 
 #index_case hr.margin-title {
     margin-top: -50px;
     margin-bottom: 50px;
-    margin-left: 115px;
+    
     background-color: var(--primary);
-    width: 77%;
+    width: 12%;
 }
 
 #index_case #muted {
