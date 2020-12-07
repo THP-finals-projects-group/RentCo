@@ -836,9 +836,7 @@
             <h4 class="text-white mb-3">
               Rentabilité brut du projet sur 10 ans
             </h4>
-            <p class="text-white text-muted mb-0">
-              <%= (@case.renta_brut*100).round(2) %> %
-            </p>
+
           </div>
         </div> 
         <div class="col-md-6">
@@ -849,9 +847,7 @@
             <h4 class="text-white mb-3">
               Rentabilité net du projet à l'année
             </h4>
-            <p class="text-white text-muted mb-0">
-              <%= (@case.renta_net*100).round(2) %> %
-            </p>
+
           </div>
         </div> 
       </div>
@@ -859,8 +855,7 @@
           <%= link_to "Générer le .pdf", generate_pdf_path, class: "btn btn-outline-primary" %>
       </div>
       <div class="field col-md-12 text-center mt-5">
-        <%= check_box_tag :is_confirmed %>
-        <%= label_tag :Verrouiller_ce_document %>
+        <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Réouvrir le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'success' : 'warning' }"  %>
       </div>
       <br>      
     </div> 
