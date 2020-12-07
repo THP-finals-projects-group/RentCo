@@ -357,8 +357,38 @@
     margin-top: 10px;
 }
 
+/* PAGE EDIT ROOMS */
 
+#edit_rooms .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
 
+#edit_rooms .card {
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
 
+#edit_rooms .card-header {
+    background-color: var(--dark);
+    margin: -1px;
+    border-radius: 10px;
+}
+
+#edit_rooms p {
+    margin-top: -10px;
+    margin-bottom: -8px;
+}
+
+#edit_rooms h1 {
+    font-size: 20px;
+    color: white;
+}
+
+#edit_rooms hr {
+    background-color: var(--primary);
+}
 
 
