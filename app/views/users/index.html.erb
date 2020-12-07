@@ -31,16 +31,16 @@
                   <p class="text-danger"><i class="fas fa-times-circle fa-2x"></i></p>
                 <%end%>
               </div>
-              <% if user.approved == "false" %>
+              <% if user.approved == false %>
                 <div class="col-md-4 margin-confirmed">
-                  <%= link_to "Confirmer", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
+                  <%= link_to "Confirmer le compte", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
+                </div>
+                <%else user.approved == true %>
+                <div class="col-md-4 margin-confirmed">
+                  <%= link_to "désactiver le compte", user_path(user.id), :confirm => 'êtes vous sûr de vouloir désactiver ce compte?', method: :put, class: "btn btn-outline-danger" %>
                 </div>
               <% end %>
-              <% if user.approved? %>
-                <div class="col-md-4 margin-confirmed">
-                  <%= link_to "Supprimer l'utilisateur", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
-                </div>
-              <% end %>
+                
             </div>
             <hr>
             <br>

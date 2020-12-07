@@ -4,8 +4,7 @@ class CasesController < ApplicationController
     
 
     def index
-        @user = current_user
-		if @user.administrator?
+		if current_user.administrator?
 			@cases = Case.all
 		else
 			@cases = Case.where(user_id:@user.id)

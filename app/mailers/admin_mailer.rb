@@ -18,6 +18,12 @@ class AdminMailer < Devise::Mailer
     mail(from: "admin-rentco@yopmail.com", to: email, subject: "Votre compte est activé")
   end
 
+  # Allow Admin to block User account
+  def account_blocked(email)
+    mail(from: "admin-rentco@yopmail.com", to: email, subject: "Votre compte est désactivé")
+  end
+
+  # Admin inform user of a new case
   def new_case(cases)
     @case = cases
     mail(from: "admin-rentco@yopmail.com", to: @case.user.email, subject: "#{@case.user.email} à soumis un nouveau dossier")
