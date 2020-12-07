@@ -7,6 +7,7 @@ class  UsersController < ApplicationController
             @users = User.all.order(approved: :asc)
         else
             redirect_to root_path
+            flash.alert ="Vous n'avez pas accès à cette page"
         end
     end
 
@@ -22,22 +23,37 @@ class  UsersController < ApplicationController
 
     def update
         if current_user.administrator?
-            if @user.update(approved: true)
-                User.send_account_approval_mail(@user.email)
-                respond_to do |format|
-                    format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé'}
-                    format.js { }
+            if @user.approved == false
+                if @user.update(approved: true)
+                    User.send_account_approval_mail(@user.email)
+                    respond_to do |format|
+                        format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé !'}
+                        format.js { }
+                    end
+                else
+                    respond_to do |format|
+                        format.html { redirect_to users_path, notice: 'Impossible de confirmer le compte !'}
+                        format.js { }
+                    end
                 end
-            else
-                respond_to do |format|
-                    format.html { redirect_to users_path, notice: 'Impossible de confirmer le compte'}
-                    format.js { }
+            else @user.approved == true
+                if @user.update(approved: false)
+                    User.send_account_blocked_mail(@user.email)
+                    respond_to do |format|
+                        format.html { redirect_to users_path, notice: 'Compte utilisateur desactivé !'}
+                        format.js { }
+                    end
+                else
+                    respond_to do |format|
+                        format.html { redirect_to users_path, notice: 'Impossible de desactivé le compte !'}
+                        format.js { }
+                    end
                 end
             end
         else
             flash.alert ="vous n'avez pas accès à cette commande"
         end
-    end
+    end 
 
     private
 

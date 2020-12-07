@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+    before_action :authenticate_user!
 
     def edit
         @case_rooms = Room.where(case_id: params[:id])

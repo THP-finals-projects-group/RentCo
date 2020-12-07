@@ -1,14 +1,7 @@
 <div>
   <% flash.each do |type, msg| %>
-    <div>
+    <div class="text-info">
       <%= msg %>
     </div>
   <% end %>
-
-  <% if current_user %>
-    <p>Vous êtes connectés</p>
-  <%else%>
-    <p> Vous n'êtes pas connecté<p>
-  <%end%>
-
 </div>
