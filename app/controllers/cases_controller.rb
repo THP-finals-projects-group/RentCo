@@ -5,18 +5,10 @@ class CasesController < ApplicationController
 
     def index
         @user = current_user
-        @case_statu = ""
 		if @user.administrator?
 			@cases = Case.all
 		else
 			@cases = Case.where(user_id:@user.id)
-        end
-        Case.all.each do |each_case|
-            if each_case.is_confirmed == true 
-                @case_statu = "Ouvert"
-            elsif each_case.is_confirmed == false
-                @case_statu = "Fermé"
-            end
         end
 	end
 
