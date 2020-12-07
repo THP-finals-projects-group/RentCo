@@ -26,7 +26,7 @@
 									<hr>
 									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>
-									<p class="card-text">Ville de <strong><%= c.city %></strong></p>
+									<p class="card-text"><strong><%= c.city %></strong></p>
 									<hr>
 									<div class ="row text-center">
 										<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm"%><br>
