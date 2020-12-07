@@ -74,13 +74,13 @@ class CasesController < ApplicationController
         if @case.is_confirmed == false
             @case.update(is_confirmed: true)
             respond_to do |format|
-                format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
+                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
                 format.json { head :no_content }
             end
         else
             @case.update(is_confirmed: false)
             respond_to do |format|
-                format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
+                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
                 format.json { head :no_content }
             end
         end

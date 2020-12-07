@@ -40,19 +40,19 @@
 									<hr>
 									<p class="card-text text-center"><strong> À <%= c.city %></strong></p>
 									<hr>
-									<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm "%><br>
+									<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
 									<br>
 									<% if current_user.administrator? %>
-										<%= link_to edit_case_path(c.id), method: :get, class: "btn btn-outline btn-secondary btn-sm show text-white" do %> 
+										<%= link_to edit_case_path(c.id), method: :get, class: "btn btn-outline-secondary btn-sm show text-white" do %> 
 											Modifier
 										<% end %>
 										<br>
 										<br>
-										<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-danger btn-outline btn-sm"%>
+										<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-outline-danger btn-sm"%>
 									<% end %>
 									<hr>
 									<% if c.is_confirmed == false %>
-										<p class="card-text margin">État du dossier : <span class="text-danger"">Non confirmé</span></p>
+										<p class="card-text margin">État du dossier : <span class="text-danger">Fermé</span></p>
 									<%else%>
 										<p class="card-text margin">État du dossier : <span class="text-success"">Confirmé</span></p>
 									<%end%>

@@ -211,30 +211,9 @@
     margin-right: 10px;
 }
 
-#index_case .btn-primary {
-    color: white;
-}
 
 #index_case .btn {
     width: 100%;
-}
-
-#index_case .btn-secondary:hover {
-    color: var(--secondary) !important;
-}
-
-#index_case .btn-primary:hover {
-    color: var(--primary);
-}
-
-#index_case .btn-danger {
-    color: white;
-}
-
-
-
-#index_case .btn-danger:hover {
-    color: var(--danger);
 }
 
 #index_case .card-header {
