@@ -114,7 +114,7 @@ class CasesController < ApplicationController
         case_id = video.record_id
         video.purge
         respond_to do |format|
-          format.html { redirect_to edit_case_path(case_id), notice: 'La vidéo à bien été supprimée' }
+          format.html { redirect_to URI(request.referrer).path, notice: 'La vidéo à bien été supprimée' }
           format.json { head :no_content }
         end
     end
