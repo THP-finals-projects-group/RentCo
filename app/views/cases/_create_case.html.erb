@@ -355,9 +355,10 @@
 											<%= form.file_field :videos, multiple: true, class: 'form-control'%>
 											<% @case.videos.each do |video|%>
 												<% if video.representable? %>
-													<%= image_tag(video.representation(resize: '200x200')) %>
 													<%= link_to video.filename, video %>
-													<%= link_to 'Supprimer', delete_video_attachment_case_path(video.id), method: :delete, data: { confirm: 'Etes_vous sûr?' } %>
+													<%= link_to delete_video_attachment_case_path(video.id), method: :delete, data: { confirm: 'Etes_vous sûr?' } do %>
+													  <i class="fas fa-trash"></i>
+													<% end %>
 												<% end %>
 											<% end %>
 										</fieldset>
