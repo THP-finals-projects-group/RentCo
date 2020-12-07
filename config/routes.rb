@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :index, :update]
   
-  get '/cases/:id/pdf' => 'cases#generate_pdf', as: 'generate_pdf'
+  post '/cases/:id/pdf' => 'cases#generate_pdf', as: 'generate_pdf'
 
   root to: "cases#index"
 end

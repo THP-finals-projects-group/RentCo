@@ -8,7 +8,7 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-md-8 col-lg-7">
           <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
-              Créé le <%= @case.created_at %>
+              Créé le <%= "#{sprintf '%02d', @case.created_at.day}/#{sprintf '%02d', @case.created_at.month}/#{@case.created_at.year} à #{@case.created_at.hour}h#{sprintf '%02d', @case.created_at.min}" %>
           </p>
           <h1 class="text-white text-center mb-4" data-toggle="animation" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="load">
               <%= @case.title %>
@@ -17,7 +17,7 @@
             Référence du dossier : <%= @case.case_reference %>
           </p>
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
-            Date de visite du bien : <%= @case.visit_date %>
+            Date de visite du bien : <%= "#{@case.visit_date.day}/#{@case.visit_date.month}/#{@case.visit_date.year}" %>
           </p>
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             <% if @case.videos.attached? %>

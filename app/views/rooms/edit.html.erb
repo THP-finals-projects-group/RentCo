@@ -1,50 +1,28 @@
-<section class="section section-top section-full">
-
-    <!-- Cover -->
-    <div class="bg-cover bg-dark"></div>
-    
-    <!-- Overlay -->
-    <div class="bg-overlay"></div>
-    
-    <!-- Triangles -->
-    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
-    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
-<section class="section section-top section-full">
-    <div class="container">
-        <%= form_with(url: case_room_path, method: "put") do %>    
-            <div class="row justify-content-center align-items-center", style="margin-top: 150px;">
-                <div class="col-md-8 col-lg-12">
-                    <div class="row">
-                        <% @case_rooms.each_with_index do |room, ind| %>
-                            <div class="col-md-8 col-lg-4">
-                                <div class="field form-group">
-                                    <%= label_tag "Chambre numéro :#{ind+1}", nil, class: 'white' %><br />
-                                    <div class="input-group">
-                                        <%= number_field_tag room.rent_monthly, nil, class: 'form-control order-1', required: true, data: {autocomplete_source: room.rent_monthly} %>
-                                        <div class="input-group-append order-0">
-                                            <div class="input-group-text">
-                                                <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                    <path transform="translate(3 3)" d="
-                                                    M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="text-center text-md-right">
-                    <div class="actions">
-                    <%= submit_tag "Valider", class: "btn btn-outline-primary" %>
-                    </div>
-                </div>
-            </div>
-        <% end %>
-    </div>
-</section>
-</section>
+<div id="edit_rooms">
+	<section class="section section-top section-full ">
+		<div class="bg-cover bg-dark bg"></div>
+		<div class="bg-overlay "></div>
+		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
+		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
+		<div class="container">
+			<div class="card" style="background-image: url(<%= asset_path('Original-Foam-Gallery-3.jpg') %>);">
+				<div class="card-header text-center">
+					<br>
+					<h1>Modification des chambres</h1>
+				</div>
+				<div class="card-body ">
+					<%= form_with(url: case_room_path, method: "put") do %>    
+						<% @case_rooms.each_with_index do |room, ind| %>
+							<h2 class="background">Chambre n° : <span class="text-danger"> <%= ind + 1 %></span></h2>	
+							<%= number_field_tag room.rent_monthly, nil, class: 'form-control order-1', required: true, data: {autocomplete_source: room.rent_monthly} %>
+						<br>
+						<% end %>
+						<div class="text-center">
+							<%= submit_tag "Valider", class: "btn btn-primary text-dark" %>
+						</div>
+					<%end%>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
