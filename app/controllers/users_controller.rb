@@ -21,18 +21,21 @@ class  UsersController < ApplicationController
     end
 
     def update
-       
-        if @user.update(approved: true)
-            User.send_account_approval_mail(@user.email)
-            respond_to do |format|
-                format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé'}
-                format.js { }
+        if current_user.administrator?
+            if @user.update(approved: true)
+                User.send_account_approval_mail(@user.email)
+                respond_to do |format|
+                    format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé'}
+                    format.js { }
+                end
+            else
+                respond_to do |format|
+                    format.html { redirect_to users_path, notice: 'Impossible de confirmer le compte'}
+                    format.js { }
+                end
             end
         else
-            respond_to do |format|
-                format.html { redirect_to users_path, notice: 'Impossible de confirmer le compte'}
-                format.js { }
-            end
+            flash.alert ="vous n'avez pas accès à cette commande"
         end
     end
 
