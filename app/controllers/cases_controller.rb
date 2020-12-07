@@ -88,16 +88,24 @@ class CasesController < ApplicationController
             Room.create(case_id: @case.id)
         end
 
-        if params[:origin] == "checkbox" then
-            (!params[:c])? (@case.update(is_confirmed: false)):(@case.update(is_confirmed: true))
+        redirect_to root_path
+    end
+
+    def toogle_is_confirmed
+        @case = Case.find(params[:id])
+        if @case.is_confirmed == false
+            @case.update(is_confirmed: true)
             respond_to do |format|
-                format.html {
-                  flash[:notice] = "Task Status edited"
-                redirect_to root_path }
-                format.js { flash[:notice] = "Task Status edited"}
+                format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
+                format.json { head :no_content }
+            end
+        else
+            @case.update(is_confirmed: false)
+            respond_to do |format|
+                format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
+                format.json { head :no_content }
             end
         end
-        redirect_to case_path(@case.id)
     end
 
     def destroy 
@@ -126,7 +134,7 @@ class CasesController < ApplicationController
     
         def cases_params
             if current_user.administrator?
-                params.require(:case).permit(:title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, :renovation_demolition_cost, :renovation_preparation_cost, :renovation_carpentry_cost, :renovation_plastering_cost, :renovation_electricity_cost, :renovation_plumbing_cost, :renovation_wall_ceiling_cost, :renovation_painting_cost, :renovation_flooring_cost, :renovation_kitchen_cost, :renovation_furniture_cost, :renovation_facade_cost, :renovation_security_cost, :renovation_masonry_cost, :renovation_covering_cost, :new_type, :new_project, :new_surface, :new_rooms_count, :month_count, videos: [])
+                params.require(:case).permit(:is_confirmed, :title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, :renovation_demolition_cost, :renovation_preparation_cost, :renovation_carpentry_cost, :renovation_plastering_cost, :renovation_electricity_cost, :renovation_plumbing_cost, :renovation_wall_ceiling_cost, :renovation_painting_cost, :renovation_flooring_cost, :renovation_kitchen_cost, :renovation_furniture_cost, :renovation_facade_cost, :renovation_security_cost, :renovation_masonry_cost, :renovation_covering_cost, :new_type, :new_project, :new_surface, :new_rooms_count, :month_count, videos: [])
             else
                 params.require(:case).permit(:title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, videos: [])
             end
