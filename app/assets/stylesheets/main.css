@@ -367,8 +367,13 @@
 }
 
 #edit_rooms .card {
-    background-color: whitesmoke;
+    background-image: url(https://casper.imgix.net/assets/products_new/2020-Gallery-Images/Gallery/Original-Foam-Gallery-3.jpg?auto=compress,format&q=65&w=1200);
     border-radius: 10px;
+    background-size: cover;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;
+    margin-top: -50px; 
 }
 
 #edit_rooms .card-header {
@@ -387,8 +392,18 @@
     color: white;
 }
 
-#edit_rooms hr {
-    background-color: var(--primary);
+#edit_rooms h2 {
+    font-size: 15px;
 }
+
+#edit_rooms .background {
+    width:120px;
+    height:18px;
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+    margin-bottom: -1px;
+
+    
+}
+
 
 
