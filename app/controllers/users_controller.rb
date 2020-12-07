@@ -27,12 +27,12 @@ class  UsersController < ApplicationController
                 if @user.update(approved: true)
                     User.send_account_approval_mail(@user.email)
                     respond_to do |format|
-                        format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé'}
+                        format.html { redirect_to users_path, notice: 'Compte utilisateur confirmé !'}
                         format.js { }
                     end
                 else
                     respond_to do |format|
-                        format.html { redirect_to users_path, notice: 'Impossible de confirmer le compte'}
+                        format.html { redirect_to users_path, notice: 'Impossible de confirmer le compte !'}
                         format.js { }
                     end
                 end
@@ -40,12 +40,12 @@ class  UsersController < ApplicationController
                 if @user.update(approved: false)
                     User.send_account_blocked_mail(@user.email)
                     respond_to do |format|
-                        format.html { redirect_to users_path, notice: 'Compte utilisateur desactivé'}
+                        format.html { redirect_to users_path, notice: 'Compte utilisateur desactivé !'}
                         format.js { }
                     end
                 else
                     respond_to do |format|
-                        format.html { redirect_to users_path, notice: 'Impossible de desactivé le compte'}
+                        format.html { redirect_to users_path, notice: 'Impossible de desactivé le compte !'}
                         format.js { }
                     end
                 end
