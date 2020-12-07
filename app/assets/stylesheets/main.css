@@ -66,7 +66,6 @@
 }
 
 
-
 /* PAGE PROFIL USERS SHOW */
 
 #user_show .container  {
@@ -78,9 +77,11 @@
 }
 
 #user_show .card {
-    background-color: white;
+    background-size: cover;
+    background-color: whitesmoke;
     border-radius: 10px;
     margin-right: 40px;
+    width: 50rem;
 }
 
 #user_show .list-group {
@@ -89,6 +90,23 @@
 
 #user_show .col-md-1 {
     padding-bottom: 20px;
+}
+
+#user_show .card-header {
+    height: 100px;
+    background-color: var(--dark);
+    border-radius: 10px;
+    margin: -1px;
+    color: white;
+}
+
+#user_show .card-title {
+    margin-top: 20px;
+    color: white;
+}
+
+#user_show .list-group {
+    margin-top: 15px;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */
@@ -188,6 +206,7 @@
 
 #index_case .card {
     border-radius: 10px;
+    background-color: whitesmoke;
 }
 
 #index_case .margin {
@@ -210,6 +229,48 @@
 
 #index_case .btn-danger:hover {
     color: var(--danger);
+}
+
+#index_case .card-header {
+    height: 10px;
+    margin-top: -20px;
+    font-size: 11px; 
+    background-color: var(--dark); 
+    color: white
+}
+
+#index_case h1 {
+    margin-top: -50px;
+    margin-bottom: 50px;
+
+}
+
+#index_case hr.margin-title {
+    margin-top: -50px;
+    margin-bottom: 50px;
+    
+    background-color: var(--primary);
+    width: 12%;
+}
+
+#index_case #muted {
+    margin-bottom: -20px;
+    font-size: 10px;
+}
+
+#index_case .picture {
+    height: 5%;
+    
+}
+
+/*PAGE CREATE CASE */
+
+#create_case .text-right {
+    margin-right: 25px;
+}
+
+#create_case .text-left {
+    margin-left: 25px;
 }
 
 /* PAGE CASE SHOW */
@@ -279,6 +340,7 @@
 #index_user .card-header {
     background-color: var(--dark);
     border-radius: 10px;
+    margin: -1px
 }
 
 #index_user .margin-card-header {
@@ -298,8 +360,53 @@
     margin-top: 10px;
 }
 
+/* PAGE EDIT ROOMS */
 
+#edit_rooms .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
 
+#edit_rooms .card {
+    border-radius: 10px;
+    background-size: cover;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;
+    margin-top: -50px;
+    width: 50%; 
+}
+
+#edit_rooms .card-header {
+    background-color: var(--dark);
+    margin: -1px;
+    border-radius: 10px;
+}
+
+#edit_rooms p {
+    margin-top: -10px;
+    margin-bottom: -8px;
+}
+
+#edit_rooms h1 {
+    font-size: 20px;
+    color: white;
+}
+
+#edit_rooms h2 {
+    font-size: 15px;
+}
+
+#edit_rooms .background {
+    width:120px;
+    height:18px;
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+    margin-bottom: -1px;
+
+    
+}
 
 
 

@@ -5,18 +5,10 @@ class CasesController < ApplicationController
 
     def index
         @user = current_user
-        @case_statu = ""
 		if @user.administrator?
 			@cases = Case.all
 		else
 			@cases = Case.where(user_id:@user.id)
-        end
-        Case.all.each do |each_case|
-            if each_case.is_confirmed == true 
-                @case_statu = "Ouvert"
-            elsif each_case.is_confirmed == false
-                @case_statu = "Fermé"
-            end
         end
 	end
 
@@ -58,7 +50,7 @@ class CasesController < ApplicationController
 
     def new
         @case = Case.new
-        @s_button_submit = "Créer dossier"
+        @s_button_submit = "Créer le dossier"
         @s_title_document = "Création d'un nouveau dossier"
     end
 
@@ -105,8 +97,7 @@ class CasesController < ApplicationController
                 format.js { flash[:notice] = "Task Status edited"}
             end
         end
-
-        redirect_to root_path
+        redirect_to case_path(@case.id)
     end
 
     def destroy 
@@ -122,7 +113,7 @@ class CasesController < ApplicationController
         case_id = video.record_id
         video.purge
         respond_to do |format|
-          format.html { redirect_to edit_case_path(case_id), notice: 'La vidéo à bien été supprimée' }
+          format.html { redirect_to URI(request.referrer).path, notice: 'La vidéo à bien été supprimée' }
           format.json { head :no_content }
         end
     end

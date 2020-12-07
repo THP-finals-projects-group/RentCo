@@ -1,36 +1,49 @@
 <div id="index_case">	
 	<section class="section section-top section-full">
-	<div class="bg-overlay bg-dark bg"></div>
-	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
-	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
+		<div class="bg-overlay bg-dark bg"></div>
+		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
+		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
 		<div class="container">
+			<hr class ="margin-title">
+			<h1 class="text-center text-white">Dossiers</h1>
+			<hr class ="margin-title">
 			<div style="margin-left: 10%; margin-right: 10%; display: flex; flex-wrap: wrap">
 				<% @cases.each do |c| %>
-					<div class="card bg-white" style="width: 18rem; margin: 4px;">
-						<% if current_user.administrator? %>
-							<!-- <div class="cart-header">
-								<div class="custom-control custom-switch">
-									<input type="checkbox" class="custom-control" id="customSwitch2" disabled>
-									<label class="custom-control-label" for="customSwitch2"> Validate ?</label>
-								</div>
-							</div>  -->
-							<%= check_box_tag :c, c.is_confirmed , data: { remote: true, url: edit_case_path(c.id), params: { id: c.id, origin: "checkbox"}.to_param, method: "put" }%>
-						<% end %>
-						<div class="card-body">
-							<h6 class="card-header text-center" style="font-size: 13px"><%= c.title %></h6>
-							<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= c.visit_date %></h6>
-							<p class="card-text"><u><%= c.city %></u></p>
-							<div class ="row text-center">
-								<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm"%><br>
+					<div class="row" >
+						<div class="col-md-4">
+							<div class="card " style="width: 18rem; margin: 4px; ">
 								<% if current_user.administrator? %>
-									<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-danger btn-outline btn-sm"%>
+									<!-- <div class="cart-header">
+										<div class="custom-control custom-switch">
+											<input type="checkbox" class="custom-control" id="customSwitch2" disabled>
+											<label class="custom-control-label" for="customSwitch2"> Validate ?</label>
+										</div>
+									</div>  -->
+									<%# <%= check_box_tag :c, c.is_confirmed , data: { remote: true, url: edit_case_path(c.id), params: { id: c.id, origin: "checkbox"}.to_param, method: "put" }%>
 								<% end %>
+								<div class="card-body">
+									<h2 class="card-header text-center"><strong><%= c.title %></strong></h2>
+									<hr>
+									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
+									<hr>
+									<p class="card-text"><strong><%= c.city %></strong></p>
+									<hr>
+									<div class ="row text-center">
+										<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm"%><br>
+										<% if current_user.administrator? %>
+											<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-danger btn-outline btn-sm"%>
+										<% end %>
+									</div>
+									<hr>
+									<% if c.is_confirmed == true %>
+										<p class="card-text margin">État du dossier : <span class="text-success"">Ouvert</span></p>
+									<%else%>
+										<p class="card-text margin">État du dossier : <span class="text-danger"">Fermé</span></p>
+									<%end%>
+									<hr>
+									<p id="muted" class="text-muted">&copy RentCo.</p>						
+								</div>
 							</div>
-							<% if @case_statu == "Ouvert"%>
-								<p class="card-text margin">État du dossier : <span class="text-success""><%= @case_statu %></span></p>
-							<%else%>
-								<p class="card-text margin text-warning">État du dossier : <span class="text-warning""><%= @case_statu %></span></p>
-							<%end%>
 						</div>
 					</div>
 				<% end %>
