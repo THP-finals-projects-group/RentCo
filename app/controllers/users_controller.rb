@@ -11,7 +11,13 @@ class  UsersController < ApplicationController
     end
 
     def show
-
+        if current_user.administrator?
+        elsif
+            current_user.id == @user.id
+        else
+            redirect_to root_path
+            flash.alert ="Vous n'avez pas accès à cette page"
+        end
     end
 
     def update
