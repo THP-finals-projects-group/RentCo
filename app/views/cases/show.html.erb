@@ -859,8 +859,7 @@
           <%= link_to "Générer le .pdf", generate_pdf_path, class: "btn btn-outline-primary" %>
       </div>
       <div class="field col-md-12 text-center mt-5">
-        <%= check_box_tag :is_confirmed %>
-        <%= label_tag :Verrouiller_ce_document %>
+        <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Réouvrir le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'success' : 'warning' }"  %>
       </div>
       <br>      
     </div> 
