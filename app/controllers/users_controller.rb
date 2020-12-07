@@ -7,6 +7,7 @@ class  UsersController < ApplicationController
             @users = User.all.order(approved: :asc)
         else
             redirect_to root_path
+            flash.alert ="Vous n'avez pas accès à cette page"
         end
     end
 
@@ -34,6 +35,17 @@ class  UsersController < ApplicationController
                     format.js { }
                 end
             end
+        else
+            flash.alert ="vous n'avez pas accès à cette commande"
+        end
+    end 
+    
+    def destroy
+        if current_user.administrator?
+            @user.destroy
+            respond_to do |format|
+                format.html { redirect_to cases_url, notice: 'Le compte utilisateur a été supprimé' }
+                format.json { head :no_content }
         else
             flash.alert ="vous n'avez pas accès à cette commande"
         end

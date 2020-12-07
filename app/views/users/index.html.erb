@@ -6,6 +6,8 @@
     <div class="container">
       <div class="card bg-white">
         <div class="card-header">
+          <%= render "users/shared/error_messages", resource: resource %>
+          <%= render 'layouts/devhelper' %>
           <div class="row">
             <div class="col-md-4 margin-card-header">
               Compte 
@@ -29,9 +31,16 @@
                   <p class="text-danger"><i class="fas fa-times-circle fa-2x"></i></p>
                 <%end%>
               </div>
-              <div class="col-md-4 margin-confirmed">
-                <%= link_to "Confirmer", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
-              </div>
+              <% if user.approved == "false" %>
+                <div class="col-md-4 margin-confirmed">
+                  <%= link_to "Confirmer", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
+                </div>
+              <% end %>
+              <% if user.approved? %>
+                <div class="col-md-4 margin-confirmed">
+                  <%= link_to "Supprimer l'utilisateur", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
+                </div>
+              <% end %>
             </div>
             <hr>
             <br>
