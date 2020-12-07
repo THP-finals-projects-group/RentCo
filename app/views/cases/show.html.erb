@@ -855,10 +855,10 @@
           <%= link_to "Générer le .pdf", generate_pdf_path, class: "btn btn-outline-primary" %>
       </div>
       <div class="field col-md-12 text-center mt-5">
-        <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Réouvrir le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'success' : 'warning' }"  %>
+        <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
       </div>
       <br>      
     </div> 
-    <%= link_to "Retour", cases_path, class: "btn btn-primary", style: "margin-left: 20px; color: black;" %>  
+    <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;" %>  
   </section>
 </div>
