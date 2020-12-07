@@ -50,7 +50,7 @@ class CasesController < ApplicationController
 
     def new
         @case = Case.new
-        @s_button_submit = "Créer dossier"
+        @s_button_submit = "Créer le dossier"
         @s_title_document = "Création d'un nouveau dossier"
     end
 

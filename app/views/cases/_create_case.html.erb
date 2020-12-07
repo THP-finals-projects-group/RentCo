@@ -3,392 +3,28 @@
 	<div class="bg-overlay"></div>
 	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
 	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
-	<div class="container">
-		<%= form_with(model: @case, local: true, class: "form-styled bg-white") do |form| %>
-			<div class="row justify-content-center align-items-center">
-				<div class="col-md-8 col-lg-12">
-					<h4 class="text-center mb-4">
-						<%= @s_title_document %>
-					</h4>
-					<p class="text-center text-muted mb-5">
-						Veuillez remplir le dossier ci-dessous afin d'ouvrir un nouveau dossier
-					</p>
-					<fieldset class="col-md-8 col-lg-12">
-						<legend>Informations relative au dossier</legend>
-						<div class="row">
-							<div class="col-md-8 col-lg-8">
-								<div class="field form-group">
-									<%= form.label 'Nom du dossier' %>
-									<div class="input-group">
-										<%= form.text_field :title, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-file-invoice"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Référence' %>
-									<div class="input-group">
-										<%= form.text_field :case_reference, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-list-ol"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-5">
-								<div class="field form-group">
-									<%= form.label 'Date de visite' %>
-									<div class="input-group">
-										<%= form.date_field :visit_date, autofocus: true, class: "form-control order-1", require: true %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-calendar-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<br>
-					<fieldset class="col-md-8 col-lg-12">
-						<legend>Informations relative à la localisation du bien</legend>
-						<div class="row">
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Numéro de rue' %>
-									<div class="input-group">
-										<%= form.text_field :street_number, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-sort-numeric-up-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-8">
-								<div class="field form-group">
-									<%= form.label 'Rue' %>
-									<div class="input-group">
-										<%= form.text_field :street_name, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-road"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Ville' %>
-									<div class="input-group">
-										<%= form.text_field :city, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-city"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Code postal' %>
-									<div class="input-group">
-										<%= form.text_field :zipcode, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-map-marker-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<br>
-					<fieldset class="col-md-8 col-lg-12">
-						<legend>Informations relative au bien en l'état</legend>
-						<div class="row">
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Type de bien' %>
-									<div class="input-group">
-										<%= form.select(:old_project ,["Maison", "Appartement", "Local commercial"], {require: true}, {class: "custom-select"}) %>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Surface totale' %>
-									<div class="input-group">
-										<%= form.number_field :old_surface, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-expand"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Type de logement' %><br/>
-									<div class="input-group">
-										<%= form.select(:old_type ,["T1", "T2", "T3", "T4"], {require: true}, {class: "custom-select"})%>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Nombre de chambres' %>
-									<div class="input-group">
-										<%= form.number_field :old_rooms_count, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-bed"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<br>
-					<fieldset class="col-md-8 col-lg-12">
-						<legend>Informations relative au prix du bien</legend>
-						<div class="row">
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Prix' %>
-									<div class="input-group">
-										<%= form.number_field :seller_price, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-euro-sign"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Négociation (estimée)' %>
-									<div class="input-group">
-										<%= form.number_field :estimated_negociation, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-comments-dollar"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Taxe foncière' %>
-									<div class="input-group">
-										<%= form.number_field :property_taxes, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-money-check-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Syndic de copropriété' %>
-									<div class="input-group">
-										<%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-money-check-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-								<%= form.label "Frais d'agence" %>
-									<div class="input-group">
-										<%= form.number_field :agency_charges, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-money-check-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Frais de notaire' %>
-									<div class="input-group">
-										<%= form.number_field :notary_charges, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-money-check-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Eau' %>
-									<div class="input-group">
-										<%= form.number_field :water_cost, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-tint"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Electricité' %>
-									<div class="input-group">
-										<%= form.number_field :electricity_cost, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-bolt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Entretiens communs' %>
-									<div class="input-group">
-										<%= form.number_field :common_charges_cost, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-people-carry"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-4">
-								<div class="field form-group">
-									<%= form.label 'Chauffage' %>
-									<div class="input-group">
-										<%= form.number_field :heater_cost, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-temperature-high"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<br>
-					<fieldset class="col-md-8 col-lg-12">
-						<legend>Descriptions supplémentaires et commentaires</legend>
-						<div class="row">
-							<div class="col-md-8 col-lg-12">
-								<div class="field form-group">
-									<%= form.label 'Description physique' %>
-									<div class="input-group">
-										<%= form.text_area :physical_description, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-align-left"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-12">
-								<div class="field form-group">
-									<%= form.label 'Description géographique' %>
-									<div class="input-group">
-										<%= form.text_area :geographical_description, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-map-marked-alt"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-12">
-								<div class="field form-group">
-									<%= form.label 'Description quant au potentiel du bien' %>
-									<div class="input-group">
-										<%= form.text_area :potential_description, autofocus: true, class: "form-control order-1" %>
-										<div class="input-group-append order-0">
-											<div class="input-group-text">
-												<i class="fas fa-snowplow"></i>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-8 col-lg-12">
-								<div class="field form-group">
-									<fieldset>
-										<legend><%= form.label :videos %></legend>
-										<% if @case.videos.attached? %>
-											Nombre de videos: <%= @case.videos.length %>
-										<%else%>
-											Veuillez ajouter une vidéo au dossier
-										<%end%>
-										<%= form.file_field :videos, multiple: true, class: 'form-control'%>
-										<% @case.videos.each do |video|%>
-											<% if video.representable? %>
-												<%= image_tag(video.representation(resize: '200x200')) %>
-												<%= link_to video.filename, video %>
-												<%= link_to 'Supprimer', delete_video_attachment_case_path(video.id), method: :delete, data: { confirm: 'Etes_vous sûr?' } %>
-											<% end %>
-										<% end %>
-									</fieldset>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-				</div>
-			</div> 
-			<% if current_user.administrator? %>
-				<br>
-				<div class="separator-user-admin">
-				</div>
+	<div id="create_case">
+		<div class="container">
+			<%= form_with(model: @case, local: true, class: "form-styled bg-white") do |form| %>
 				<div class="row justify-content-center align-items-center">
 					<div class="col-md-8 col-lg-12">
 						<h4 class="text-center mb-4">
-							Partie administrateur
+							<%= @s_title_document %>
 						</h4>
 						<p class="text-center text-muted mb-5">
-							Les données ci-dessous ne seront visibles que par un administrateur
+							Veuillez remplir le dossier ci-dessous afin d'ouvrir un nouveau dossier
 						</p>
 						<fieldset class="col-md-8 col-lg-12">
-							<legend>Projection travaux</legend>
+							<legend>Informations relative au dossier</legend>
 							<div class="row">
-								<div class="col-md-8 col-lg-4">
+								<div class="col-md-8 col-lg-8">
 									<div class="field form-group">
-										<%= form.label 'Démolition' %>
+										<%= form.label 'Nom du dossier' %>
 										<div class="input-group">
-											<%= form.number_field :renovation_demolition_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :title, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
-													<i class="fas fa-bomb"></i>
+													<i class="fas fa-file-invoice"></i>
 												</div>
 											</div>
 										</div>
@@ -396,181 +32,25 @@
 								</div>
 								<div class="col-md-8 col-lg-4">
 									<div class="field form-group">
-										<%= form.label 'Préparation' %>
+										<%= form.label 'Référence' %>
 										<div class="input-group">
-											<%= form.number_field :renovation_preparation_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :case_reference, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
-													<i class="fas fa-dolly"></i>
+													<i class="fas fa-list-ol"></i>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-8 col-lg-4">
+								<div class="col-md-8 col-lg-5">
 									<div class="field form-group">
-										<%= form.label 'Menuiserie' %>
+										<%= form.label 'Date de visite' %>
 										<div class="input-group">
-											<%= form.number_field :renovation_carpentry_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.date_field :visit_date, autofocus: true, class: "form-control order-1", require: true %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
-													<i class="fas fa-chair"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Platerie et isolation' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_plastering_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fab fa-buffer"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Électricité' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_electricity_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-bolt"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Plomberie' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_plumbing_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-faucet"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Mur et plafond' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_wall_ceiling_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-border-style"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Peinture' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_painting_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-paint-roller"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Sol' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_flooring_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-square-full"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Cuisine' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_kitchen_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-sink"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Mobilier' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_furniture_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-box-open"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Façade' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_facade_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-building"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Sécurité' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_security_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fas fa-lock"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Maçonnerie' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_masonry_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fab fa-linode"></i>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Couverture' %>
-										<div class="input-group">
-											<%= form.number_field :renovation_covering_cost, autofocus: true, class: "form-control order-1" %>
-											<div class="input-group-append order-0">
-												<div class="input-group-text">
-													<i class="fab fa-accusoft"></i>
+													<i class="fas fa-calendar-alt"></i>
 												</div>
 											</div>
 										</div>
@@ -580,29 +60,79 @@
 						</fieldset>
 						<br>
 						<fieldset class="col-md-8 col-lg-12">
-							<legend>Projection du bien en lui-même</legend>
+							<legend>Informations relative à la localisation du bien</legend>
+							<div class="row">
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Numéro de rue' %>
+										<div class="input-group">
+											<%= form.text_field :street_number, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-sort-numeric-up-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-8">
+									<div class="field form-group">
+										<%= form.label 'Rue' %>
+										<div class="input-group">
+											<%= form.text_field :street_name, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-road"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Ville' %>
+										<div class="input-group">
+											<%= form.text_field :city, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-city"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Code postal' %>
+										<div class="input-group">
+											<%= form.text_field :zipcode, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-map-marker-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<br>
+						<fieldset class="col-md-8 col-lg-12">
+							<legend>Informations relative au bien en l'état</legend>
 							<div class="row">
 								<div class="col-md-8 col-lg-4">
 									<div class="field form-group">
 										<%= form.label 'Type de bien' %>
 										<div class="input-group">
-											<%= form.select(:old_project,["Maison", "Appartement", "Local commercial"], { :required => true }, { :class => 'custom-select' }) %>
+											<%= form.select(:old_project ,["Maison", "Appartement", "Local commercial"], {require: true}, {class: "custom-select"}) %>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-8 col-lg-4">
 									<div class="field form-group">
-										<%= form.label 'Type de logement' %>
+										<%= form.label 'Surface totale' %>
 										<div class="input-group">
-											<%= form.select(:old_type,["T1", "T2", "T3", "T4"], { :required => true }, { :class => 'custom-select' })%>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-8 col-lg-4">
-									<div class="field form-group">
-										<%= form.label 'Nouvelle surface' %>
-										<div class="input-group">
-											<%= form.number_field :new_surface, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :old_surface, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-expand"></i>
@@ -613,9 +143,17 @@
 								</div>
 								<div class="col-md-8 col-lg-4">
 									<div class="field form-group">
-										<%= form.label 'Nombre de chambre' %>
+										<%= form.label 'Type de logement' %><br/>
 										<div class="input-group">
-											<%= form.number_field :new_rooms_count, autofocus: true, class: "form-control order-1" %>
+											<%= form.select(:old_type ,["T1", "T2", "T3", "T4"], {require: true}, {class: "custom-select"})%>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Nombre de chambres' %>
+										<div class="input-group">
+											<%= form.number_field :old_rooms_count, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-bed"></i>
@@ -624,31 +162,502 @@
 										</div>
 									</div>
 								</div>
+							</div>
+						</fieldset>
+						<br>
+						<fieldset class="col-md-8 col-lg-12">
+							<legend>Informations relative au prix du bien</legend>
+							<div class="row">
 								<div class="col-md-8 col-lg-4">
 									<div class="field form-group">
-										<%= form.label 'Nombre de mois estimée' %>
+										<%= form.label 'Prix' %>
 										<div class="input-group">
-											<%= form.number_field :month_count, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :seller_price, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
-													<i class="fas fa-calendar-alt"></i>
+													<i class="fas fa-euro-sign"></i>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>         
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Négociation (estimée)' %>
+										<div class="input-group">
+											<%= form.number_field :estimated_negociation, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-comments-dollar"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Taxe foncière' %>
+										<div class="input-group">
+											<%= form.number_field :property_taxes, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-money-check-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Syndic de copropriété' %>
+										<div class="input-group">
+											<%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-money-check-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+									<%= form.label "Frais d'agence" %>
+										<div class="input-group">
+											<%= form.number_field :agency_charges, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-money-check-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Frais de notaire' %>
+										<div class="input-group">
+											<%= form.number_field :notary_charges, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-money-check-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Eau' %>
+										<div class="input-group">
+											<%= form.number_field :water_cost, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-tint"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Electricité' %>
+										<div class="input-group">
+											<%= form.number_field :electricity_cost, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-bolt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Entretiens communs' %>
+										<div class="input-group">
+											<%= form.number_field :common_charges_cost, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-people-carry"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Chauffage' %>
+										<div class="input-group">
+											<%= form.number_field :heater_cost, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-temperature-high"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<br>
+						<fieldset class="col-md-8 col-lg-12">
+							<legend>Descriptions supplémentaires et commentaires</legend>
+							<div class="row">
+								<div class="col-md-8 col-lg-12">
+									<div class="field form-group">
+										<%= form.label 'Description physique' %>
+										<div class="input-group">
+											<%= form.text_area :physical_description, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-align-left"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-12">
+									<div class="field form-group">
+										<%= form.label 'Description géographique' %>
+										<div class="input-group">
+											<%= form.text_area :geographical_description, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-map-marked-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-12">
+									<div class="field form-group">
+										<%= form.label 'Description quant au potentiel du bien' %>
+										<div class="input-group">
+											<%= form.text_area :potential_description, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-snowplow"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 col-lg-12">
+									<div class="field form-group">
+										<fieldset>
+											<legend><%= form.label :videos %></legend>
+											<% if @case.videos.attached? %>
+												Nombre de videos: <%= @case.videos.length %>
+											<%else%>
+												Veuillez ajouter une vidéo au dossier
+											<%end%>
+											<%= form.file_field :videos, multiple: true, class: 'form-control'%>
+											<% @case.videos.each do |video|%>
+												<% if video.representable? %>
+													<%= image_tag(video.representation(resize: '200x200')) %>
+													<%= link_to video.filename, video %>
+													<%= link_to 'Supprimer', delete_video_attachment_case_path(video.id), method: :delete, data: { confirm: 'Etes_vous sûr?' } %>
+												<% end %>
+											<% end %>
+										</fieldset>
+									</div>
+								</div>
 							</div>
 						</fieldset>
 					</div>
 				</div> 
-			<% end %>
-			<div class="col-md">
-				<div class="text-center text-md-right">
-					<div class="actions">
-						<%= form.submit @s_button_submit, class: "btn btn-outline-primary" %>
+				<% if current_user.administrator? %>
+					<br>
+					<div class="separator-user-admin">
+					</div>
+					<div class="row justify-content-center align-items-center">
+						<div class="col-md-8 col-lg-12">
+							<h4 class="text-center mb-4">
+								Partie administrateur
+							</h4>
+							<p class="text-center text-muted mb-5">
+								Les données ci-dessous ne seront visibles que par un administrateur
+							</p>
+							<fieldset class="col-md-8 col-lg-12">
+								<legend>Projection travaux</legend>
+								<div class="row">
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Démolition' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_demolition_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-bomb"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Préparation' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_preparation_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-dolly"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Menuiserie' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_carpentry_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-chair"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Platerie et isolation' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_plastering_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fab fa-buffer"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Électricité' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_electricity_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-bolt"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Plomberie' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_plumbing_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-faucet"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Mur et plafond' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_wall_ceiling_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-border-style"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Peinture' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_painting_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-paint-roller"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Sol' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_flooring_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-square-full"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Cuisine' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_kitchen_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-sink"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Mobilier' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_furniture_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-box-open"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Façade' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_facade_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-building"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Sécurité' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_security_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-lock"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Maçonnerie' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_masonry_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fab fa-linode"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Couverture' %>
+											<div class="input-group">
+												<%= form.number_field :renovation_covering_cost, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fab fa-accusoft"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<br>
+							<fieldset class="col-md-8 col-lg-12">
+								<legend>Projection du bien en lui-même</legend>
+								<div class="row">
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Type de bien' %>
+											<div class="input-group">
+												<%= form.select(:old_project,["Maison", "Appartement", "Local commercial"], { :required => true }, { :class => 'custom-select' }) %>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Type de logement' %>
+											<div class="input-group">
+												<%= form.select(:old_type,["T1", "T2", "T3", "T4"], { :required => true }, { :class => 'custom-select' })%>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Nouvelle surface' %>
+											<div class="input-group">
+												<%= form.number_field :new_surface, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-expand"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Nombre de chambre' %>
+											<div class="input-group">
+												<%= form.number_field :new_rooms_count, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-bed"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Nombre de mois estimée' %>
+											<div class="input-group">
+												<%= form.number_field :month_count, autofocus: true, class: "form-control order-1" %>
+												<div class="input-group-append order-0">
+													<div class="input-group-text">
+														<i class="fas fa-calendar-alt"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>         
+								</div>
+							</fieldset>
+						</div>
+					</div> 
+				<% end %>
+				<div class="row">
+					<div class="col-md">
+						<div class="actions text-right">
+							<%= form.submit @s_button_submit, class: "btn btn-outline-primary" %>
+						</div>
 					</div>
 				</div>
-			</div>
-		<% end %>
+				<div class="row">
+					<div class="col-md">
+						<div class="actions text-left">
+							<%= link_to "Retour", cases_path, class: "btn btn-outline btn-secondary" %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
 	</div> 
 </section>
