@@ -5,9 +5,13 @@
 		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
 		<div class="container">
 			<hr class ="margin-title">
-			<h1 class="text-center text-white">Dossiers</h1>
+			<% if current_user.administrator? %>
+				<h1 class="text-center text-white">Les dossiers</h1>
+			<%else%>
+				<h1 class="text-center text-white">Mes dossiers</h1>
+			<%end%>
 			<hr class ="margin-title">
-			<div style="margin-left: 10%; margin-right: 10%; display: flex; flex-wrap: wrap">
+			<div style="margin-left: 12%; margin-right: 10%; display: flex; flex-wrap: wrap">
 				<% @cases.each do |c| %>
 					<div class="row" >
 						<div class="col-md-4">
@@ -34,7 +38,7 @@
 									<hr>
 									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>
-									<p class="card-text"><strong> À <%= c.city %></strong></p>
+									<p class="card-text text-center"><strong> À <%= c.city %></strong></p>
 									<hr>
 									<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm "%><br>
 									<br>
