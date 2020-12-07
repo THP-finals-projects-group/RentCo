@@ -7,6 +7,7 @@ class Case < ApplicationRecord
     has_many_attached       :videos
 
     after_create :mailer_new_case
+
     # VALIDATES
     validates :title, presence: true, length: { minimum: 5, maximum: 140 }
     validates :case_reference, presence: true, length: { minimum: 5, maximum: 140 }
@@ -82,4 +83,5 @@ class Case < ApplicationRecord
     def mailer_new_case
         AdminMailer.new_case(self).deliver_now
     end
+
 end

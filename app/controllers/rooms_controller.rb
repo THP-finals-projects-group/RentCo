@@ -11,6 +11,7 @@ class RoomsController < ApplicationController
             room.update(rent_monthly: params[room.rent_monthly.to_s].to_i)
         end 
 
+        # ComputeCalcul.compute_finals_calculs(params[:id])
         redirect_to case_path(@case_rooms[0].case_id)
     end
 
