@@ -31,16 +31,19 @@ class CasesController < ApplicationController
 
     def create
         @case = User.find(current_user.id).cases.new(cases_params)
-        @case.new_rooms_count.times do |room|
-            Room.create(case_id: @case.id)
-        end
+
         if @case.save 
-            redirect_to root_path, notice: 'Votre dossier à bien été ouvert.'
+            @case.new_rooms_count.times do
+                Room.create(case_id: @case.id)
+            end
+            
+            redirect_to edit_case_room_path(@case.id, case_id: @case.id), notice: 'Votre dossier à bien été ouvert.'
         else 
             flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
             render 'new'
         end
 
+        
     end
 
     def edit 
