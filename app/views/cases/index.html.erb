@@ -19,14 +19,14 @@
 											<label class="custom-control-label" for="customSwitch2"> Validate ?</label>
 										</div>
 									</div>  -->
-									<%= check_box_tag :c, c.is_confirmed , data: { remote: true, url: edit_case_path(c.id), params: { id: c.id, origin: "checkbox"}.to_param, method: "put" }%>
+									<%# <%= check_box_tag :c, c.is_confirmed , data: { remote: true, url: edit_case_path(c.id), params: { id: c.id, origin: "checkbox"}.to_param, method: "put" }%>
 								<% end %>
 								<div class="card-body">
 									<h2 class="card-header text-center"><strong><%= c.title %></strong></h2>
 									<hr>
-									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= c.visit_date %></h6>
+									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>
-									<p class="card-text">Ville de <strong><%= c.city %></strong></p>
+									<p class="card-text"><strong><%= c.city %></strong></p>
 									<hr>
 									<div class ="row text-center">
 										<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm"%><br>

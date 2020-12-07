@@ -66,7 +66,6 @@
 }
 
 
-
 /* PAGE PROFIL USERS SHOW */
 
 #user_show .container  {
@@ -78,9 +77,11 @@
 }
 
 #user_show .card {
+    background-size: cover;
     background-color: whitesmoke;
     border-radius: 10px;
     margin-right: 40px;
+    width: 50rem;
 }
 
 #user_show .list-group {
@@ -93,13 +94,15 @@
 
 #user_show .card-header {
     height: 100px;
-    background-color: var(--secondary);
+    background-color: var(--dark);
     border-radius: 10px;
     margin: -1px;
+    color: white;
 }
 
 #user_show .card-title {
     margin-top: 20px;
+    color: white;
 }
 
 #user_show .list-group {
@@ -231,7 +234,7 @@
 #index_case .card-header {
     height: 10px;
     margin-top: -20px;
-    font-size: 12px; 
+    font-size: 11px; 
     background-color: var(--dark); 
     color: white
 }
@@ -367,8 +370,13 @@
 }
 
 #edit_rooms .card {
-    background-color: whitesmoke;
     border-radius: 10px;
+    background-size: cover;
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;
+    margin-top: -50px;
+    width: 50%; 
 }
 
 #edit_rooms .card-header {
@@ -387,8 +395,18 @@
     color: white;
 }
 
-#edit_rooms hr {
-    background-color: var(--primary);
+#edit_rooms h2 {
+    font-size: 15px;
 }
+
+#edit_rooms .background {
+    width:120px;
+    height:18px;
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+    margin-bottom: -1px;
+
+    
+}
+
 
 
