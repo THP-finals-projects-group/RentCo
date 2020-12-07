@@ -260,6 +260,15 @@
     
 }
 
+/*PAGE CREATE CASE */
+
+#create_case .text-right {
+    margin-right: 25px;
+}
+
+#create_case .text-left {
+    margin-left: 25px;
+}
 
 /* PAGE CASE SHOW */
 
