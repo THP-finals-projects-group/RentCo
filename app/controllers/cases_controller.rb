@@ -98,14 +98,14 @@ class CasesController < ApplicationController
             respond_to do |format|
                 format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
                 format.json { head :no_content }
-        end
+            end
         else
             @case.update(is_confirmed: false)
             respond_to do |format|
                 format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
                 format.json { head :no_content }
+            end
         end
-        redirect_to URI(request.referrer).path
     end
 
     def destroy 
