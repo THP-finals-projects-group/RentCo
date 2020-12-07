@@ -5,18 +5,18 @@
 <div id="user_show">
   <div class="container">
     <div class="row">
-      <div class="card" style="background-image: url(<%= asset_path('user-3331257__340.webp') %>);">
+      <div class="card" style="background-image: url(<%= asset_path('1.jpg') %>);">
         <div class="card-header text-center">
           <h3 class="card-title">Profil de <%= @user.lastname %> <%= @user.firstname %> </h3>
         </div>
         <ul class="list-group list-group-flush">
           <hr>
-          <li class="list-group-item">Email : <span class="text-primary"> <%= @user.email %></span></li>
-          <li class="list-group-item">Numéro de téléphone : <span class="text-primary"> <%= @user.phone_number %></span></li>
-          <li class="list-group-item">Vous êtes enregistré en tant que : <span class="text-primary"> <%= @user.profession %></span></li>
+          <li class="list-group-item">Email : <span class="text-secondary"> <%= @user.email %></span></li>
+          <li class="list-group-item">Numéro de téléphone : <span class="text-secondary"> <%= @user.phone_number %></span></li>
+          <li class="list-group-item">Vous êtes enregistré en tant que : <span class="text-secondary"> <%= @user.profession %></span></li>
         </ul>
         <div class="card-body text-center">
-          <%= link_to 'Modifier le profil', edit_user_registration_path, class:"btn btn-primary btn-lg", style:"color: black;" %>
+          <%= link_to 'Modifier le profil', edit_user_registration_path, class:"btn btn-primary btn-lg" %>
         </div>
         <div class="col-md-1">
           <%= link_to 'Retour', cases_path, class:"btn btn-secondary btn-sm" %>
