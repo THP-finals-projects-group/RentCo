@@ -211,21 +211,35 @@
 
 #index_case .margin {
     margin-top: 10px;
+    font-size: 14px;
+}
+
+#index_case .col-md-1 {
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 #index_case .btn-primary {
-    margin-left: 25px;
     color: white;
+}
+
+#index_case .btn {
+    width: 100%;
+}
+
+#index_case .btn-secondary:hover {
+    color: var(--secondary) !important;
 }
 
 #index_case .btn-primary:hover {
-    color: var(--primary)
+    color: var(--primary);
 }
 
 #index_case .btn-danger {
-    margin-left: 20px;
     color: white;
 }
+
+
 
 #index_case .btn-danger:hover {
     color: var(--danger);
@@ -261,6 +275,10 @@
 #index_case .picture {
     height: 5%;
     
+}
+
+#index_case .size {
+    font-size: 8px;
 }
 
 /*PAGE CREATE CASE */
