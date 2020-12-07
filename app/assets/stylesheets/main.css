@@ -339,6 +339,10 @@
     margin-top: 10px;
 }
 
+#index_user .message {
+    margin-bottom: 20px;
+}
+
 /* PAGE EDIT ROOMS */
 
 #edit_rooms .bg {
