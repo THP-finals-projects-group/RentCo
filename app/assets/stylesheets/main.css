@@ -231,12 +231,34 @@
 #index_case .card-header {
     height: 10px;
     margin-top: -20px;
+    font-size: 12px; 
+    background-color: var(--dark); 
+    color: white
+}
+
+#index_case h1 {
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+
+#index_case hr.margin-title {
+    margin-top: -50px;
+    margin-bottom: 50px;
+    margin-left: 115px;
+    background-color: var(--primary);
+    width: 77%;
 }
 
 #index_case #muted {
     margin-bottom: -20px;
     font-size: 10px;
 }
+
+#index_case .picture {
+    height: 5%;
+    
+}
+
 
 /* PAGE CASE SHOW */
 
