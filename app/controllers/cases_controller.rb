@@ -97,8 +97,7 @@ class CasesController < ApplicationController
                 format.js { flash[:notice] = "Task Status edited"}
             end
         end
-
-        redirect_to root_path
+        redirect_to case_path(@case.id)
     end
 
     def destroy 
