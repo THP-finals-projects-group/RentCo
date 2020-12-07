@@ -15,7 +15,7 @@ class Case < ApplicationRecord
     validates :street_name, presence: true, length: { minimum: 3, maximum: 140 }
     validates :city, presence: true, length: { minimum: 3, maximum: 140 }
     validates :zipcode, presence: true, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "Entrer un code postal français valide" }
-    # validates :visit_date, presence: true, if: :past_date
+    validates :visit_date, presence: true, if: :past_date
     validates :physical_description, length: {in: 25...500}, allow_blank: true
     validates :geographical_description, length: {in: 25...500}, allow_blank: true
     validates :potential_description, length: {in: 25...500}, allow_blank: true
@@ -76,7 +76,7 @@ class Case < ApplicationRecord
   
     def past_date
       errors.add(:visit_date, "Vous ne pouvez rentrer une date future") unless
-        visit_date <= DateTime.now
+        visit_date <= DateTime.now - 1.hour
     end
 
     def mailer_new_case
