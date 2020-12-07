@@ -22,23 +22,35 @@
 									<%# <%= check_box_tag :c, c.is_confirmed , data: { remote: true, url: edit_case_path(c.id), params: { id: c.id, origin: "checkbox"}.to_param, method: "put" }%>
 								<% end %>
 								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6">
+											<p class="size"><%= "Modifié: #{sprintf '%02d', c.updated_at.day}/#{sprintf '%02d', c.updated_at.month}/#{c.updated_at.year}" %></p>
+										</div>
+										<div class="col-md-6">
+											<p class="size"><%= "Créé: #{sprintf '%02d', c.created_at.day}/#{sprintf '%02d', c.created_at.month}/#{c.created_at.year}" %></p>
+										</div>
+									</div>
 									<h2 class="card-header text-center"><strong><%= c.title %></strong></h2>
 									<hr>
 									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>
-									<p class="card-text"><strong><%= c.city %></strong></p>
+									<p class="card-text"><strong> À <%= c.city %></strong></p>
 									<hr>
-									<div class ="row text-center">
-										<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm"%><br>
-										<% if current_user.administrator? %>
-											<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-danger btn-outline btn-sm"%>
+									<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm "%><br>
+									<br>
+									<% if current_user.administrator? %>
+										<%= link_to edit_case_path(c.id), method: :get, class: "btn btn-outline btn-secondary btn-sm show text-white" do %> 
+											Modifier
 										<% end %>
-									</div>
+										<br>
+										<br>
+										<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-danger btn-outline btn-sm"%>
+									<% end %>
 									<hr>
-									<% if c.is_confirmed == true %>
-										<p class="card-text margin">État du dossier : <span class="text-success"">Ouvert</span></p>
+									<% if c.is_confirmed == false %>
+										<p class="card-text margin">État du dossier : <span class="text-danger"">Non confirmé</span></p>
 									<%else%>
-										<p class="card-text margin">État du dossier : <span class="text-danger"">Fermé</span></p>
+										<p class="card-text margin">État du dossier : <span class="text-success"">Confirmé</span></p>
 									<%end%>
 									<hr>
 									<p id="muted" class="text-muted">&copy RentCo.</p>						

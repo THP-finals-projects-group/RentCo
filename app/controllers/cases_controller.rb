@@ -6,7 +6,7 @@ class CasesController < ApplicationController
     def index
         @user = current_user
 		if @user.administrator?
-			@cases = Case.all
+			@cases = Case.all.order(:updated_at, :created_at).reverse
 		else
 			@cases = Case.where(user_id:@user.id)
         end
