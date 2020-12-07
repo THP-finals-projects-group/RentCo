@@ -3,10 +3,10 @@ class  UsersController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        if params[:approved] == "false"
-            @users = User.where(approved: false)
+        if current_user.administrator?
+            @users = User.all.order(approved: :asc)
         else
-            @users = User.all
+            redirect_to root_path
         end
     end
 
