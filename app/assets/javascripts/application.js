@@ -26,4 +26,5 @@
 //= require highlight.pack.min
 //= require theme.min
 //= require main
+//= require cases
 

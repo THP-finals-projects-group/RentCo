@@ -2,6 +2,7 @@ class Case < ApplicationRecord
     # DB RELATIONS
     has_one                 :user
     has_many                :rooms, dependent: :destroy
+    accepts_nested_attributes_for :rooms, allow_destroy: true, reject_if: proc { |attributes| attributes['rent_monthly'].blank? }
 
     # ACTIVE STORAGE
     has_many_attached       :videos
