@@ -1,0 +1,84 @@
+/* PDF*/
+
+.pdf-container{
+	width: 100%;
+	height: auto;
+	display: inline-block;
+	padding-bottom: 2em;
+}
+
+.pdf-container-adress{
+	width: 100%;
+	height: auto;
+	padding-right: 50px;
+	padding-left: 35px;
+	margin-bottom: 40px;
+	font-size: 20px;
+}
+
+.grid-container{
+	padding-left: 35px;
+}
+
+
+.grid-item-adress {
+	text-align: left;
+	float: left;
+	width: 50%;
+}
+
+.grid-item-2 {
+	font-size: 14px;
+	text-align: left;
+	float: left;
+	width: 50%;
+}
+
+.grid-item-3 {
+	font-size: 14px;
+	text-align: left;
+	float: left;
+	width: 33%;
+}
+
+
+.PDF-title{
+	border-bottom: solid black 4px;
+	font-size: 60px;
+}
+
+.category-title{
+	color: grey;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	margin-bottom: 20px;
+	padding-left: 5px;
+	background-color: grey;
+	color: white;
+	font-size: 26px;
+}
+
+
+.body-PDF{
+}
+
+.grid-item-3 h4{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.description{
+	padding-left: 12px;
+	padding-right: 12px;
+	text-align: justify;
+}
+
+#middle-description{
+	border-left: solid grey 1px;
+	border-right: solid grey 1px;
+}
+
+
+p{
+	font-size: 16px;
+}
