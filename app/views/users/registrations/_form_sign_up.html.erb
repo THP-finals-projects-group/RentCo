@@ -90,7 +90,7 @@
               <div class="field from-group">
                 <%= f.label :mot_de_passe%><br />
                 <div class="input-group">
-                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control order-1", required: true %>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control order-1", required: true, id:"myInput" %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                       <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -102,12 +102,13 @@
                   </div>
                 </div>
               </div>
+            <input id="boxid" type="checkbox" onclick="myFunction()"><span for="boxid"> Voir</span>
             </div>
             <div class="col-md-8 col-lg-6">
               <div class="field from-group">
                 <%= f.label :confirmer%><br />
                 <div class="input-group">
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control order-1", required: true %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control order-1", required: true, id:"myInput" %>
                   <div class="input-group-append order-0">
                     <div class="input-group-text">
                       <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

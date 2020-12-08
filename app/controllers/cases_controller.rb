@@ -3,12 +3,11 @@ class CasesController < ApplicationController
     before_action :set_case, only: [:show, :edit, :update, :destroy, :generate_pdf]
     
 
-    def index
-        @user = current_user
-		if @user.administrator?
-			@cases = Case.all
+    def index        
+		if current_user.administrator?
+			@cases = Case.all.order(:updated_at, :created_at).reverse
 		else
-			@cases = Case.where(user_id:@user.id)
+			@cases = Case.where(user_id:current_user.id)
         end
 	end
 
@@ -32,12 +31,17 @@ class CasesController < ApplicationController
     def create
         @case = User.find(current_user.id).cases.new(cases_params)
 
-        if @case.save 
-            @case.new_rooms_count.times do
-                Room.create(case_id: @case.id)
+        if @case.save
+            if current_user.administrator? 
+                @case.new_rooms_count.times do
+                    Room.create(case_id: @case.id)
+                end
+                
+                redirect_to edit_case_room_path(@case.id, case_id: @case.id), notice: 'Votre dossier à bien été ouvert.'
+            else
+                flash[:success] = 'Votre dossier à bien été ouvert.'
+                redirect_to cases_path
             end
-            
-            redirect_to edit_case_room_path(@case.id, case_id: @case.id), notice: 'Votre dossier à bien été ouvert.'
         else 
             flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
             render 'new'
@@ -52,7 +56,8 @@ class CasesController < ApplicationController
             @s_button_submit = "Modifier dossier"
             @s_title_document = "Modification du dossier"
         else
-            redirect_to root_path, notice: "Vous n'êtes pas autorisé à modifier le dossier !"
+            flash[:warning] =  "Vous n'êtes pas autorisé à modifier le dossier !"
+            redirect_to root_path
         end
     end
 
@@ -65,7 +70,7 @@ class CasesController < ApplicationController
         @case.new_rooms_count.times do |room|
             Room.create(case_id: @case.id)
         end
-
+        flash[:success] =  "Le dossier à était mis à jour!"
         redirect_to root_path
     end
 
@@ -74,13 +79,13 @@ class CasesController < ApplicationController
         if @case.is_confirmed == false
             @case.update(is_confirmed: true)
             respond_to do |format|
-                format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
+                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
                 format.json { head :no_content }
             end
         else
             @case.update(is_confirmed: false)
             respond_to do |format|
-                format.html { redirect_to URI(request.referrer).path, notice: 'Le dossier a bien été fermé' }
+                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
                 format.json { head :no_content }
             end
         end

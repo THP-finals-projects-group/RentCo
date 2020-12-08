@@ -72,7 +72,7 @@
                 Prénom
               </h4>
               <p class="card-text text-muted">
-                <%= @user.firstname%>
+                <%= @user.firstname.capitalize%>
               </p>
             </div>
           </div>
@@ -87,7 +87,7 @@
                 Nom
               </h4>
               <p class="card-text text-muted">
-                <%= @user.lastname%>
+                <%= @user.lastname.titleize%>
               </p>
             </div>
           </div>
@@ -152,7 +152,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
           <h2 class="text-white text-center mb-4">
-            Information donné par <%= @user.lastname %> <%= @user.firstname %> à propos du bien
+            Information donné par <%= @user.lastname.titleize %> <%= @user.firstname.titleize %> à propos du bien
           </h2>
           <p class="text-white text-muted text-center mb-5">
             Informations relatives au bien en l'état avant travaux
@@ -851,14 +851,22 @@
           </div>
         </div> 
       </div>
-      <div class="field col-md-12 text-center mt-5">
-          <%= link_to "Générer le .pdf", generate_pdf_path, class: "btn btn-outline-primary" %>
+      <br>
+      <hr class="margin-title"> 
+      <br>    
+      <div class="row">
+        <div class="col-md text-left">
+            <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;" %>  
+        </div>
+        <% if current_user.administrator? %>
+          <div class="col-md text-center">
+              <%= link_to "Générer le .pdf", generate_pdf_path, method: :post, class: "btn btn-outline-primary" %>
+          </div>
+        <% end %>
+        <div class="col-md text-right">
+          <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
+        </div>
       </div>
-      <div class="field col-md-12 text-center mt-5">
-        <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Réouvrir le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'success' : 'warning' }"  %>
-      </div>
-      <br>      
     </div> 
-    <%= link_to "Retour", cases_path, class: "btn btn-primary", style: "margin-left: 20px; color: black;" %>  
   </section>
 </div>

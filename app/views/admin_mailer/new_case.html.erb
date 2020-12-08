@@ -1,6 +1,6 @@
 <h1> Un nouveau dossier "<%= @case.title %>" ajouté</h1>
 
-<p> Par <%= @case.user.firstname %> <%= @case.user.lastname %> (<%= @case.user.email %>) - <%= @case.user.phone_number %> (<%= @case.user.profession %>)</p>
+<p> Par <%= @case.user.firstname.titleize %> <%= @case.user.lastname.titleize %> (<%= @case.user.email %>) - <%= @case.user.phone_number %> (<%= @case.user.profession %>)</p>
 
 <p> Référence : <%= @case.case_reference %> </p>
 

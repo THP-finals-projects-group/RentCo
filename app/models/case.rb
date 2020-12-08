@@ -9,14 +9,14 @@ class Case < ApplicationRecord
     after_create :mailer_new_case
 
     # VALIDATES
-    validates :title, presence: true, length: { minimum: 5, maximum: 140 }
+    validates :title, presence: true, length: { minimum: 5, maximum: 140}
     validates :case_reference, presence: true, length: { minimum: 5, maximum: 140 }
     validates :contact_referent, allow_blank: true, length: { minimum: 0, maximum: 500 }
     validates :street_number, presence: true, length: { minimum: 1, maximum: 10 }
     validates :street_name, presence: true, length: { minimum: 3, maximum: 140 }
     validates :city, presence: true, length: { minimum: 3, maximum: 140 }
-    validates :zipcode, presence: true, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "Entrer un code postal français valide" }
-    validates :visit_date, presence: true, if: :past_date
+    validates :zipcode, presence: true, format: { with: /\A(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}\z/, message: "is not a valid french zipcode" }
+    validates :visit_date, presence: true #, if: :past_date
     validates :physical_description, length: {in: 25...500}, allow_blank: true
     validates :geographical_description, length: {in: 25...500}, allow_blank: true
     validates :potential_description, length: {in: 25...500}, allow_blank: true

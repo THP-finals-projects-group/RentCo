@@ -1,14 +1,14 @@
 <div class="bg-overlay bg-dark"></div>
-<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
-<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
 <div id="edit">
   <div class="container">
+    <div class="position-relative"><%= render "users/shared/error_messages", resource: resource %></div>
     <%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
       <div class="card" style="width: 104%;">
         <div class="card-body text-center padding-title">
           <h3 class="card-title">Modification du profil </h3>
         </div>
-        <%= render "users/shared/error_messages", resource: resource %>
         <hr>
         <div class="row">
           <div class="col-md-8 col-lg-6">      
@@ -25,9 +25,9 @@
           <div class="col-md-8 col-lg-6">
             <div class="card-body text-center">       
               <%= f.label :Mot_de_passe_actuel %> 
-              <%= f.password_field :current_password, class: 'form-control', style: 'width: 100%;', placeholder: 'A compléter avant validation' %><br>              
+              <%= f.password_field :current_password, class: 'form-control', placeholder: 'A compléter avant validation' %><br>              
               <%= f.label :nouveau_mot_de_passe %> <i>(Laisser vide si vous ne voulez pas le changer)</i>
-              <%= f.password_field :password, class: 'form-control', style: 'width: 100%;', placeholder: '6 caractère minimum', autocomplete: "new-password" %><br>             
+              <%= f.password_field :password, class: 'form-control', placeholder: '6 caractères minimum', autocomplete: "new-password" %><br>             
               <%= f.label :Confirmer %>
               <%= f.password_field :password_confirmation, class: 'form-control', style: 'width: 100%;', autocomplete: "new-password" %>        
             </div>
