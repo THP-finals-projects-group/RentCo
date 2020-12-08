@@ -25,6 +25,10 @@
     background-color:var(--gray-dark);
 }
 
+#boxid {
+    margin-top: 15px;
+}
+
 #sessions_new .btn-checkbox-login {
     margin-top:15px;
 }
@@ -37,6 +41,13 @@
 #sessions_new .main-part-center-home .p-text-home-page {
     color:white;
     margin-bottom:50px;
+}
+
+#session_new .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -114,13 +125,6 @@
     align-content: center ;  
 }
 
-#edit .form-control {
-    text-align: center;
-}
-
-#edit .form-label {
-    text-align: center;
-}
 
 #edit {
     padding-right: 120px;

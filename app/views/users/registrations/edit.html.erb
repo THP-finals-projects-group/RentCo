@@ -25,9 +25,9 @@
           <div class="col-md-8 col-lg-6">
             <div class="card-body text-center">       
               <%= f.label :Mot_de_passe_actuel %> 
-              <%= f.password_field :current_password, class: 'form-control', style: 'width: 100%;', placeholder: 'A compléter avant validation' %><br>              
+              <%= f.password_field :current_password, class: 'form-control', placeholder: 'A compléter avant validation' %><br>              
               <%= f.label :nouveau_mot_de_passe %> <i>(Laisser vide si vous ne voulez pas le changer)</i>
-              <%= f.password_field :password, class: 'form-control', style: 'width: 100%;', placeholder: '6 caractère minimum', autocomplete: "new-password" %><br>             
+              <%= f.password_field :password, class: 'form-control', placeholder: '6 caractères minimum', autocomplete: "new-password" %><br>             
               <%= f.label :Confirmer %>
               <%= f.password_field :password_confirmation, class: 'form-control', style: 'width: 100%;', autocomplete: "new-password" %>        
             </div>
