@@ -205,6 +205,24 @@
     background-color: whitesmoke;
 }
 
+#index_case .empty-index {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+#index_case .empty {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+#index_case .muted-title {
+    margin-bottom: -50px;
+    margin-top: -50px;
+    font-size: 15px;
+}
+
+
 #index_case .margin {
     margin-top: 10px;
     font-size: 14px;
@@ -220,7 +238,15 @@
     width: 100%;
 }
 
-#index_case .card-header {
+#index_case .card-header-full {
+    height: 10px;
+    margin-top: -20px;
+    font-size: 11px; 
+    background-color: var(--dark); 
+    color: white
+}
+
+#index_case .card-header-empty {
     height: 10px;
     margin-top: -20px;
     font-size: 11px; 
@@ -253,6 +279,25 @@
 
 #index_case .size {
     font-size: 8px;
+}
+
+#index_case .btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+#index_case .btn-outline-secondary:hover {
+    background-color: var(--secondary);
+    color: white ;
+}
+
+#index_case .btn-outline-secondary {
+    color: var(--dark);
+}
+
+#index_case .btn-outline-danger:hover {
+    background-color: var(--danger);
+    color: white;
 }
 
 /*PAGE CREATE CASE */
