@@ -22,7 +22,7 @@ class ComputeCalcul < ApplicationController
 
         # Calcul charges et prix du bien
         @case.total_monthly_charges = @case.water_cost + @case.heater_cost + @case.electricity_cost + @case.union_charges_cost + @case.common_charges_cost
-        @case.total_buying_price = @case.seller_price - @case.estimated_negociation + @case.notary_charges + @case.agency_charges + @case.property_taxes # + @case.renovation_union
+        @case.total_buying_price = @case.seller_price - @case.estimated_negociation + @case.notary_charges + @case.agency_charges + @case.property_taxes + @case.renovation_union
 
         # Calcul assurance PNO
         @case.pno_insurance_cost = @case.new_surface * 3.50
