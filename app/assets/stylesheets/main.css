@@ -311,6 +311,9 @@
 }
 
 /* PAGE CASE SHOW */
+#show-cases .video-card {
+    margin-top: -40px;
+}
 
 #show-cases .text-primary {
     margin-top:50px;
