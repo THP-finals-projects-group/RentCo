@@ -24,7 +24,7 @@
   <div class="field from-group">
     <%= f.label :password %><br />
     <div class="input-group">
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control order-1" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control order-1", id:"myInput" %>
       <div class="input-group-append order-0">
         <div class="input-group-text">
           <svg class="input-group-icon icon-offset icon icon-lock" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -35,6 +35,7 @@
         </div>
       </div>
     </div>
+    <input id="boxid" type="checkbox" onclick="myFunction()"><span for="boxid"> Voir</span>
   </div>
   <br>
   <%= render "users/shared/links_forgot_password" %>
