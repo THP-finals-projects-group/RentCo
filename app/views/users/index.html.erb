@@ -7,7 +7,7 @@
       <div class="card border-0 message">
         <div class="row">
           <div class="col-md">
-            <%= render 'layouts/devhelper'%>
+            <%= render 'users/shared/flash_messages'%>
           </div>
         </div>
       </div>
@@ -28,8 +28,10 @@
           <% @users.each do |user| %>
             <div class="row">
               <div class="col-md-4">
-                <p><%= link_to "#{user.lastname} #{user.firstname}", user_path(user.id), class:"text-dark" %></p>
-                <%= mail_to user.email %>
+                <p><%= link_to "#{user.lastname.capitalize} #{user.firstname.capitalize}", user_path(user.id), class:"text-dark" %></p>
+                <div class="text-info">
+                  <%= mail_to user.email %>
+                </div>
               </div>
               <div class="col-md-4 margin-status">
                 <% if user.approved == true %>
@@ -40,11 +42,11 @@
               </div>
               <% if user.approved == false %>
                 <div class="col-md-4 margin-confirmed">
-                  <%= link_to "Confirmer le compte", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
+                  <%= link_to "Confirmer le compte", user_path(user.id), data: {confirm:'Étes vous sûr de vouloir confirmer ce compte?'}, method: :put, class: "btn btn-outline-primary" %>
                 </div>
                 <%else user.approved == true %>
                 <div class="col-md-4 margin-confirmed">
-                  <%= link_to "désactiver le compte", user_path(user.id), :confirm => 'êtes vous sûr de vouloir désactiver ce compte?', method: :put, class: "btn btn-outline-danger" %>
+                  <%= link_to "Désactiver le compte", user_path(user.id), data: {confirm:'Étes vous sûr de vouloir désactiver ce compte?'}, method: :put, class: "btn btn-outline-danger" %>
                 </div>
               <% end %>
                 
