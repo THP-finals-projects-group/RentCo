@@ -83,6 +83,7 @@
     background-color: white;
 }
 
+
 #user_show .card {
     margin-top: -70px;
     background-size: cover;
@@ -117,6 +118,10 @@
 
 /* PAGE EDIT REGISTRATION EDIT */
 
+#edit .container {
+    margin-top: -60px;
+}
+
 #edit .card {
     background-color: white;
 }
@@ -143,6 +148,13 @@
 
 #edit .padding-title {
     margin-bottom: -30px;
+}
+
+#edit .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 /* PAGE FORGOT PASSWORD EMAIL SENDER */
@@ -205,6 +217,24 @@
     background-color: whitesmoke;
 }
 
+#index_case .empty-index {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+#index_case .empty {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+#index_case .muted-title {
+    margin-bottom: -50px;
+    margin-top: -50px;
+    font-size: 15px;
+}
+
+
 #index_case .margin {
     margin-top: 10px;
     font-size: 14px;
@@ -220,7 +250,15 @@
     width: 100%;
 }
 
-#index_case .card-header {
+#index_case .card-header-full {
+    height: 10px;
+    margin-top: -20px;
+    font-size: 11px; 
+    background-color: var(--dark); 
+    color: white
+}
+
+#index_case .card-header-empty {
     height: 10px;
     margin-top: -20px;
     font-size: 11px; 
@@ -253,6 +291,25 @@
 
 #index_case .size {
     font-size: 8px;
+}
+
+#index_case .btn-outline-primary:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+#index_case .btn-outline-secondary:hover {
+    background-color: var(--secondary);
+    color: white ;
+}
+
+#index_case .btn-outline-secondary {
+    color: var(--dark);
+}
+
+#index_case .btn-outline-danger:hover {
+    background-color: var(--danger);
+    color: white;
 }
 
 /*PAGE CREATE CASE */
@@ -321,6 +378,10 @@
     top: 0;
 }
 
+#index_user .mylink:hover {
+    text-decoration: none !important;
+}
+
 #index_user .card-header {
     background-color: var(--dark);
     margin: -1px
@@ -329,6 +390,10 @@
 #index_user .margin-card-header {
     margin-top: 10px;
     color: white;
+}
+
+#index_user .btn-outline-danger:hover {
+    color: var(--danger);
 }
 
 #index_user .margin-card-body {
@@ -357,17 +422,19 @@
 }
 
 #edit_rooms .card {
+    background-image: url(https://casper.imgix.net/assets/products_new/2020-Gallery-Images/Gallery/Original-Foam-Gallery-3.jpg?auto=compress,format&q=65&w=1200);
+    border-radius: 10px;
     background-size: cover;
     margin: 0 auto; 
     float: none; 
     margin-bottom: 10px;
-    margin-top: -50px;
-    width: 50%; 
+    margin-top: -50px; 
 }
 
 #edit_rooms .card-header {
     background-color: var(--dark);
     margin: -1px;
+    border-radius: 10px;
 }
 
 #edit_rooms p {
@@ -389,9 +456,10 @@
     height:18px;
     background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
     margin-bottom: -1px;
-
-    
 }
+
+/* ERROR MESSAGES EDIT USER */
+
 
 
 

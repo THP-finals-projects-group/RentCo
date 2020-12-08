@@ -16,5 +16,4 @@ class RoomsController < ApplicationController
         ComputeCalcul.compute_finals_calculs(params[:id])
         redirect_to case_path(params[:id])
     end
-
 end

@@ -14,7 +14,22 @@
 			<%= render "flash_messages" %>
 			<div style="margin-left: 12%; margin-right: 10%; display: flex; flex-wrap: wrap">
 				<% if @cases.empty? %>
-            <%= link_to 'Créer mon premier dossier',  new_case_path, class: "text-center btn btn-lg btn-success mb-2" %>  
+					<div class="card empty-index">
+						<div class="card-body">
+							<div class="card-header card-header-empty text-center">
+								<p class="empty">Bienvenue !<p>
+							</div>
+						</div>
+						<div class="card-body muted-title">
+							<hr>
+							<p> Bonjour <%= current_user.lastname.titleize%> <%= current_user.firstname.titleize%> ,</p> 
+							<p class="text-muted">Vous n'avez pas encore de dossiers enregistrés sur RentCo. Pour pouvoir collaborer, commencez par créer votre premier dossier.</p>
+							<hr>
+						</div>
+						<div class="card-body">
+            	<%= link_to 'Créer',  new_case_path, class: "btn btn-lg btn-success btn-sm" %>
+						</div> 
+					</div> 
 				<% end %>
 				<% @cases.each do |c| %>
 					<div class="row" >
@@ -38,16 +53,16 @@
 											<p class="size"><%= "Créé: #{sprintf '%02d', c.created_at.day}/#{sprintf '%02d', c.created_at.month}/#{c.created_at.year}" %></p>
 										</div>
 									</div>
-									<h2 class="card-header text-center"><strong><%= c.title %></strong></h2>
+									<h2 class="card-header card-header-full text-center"><strong><%= c.title.capitalize %></strong></h2>
 									<hr>
 									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>
-									<p class="card-text text-center"><strong> À <%= c.city %></strong></p>
+									<p class="card-text text-center"><strong> À <%= c.city.titleize %></strong></p>
 									<hr>
 									<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
 									<br>
 									<% if current_user.administrator? %>
-										<%= link_to edit_case_path(c.id), method: :get, class: "btn btn-outline-secondary btn-sm show text-white" do %> 
+										<%= link_to edit_case_path(c.id), method: :get, class: "btn btn-outline-secondary btn-sm show" do %> 
 											Modifier
 										<% end %>
 										<br>

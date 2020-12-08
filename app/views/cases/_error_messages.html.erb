@@ -1,7 +1,331 @@
-<% if @case.errors.any? %>
-  <ul>
-    <% @case.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div id="error_messages_edit_user">
+  <% if @case.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert mb-3", style="vertical-align:top;">
+        <% @case.errors.full_messages.each do |msg| %>
+          <%if msg == "Title can't be blank"%>
+            <%msg = "Le titre du dossier doit être présent" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Title is too short (minimum is 5 characters)"%>
+            <%msg = "Le titre du dossier est trop court (5 caractères minimum)" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Case reference can't be blank"%>
+            <%msg = "La référence du dossier doit être présente" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Case reference is too short (minimum is 5 characters)"%>
+            <%msg = "La référence du dossier est trop courte (5 caractères minimum)" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Street number can't be blank"%>
+            <%msg = "Le numéro de rue doit être présent" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Street number is too short (minimum is 1 character)"%>
+            <%msg = "Le numéro de rue est trop court (minimum 1 caractère)" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Street name can't be blank"%>
+            <%msg = "Le nom de la rue doit être présent" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Street name is too short (minimum is 3 characters)"%>
+            <%msg = "Le nom de la rue est trop court (3 caractères minimum)" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "City can't be blank"%>
+            <%msg = "Le nom de la ville doit être présent" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "City is too short (minimum is 3 characters)"%>
+            <%msg = "Le nom de la ville est trop court (3 caractères minimum)" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Zipcode can't be blank"%>
+            <%msg = "Le code postal doit être présent" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Zipcode is not a valid french zipcode"%>
+            <%msg = "Le code postal n'est pas valide" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Visit date can't be blank"%>
+            <%msg = "La date de visite doit être présente" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Old rooms count must be greater than or equal to 0"%>
+            <%msg = "Le nombre de chambre doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Water cost must be greater than or equal to 0"%>
+            <%msg = "Le coût de l'eau doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Heater cost must be greater than or equal to 0"%>
+            <%msg = "Le coût du chauffage doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Electricity cost must be greater than or equal to 0"%>
+            <%msg = "Le coût de l'electricité doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Common charges cost must be greater than or equal to 0"%>
+            <%msg = "Le coût des charges communes doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Seller price must be greater than or equal to 0"%>
+            <%msg = "Le prix doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Estimated negociation must be greater than or equal to 0"%>
+            <%msg = "La négociation éstimé doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Notary charges must be greater than or equal to 0"%>
+            <%msg = "Les frais de notaire doivent être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Property taxes must be greater than or equal to 0"%>
+            <%msg = "La taxe foncière doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Agency charges must be greater than or equal to 0"%>
+            <%msg = "Les frais d'agence doivent être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation demolition cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la démolition doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation preparation cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la préparation doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation carpentry cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la menuiserie doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation plastering cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la platerie et de l'isolation doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation electricity cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de l'electricité doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation plumbing cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la plomberie doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation wall ceiling cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation des murs et plafonds doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation painting cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la peinture doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation flooring cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation du sol être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation kitchen cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la cuisine doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation furniture cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation du mobilier doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation facade cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la facade doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation security cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la sécurité doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation masonry cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la rénovation de la maconerie doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "Renovation covering cost must be greater than or equal to 0"%>
+            <%msg = "Le prix de la couverture doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "New surface must be greater than or equal to 0"%>
+            <%msg = "Le prix de la nouvelle surface doit être supérieur ou égal à 0" %>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif msg == "New rooms count must be greater than or equal to 0"%>
+            <%msg = "Le prix des nouvelles chambres de doit être supérieur ou égal à 0" %>
+          <h4>
+            <%= I18n.t("errors.messages.not_saved", count: 1, resource: @case.class.model_name.human.downcase) %> <span class="text-danger"><%= msg %> </span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true" class="error">x</span>
+            </button>
+          </h4>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+  <% end %>
+</div>
