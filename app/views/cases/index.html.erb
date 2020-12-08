@@ -22,6 +22,7 @@
 						</div>
 						<div class="card-body muted-title">
 							<hr>
+							<p> Bonjour <%= current_user.lastname.titleize%> <%= current_user.firstname.titleize%> ,</p> 
 							<p class="text-muted">Vous n'avez pas encore de dossiers enregistrés sur RentCo. Pour pouvoir collaborer, commencez par créer votre premier dossier.</p>
 							<hr>
 						</div>
@@ -56,7 +57,7 @@
 									<hr>
 									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>
-									<p class="card-text text-center"><strong> À <%= c.city %></strong></p>
+									<p class="card-text text-center"><strong> À <%= c.city.titleize %></strong></p>
 									<hr>
 									<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
 									<br>

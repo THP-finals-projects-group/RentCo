@@ -72,7 +72,7 @@
                 Prénom
               </h4>
               <p class="card-text text-muted">
-                <%= @user.firstname%>
+                <%= @user.firstname.capitalize%>
               </p>
             </div>
           </div>
@@ -87,7 +87,7 @@
                 Nom
               </h4>
               <p class="card-text text-muted">
-                <%= @user.lastname%>
+                <%= @user.lastname.titleize%>
               </p>
             </div>
           </div>
@@ -152,7 +152,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
           <h2 class="text-white text-center mb-4">
-            Information donné par <%= @user.lastname %> <%= @user.firstname %> à propos du bien
+            Information donné par <%= @user.lastname.titleize %> <%= @user.firstname.titleize %> à propos du bien
           </h2>
           <p class="text-white text-muted text-center mb-5">
             Informations relatives au bien en l'état avant travaux
