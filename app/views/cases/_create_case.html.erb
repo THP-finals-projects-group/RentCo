@@ -13,7 +13,7 @@
 							<%= @s_title_document %>
 						</h4>
 						<p class="text-center text-muted mb-5">
-							Veuillez remplir le dossier ci-dessous afin d'ouvrir un nouveau dossier
+							Veuillez remplir le formulaire ci-dessous afin d'ouvrir un nouveau dossier
 						</p> 
 						<fieldset class="col-md-8 col-lg-12">
 							<legend>Informations relative au dossier</legend>
@@ -368,9 +368,13 @@
 										<fieldset>
 											<legend><%= form.label :videos %></legend>
 											<% if @case.videos.attached? %>
-												Nombre de videos: <%= @case.videos.length %>
+												<% if @case.videos.length == 1 %>
+													<%= @case.videos.length %> ajoutée
+												<%else%>
+													<%= @case.videos.length %> ajoutées
+												<%end%>
 											<%else%>
-												Veuillez ajouter une vidéo au dossier
+												Veuillez ajouter une ou plusieurs vidéo(s) au dossier
 											<%end%>
 											<%= form.file_field :videos, multiple: true, accept: "video/*", class: 'form-control'%>
 											<% @case.videos.each do |video|%>

@@ -1,12 +1,13 @@
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => "form-styled bg-white" }) do |f| %>
   <h4 class="text-center mb-4">
     Bienvenue, connectez-vous
   </h4>
-  <p class="text-center text-muted mb-5">
+  <p class="text-muted mb-5">
     Remplissez le formulaire ci-dessous pour se connecter à votre compte
   </p>
-  <%= render "users/shared/error_messages", resource: resource %>
   <div class="field form-group">
+  <%= render 'users/shared/flash_messages'%>
     <%= f.label :email %><br />
     <div class="input-group">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control order-1" %>

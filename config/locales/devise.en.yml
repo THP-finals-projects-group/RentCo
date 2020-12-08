@@ -8,7 +8,7 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
       already_authenticated: "Vous êtes déja connecté"
-      inactive: "Votre compte n'a pas encore été valider par l'administrateur."
+      inactive: "Votre compte n'a pas encore été valider par l'administrateur ou (si vous vous êtes déja connecté) à été bloqué"
       invalid: "%{authentication_keys} ou mot de passe invalide."
       locked: "Votre compte est bloqué."
       last_attempt: "Il vous reste 1 essai avant que votre compte soit bloqué."
@@ -16,7 +16,7 @@ en:
       timeout: "Votre session à expiré, veuillez vous reconnecter pour continuer."
       unauthenticated: "Vous devez vous connnecter ou vous inscrire pour continuer."
       unconfirmed: "Vous devez confirmer votre email pour continuer."
-      not_approved: "Votre compte n'a pas encore été valider par l'administrateur."
+      not_approved: "Votre compte n'a pas encore été valider par l'administrateur ou (si vous vous êtes déja connecté) à été bloqué"
     mailer:
       confirmation_instructions:
         subject: "Instruction de confirmation"
