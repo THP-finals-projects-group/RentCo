@@ -372,7 +372,7 @@
 											<%else%>
 												Veuillez ajouter une vidéo au dossier
 											<%end%>
-											<%= form.file_field :videos, multiple: true, class: 'form-control'%>
+											<%= form.file_field :videos, multiple: true, accept: "video/*", class: 'form-control'%>
 											<% @case.videos.each do |video|%>
 												<% if video.representable? %>
 													<%= link_to video.filename, video %>
