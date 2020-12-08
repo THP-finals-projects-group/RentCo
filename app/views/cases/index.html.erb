@@ -53,7 +53,7 @@
 											<p class="size"><%= "Créé: #{sprintf '%02d', c.created_at.day}/#{sprintf '%02d', c.created_at.month}/#{c.created_at.year}" %></p>
 										</div>
 									</div>
-									<h2 class="card-header card-header-full text-center"><strong><%= c.title %></strong></h2>
+									<h2 class="card-header card-header-full text-center"><strong><%= c.title.capitalize %></strong></h2>
 									<hr>
 									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>

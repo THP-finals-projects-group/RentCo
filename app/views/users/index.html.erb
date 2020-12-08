@@ -30,7 +30,9 @@
               <div class="col-md-4">
                 <p><%= link_to "#{user.lastname.capitalize} #{user.firstname.capitalize}", user_path(user.id), class:"text-dark" %></p>
                 <div class="text-info">
-                  <%= mail_to user.email %>
+                  <%= mail_to user.email do %>
+                    <span class="text-info"><%= user.email %></span>
+                  <% end %>
                 </div>
               </div>
               <div class="col-md-4 margin-status">

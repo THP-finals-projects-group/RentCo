@@ -378,6 +378,10 @@
     top: 0;
 }
 
+#index_user .mylink:hover {
+    text-decoration: none !important;
+}
+
 #index_user .card-header {
     background-color: var(--dark);
     margin: -1px
