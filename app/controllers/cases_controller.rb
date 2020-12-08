@@ -36,11 +36,11 @@ class CasesController < ApplicationController
                 @case.new_rooms_count.times do
                     Room.create(case_id: @case.id)
                 end
-                
-                redirect_to edit_case_room_path(@case.id, case_id: @case.id), notice: 'Votre dossier à bien été ouvert.'
+                flash[:info]="Veuillez remplir le prix des chambres"
+                redirect_to edit_case_room_path(@case.id, case_id: @case.id)
             else
                 flash[:success] = 'Votre dossier à bien été ouvert.'
-                redirect_to cases_path
+                redirect_to root_path
             end
         else 
             flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
@@ -63,15 +63,21 @@ class CasesController < ApplicationController
 
     def update 
         @case = Case.find(params[:id])
-        @case.rooms.each do |room_completed|
-            room_completed.destroy
+        if current_user.administrator? 
+            @case.rooms.each do |room_completed|
+                room_completed.destroy
+            end
+            @case.update(cases_params)
+            @case.new_rooms_count.times do |room|
+                Room.create(case_id: @case.id)
+            end
+            flash[:success] =  "Le dossier à était mis à jour!"
+            redirect_to edit_case_room_path(@case.id, case_id: @case.id)
+        else
+            @case.update(cases_params)
+            flash[:success] =  "Le dossier à était mis à jour!"
+            redirect_to case_path(@case.id)
         end
-        @case.update(cases_params)
-        @case.new_rooms_count.times do |room|
-            Room.create(case_id: @case.id)
-        end
-        flash[:success] =  "Le dossier à était mis à jour!"
-        redirect_to root_path
     end
 
     def toogle_is_confirmed

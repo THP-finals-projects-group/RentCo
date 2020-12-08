@@ -690,7 +690,8 @@
           </div>
         </div>
       </div> 
-    </div> 
+    </div>
+  <% if current_user.administrator? %>
   </section>
   
     <!-- INFORMATIONS RELATIVES AUX PRÉVISIONS DU BIEN
@@ -851,21 +852,26 @@
           </div>
         </div> 
       </div>
+      <% end %>
       <br>
       <hr class="margin-title"> 
-      <br>    
+      <br>
+
+      <% current_user.administrator? ? align = "left" : align = "center" %> 
       <div class="row">
-        <div class="col-md text-left">
+        <div class="col-md text-<%= align %>">
             <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;" %>  
         </div>
-        <% if current_user.administrator? %>
+        <% if @case.is_confirmed? && !(@case.total_rent_monthly.nil?) %>
           <div class="col-md text-center">
               <%= link_to "Générer le .pdf", generate_pdf_path, method: :post, class: "btn btn-outline-primary" %>
           </div>
         <% end %>
-        <div class="col-md text-right">
-          <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
-        </div>
+        <% if current_user.administrator? %>
+          <div class="col-md text-right">
+            <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
+          </div>
+        <% end %>
       </div>
     </div> 
   </section>
