@@ -210,9 +210,9 @@
 								</div>
 								<div class="col-md-8 col-lg-4">
 									<div class="field form-group">
-										<%= form.label 'Syndic de copropriété' %>
+										<%= form.label 'Travaux de copropriété' %>
 										<div class="input-group">
-											<%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :renovation_union, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -239,6 +239,25 @@
 										<%= form.label 'Frais de notaire' %>
 										<div class="input-group">
 											<%= form.number_field :notary_charges, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-money-check-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<br>
+						<fieldset class="col-md-8 col-lg-12">
+							<legend>Informations relative aux charges du bien</legend>
+							<div class="row">
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Syndic de copropriété' %>
+										<div class="input-group">
+											<%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
