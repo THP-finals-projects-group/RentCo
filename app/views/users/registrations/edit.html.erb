@@ -1,14 +1,14 @@
 <div class="bg-overlay bg-dark"></div>
-<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
-<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
+<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
 <div id="edit">
   <div class="container">
+    <div class="position-relative"><%= render "users/shared/error_messages", resource: resource %></div>
     <%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
       <div class="card" style="width: 104%;">
         <div class="card-body text-center padding-title">
           <h3 class="card-title">Modification du profil </h3>
         </div>
-        <%= render "users/shared/error_messages", resource: resource %>
         <hr>
         <div class="row">
           <div class="col-md-8 col-lg-6">      
