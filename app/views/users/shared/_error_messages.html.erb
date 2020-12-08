@@ -1,15 +1,42 @@
-<% if resource.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div id="error_messages_edit_user">
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert mb-3", style="vertical-align:top;">
+        <% resource.errors.full_messages.each do |message| %>
+          <%if message == "Current password is invalid" %>
+            <% message = "Mot de passe actuel invalide"%>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: resource.class.model_name.human.downcase) %> <span class="text-danger"><%= message %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif message == "Password is too short (minimum is 6 characters)"%>
+            <% message = "Nouveau mot de passe invalide (6 caractères minimum)"%>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: resource.class.model_name.human.downcase) %> <span class="text-danger"><%= message %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%elsif message == "Password confirmation doesn't match Password"%>
+            <% message = "La confirmation de votre nouveau de mot de passe est différente"%>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: resource.class.model_name.human.downcase) %> <span class="text-danger"><%= message %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%else%>
+            <h4>
+              <%= I18n.t("errors.messages.not_saved", count: 1, resource: resource.class.model_name.human.downcase) %> <span class="text-danger"><%= message %> </span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" class="error">x</span>
+              </button>
+            </h4>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+  <% end %>
+</div>

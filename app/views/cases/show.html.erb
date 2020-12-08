@@ -19,26 +19,38 @@
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             Date de visite du bien : <%= "#{@case.visit_date.day}/#{@case.visit_date.month}/#{@case.visit_date.year}" %>
           </p>
+          <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
+            <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
+                Mettre à jour le dossier
+            <% end %>
+          </p><br>
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             <% if @case.videos.attached? %>
-              <%= @case.videos.length %> vidéos:<br> 
-              <% @case.videos.each do |video|%>
-                <% if video.representable? %>
-                  <%= link_to video.filename, video %>
-                  <%= link_to delete_video_attachment_case_path(video.id), method: :delete, data: { confirm: 'Etes_vous sûr?' } do %>
-                    <i class="fas fa-trash"></i>
-                  <% end %>
-                  <br> 
-                <% end %>
-              <% end %>
-            <% end %>
-          </p>
-          <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
-          <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
-              Mettre à jour le dossier
-          <% end %>
+              <% if @case.videos.length == 1 %>
+                <%= @case.videos.length %> vidéo:
+              <%else%>
+                <%= @case.videos.length %> vidéos:
+              <%end%>
+            <%end%>
           </p>
         </div>
+      </div> <!-- / .row -->
+      <div class="row video-card justify-content-center align-items-center">
+        <% if @case.videos.attached? %>
+          <% @case.videos.length.times do |i| %>
+            <div class="card border-0" style="width: 15rem; margin: 6px;">
+              <div class="card-img-top">
+                <%= video_tag rails_blob_path(@case.videos[i]), size: "240x209", controls: true %>
+              </div>
+              <div class="card-title text-center">
+                <%= link_to "vidéo n°#{i+1}", @case.videos[i] %><span>
+                <%= link_to delete_video_attachment_case_path(@case.videos[i]), method: :delete, data: { confirm: 'Etes_vous sûr?' } do %>
+                  <i class="fas fa-trash"></i>
+                <% end %></span>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div> <!-- / .row -->
     </div> <!-- / .container -->
   </section>
@@ -72,7 +84,7 @@
                 Prénom
               </h4>
               <p class="card-text text-muted">
-                <%= @user.firstname%>
+                <%= @user.firstname.capitalize%>
               </p>
             </div>
           </div>
@@ -87,7 +99,7 @@
                 Nom
               </h4>
               <p class="card-text text-muted">
-                <%= @user.lastname%>
+                <%= @user.lastname.titleize%>
               </p>
             </div>
           </div>
@@ -152,7 +164,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
           <h2 class="text-white text-center mb-4">
-            Information donné par <%= @user.lastname %> <%= @user.firstname %> à propos du bien
+            Information donné par <%= @user.lastname.titleize %> <%= @user.firstname.titleize %> à propos du bien
           </h2>
           <p class="text-white text-muted text-center mb-5">
             Informations relatives au bien en l'état avant travaux
@@ -296,7 +308,7 @@
               <i class="fas fa-money-check-alt fa-2x"></i>
             </div>
             <h4 class="text-white mb-3">
-              Syndic de copropriété
+              Travaux de copropriété
             </h4>
             <p class="text-white text-muted mb-0">
               <%= @case.renovation_union %> €
@@ -351,7 +363,7 @@
               <i class="fas fa-money-check-alt fa-2x"></i>
             </div>
             <h4 class="text-white mb-3">
-              Charges syndicales
+              Syndic de copropriété
             </h4>
             <p class="text-white text-muted mb-0">
               <%= @case.union_charges_cost %> €
@@ -858,14 +870,16 @@
         <div class="col-md text-left">
             <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;" %>  
         </div>
-        <% if current_user.administrator? %>
-          <div class="col-md text-center">
-              <%= link_to "Générer le .pdf", generate_pdf_path, method: :post, class: "btn btn-outline-primary" %>
+        <%if current_user.administrator? %>
+          <% if @case.is_confirmed == true %>
+            <div class="col-md text-center">
+                <%= link_to "Générer le .pdf", generate_pdf_path, method: :post, class: "btn btn-outline-primary" %>
+            </div>
+          <% end %>
+          <div class="col-md text-right">
+            <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
           </div>
-        <% end %>
-        <div class="col-md text-right">
-          <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
-        </div>
+        <%end%>
       </div>
     </div> 
   </section>

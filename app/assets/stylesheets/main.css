@@ -83,6 +83,7 @@
     background-color: white;
 }
 
+
 #user_show .card {
     margin-top: -70px;
     background-size: cover;
@@ -117,6 +118,10 @@
 
 /* PAGE EDIT REGISTRATION EDIT */
 
+#edit .container {
+    margin-top: -60px;
+}
+
 #edit .card {
     background-color: white;
 }
@@ -143,6 +148,13 @@
 
 #edit .padding-title {
     margin-bottom: -30px;
+}
+
+#edit .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 /* PAGE FORGOT PASSWORD EMAIL SENDER */
@@ -311,6 +323,9 @@
 }
 
 /* PAGE CASE SHOW */
+#show-cases .video-card {
+    margin-top: -40px;
+}
 
 #show-cases .text-primary {
     margin-top:50px;
@@ -366,6 +381,10 @@
     top: 0;
 }
 
+#index_user .mylink:hover {
+    text-decoration: none !important;
+}
+
 #index_user .card-header {
     background-color: var(--dark);
     margin: -1px
@@ -374,6 +393,10 @@
 #index_user .margin-card-header {
     margin-top: 10px;
     color: white;
+}
+
+#index_user .btn-outline-danger:hover {
+    color: var(--danger);
 }
 
 #index_user .margin-card-body {
@@ -402,17 +425,19 @@
 }
 
 #edit_rooms .card {
+    background-image: url(https://casper.imgix.net/assets/products_new/2020-Gallery-Images/Gallery/Original-Foam-Gallery-3.jpg?auto=compress,format&q=65&w=1200);
+    border-radius: 10px;
     background-size: cover;
     margin: 0 auto; 
     float: none; 
     margin-bottom: 10px;
-    margin-top: -50px;
-    width: 50%; 
+    margin-top: -50px; 
 }
 
 #edit_rooms .card-header {
     background-color: var(--dark);
     margin: -1px;
+    border-radius: 10px;
 }
 
 #edit_rooms p {
@@ -434,9 +459,10 @@
     height:18px;
     background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
     margin-bottom: -1px;
-
-    
 }
+
+/* ERROR MESSAGES EDIT USER */
+
 
 
 
