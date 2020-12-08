@@ -794,14 +794,21 @@
       </div> <!-- / .row -->
       <div class="row justify-content-center", style="margin-top:50px;">
         <div class="col-md-8 col-lg-6 text-center">
-          <%= link_to "Remplir les loyés estimés pour chaque chambre", edit_case_room_path(@case.id),class: "card-link text-center btn btn-outline-primary"%>
+          <%= link_to @case.new_rooms_count == 0 ? "Remplir les loyés estimés" : "Modifier les loyés estimés", edit_case_path(@case.id),class: "card-link text-center btn btn-outline-primary"%>
           <br>
           <p class="text-white text-muted text-center">
             <br>
-            Vous ne pourrez pas calculer les rentabilitées du bien tant que les loyés estimés pour chaque chambre n'aurons pas été complétés.
+            Vous ne pourrez pas générer les calcules des rentabilitées du bien tant que les loyés estimés pour chaque chambre n'aurons pas été ajoutés.
           </p>
         </div>
       </div>
+      <% if @case.new_rooms_count > 0 %>
+      <div class="row justify-content-center", style="margin-top:10px;">
+        <div class="col-md-8 col-lg-6 text-center">
+          <%= link_to "Générer les calculs", generate_compute_path, method: :post, class: "card-link text-center btn btn-outline-primary"%>
+        </div>
+      </div>
+      <% end %>
       <div class="row">
         <div class="col-md-6">
           <div class="text-center mb-5 mb-md-0">
@@ -812,7 +819,7 @@
               Location total de toutes les chambres au mois
             </h4>
             <p class="text-white text-muted mb-0">
-              <%= @case.total_rent_monthly %>
+              <%= @case.total_rent_monthly %> €
             </p>
           </div>
         </div>  

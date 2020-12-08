@@ -608,7 +608,7 @@
 										<div class="field form-group">
 											<%= form.label 'Type de bien' %>
 											<div class="input-group">
-												<%= form.select(:old_project,["Maison", "Appartement", "Local commercial"], { :required => true }, { :class => 'custom-select' }) %>
+												<%= form.select(:new_project,["Maison", "Appartement", "Local commercial"], { :required => true }, { :class => 'custom-select' }) %>
 											</div>
 										</div>
 									</div>
@@ -616,7 +616,7 @@
 										<div class="field form-group">
 											<%= form.label 'Type de logement' %>
 											<div class="input-group">
-												<%= form.select(:old_type,["T1", "T2", "T3", "T4"], { :required => true }, { :class => 'custom-select' })%>
+												<%= form.select(:new_type,["T1", "T2", "T3", "T4"], { :required => true }, { :class => 'custom-select' })%>
 											</div>
 										</div>
 									</div>
@@ -634,16 +634,11 @@
 										</div>
 									</div>
 									<div class="col-md-8 col-lg-4">
-										<div class="field form-group">
-											<%= form.label 'Nombre de chambre' %>
-											<div class="input-group">
-												<%= form.number_field :new_rooms_count, autofocus: true, class: "form-control order-1" %>
-												<div class="input-group-append order-0">
-													<div class="input-group-text">
-														<i class="fas fa-bed"></i>
-													</div>
-												</div>
-											</div>
+											<div class="field form-group">
+											<%= form.fields_for :rooms do |room| %>
+													<%= render 'room_fields', f: room %>
+											<% end %>
+											<%= link_to_add_fields "Ajouter une chambre", form, :rooms %>
 										</div>
 									</div>
 									<div class="col-md-8 col-lg-4">
@@ -668,7 +663,7 @@
 				<div class="row">
 				<div class="col-md">
 						<div class="actions text-left">
-							<%= link_to "Retour", cases_path, class: "btn btn-outline-secondary" %>
+							<%= link_to "Retour", root_path, class: "btn btn-outline-secondary" %>
 						</div>
 					</div>
 					<div class="col-md">
