@@ -6,8 +6,8 @@ class  UsersController < ApplicationController
         if current_user.administrator?
             @users = User.all.order(approved: :asc)
         else
+            flash[:warning]="Vous n'avez pas accès à cette page"
             redirect_to root_path
-            flash.alert ="Vous n'avez pas accès à cette page"
         end
     end
 
@@ -16,8 +16,8 @@ class  UsersController < ApplicationController
         elsif
             current_user.id == @user.id
         else
+            flash[:warning]="Vous n'avez pas accès à cette page"
             redirect_to root_path
-            flash.alert ="Vous n'avez pas accès à cette page"
         end
     end
 

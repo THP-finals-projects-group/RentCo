@@ -1,17 +1,21 @@
-<div id="index_case">	
+<div id="index_case">
 	<section class="section section-top section-full">
 		<div class="bg-overlay bg-dark bg"></div>
 		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
 		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
 		<div class="container">
-			<hr class ="margin-title">
+			<hr class="margin-title">
 			<% if current_user.administrator? %>
 				<h1 class="text-center text-white">Les dossiers</h1>
 			<%else%>
 				<h1 class="text-center text-white">Mes dossiers</h1>
 			<%end%>
 			<hr class ="margin-title">
+			<%= render "flash_messages" %>
 			<div style="margin-left: 12%; margin-right: 10%; display: flex; flex-wrap: wrap">
+				<% if @cases.empty? %>
+            <%= link_to 'Créer mon premier dossier',  new_case_path, class: "text-center btn btn-lg btn-success mb-2" %>  
+				<% end %>
 				<% @cases.each do |c| %>
 					<div class="row" >
 						<div class="col-md-4">
