@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     member do
       delete :delete_video_attachment
     end
+    member do
+      patch :toogle_is_confirmed
+    end
   end
   
   resources :users, only: [:show, :index, :update]

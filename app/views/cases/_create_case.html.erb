@@ -5,6 +5,7 @@
 	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
 	<div id="create_case">
 		<div class="container">
+		<%= render "error_messages", resource: resource %>
 			<%= form_with(model: @case, local: true, class: "form-styled bg-white") do |form| %>
 				<div class="row justify-content-center align-items-center">
 					<div class="col-md-8 col-lg-12">
@@ -13,7 +14,7 @@
 						</h4>
 						<p class="text-center text-muted mb-5">
 							Veuillez remplir le dossier ci-dessous afin d'ouvrir un nouveau dossier
-						</p>
+						</p> 
 						<fieldset class="col-md-8 col-lg-12">
 							<legend>Informations relative au dossier</legend>
 							<div class="row">
@@ -209,9 +210,9 @@
 								</div>
 								<div class="col-md-8 col-lg-4">
 									<div class="field form-group">
-										<%= form.label 'Syndic de copropriété' %>
+										<%= form.label 'Travaux de copropriété' %>
 										<div class="input-group">
-											<%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :renovation_union, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -238,6 +239,25 @@
 										<%= form.label 'Frais de notaire' %>
 										<div class="input-group">
 											<%= form.number_field :notary_charges, autofocus: true, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-money-check-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<br>
+						<fieldset class="col-md-8 col-lg-12">
+							<legend>Informations relative aux charges du bien</legend>
+							<div class="row">
+								<div class="col-md-8 col-lg-4">
+									<div class="field form-group">
+										<%= form.label 'Syndic de copropriété' %>
+										<div class="input-group">
+											<%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -352,7 +372,7 @@
 											<%else%>
 												Veuillez ajouter une vidéo au dossier
 											<%end%>
-											<%= form.file_field :videos, multiple: true, class: 'form-control'%>
+											<%= form.file_field :videos, multiple: true, accept: "video/*", class: 'form-control'%>
 											<% @case.videos.each do |video|%>
 												<% if video.representable? %>
 													<%= link_to video.filename, video %>
@@ -648,7 +668,7 @@
 				<div class="row">
 				<div class="col-md">
 						<div class="actions text-left">
-							<%= link_to "Retour", cases_path, class: "btn btn-outline btn-secondary" %>
+							<%= link_to "Retour", cases_path, class: "btn btn-outline-secondary" %>
 						</div>
 					</div>
 					<div class="col-md">

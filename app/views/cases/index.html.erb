@@ -1,13 +1,36 @@
-<div id="index_case">	
+<div id="index_case">
 	<section class="section section-top section-full">
 		<div class="bg-overlay bg-dark bg"></div>
 		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
 		<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
 		<div class="container">
+			<hr class="margin-title">
+			<% if current_user.administrator? %>
+				<h1 class="text-center text-white">Les dossiers</h1>
+			<%else%>
+				<h1 class="text-center text-white">Mes dossiers</h1>
+			<%end%>
 			<hr class ="margin-title">
-			<h1 class="text-center text-white">Dossiers</h1>
-			<hr class ="margin-title">
-			<div style="margin-left: 10%; margin-right: 10%; display: flex; flex-wrap: wrap">
+			<%= render "flash_messages" %>
+			<div style="margin-left: 12%; margin-right: 10%; display: flex; flex-wrap: wrap">
+				<% if @cases.empty? %>
+					<div class="card empty-index">
+						<div class="card-body">
+							<div class="card-header card-header-empty text-center">
+								<p class="empty">Bienvenue !<p>
+							</div>
+						</div>
+						<div class="card-body muted-title">
+							<hr>
+							<p> Bonjour <%= current_user.lastname.titleize%> <%= current_user.firstname.titleize%> ,</p> 
+							<p class="text-muted">Vous n'avez pas encore de dossiers enregistrés sur RentCo. Pour pouvoir collaborer, commencez par créer votre premier dossier.</p>
+							<hr>
+						</div>
+						<div class="card-body">
+            	<%= link_to 'Créer',  new_case_path, class: "btn btn-lg btn-success btn-sm" %>
+						</div> 
+					</div> 
+				<% end %>
 				<% @cases.each do |c| %>
 					<div class="row" >
 						<div class="col-md-4">
@@ -22,23 +45,35 @@
 									<%# <%= check_box_tag :c, c.is_confirmed , data: { remote: true, url: edit_case_path(c.id), params: { id: c.id, origin: "checkbox"}.to_param, method: "put" }%>
 								<% end %>
 								<div class="card-body">
-									<h2 class="card-header text-center"><strong><%= c.title %></strong></h2>
+									<div class="row">
+										<div class="col-md-6">
+											<p class="size"><%= "Modifié: #{sprintf '%02d', c.updated_at.day}/#{sprintf '%02d', c.updated_at.month}/#{c.updated_at.year}" %></p>
+										</div>
+										<div class="col-md-6">
+											<p class="size"><%= "Créé: #{sprintf '%02d', c.created_at.day}/#{sprintf '%02d', c.created_at.month}/#{c.created_at.year}" %></p>
+										</div>
+									</div>
+									<h2 class="card-header card-header-full text-center"><strong><%= c.title.capitalize %></strong></h2>
 									<hr>
 									<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
 									<hr>
-									<p class="card-text"><strong><%= c.city %></strong></p>
+									<p class="card-text text-center"><strong> À <%= c.city.titleize %></strong></p>
 									<hr>
-									<div class ="row text-center">
-										<%= link_to "Voir", case_path(c.id), class: "btn btn-primary btn-outline btn-sm"%><br>
-										<% if current_user.administrator? %>
-											<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-danger btn-outline btn-sm"%>
+									<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
+									<br>
+									<% if current_user.administrator? %>
+										<%= link_to edit_case_path(c.id), method: :get, class: "btn btn-outline-secondary btn-sm show" do %> 
+											Modifier
 										<% end %>
-									</div>
+										<br>
+										<br>
+										<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-outline-danger btn-sm"%>
+									<% end %>
 									<hr>
-									<% if c.is_confirmed == true %>
-										<p class="card-text margin">État du dossier : <span class="text-success"">Ouvert</span></p>
+									<% if c.is_confirmed == false %>
+										<p class="card-text margin">État du dossier : <span class="text-danger">Fermé</span></p>
 									<%else%>
-										<p class="card-text margin">État du dossier : <span class="text-danger"">Fermé</span></p>
+										<p class="card-text margin">État du dossier : <span class="text-success"">Confirmé</span></p>
 									<%end%>
 									<hr>
 									<p id="muted" class="text-muted">&copy RentCo.</p>						

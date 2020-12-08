@@ -3,6 +3,15 @@
     <div class="bg-overlay bg-dark bg"></div>
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left bg"></div>
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right bg"></div>
+    <div class="container">  
+      <div class="card border-0 message">
+        <div class="row">
+          <div class="col-md">
+            <%= render 'users/shared/flash_messages'%>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <div class="card bg-white">
         <div class="card-header">
@@ -19,8 +28,12 @@
           <% @users.each do |user| %>
             <div class="row">
               <div class="col-md-4">
-                <p><%= user.lastname %> <%= user.firstname %><p>
-                <%=link_to user.email, user_path(user.id) %>
+                <p><%= link_to "#{user.lastname.capitalize} #{user.firstname.capitalize}", user_path(user.id), class:"text-dark" %></p>
+                <div class="text-info">
+                  <%= mail_to user.email do %>
+                    <span class="text-info"><%= user.email %></span>
+                  <% end %>
+                </div>
               </div>
               <div class="col-md-4 margin-status">
                 <% if user.approved == true %>
@@ -29,9 +42,16 @@
                   <p class="text-danger"><i class="fas fa-times-circle fa-2x"></i></p>
                 <%end%>
               </div>
-              <div class="col-md-4 margin-confirmed">
-                <%= link_to "Confirmer", user_path(user.id), method: :put, class: "btn btn-outline-primary" %>
-              </div>
+              <% if user.approved == false %>
+                <div class="col-md-4 margin-confirmed">
+                  <%= link_to "Confirmer le compte", user_path(user.id), data: {confirm:'Étes vous sûr de vouloir confirmer ce compte?'}, method: :put, class: "btn btn-outline-primary" %>
+                </div>
+                <%else user.approved == true %>
+                <div class="col-md-4 margin-confirmed">
+                  <%= link_to "Désactiver le compte", user_path(user.id), data: {confirm:'Étes vous sûr de vouloir désactiver ce compte?'}, method: :put, class: "btn btn-outline-danger" %>
+                </div>
+              <% end %>
+                
             </div>
             <hr>
             <br>

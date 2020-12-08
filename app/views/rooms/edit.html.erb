@@ -11,10 +11,10 @@
 					<h1>Modification des chambres</h1>
 				</div>
 				<div class="card-body ">
-					<%= form_with(url: case_room_path, method: "put") do %>    
+					<%= form_with(url: case_room_path, method: "put") do |form| %>    
 						<% @case_rooms.each_with_index do |room, ind| %>
 							<h2 class="background">Chambre n° : <span class="text-danger"> <%= ind + 1 %></span></h2>	
-							<%= number_field_tag room.rent_monthly, nil, class: 'form-control order-1', required: true, data: {autocomplete_source: room.rent_monthly} %>
+							<%= form.number_field room.rent_monthly, required: true %>
 						<br>
 						<% end %>
 						<div class="text-center">
