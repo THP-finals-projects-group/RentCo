@@ -19,26 +19,38 @@
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             Date de visite du bien : <%= "#{@case.visit_date.day}/#{@case.visit_date.month}/#{@case.visit_date.year}" %>
           </p>
+          <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
+            <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
+                Mettre à jour le dossier
+            <% end %>
+          </p><br>
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             <% if @case.videos.attached? %>
-              <%= @case.videos.length %> vidéos:<br> 
-              <% @case.videos.each do |video|%>
-                <% if video.representable? %>
-                  <%= link_to video.filename, video %>
-                  <%= link_to delete_video_attachment_case_path(video.id), method: :delete, data: { confirm: 'Etes_vous sûr?' } do %>
-                    <i class="fas fa-trash"></i>
-                  <% end %>
-                  <br> 
-                <% end %>
-              <% end %>
-            <% end %>
-          </p>
-          <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
-          <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
-              Mettre à jour le dossier
-          <% end %>
+              <% if @case.videos.length == 1 %>
+                <%= @case.videos.length %> vidéo:
+              <%else%>
+                <%= @case.videos.length %> vidéos:
+              <%end%>
+            <%end%>
           </p>
         </div>
+      </div> <!-- / .row -->
+      <div class="row video-card justify-content-center align-items-center">
+        <% if @case.videos.attached? %>
+          <% @case.videos.length.times do |i| %>
+            <div class="card border-0" style="width: 15rem; margin: 6px;">
+              <div class="card-img-top">
+                <%= video_tag rails_blob_path(@case.videos[i]), size: "240x209", controls: true %>
+              </div>
+              <div class="card-title text-center">
+                <%= link_to "vidéo n°#{i+1}", @case.videos[i] %><span>
+                <%= link_to delete_video_attachment_case_path(@case.videos[i]), method: :delete, data: { confirm: 'Etes_vous sûr?' } do %>
+                  <i class="fas fa-trash"></i>
+                <% end %></span>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div> <!-- / .row -->
     </div> <!-- / .container -->
   </section>

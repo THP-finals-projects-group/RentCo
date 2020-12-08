@@ -25,6 +25,10 @@
     background-color:var(--gray-dark);
 }
 
+#session_new .card-body .text-muted {
+    margin-bottom: -50px;
+}
+
 #boxid {
     margin-top: 15px;
 }
@@ -36,6 +40,10 @@
 #sessions_new .main-part-center-home .title-home-page {
     font-size:40px;
     color:white;
+}
+
+#sessions_new .container-fluid {
+    margin-bottom: 17px;
 }
 
 #sessions_new .main-part-center-home .p-text-home-page {
@@ -164,11 +172,9 @@
 }
 
 #forgot_password_email .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
     margin-top: 285px;
     margin-right: 250px;
+    margin-left: 450px;
 }
 
 #forgot_password_email .margin-title {
@@ -200,8 +206,16 @@
     padding-left: 415px;
 }
 
+#forgot_password .card {
+    background-color: white;
+}
+
 #forgot_password .container {
-    padding-right: 200px;
+    padding-top: 180px;
+}
+
+#forgot_password h3 {
+    padding-top: 30px;
 }
 
 /* PAGE CASE INDEX */
@@ -323,6 +337,9 @@
 }
 
 /* PAGE CASE SHOW */
+#show-cases .video-card {
+    margin-top: -40px;
+}
 
 #show-cases .text-primary {
     margin-top:50px;
@@ -367,6 +384,11 @@
         padding-right: 500px;
     }
 
+}
+
+#registration_new .container {
+    margin-top: 100px;
+    margin-bottom: -47px;
 }
 
 /*  PAGE INDEX USER */
