@@ -12,7 +12,11 @@
 				</div>
 				<div class="card-body ">  
 
-
+<%= form_with(url: case_room_path, method: "put") do %>    
+                        <% @case_rooms.each_with_index do |room, ind| %>
+                                    <%= label_tag "Chambre numéro :#{ind+1}", nil, class: 'white' %><br />
+                                        <%= number_field_tag room.rent_monthly, nil, class: 'form-control order-1', required: true, data: {autocomplete_source: room.rent_monthly} %>
+	<%= submit_tag "Generer les chambres" %>
 					<%= form_with(model: @rooms, local: true, class: "form-styled bg-white") do |form| %>
 						<%= form.label 'Nom du dossier' %>
 						<%= form.number_field :rent_monthly, autofocus: true, class: "form-control order-1" %>
