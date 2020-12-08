@@ -3,7 +3,7 @@ class CasesController < ApplicationController
     before_action :set_case, only: [:show, :edit, :update, :destroy, :generate_pdf]
     
 
-    def index
+    def index        
 		if current_user.administrator?
 			@cases = Case.all.order(:updated_at, :created_at).reverse
 		else
@@ -31,12 +31,17 @@ class CasesController < ApplicationController
     def create
         @case = User.find(current_user.id).cases.new(cases_params)
 
-        if @case.save 
-            @case.new_rooms_count.times do
-                Room.create(case_id: @case.id)
+        if @case.save
+            if current_user.administrator? 
+                @case.new_rooms_count.times do
+                    Room.create(case_id: @case.id)
+                end
+                
+                redirect_to edit_case_room_path(@case.id, case_id: @case.id), notice: 'Votre dossier à bien été ouvert.'
+            else
+                flash[:success] = 'Votre dossier à bien été ouvert.'
+                redirect_to cases_path
             end
-            
-            redirect_to edit_case_room_path(@case.id, case_id: @case.id), notice: 'Votre dossier à bien été ouvert.'
         else 
             flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
             render 'new'
@@ -51,7 +56,8 @@ class CasesController < ApplicationController
             @s_button_submit = "Modifier dossier"
             @s_title_document = "Modification du dossier"
         else
-            redirect_to root_path, notice: "Vous n'êtes pas autorisé à modifier le dossier !"
+            flash[:warning] =  "Vous n'êtes pas autorisé à modifier le dossier !"
+            redirect_to root_path
         end
     end
 
@@ -64,7 +70,7 @@ class CasesController < ApplicationController
         @case.new_rooms_count.times do |room|
             Room.create(case_id: @case.id)
         end
-
+        flash[:success] =  "Le dossier à était mis à jour!"
         redirect_to root_path
     end
 
