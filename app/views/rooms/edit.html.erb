@@ -10,17 +10,15 @@
 					<br>
 					<h1>Modification des chambres</h1>
 				</div>
-				<div class="card-body ">
-					<%= form_with(url: case_room_path, method: "put") do |form| %>    
-						<% @case_rooms.each_with_index do |room, ind| %>
-							<h2 class="background">Chambre n° : <span class="text-danger"> <%= ind + 1 %></span></h2>	
-							<%= form.number_field room.rent_monthly, required: true %>
-						<br>
-						<% end %>
-						<div class="text-center">
-							<%= submit_tag "Valider", class: "btn btn-primary text-dark" %>
-						</div>
-					<%end%>
+				<div class="card-body ">  
+
+
+					<%= form_with(model: @rooms, local: true, class: "form-styled bg-white") do |form| %>
+						<%= form.label 'Nom du dossier' %>
+						<%= form.number_field :rent_monthly, autofocus: true, class: "form-control order-1" %>
+						<%= form.submit "generate", class: "btn btn-outline-primary" %>
+					<% end %>
+
 				</div>
 			</div>
 		</div>
