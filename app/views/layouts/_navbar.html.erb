@@ -2,33 +2,34 @@
 <div id="navbar">
   <nav class="navbar navbar-expand-xl navbar-dark  navbar-togglable fixed-top">
     <div class="container">
-      <%= link_to image_tag("https://scontent-cdg2-1.xx.fbcdn.net/v/t1.15752-9/129202059_290807142351895_5983916574331561307_n.png?_nc_cat=108&ccb=2&_nc_sid=ae9488&_nc_ohc=36QBZRmXoQIAX-O-f2O&_nc_ht=scontent-cdg2-1.xx&oh=edc5f505806d1f35596740a0c5af9921&oe=5FEC8E26"), cases_path%>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
+      <%= link_to cases_path do%>
+        <%= image_tag asset_path('130764474_382950262998885_2805957376442774179_n.png'), style: "width: 60px; height: 60px;"%>
+      <%end%>
+        <ul class="navbar-nav margin-nav-items">
           <li class="nav-item">
-            <%= link_to 'Profil',  user_path(current_user.id), class: "nav-link" %>  
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Creer un dossier',  new_case_path, class: "nav-link" %>  
+            <%= link_to 'Creer un dossier',  new_case_path, class: "nav-link"%>  
           </li>
           <li class="nav-item">
             <%= link_to 'Liste des dossiers', cases_path, class: "nav-link" %> 
           </li>
           <li class="nav-item-divider">
-            <span class="nav-link">
-              <span></span>
-            </span>
+            <span class="nav-link"></span>
           </li>
-          <li class="nav-item">
-              <%= link_to 'Deconnexion', destroy_user_session_path, data: {confirm:'Étes vous sûr de vouloir vous déconnecter ?'}, method: :delete, class:"nav-link" %>  
-          </li>
-          <% if current_user.administrator? %>
-            <li class="nav-item">
-                <%= link_to "Confirmer les comptes", users_path, class: "nav-link"%>
-            </li>
-          <% end %>
         </ul>
-      </div> 
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user fa-2x"></i>
+            </a>
+            <div class="dropdown-menu text-center">
+              <%= link_to 'Profil',  user_path(current_user.id), class: "dropdown-item" %>
+              <% if current_user.administrator? %>
+                <%= link_to "Confirmer les comptes", users_path, class: "dropdown-item"%>
+              <% end %>
+              <%= link_to 'Deconnexion', destroy_user_session_path, data: {confirm:'Étes vous sûr de vouloir vous déconnecter ?'}, method: :delete, class:"dropdown-item", style:"background-color: var(--danger)" %>
+            </div>
+          </li>
+        </ul>
     </div>     
   </nav>
 </div>
