@@ -13,7 +13,7 @@
 							<%= @s_title_document %>
 						</h4>
 						<p class="text-center text-muted mb-5">
-							Veuillez remplir le dossier ci-dessous afin d'ouvrir un nouveau dossier
+							Veuillez remplir le formulaire ci-dessous afin d'ouvrir un nouveau dossier
 						</p> 
 						<fieldset class="col-md-8 col-lg-12">
 							<legend>Informations relative au dossier</legend>
@@ -368,9 +368,13 @@
 										<fieldset>
 											<legend><%= form.label :videos %></legend>
 											<% if @case.videos.attached? %>
-												Nombre de videos: <%= @case.videos.length %>
+												<% if @case.videos.length == 1 %>
+													<%= @case.videos.length %> ajoutée
+												<%else%>
+													<%= @case.videos.length %> ajoutées
+												<%end%>
 											<%else%>
-												Veuillez ajouter une vidéo au dossier
+												Veuillez ajouter une ou plusieurs vidéo(s) au dossier
 											<%end%>
 											<%= form.file_field :videos, multiple: true, accept: "video/*", class: 'form-control'%>
 											<% @case.videos.each do |video|%>
@@ -403,6 +407,14 @@
 							<fieldset class="col-md-8 col-lg-12">
 								<legend>Projection travaux</legend>
 								<div class="row">
+									<div class="col-md-8 col-lg-4">
+										<div class="field form-group">
+											<%= form.label 'Estimation global du coût des travaux' %><br/>
+											<div class="input-group", style="display:flex;align-items:center;">
+												<%= form.select(:indicator_pre_estimation_renovation ,["22", "52", "82", "112"], {require: true}, {class: "custom-select"})%>   €/m²
+											</div>
+										</div>
+									</div>
 									<div class="col-md-8 col-lg-4">
 										<div class="field form-group">
 											<%= form.label 'Démolition' %>
@@ -608,7 +620,7 @@
 										<div class="field form-group">
 											<%= form.label 'Type de bien' %>
 											<div class="input-group">
-												<%= form.select(:old_project,["Maison", "Appartement", "Local commercial"], { :required => true }, { :class => 'custom-select' }) %>
+												<%= form.select(:new_project,["Maison", "Appartement", "Local commercial"], { :required => true }, { :class => 'custom-select' }) %>
 											</div>
 										</div>
 									</div>
@@ -616,7 +628,7 @@
 										<div class="field form-group">
 											<%= form.label 'Type de logement' %>
 											<div class="input-group">
-												<%= form.select(:old_type,["T1", "T2", "T3", "T4"], { :required => true }, { :class => 'custom-select' })%>
+												<%= form.select(:new_type,["T1", "T2", "T3", "T4"], { :required => true }, { :class => 'custom-select' })%>
 											</div>
 										</div>
 									</div>
@@ -635,22 +647,18 @@
 									</div>
 									<div class="col-md-8 col-lg-4">
 										<div class="field form-group">
-											<%= form.label 'Nombre de chambre' %>
-											<div class="input-group">
-												<%= form.number_field :new_rooms_count, autofocus: true, class: "form-control order-1" %>
-												<div class="input-group-append order-0">
-													<div class="input-group-text">
-														<i class="fas fa-bed"></i>
-													</div>
-												</div>
-											</div>
+											<%= form.label 'Loyer des chambres' %>
+											<%= form.fields_for :rooms do |room| %>
+													<%= render 'room_fields', f: room %>
+											<% end %>
+											<%= link_to_add_fields "Ajouter une chambre", form, :rooms %>
 										</div>
 									</div>
 									<div class="col-md-8 col-lg-4">
 										<div class="field form-group">
 											<%= form.label 'Nombre de mois estimée' %>
 											<div class="input-group">
-												<%= form.number_field :month_count, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :month_count, autofocus: true, require: true, class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-calendar-alt"></i>
@@ -668,7 +676,7 @@
 				<div class="row">
 				<div class="col-md">
 						<div class="actions text-left">
-							<%= link_to "Retour", cases_path, class: "btn btn-outline-secondary" %>
+							<%= link_to "Retour", root_path, class: "btn btn-outline-secondary" %>
 						</div>
 					</div>
 					<div class="col-md">

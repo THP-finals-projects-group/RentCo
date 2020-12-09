@@ -8,8 +8,8 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.string :street_name,                             null: false 
       t.string :city,                                    null: false
       t.string :zipcode,                                 null: false, limit: 5
-      t.string :longitude
-      t.string :latitude
+      t.float :longitude
+      t.float :latitude
       t.datetime :visit_date,                            null: false
       t.boolean :is_confirmed,                           null: false, default: false     
       t.text :physical_description,                      limit: 500
@@ -34,10 +34,12 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.integer :estimated_negociation,                   default: 0
       t.integer :notary_charges,                          default: 0
       t.integer :property_taxes,                          default: 0
-      t.integer :agency_charges,                         default: 0
+      t.integer :agency_charges,                          default: 0
       t.integer :renovation_union,                        default: 0
       # renovation
       t.integer :pno_insurance_cost
+      t.integer :pre_estimation_renovation_cost
+      t.integer :indicator_pre_estimation_renovation
       t.integer :total_renovation_cost
       t.integer :renovation_demolition_cost,              default: 0
       t.integer :renovation_preparation_cost,             default: 0

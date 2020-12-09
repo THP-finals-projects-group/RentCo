@@ -1,5 +1,5 @@
 
-<section class="section section-full section-top ">
+<section class="section section-full ">
   <div class="bg-overlay bg-dark"></div>
   <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
   <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
@@ -127,10 +127,10 @@
             <div class="col-md-8 col-lg-6">
               <div class="field from-group">
                 <%= f.label :métier %><br>
-                  <div class="input-group">
-                    <%= f.select(:profession, ['Chasseur de bien', 'Agent Immobilier', 'Notaire'], { :required => true }, { :class => 'custom-select' }) %>
-                  </div>
+                <div class="input-group">
+                  <%= f.select(:profession, ['Chasseur de bien', 'Agent Immobilier', 'Notaire'], { :required => true }, { :class => 'custom-select' }) %>
                 </div>
+              </div>
             </div>
           </div>
           <div class="custom-control custom-checkbox ">

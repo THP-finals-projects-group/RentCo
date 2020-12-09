@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_143703) do
     t.string "street_name", null: false
     t.string "city", null: false
     t.string "zipcode", limit: 5, null: false
-    t.string "longitude"
-    t.string "latitude"
+    t.float "longitude"
+    t.float "latitude"
     t.datetime "visit_date", null: false
     t.boolean "is_confirmed", default: false, null: false
     t.text "physical_description"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_143703) do
     t.integer "agency_charges", default: 0
     t.integer "renovation_union", default: 0
     t.integer "pno_insurance_cost"
+    t.integer "pre_estimation_renovation_cost"
+    t.integer "indicator_pre_estimation_renovation"
     t.integer "total_renovation_cost"
     t.integer "renovation_demolition_cost", default: 0
     t.integer "renovation_preparation_cost", default: 0
