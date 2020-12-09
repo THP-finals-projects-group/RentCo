@@ -9,22 +9,30 @@ RentCo, a real estate company, is involved in all stages of a real estate projec
 
 ### Developpers :
 
-- [Dan](https://github.com/)
-- [Jérémy](https://github.com/)
-- [Manu](https://github.com/)
+- [Dan](https://github.com/DanBertrand)
+- [Jérémy](https://github.com/Queje)
+- [Manu](https://github.com/Doury-Manuel)
 - [Quentin](https://github.com/qdtrl)
-- [Vincent](https://github.com/)
+- [Vincent](https://github.com/Erudigit)
 
 ### Tools :
 
-* Bootstrap
-* Ruby on Rails 
+* Ruby on Rails
+* [Bootstrap - Incline](https://themes.getbootstrap.com/preview/?theme_id=3569)
 * Active Storage
 
 ### APIs :
 
-* MailJet
+* [MailJet](https://github.com/mailjet/mailjet-gem)
 * Amazon S3
+* Googe Maps API
+
+### Gems :
+
+* [Devise](https://github.com/heartcombo/devise)
+* [WickedPdf](https://github.com/mileszs/wicked_pdf)
+* [Streamio](https://github.com/streamio/streamio-ffmpeg)
+
 
 ## How to use it :
 
