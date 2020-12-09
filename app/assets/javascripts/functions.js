@@ -9,7 +9,7 @@ var onAllCases = function () {
     for (let index = 0; index < cases.length; index++) {
         cases[index].style.display = "";
     }
-}
+};
 
 var onProposedCases = function () {
     var cases = document.querySelectorAll("div.case-validation");
@@ -20,7 +20,7 @@ var onProposedCases = function () {
     for (let index = 0; index < cases.length; index++) {
         cases[index].style.display = "";
     }
-}
+};
 
 var onRunningCases = function () {
     var cases = document.querySelectorAll("div.case-validation");
@@ -31,7 +31,7 @@ var onRunningCases = function () {
     for (let index = 0; index < cases.length; index++) {
         cases[index].style.display = "";
     }
-}
+};
 
 var onValidatedCases = function () {
     var cases = document.querySelectorAll("div.case-validation");
@@ -42,7 +42,7 @@ var onValidatedCases = function () {
     for (let index = 0; index < cases.length; index++) {
         cases[index].style.display = "";
     }
-}
+};
 
 allCases.addEventListener("click", onAllCases);
 proposedCases.addEventListener("click", onProposedCases);
