@@ -87,8 +87,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin-top: 285px;
-    background-color: white;
+    margin-top: 17em;
 }
 
 
@@ -122,6 +121,18 @@
 
 #user_show .list-group {
     margin-top: 15px;
+}
+
+#user_show .custom {
+    margin-top: 8em;
+    position: relative;
+}
+
+#user_show .cards-usercases-admin {
+    margin-left: 12%; 
+    margin-right: 10%; 
+    display: flex; 
+    flex-wrap: wrap;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */

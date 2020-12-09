@@ -24,19 +24,19 @@
                 Mettre à jour le dossier
             <% end %>
           </p><br>
-          <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
-            <% if @case.videos.attached? %>
+          <% if @case.videos.attached? %>
+            <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
               <% if @case.videos.length == 1 %>
                 <%= @case.videos.length %> vidéo:
               <%else%>
                 <%= @case.videos.length %> vidéos:
               <%end%>
-            <%end%>
-          </p>
+            </p>
+          <%end%>
         </div>
       </div> <!-- / .row -->
-      <div class="row video-card justify-content-center align-items-center">
-        <% if @case.videos.attached? %>
+      <% if @case.videos.attached? %>
+        <div class="row video-card justify-content-center align-items-center">
           <% @case.videos.length.times do |i| %>
             <div class="card border-0" style="width: 15rem; margin: 6px;">
               <div class="card-img-top">
@@ -50,8 +50,8 @@
               </div>
             </div>
           <% end %>
-        <% end %>
-      </div> <!-- / .row -->
+        </div> <!-- / .row -->
+      <% end %>
     </div> <!-- / .container -->
   </section>
 

@@ -85,4 +85,7 @@ class Case < ApplicationRecord
         AdminMailer.new_case(self).deliver_now
     end
 
+    def get_lastname(c)
+        User.find(c.user_id).lastname.titleize
+    end
 end
