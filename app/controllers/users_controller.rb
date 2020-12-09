@@ -12,6 +12,9 @@ class  UsersController < ApplicationController
     end
 
     def show
+        @users = User.all
+        @cases = Case.where(user_id:@user.id)
+
         if current_user.administrator?
         elsif
             current_user.id == @user.id

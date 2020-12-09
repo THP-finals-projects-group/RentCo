@@ -3,7 +3,8 @@ class CasesController < ApplicationController
     before_action :set_case, only: [:show, :edit, :update, :destroy, :generate_pdf]
     
 
-    def index        
+    def index     
+
 		if current_user.administrator?
             @cases = Case.all.order(:updated_at, :created_at).reverse
             @users = User.all
@@ -97,16 +98,19 @@ class CasesController < ApplicationController
 
     def toogle_is_confirmed
         @case = Case.find(params[:id])
+        @user = User.find(@case.user_id)
         if @case.is_confirmed == false
             @case.update(is_confirmed: true)
+            User.send_case_confirmed_mail(@user.email)
             respond_to do |format|
-                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
+                format.html { redirect_to cases_path, notice: 'Le dossier a bien été validé, le collaborateur en charge du dossier ne peut plus apporter de modifications. Il est prévenu par email' }
                 format.json { head :no_content }
             end
+
         else
             @case.update(is_confirmed: false)
             respond_to do |format|
-                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
+                format.html { redirect_to cases_path, notice: 'Le dossier est maintenant modifiable par vous et le collaborateur en charge de ce dossier' }
                 format.json { head :no_content }
             end
         end

@@ -33,7 +33,6 @@ class ComputeCalcul < ApplicationController
         @case.renta_brut = (@case.total_rent_annual_estimations * 10).to_f / (@case.total_buying_price + @case.total_renovation_cost).to_f
 
         @case.renta_net = (@case.total_rent_annual_estimations - @case.property_taxes - @case.property_taxes).to_f / ((@case.total_buying_price + @case.total_renovation_cost) / 10).to_f
-        binding.pry
         @case.save
     end
 

@@ -13,13 +13,16 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
+      <div style ="margin-left: 73em; margin-bottom: -2em;" id="up" >
+        <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+      </div>
       <div class="row justify-content-center align-items-center">
         <div class="col-md-8 col-lg-7">
           <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
-              Créé le <%= "#{sprintf '%02d', @case.created_at.day}/#{sprintf '%02d', @case.created_at.month}/#{@case.created_at.year} à #{@case.created_at.hour}h#{sprintf '%02d', @case.created_at.min}" %>
+            Créé le <%= "#{sprintf '%02d', @case.created_at.day}/#{sprintf '%02d', @case.created_at.month}/#{@case.created_at.year} à #{@case.created_at.hour}h#{sprintf '%02d', @case.created_at.min}" %>
           </p>
           <h1 class="text-white text-center mb-4" data-toggle="animation" data-animation="fadeUp" data-animation-order="1" data-animation-trigger="load">
-              <%= @case.title %>
+            <%= @case.title %>
           </h1>
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             Référence du dossier : <%= @case.case_reference %>
@@ -29,18 +32,18 @@
           </p>
           <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
             <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
-                Mettre à jour le dossier
+              Mettre à jour le dossier
             <% end %>
           </p><br>
-          <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
-            <% if @case.videos.attached? %>
+          <% if @case.videos.attached? %>
+            <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
               <% if @case.videos.length == 1 %>
                 <%= @case.videos.length %> vidéo:
               <%else%>
                 <%= @case.videos.length %> vidéos:
               <%end%>
-            <%end%>
-          </p>
+            </p>
+          <%end%>
         </div>
       </div> <!-- / .row -->
       <% if @case.videos.attached? %>
@@ -64,7 +67,7 @@
     </div> <!-- / .container -->
   </section>
 
-  <!-- INFORMATION RELATIVE A LA PERSONNE
+  <!-- INFORMATION related to the user
   ================================================== -->
   <section class="section bg-light">
     <div class="line line-top"></div>
@@ -162,13 +165,12 @@
     </div> 
   </section>
 
-    <!-- INFORMATION RELATIVE AU BIEN
+    <!-- INFORMATION on the property
     ================================================== -->
 
   <section class="section bg-dark">
     <div class="line line-top"></div>
     <div class="bg-triangle bg-triangle-light bg-triangle-top bg-triangle-left"></div>
-    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
@@ -392,7 +394,8 @@
             </p>
           </div>
         </div>
-        <div class="col-md-12">
+        <% if current_user.administrator? %>
+          <div class="col-md-12">
           <div class="text-center">
             <div class="text-danger mb-4">
               <i class="fas fa-file-invoice-dollar fa-2x"></i>
@@ -404,7 +407,8 @@
               <%= @case.total_monthly_charges %> €
             </p>
           </div>
-        </div>
+          </div>
+        <% end %>
         <h3 class="text-white text-center mb-12">
           Prix du bien
         </h3>
@@ -434,489 +438,533 @@
             </p>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="text-center">
-            <div class="text-danger mb-4">
-              <i class="fas fa-money-bill-alt fa-2x"></i>
+        <% if current_user.administrator? %>
+          <div class="col-md-12">
+            <div class="text-center">
+              <div class="text-danger mb-4">
+                <i class="fas fa-money-bill-alt fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Prix total du bien
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.total_buying_price %> €
+              </p>
             </div>
-            <h4 class="text-white mb-3">
-              Prix total du bien
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.total_buying_price %> €
-            </p>
           </div>
-        </div>
+        <%end%>
       </div> 
     </div> 
   </section>
 
-    <!-- INFORMATION RELATIVE AUX TRAVAUX
+    <!-- INFORMATIONS on renovation costs 
     ================================================== -->
-
-  <section class="section bg-light">
-    <div class="line line-top"></div>
-    <div class="bg-triangle bg-triangle-dark bg-triangle-top bg-triangle-left"></div>
-    <div class="bg-triangle bg-triangle-dark bg-triangle-bottom bg-triangle-right"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-          <h2 class="text-center mb-4">
-            Informations relatives aux travaux
-          </h2>
-          <p class="text-muted text-center mb-5">
-            Informations concernant le détails des travaux prévus sur ce bien.
-          </p>
-        </div>
-      </div> 
-      <div class="row text-center">
-        <div class="col-md-12">
-          <div class="card border-0 mb-3 mb-md-0">
-            <div class="card-img-top">
-              <i class="fas fa-euro-sign fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Pré-estimation du coût total des travaux
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.pre_estimation_renovation_cost %> € pour une surface de <%= @case.old_surface %>
-              </p>
-            </div>
-          </div>
-        </div>
-      <div class="row text-center">
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0">
-            <div class="card-img-top">
-              <i class="fas fa-bomb fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Démolition
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_demolition_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0">
-            <div class="card-img-top">
-              <i class="fas fa-people-carry text-primary fa-2x"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Préparation
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_preparation_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0">
-            <div class="card-img-top">
-              <i class="fas fa-chair fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Menuiserie
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_carpentry_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0">
-            <div class="card-img-top">
-              <i class="fab fa-buffer fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Platerie et isolation
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_plastering_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-bolt fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Électricité
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_electricity_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-faucet fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Plomberie
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_plumbing_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-border-style fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Mur et plafond
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_wall_ceiling_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-paint-roller fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Peinture
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_painting_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-square-full fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Sol
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_flooring_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-sink fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Cuisine
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_kitchen_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-box-open fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Mobilier
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_furniture_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-building fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Façade
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_facade_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-lock fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Sécurité
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_security_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fab fa-linode fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Maçonnerie
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_masonry_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fab fa-accusoft fa-2x text-primary"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Couverture
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.renovation_covering_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="card border-0 mb-3 mb-md-0" >
-            <div class="card-img-top">
-              <i class="fas fa-euro-sign fa-2x text-danger"></i>
-            </div>
-            <div class="card-body">
-              <h4 class="card-title">
-                Coût total des travaux
-              </h4>
-              <p class="card-text text-muted">
-                <%= @case.total_renovation_cost %> €
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> 
-    </div>
-  <% if current_user.administrator? %>
-  </section>
   
-    <!-- INFORMATIONS RELATIVES AUX PRÉVISIONS DU BIEN
-    ================================================== -->
-
-  <section class="section bg-dark">
-    <div class="line line-top"></div>
-    <div class="bg-triangle bg-triangle-light bg-triangle-top bg-triangle-left"></div>
-    <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-          <h2 class="text-white text-center mb-4">
-            Informations sur les prévisions du bien
-          </h2>
-          <p class="text-white text-muted text-center mb-5">
-            Informations relatives au projection du bien, ainsi que sur ses taux de rentabilités
-          </p>
-        </div>
-      </div> 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-city fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Type de bien prévu
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.new_type %>
+  <%if current_user.administrator? %>
+    <section class="section bg-light">
+      <div class="line line-top"></div>
+      <div class="bg-triangle bg-triangle-dark bg-triangle-top bg-triangle-left"></div>
+      <div class="bg-triangle bg-triangle-dark bg-triangle-bottom bg-triangle-right"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <h2 class="text-center mb-4">
+              Informations relatives aux travaux
+            </h2>
+            <p class="text-muted text-center mb-5">
+              Informations concernant le détails des travaux prévus sur ce bien.
             </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-expand fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Surface prévue
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.new_surface %> m²
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-house-damage fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Coût de l'assurance PNO prévue
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.pno_insurance_cost %> €
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-house-user fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Type de logement prévu
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.new_project %>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-bed fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Nombre de chambres prévues
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.new_rooms_count %>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-calendar-alt fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Nombre de mois de location prévus
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.month_count %>
-            </p>
-          </div>
-        </div>
-      </div> <!-- / .row -->
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-          <h2 class="text-white text-center mb-2 mt-5">
-            <hr style="border-color:var(--primary)">
-            Calcul de rentabilité
-            <hr style="border-color:var(--primary)">
-          </h2>
-        </div>
-      </div> 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-money-check-alt fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Location total de toutes les chambres au mois
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.total_rent_monthly %> €
-            </p>
-          </div>
-        </div>  
-        <div class="col-md-6">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-money-check-alt fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Location total de toutes les chambres à l'année
-            </h4>
-            <p class="text-white text-muted mb-0">
-              <%= @case.total_rent_annual_estimations %> €
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-hand-holding-usd fa-2x"></i>
-            </div>
-            <h4 class="text-white mb-3">
-              Rentabilité brut du projet sur 10 ans
-            </h4>
-            <% if !(@case.renta_brut.nil?) %>
-            <p class="text-white text-muted mb-0", style="border:1px solid var(--primary); width:50%; margin:0 auto;">
-              <%= (@case.renta_brut*100).round(2) %> %
-            </p>
-            <% end %>
           </div>
         </div> 
-        <div class="col-md-6">
-          <div class="text-center mb-5 mb-md-0">
-            <div class="text-primary mb-4">
-              <i class="fas fa-hand-holding-usd fa-2x"></i>
+        <div class="row text-center">
+          <div class="col-md-12">
+            <div class="card border-0 mb-3 mb-md-0">
+              <div class="card-img-top">
+                <i class="fas fa-euro-sign fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Pré-estimation du coût total des travaux
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.pre_estimation_renovation_cost %> € pour une surface de <%= @case.old_surface %>
+                </p>
+              </div>
             </div>
-            <h4 class="text-white mb-3">
-              Rentabilité net du projet à l'année
-            </h4>
-            <% if !(@case.renta_net.nil?) %>
-            <p class="text-white text-muted mb-0", style="border:1px solid var(--primary); width:50%; margin:0 auto;">
-              <%= (@case.renta_net*100).round(2) %> %
-            </p>
-            <% end %>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0">
+              <div class="card-img-top">
+                <i class="fas fa-bomb fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Démolition
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_demolition_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0">
+              <div class="card-img-top">
+                <i class="fas fa-people-carry text-primary fa-2x"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Préparation
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_preparation_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0">
+              <div class="card-img-top">
+                <i class="fas fa-chair fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Menuiserie
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_carpentry_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0">
+              <div class="card-img-top">
+                <i class="fab fa-buffer fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Platerie et isolation
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_plastering_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-bolt fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Électricité
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_electricity_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-faucet fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Plomberie
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_plumbing_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-border-style fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Mur et plafond
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_wall_ceiling_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-paint-roller fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Peinture
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_painting_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-square-full fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Sol
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_flooring_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-sink fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Cuisine
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_kitchen_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-box-open fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Mobilier
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_furniture_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-building fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Façade
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_facade_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-lock fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Sécurité
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_security_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fab fa-linode fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Maçonnerie
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_masonry_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fab fa-accusoft fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Couverture
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.renovation_covering_cost %> €
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card border-0 mb-3 mb-md-0" >
+              <div class="card-img-top">
+                <i class="fas fa-euro-sign fa-2x text-danger"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Coût total des travaux
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.total_renovation_cost %> €
+                </p>
+              </div>
+            </div>
           </div>
         </div> 
       </div>
-      <% end %>
-      <br>
-      <hr class="margin-title"> 
-      <br>
-
-      <% current_user.administrator? ? align = "left" : align = "center" %> 
-      <div class="row">
-        <div class="col-md text-<%= align %>">
-            <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;" %>  
-        </div>
-        <% if !(@case.renta_brut.nil?) %>
-          <div class="col-md text-center">
-              <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary mb-4" do %>
-                Mettre à jour le dossier
+    </section>
+  <%end%>
+  
+  <!-- INFORMATIONS on the property after renovation
+    ================================================== -->
+    
+  <% if current_user.administrator? %>
+    <section class="section bg-dark">
+      <div class="line line-top"></div>
+      <div class="bg-triangle bg-triangle-light bg-triangle-top bg-triangle-left"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <h2 class="text-white text-center mb-4">
+              Informations sur les prévisions du bien
+            </h2>
+            <p class="text-white text-muted text-center mb-5">
+              Informations relatives au projection du bien, ainsi que sur ses taux de rentabilités
+            </p>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-md-4">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-city fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Type de bien prévu
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.new_type %>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-expand fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Surface prévue
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.new_surface %> m²
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-house-damage fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Coût de l'assurance PNO prévue
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.pno_insurance_cost %> €
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-house-user fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Type de logement prévu
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.new_project %>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-bed fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Nombre de chambres prévues
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.new_rooms_count %>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-calendar-alt fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Nombre de mois de location prévus
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.month_count %>
+              </p>
+            </div>
+          </div>
+        </div> <!-- / .row -->
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <h2 class="text-white text-center mb-2 mt-5">
+              <hr style="border-color:var(--primary)">
+              Calcul de rentabilité
+              <hr style="border-color:var(--primary)">
+            </h2>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-md-6">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-money-check-alt fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Location total de toutes les chambres au mois
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.total_rent_monthly %> €
+              </p>
+            </div>
+          </div>  
+          <div class="col-md-6">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-money-check-alt fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Location total de toutes les chambres à l'année
+              </h4>
+              <p class="text-white text-muted mb-0">
+                <%= @case.total_rent_annual_estimations %> €
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-hand-holding-usd fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Rentabilité brut du projet sur 10 ans
+              </h4>
+              <% if !(@case.renta_brut.nil?) %>
+                <p class="text-white text-muted mb-0", style="border:1px solid var(--primary); width:50%; margin:0 auto;">
+                  <%= (@case.renta_brut*100).round(2) %> %
+                </p>
               <% end %>
+            </div>
+          </div> 
+          <div class="col-md-6">
+            <div class="text-center mb-5 mb-md-0">
+              <div class="text-primary mb-4">
+                <i class="fas fa-hand-holding-usd fa-2x"></i>
+              </div>
+              <h4 class="text-white mb-3">
+                Rentabilité net du projet à l'année
+              </h4>
+              <% if !(@case.renta_net.nil?) %>
+              <p class="text-white text-muted mb-0", style="border:1px solid var(--primary); width:50%; margin:0 auto;">
+                <%= (@case.renta_net*100).round(2) %> %
+              </p>
+              <% end %>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+  <%end%>
+
+  <!-- Buttons and links
+    ================================================== -->
+  
+  <section class="section" style="background-color: black;">
+    <div class="line line-top"></div>
+    <div class="bg-triangle bg-triangle-light bg-triangle-right bg-triangle-right"></div>
+    <div class="container">
+      <% if current_user.administrator? && !(@case.renta_brut.nil?)%>
+        <div class="row" style="padding-left: 10px;">
+          <div class="col mx-1">
+            <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>  
+          </div>
+          <div class="col mx-1">
+            <% if @case.is_confirmed == false || current_user.administrator? %>
+              <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary btn-sm", style: "width: 195px; height: 53px" do %>
+                <p style="font-size: 10px; padding-top: 6px;">Mettre à jour le dossier</p>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col mx-1">
+            <% if !(@case.renta_brut.nil?) %>
               <%= link_to "Générer le .pdf", generate_pdf_case_path, method: :post, class: "btn btn-outline-primary" %>
+            <% end %>
           </div>
-        <% end %>
-        <% if current_user.administrator? %>
-          <div class="col-md text-right">
-            <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
+          <% if current_user.administrator? && !(@case.renta_brut.nil?)%>
+            <div class="col mx-1 ">
+              <%= link_to "#{ @case.is_confirmed ? "Rendre modifiable" : 'Clore le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: " text-white btn btn-outline-#{ @case.is_confirmed ? 'info' : 'success' }", style: "width: #{ @case.is_confirmed ? '174px;' : '172px;'}"  %>
+            </div>
+          <% end %>
+          <div class="col mx-1">
+            <a href="#up"><i class="fas fa-arrow-up fa-4x"></i></a>
           </div>
-        <% end %>
+        </div>
+      <%else%>
+        <% if !(@case.renta_brut.nil?) %>
+          <div class="row" style="padding-left: 145px;">
+            <div class="col mx-1">
+              <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
+            </div>
+            <div class="col mx-1">
+              <%= link_to "Générer le .pdf", generate_pdf_case_path, method: :post, class: "btn btn-outline-primary" %>
+            </div>
+            <div class="col md-1">
+              <a href="#up"><i class="fas fa-arrow-up fa-4x"></i></a>
+            </div>
+          </div>
+        <%else%>
+          <div class="row" style="padding-left: 270px;">
+            <div class="col-md-6">
+              <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
+            </div>
+            <div class="col-md-6">
+              <a href="#up"><i class="fas fa-arrow-up fa-4x"></i></a>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
+  </section>
 </div>

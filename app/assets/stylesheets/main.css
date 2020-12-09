@@ -97,8 +97,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin-top: 285px;
-    background-color: white;
+    margin-top: 17em;
 }
 
 
@@ -132,6 +131,18 @@
 
 #user_show .list-group {
     margin-top: 15px;
+}
+
+#user_show .custom {
+    margin-top: 8em;
+    position: relative;
+}
+
+#user_show .cards-usercases-admin {
+    margin-left: 12%; 
+    margin-right: 10%; 
+    display: flex; 
+    flex-wrap: wrap;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */
@@ -310,11 +321,15 @@
 
 #index_case .picture {
     height: 5%;
-    
 }
 
 #index_case .size {
     font-size: 8px;
+}
+
+#index_case .card-top-margin {
+    padding-top: 4px;
+    padding-bottom: 20px;
 }
 
 #index_case .btn-outline-primary:hover {
@@ -377,7 +392,15 @@
 
 /* PAGE CASE SHOW */
 #show-cases .video-card {
-    margin-top: -40px;
+    margin-top: -6em;
+}
+
+#show-cases .col .btn-outline-info:hover {
+    color: var(--info) !important;
+}
+
+#show-cases .col .btn-outline-success:hover {
+    color: var(--success) !important;
 }
 
 #show-cases .text-primary {
