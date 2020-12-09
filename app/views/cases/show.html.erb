@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=@case.latitude%>, <%=@case.longitude%>)
+    });
+    </script>
+<% end %>
+
 <div id="show-cases">
   <section class="section section-top section-full">
     <div class="bg-cover" style="background-image: url(<%= asset_path('48.jpg') %>);"></div>
@@ -52,15 +60,7 @@
           <% end %>
         <% end %>
       </div> <!-- / .row -->
-
-
-      <p style="color:white;">Address: <%= @case.address %></p>
-      <p style="color:white;">Coordinates: <%= @case.latitude %> <%= @case.longitude %></p>
-      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@case.latitude},#{@case.longitude}&markers=#{@case.latitude},#{@case.longitude}&zoom=7&size=640x400&key=AIzaSyAS2OmUpaRuqvONQMhq-L1CGC-9G-QqIFU",
-                    class: 'img-fluid img-rounded', alt: "#{@case.title} on the map"%>
-
-
-
+      <div id="map"></div> <!-- / Div to display GoogleMap -->
     </div> <!-- / .container -->
   </section>
 

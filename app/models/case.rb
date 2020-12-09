@@ -77,14 +77,6 @@ class Case < ApplicationRecord
     # videos
     #validates :videos, presence: true, blob: { content_type: ['video/mp4', 'video/avi'], size_range: 1..20.megabytes }
 
-    def address
-        [street_number, street_name, zipcode, city].compact.join(",")
-    end
-
-    def address_changed?
-        street_number? || street_name? || zipcode? || city?
-    end
-
     private
   
     def past_date
@@ -94,6 +86,15 @@ class Case < ApplicationRecord
 
     def mailer_new_case
         AdminMailer.new_case(self).deliver_now
+    end
+
+    # Methods for GeoCoder
+    def address
+        [street_number, street_name, zipcode, city].compact.join(",")
+    end
+
+    def address_changed?
+        street_number? || street_name? || zipcode? || city?
     end
 
 end
