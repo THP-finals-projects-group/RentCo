@@ -7,7 +7,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= wicked_pdf_stylesheet_link_tag "pdf" %>
-    
+
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ ENV['GOOGLE_MAP_API'] %>
+
   </head>
 
   <body data-turbolinks="false">
@@ -16,7 +18,8 @@
       <%= render 'layouts/navbar' %>
     <% end %>
   
-
+   
+    <%= yield(:head_tags) %>
     <%= yield %>
 
   </body>

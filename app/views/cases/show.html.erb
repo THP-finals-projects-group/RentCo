@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=@case.latitude%>, <%=@case.longitude%>)
+    });
+    </script>
+<% end %>
+
 <div id="show-cases">
   <section class="section section-top section-full">
     <div class="bg-cover" style="background-image: url(<%= asset_path('48.jpg') %>);"></div>
@@ -35,8 +43,8 @@
           </p>
         </div>
       </div> <!-- / .row -->
-      <div class="row video-card justify-content-center align-items-center">
-        <% if @case.videos.attached? %>
+      <% if @case.videos.attached? %>
+        <div class="row video-card justify-content-center align-items-center">
           <% @case.videos.length.times do |i| %>
             <div class="card border-0" style="width: 15rem; margin: 6px;">
               <div class="card-img-top">
@@ -50,8 +58,9 @@
               </div>
             </div>
           <% end %>
-        <% end %>
-      </div> <!-- / .row -->
+        </div> <!-- / .row -->
+      <% end %>
+      <div id="map"></div> <!-- / Div to display GoogleMap -->
     </div> <!-- / .container -->
   </section>
 

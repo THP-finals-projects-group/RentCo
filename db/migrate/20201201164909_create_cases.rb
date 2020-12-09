@@ -8,8 +8,8 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.string :street_name,                             null: false 
       t.string :city,                                    null: false
       t.string :zipcode,                                 null: false, limit: 5
-      t.string :longitude
-      t.string :latitude
+      t.float :longitude
+      t.float :latitude
       t.datetime :visit_date,                            null: false
       t.boolean :is_confirmed,                           null: false, default: false     
       t.text :physical_description,                      limit: 500

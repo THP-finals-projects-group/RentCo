@@ -492,6 +492,12 @@
 
 /* ERROR MESSAGES EDIT USER */
 
+/* GOOGLE MAP */
+#map {
+  min-height: 400px;
+  width: 100%;
+}
+
 
 
 
