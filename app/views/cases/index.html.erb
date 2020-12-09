@@ -12,100 +12,102 @@
 			<%end%>
 			<hr class ="margin-title">
 			<%= render "flash_messages" %>
-			<div class="col-12 col-md-2 col-lg-2 order-md-2 pl-md-3 border-left bg-white", style="position: absolute;">
-				<h6 class="title">
-					Dossiers
-				</h6>
-				<nav class="nav-validation sidenav d-flex flex-column mb-5 mb-md-0 ">
-					<a class="nav-filter-a text-uppercase text-xs mb-2 active">Tous</a>
-					<a class="nav-filter-1 text-uppercase text-xs mb-2">Proposé</a>
-					<a class="nav-filter-2 text-uppercase text-xs mb-2">En cours</a>
-					<a class="nav-filter-3 text-uppercase text-xs mb-2">Validé</a>
-				</nav>
-			</div>
-			<div style="margin-left: 12%; margin-right: 10%; display: flex; flex-wrap: wrap">
-				<% if @cases.empty? %>
-					<div class="card empty-index">
-						<div class="card-body">
-							<div class="card-header card-header-empty text-center">
-								<p class="empty">Bienvenue !<p>
+			<div class="row-inline">
+				<div class="col-12 col-md-2 col-lg-2 order-md-2 pl-md-3 border-left text-white first-row">
+					<h6 class="title text-primary">
+						Dossiers
+					</h6>
+					<nav class="nav-validation sidenav d-flex flex-column mb-5 mb-md-0 ">
+						<a class="nav-filter-a text-uppercase text-xs mb-2 active", style="cursor:pointer;">Tous</a>
+						<a class="nav-filter-1 text-uppercase text-xs mb-2", style="cursor:pointer;">Proposé</a>
+						<a class="nav-filter-2 text-uppercase text-xs mb-2", style="cursor:pointer;">En cours</a>
+						<a class="nav-filter-3 text-uppercase text-xs mb-2", style="cursor:pointer;">Validé</a>
+					</nav>
+				</div>
+				<div class="second-row" style="display: flex; flex-wrap: wrap">
+					<% if @cases.empty? %>
+						<div class="card empty-index">
+							<div class="card-body">
+								<div class="card-header card-header-empty text-center">
+									<p class="empty">Bienvenue !<p>
+								</div>
 							</div>
-						</div>
-						<div class="card-body muted-title">
-							<hr>
-							<p> Bonjour <%= current_user.lastname.titleize%> <%= current_user.firstname.titleize%> ,</p> 
-							<p class="text-muted">Vous n'avez pas encore de dossiers enregistrés sur RentCo. Pour pouvoir collaborer, commencez par créer votre premier dossier.</p>
-							<hr>
-						</div>
-						<div class="card-body">
-							<%= link_to 'Créer',  new_case_path, class: "btn btn-lg btn-success btn-sm" %>
+							<div class="card-body muted-title">
+								<hr>
+								<p> Bonjour <%= current_user.lastname.titleize%> <%= current_user.firstname.titleize%> ,</p> 
+								<p class="text-muted">Vous n'avez pas encore de dossiers enregistrés sur RentCo. Pour pouvoir collaborer, commencez par créer votre premier dossier.</p>
+								<hr>
+							</div>
+							<div class="card-body">
+								<%= link_to 'Créer',  new_case_path, class: "btn btn-lg btn-success btn-sm" %>
+							</div> 
 						</div> 
-					</div> 
-				<% end %>
-				<% @cases.each do |c| %>
-					<% 	
-							if !(c.is_confirmed?) && !(c.renta_brut.nil?)
-								data = "3"
-							elsif !(c.is_confirmed?)
-								data = "2"
-							else
-								data = "1"
-							end
-					%>
-					<div class="card case-validation case-<%= data %>", style="width: 18rem; margin: 4px; ">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-6">
-									<p class="size"><%= "Modifié: #{sprintf '%02d', c.updated_at.day}/#{sprintf '%02d', c.updated_at.month}/#{c.updated_at.year}" %></p>
+					<% end %>
+					<% @cases.each do |c| %>
+						<% 	
+								if !(c.is_confirmed?) && !(c.renta_brut.nil?)
+									data = "3"
+								elsif !(c.is_confirmed?)
+									data = "2"
+								else
+									data = "1"
+								end
+						%>
+						<div class="card case-validation case-<%= data %>", style="width: 18rem; margin: 4px; ">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-6">
+										<p class="size"><%= "Modifié: #{sprintf '%02d', c.updated_at.day}/#{sprintf '%02d', c.updated_at.month}/#{c.updated_at.year}" %></p>
+									</div>
+									<div class="col-md-6">
+										<p class="size"><%= "Créé: #{sprintf '%02d', c.created_at.day}/#{sprintf '%02d', c.created_at.month}/#{c.created_at.year}" %></p>
+									</div>
 								</div>
-								<div class="col-md-6">
-									<p class="size"><%= "Créé: #{sprintf '%02d', c.created_at.day}/#{sprintf '%02d', c.created_at.month}/#{c.created_at.year}" %></p>
-								</div>
-							</div>
-							<h2 class="card-header card-header-full text-center"><strong><%= c.title.capitalize %></strong></h2>
-							<hr>
-							<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
-							<hr>
-							<p class="card-text text-center"><strong> À <%= c.city.titleize %></strong></p>
-							<hr>
-							<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
-							<br>
-							<div class="row">
-							<% if current_user.administrator? || (current_user.user? && c.is_confirmed?) %>
-								<div class="col-md-6", style="padding-right:0;margin:1;">
-									<% if !(c.renta_brut.nil?) %>
-											<%= link_to "pdf", generate_pdf_case_path(c.id), method: :post, class: "btn btn-outline-secondary btn-sm show", style: "font-size: 8px;" %>
-									<% end %>
-								</div>
-							<% end %>
-							<% if current_user.administrator? %>
-								<div class="col-md-6", style="padding-left:0;margin:1;">
-									<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-outline-danger btn-sm", style: "font-size: 8px;" %>
-								</div>
-							<% end %>
-							</div>
-							<hr>
-							<% if !(c.is_confirmed?) && !(c.renta_brut.nil?) %>
-								<p class="card-text margin">Dossier <span class="text-warning">en cours</span></p>
-							<% elsif !(c.is_confirmed?) %>
-								<p class="card-text margin">Dossier <span class="text-danger">proposé</span></p>
-							<%else%>
-								<p class="card-text margin">Dossier <span class="text-success">validé</span></p>
-							<%end%>
-							<hr>
-							<div class="row">
-								<div class="col-md-6">
-									<p id="muted" class="text-muted">&copy RentCo.</p>
-								</div>
-								<% if current_user.administrator? %>
-								<div class="col-md-6", style="padding:0;">
-									<p id="muted" class="text-muted">Créer par <%= @users.find(c.user_id).firstname %> <%= @users.find(c.user_id).lastname %> </p>
-								</div>
+								<h2 class="card-header card-header-full text-center"><strong><%= c.title.capitalize %></strong></h2>
+								<hr>
+								<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
+								<hr>
+								<p class="card-text text-center"><strong> À <%= c.city.titleize %></strong></p>
+								<hr>
+								<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
+								<br>
+								<div class="row">
+								<% if current_user.administrator? || (current_user.user? && c.is_confirmed?) %>
+									<div class="col-md-6", style="padding-right:0;margin:1;">
+										<% if !(c.renta_brut.nil?) %>
+												<%= link_to "pdf", generate_pdf_case_path(c.id), method: :post, class: "btn btn-outline-secondary btn-sm show", style: "font-size: 8px;" %>
+										<% end %>
+									</div>
 								<% end %>
-							</div>				
+								<% if current_user.administrator? %>
+									<div class="col-md-6", style="padding-left:0;margin:1;">
+										<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-outline-danger btn-sm", style: "font-size: 8px;" %>
+									</div>
+								<% end %>
+								</div>
+								<hr>
+								<% if !(c.is_confirmed?) && !(c.renta_brut.nil?) %>
+									<p class="card-text margin">Dossier <span class="text-warning">en cours</span></p>
+								<% elsif !(c.is_confirmed?) %>
+									<p class="card-text margin">Dossier <span class="text-danger">proposé</span></p>
+								<%else%>
+									<p class="card-text margin">Dossier <span class="text-success">validé</span></p>
+								<%end%>
+								<hr>
+								<div class="row">
+									<div class="col-md-6">
+										<p id="muted" class="text-muted">&copy RentCo.</p>
+									</div>
+									<% if current_user.administrator? %>
+									<div class="col-md-6", style="padding:0;">
+										<p id="muted" class="text-muted">Créer par <%= @users.find(c.user_id).firstname %> <%= @users.find(c.user_id).lastname %> </p>
+									</div>
+									<% end %>
+								</div>				
+							</div>
 						</div>
-					</div>
-				<% end %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</section>
