@@ -41,5 +41,8 @@ class User < ApplicationRecord
     AdminMailer.account_blocked(email).deliver
   end
 
+  def self.send_case_confirmed_mail(email)
+    AdminMailer.case_confirmed(email).deliver
+  end
 end
 

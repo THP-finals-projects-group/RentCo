@@ -33,9 +33,18 @@
 				<% end %>
 				<% @cases.each do |c| %>
 					<div class="row" >
-						<div class="col-md-4">
+						<div style="padding-left: 48px;">
 							<div class="card " style="width: 18rem; margin: 4px; ">
-								<div class="card-body">
+								<div class="card-body card-top-margin">
+								<% if current_user.administrator? %>
+									<div class="row">
+										<div class=" ml-auto">
+											<%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes_vous sûr de vouloir supprimer ce dossier?' } do %>
+												<i class="fas fa-trash" style="color: var(--danger);"></i>
+											<% end %>
+										</div>
+									</div>
+								<% end %>
 									<div class="row">
 										<div class="col-md-6">
 											<p class="size"><%= "Modifié: #{sprintf '%02d', c.updated_at.day}/#{sprintf '%02d', c.updated_at.month}/#{c.updated_at.year}" %></p>
@@ -50,39 +59,48 @@
 									<hr>
 									<p class="card-text text-center"><strong> À <%= c.city.titleize %></strong></p>
 									<hr>
-									<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
+									<% if (c.renta_brut.nil?) %>
+										<br>
+										<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
+									<%else%>
+										<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
+									<% end %>
 									<br>
-									<div class="row">
 									<% if current_user.administrator? || (current_user.user? && c.is_confirmed?) %>
-										<div class="col-md-6", style="padding-right:0;margin:1;">
-											<% if !(c.renta_brut.nil?) %>
-													<%= link_to "pdf", generate_pdf_case_path(c.id), method: :post, class: "btn btn-outline-secondary btn-sm show", style: "font-size: 8px;" %>
-        							<% end %>
-										</div>
+										<% if !(c.renta_brut.nil?) %>
+											<%= link_to "pdf", generate_pdf_case_path(c.id), method: :post, class: "btn btn-outline-secondary btn-sm" %>
+										<% end %>
 									<% end %>
-									<% if current_user.administrator? %>
-										<div class="col-md-6", style="padding-left:0;margin:1;">
-											<%= link_to "Supprimer", case_path(c.id), method: :delete, data: { confirm: 'Etes-vous sûr de vouloir supprimer ce dossier ?' }, class: "btn btn-outline-danger btn-sm", style: "font-size: 8px;" %>
-										</div>
-									<% end %>
-									</div>
 									<hr>
 									<% if c.is_confirmed == false %>
-										<p class="card-text margin">Dossier <span class="text-danger">non validé</span></p>
+										<p class="card-text margin">Dossier <span class="text-info"><u>modifiable</u></span></p>
 									<%else%>
-										<p class="card-text margin">Dossier <span class="text-success">validé</span></p>
+										<p class="card-text margin">Dossier <span class="text-success"><u>validé</u></span></p>
 									<%end%>
 									<hr>
-									<div class="row">
-										<div class="col-md-6">
-											<p id="muted" class="text-muted">&copy RentCo.</p>
+									<% if !(c.renta_brut.nil?) %>
+										<div class="row">
+											<div style="margin-left: 20px;">
+												<p id="muted" class="text-muted">&copy RentCo.</p>
+											</div>
+											<% if current_user.administrator? %>
+											<div style="margin-top: -6px; margin-left: 80px; margin-bottom: -14px">
+												<%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
+											</div>
+											<% end %>
+										</div>	
+									<%else%>			
+										<div class="row">
+											<div style="margin-left: 20px;">
+												<p id="muted" class="text-muted">&copy RentCo.</p>
+											</div>
+											<% if current_user.administrator? %>
+											<div style="margin-top: -6px; margin-left: 80px;">
+												<%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
+											</div>
+											<% end %>
 										</div>
-										<% if current_user.administrator? %>
-										<div class="col-md-6", style="padding:0;">
-											<p id="muted" class="text-muted">Créer par <%= @users.find(c.user_id).firstname %> <%= @users.find(c.user_id).lastname %> </p>
-										</div>
-										<% end %>
-									</div>				
+									<%end%>				
 								</div>
 							</div>
 						</div>

@@ -321,11 +321,15 @@
 
 #index_case .picture {
     height: 5%;
-    
 }
 
 #index_case .size {
     font-size: 8px;
+}
+
+#index_case .card-top-margin {
+    padding-top: 4px;
+    padding-bottom: 20px;
 }
 
 #index_case .btn-outline-primary:hover {
@@ -359,7 +363,15 @@
 
 /* PAGE CASE SHOW */
 #show-cases .video-card {
-    margin-top: -40px;
+    margin-top: -6em;
+}
+
+#show-cases .col .btn-outline-info:hover {
+    color: var(--info) !important;
+}
+
+#show-cases .col .btn-outline-success:hover {
+    color: var(--success) !important;
 }
 
 #show-cases .text-primary {
