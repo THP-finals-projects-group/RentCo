@@ -58,7 +58,7 @@ User.create!(
   password: "password",
   phone_number: "0639629030",
   profession: professions[rand(0..(professions.length - 1))]
-).cases.create!(
+).cases.new(
   title: "#{Faker::Address.community} - ValidTest",
   visit_date: Faker::Date.between(from: 5.days.ago, to: Date.today),
   case_reference: "Matthieu Gillet",
@@ -71,7 +71,7 @@ User.create!(
   old_rooms_count: rand(1..10),
   old_type: types[rand(0..types.length - 1)],
   old_project: projects[rand(0..projects.length - 1)] 
-)
+).rooms.new(rent_monthly: 0).save
 p "Yes"
 p "-----------------------"
 
@@ -97,7 +97,7 @@ p "-----------------------"
 # Cases
 users.each do |user|
   5.times do |n|
-    casen = user.cases.create!(
+    casen = user.cases.new(
       title: "#{Faker::Address.community} - 42#{n}",
       visit_date: Faker::Date.between(from: 20.days.ago, to: Date.today),
       case_reference: "Matthieu Gillet",
@@ -149,8 +149,9 @@ users.each do |user|
       new_project: projects[rand(0..projects.length - 1)],
     )
     casen.new_rooms_count.times do
-      casen.rooms.create!(rent_monthly: rand(150..500))
+      casen.rooms.new(rent_monthly: rand(150..500))
     end
+    casen.save
   end
 end
 
