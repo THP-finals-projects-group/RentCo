@@ -5,7 +5,8 @@ class CasesController < ApplicationController
 
     def index        
 		if current_user.administrator?
-			@cases = Case.all.order(:updated_at, :created_at).reverse
+            @cases = Case.all.order(:updated_at, :created_at).reverse
+            @users = User.all
 		else
 			@cases = Case.where(user_id:current_user.id)
         end
@@ -14,17 +15,6 @@ class CasesController < ApplicationController
 	def show
         @case = Case.find(params[:id])
         @user = User.find(@case.user_id)
-    end
-
-    def generate_pdf
-        html = render_to_string(partial: "cases/case.pdf.erb")
-        pdf = WickedPdf.new.pdf_from_string(html, title: "#{@case.id}_dossier")
-        send_data pdf, filename: "#{@case.id}_dossier"
-    end
-
-    def generate_compute
-        ComputeCalcul.compute_finals_calculs(params[:id])
-        redirect_to case_path(params[:id])
     end
 
     def new
@@ -36,29 +26,27 @@ class CasesController < ApplicationController
 
     def create   
         @case = User.find(current_user.id).cases.new(cases_params)
-        if current_user.administrator?
-            @case.save
-            rooms = params[:case][:rooms_attributes]
-            rooms.each do |hash|
-                (hash[1].values_at("_destroy")[0] == "false" && !(hash[1].values_at("rent_monthly")[0] == "0")) ? rent = hash[1].values_at("rent_monthly")[0] : next 
-                @case.rooms.create!(rent_monthly: rent.to_i)
-            end
-            @case.new_rooms_count = @case.rooms.length
-        end
+        @case.rooms.new(rent_monthly: 0)
         if @case.save
-            if current_user.administrator?
-                flash[:success] = 'Votre dossier à bien été créé.'
-                redirect_to case_path(@case.id)
-            else
-                flash[:success] = 'Votre dossier à bien été ouvert.'
-                redirect_to case_path(@case.id)
+            if current_user.administrator? 
+                params_rooms(params[:case])
+            end
+            if @case.save
+                if current_user.administrator?
+                    ComputeCalcul.compute_user_part(@case.id)
+                    ComputeCalcul.compute_finals_calculs(@case.id)
+                    flash[:success] = 'Votre dossier à bien été créé.'
+                    redirect_to case_path(@case.id)
+                else
+                    ComputeCalcul.compute_user_part(@case.id)
+                    flash[:success] = 'Votre dossier à bien été ouvert.'
+                    redirect_to case_path(@case.id)
+                end
             end
         else 
             flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
             render 'new'
-        end
-
-        
+        end  
     end
 
     def edit 
@@ -76,37 +64,16 @@ class CasesController < ApplicationController
         @case = Case.find(params[:id])
         if current_user.administrator? 
             @case.update(cases_params)
-            @case.rooms.destroy_all
-            rooms = params[:case][:rooms_attributes]
-            rooms.each do |hash|
-                (hash[1].values_at("_destroy")[0] == "false" && !(hash[1].values_at("rent_monthly")[0] == "0")) ? rent = hash[1].values_at("rent_monthly")[0] : next 
-                @case.rooms.create!(rent_monthly: rent.to_i)
-            end
-            @case.new_rooms_count = @case.rooms.length
-            @case.save
+            params_rooms(params[:case])
+            ComputeCalcul.compute_user_part(params[:id])
+            ComputeCalcul.compute_finals_calculs(params[:id])
             flash[:success] =  "Le dossier à était mis à jour!"
             redirect_to case_path(@case.id)
         else
             @case.update(cases_params)
+            ComputeCalcul.compute_user_part(params[:id])
             flash[:success] =  "Le dossier à était mis à jour!"
             redirect_to case_path(@case.id)
-        end
-    end
-
-    def toogle_is_confirmed
-        @case = Case.find(params[:id])
-        if @case.is_confirmed == false
-            @case.update(is_confirmed: true)
-            respond_to do |format|
-                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
-                format.json { head :no_content }
-            end
-        else
-            @case.update(is_confirmed: false)
-            respond_to do |format|
-                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
-                format.json { head :no_content }
-            end
         end
     end
 
@@ -128,30 +95,52 @@ class CasesController < ApplicationController
         end
     end
 
-    private
-
-        def set_case
-            @case = Case.find(params[:id])
-        end
-    
-        def cases_params
-            if current_user.administrator?
-                params.require(:case).permit( :is_confirmed, :title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, :renovation_demolition_cost, :renovation_preparation_cost, :renovation_carpentry_cost, :renovation_plastering_cost, :renovation_electricity_cost, :renovation_plumbing_cost, :renovation_wall_ceiling_cost, :renovation_painting_cost, :renovation_flooring_cost, :renovation_kitchen_cost, :renovation_furniture_cost, :renovation_facade_cost, :renovation_security_cost, :renovation_masonry_cost, :renovation_covering_cost, :new_type, :new_project, :new_surface, :new_rooms_count, :month_count, videos: [])
-            else
-                params.require(:case).permit(:title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, videos: [])
+    def toogle_is_confirmed
+        @case = Case.find(params[:id])
+        if @case.is_confirmed == false
+            @case.update(is_confirmed: true)
+            respond_to do |format|
+                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
+                format.json { head :no_content }
+            end
+        else
+            @case.update(is_confirmed: false)
+            respond_to do |format|
+                format.html { redirect_to cases_path, notice: 'Le dossier a bien été fermé' }
+                format.json { head :no_content }
             end
         end
-        # :rooms_attributes [[]=>["rent_monthly", "_destroy"]],
-        # def params_rooms(c)
-        #     c.rooms.each do |room_completed|
-        #         room_completed.destroy
-        #     end
-        #     rooms = params[:case][:rooms_attributes]
-        #     rooms.each do |hash|
-        #         hash[1].values_at("rent_monthly").empty? ? rent = hash[1].values_at("rent_monthly") : next
-        #         c.rooms.new(rent_monthly: rent.to_i)
-        #     end
-        #     c
-        # end
+    end
+
+    def generate_pdf
+        html = render_to_string(partial: "cases/case.pdf.erb")
+        pdf = WickedPdf.new.pdf_from_string(html, title: "#{@case.id}_dossier")
+        send_data pdf, filename: "#{@case.id}_dossier"
+    end
+
+    private
+
+    def set_case
+        @case = Case.find(params[:id])
+    end
+
+    def cases_params
+        if current_user.administrator?
+            params.require(:case).permit( :is_confirmed, :title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, :renovation_demolition_cost, :renovation_preparation_cost, :renovation_carpentry_cost, :renovation_plastering_cost, :renovation_electricity_cost, :renovation_plumbing_cost, :renovation_wall_ceiling_cost, :renovation_painting_cost, :renovation_flooring_cost, :renovation_kitchen_cost, :renovation_furniture_cost, :renovation_facade_cost, :renovation_security_cost, :renovation_masonry_cost, :renovation_covering_cost, :new_type, :new_project, :new_surface, :new_rooms_count, :month_count, videos: [])
+        else
+            params.require(:case).permit(:title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, videos: [])
+        end
+    end
+    # :rooms_attributes [[]=>["rent_monthly", "_destroy"]],
+    def params_rooms(params)
+        @case.rooms.destroy_all
+        rooms = params[:rooms_attributes]
+            rooms.each do |hash|
+                (hash[1].values_at("_destroy")[0] == "false" && !(hash[1].values_at("rent_monthly")[0] == "0")) ? rent = hash[1].values_at("rent_monthly")[0] : next 
+                @case.rooms.create!(rent_monthly: rent.to_i)
+            end
+        @case.new_rooms_count = @case.rooms.length
+        @case.save
+    end
 
 end

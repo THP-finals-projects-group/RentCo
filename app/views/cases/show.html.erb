@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=@case.latitude%>, <%=@case.longitude%>)
+    });
+    </script>
+<% end %>
+
 <div id="show-cases">
   <section class="section section-top section-full">
     <div class="bg-cover" style="background-image: url(<%= asset_path('48.jpg') %>);"></div>
@@ -35,8 +43,8 @@
           </p>
         </div>
       </div> <!-- / .row -->
-      <div class="row video-card justify-content-center align-items-center">
-        <% if @case.videos.attached? %>
+      <% if @case.videos.attached? %>
+        <div class="row video-card justify-content-center align-items-center">
           <% @case.videos.length.times do |i| %>
             <div class="card border-0" style="width: 15rem; margin: 6px;">
               <div class="card-img-top">
@@ -50,8 +58,9 @@
               </div>
             </div>
           <% end %>
-        <% end %>
-      </div> <!-- / .row -->
+        </div> <!-- / .row -->
+      <% end %>
+      <div id="map"></div> <!-- / Div to display GoogleMap -->
     </div> <!-- / .container -->
   </section>
 
@@ -804,23 +813,15 @@
           </div>
         </div>
       </div> <!-- / .row -->
-      <div class="row justify-content-center", style="margin-top:50px;">
-        <div class="col-md-8 col-lg-6 text-center">
-          <%= link_to @case.new_rooms_count == 0 ? "Remplir les loyés estimés" : "Modifier les loyés estimés", edit_case_path(@case.id),class: "card-link text-center btn btn-outline-primary"%>
-          <br>
-          <p class="text-white text-muted text-center">
-            <br>
-            Vous ne pourrez pas générer les calcules des rentabilitées du bien tant que les loyés estimés pour chaque chambre n'aurons pas été ajoutés.
-          </p>
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <h2 class="text-white text-center mb-2 mt-5">
+            <hr style="border-color:var(--primary)">
+            Calcul de rentabilité
+            <hr style="border-color:var(--primary)">
+          </h2>
         </div>
-      </div>
-      <% if @case.new_rooms_count > 0 %>
-      <div class="row justify-content-center", style="margin-top:10px;">
-        <div class="col-md-8 col-lg-6 text-center">
-          <%= link_to "Générer les calculs", generate_compute_path, method: :post, class: "card-link text-center btn btn-outline-primary"%>
-        </div>
-      </div>
-      <% end %>
+      </div> 
       <div class="row">
         <div class="col-md-6">
           <div class="text-center mb-5 mb-md-0">
@@ -856,7 +857,11 @@
             <h4 class="text-white mb-3">
               Rentabilité brut du projet sur 10 ans
             </h4>
-
+            <% if !(@case.renta_brut.nil?) %>
+            <p class="text-white text-muted mb-0", style="border:1px solid var(--primary); width:50%; margin:0 auto;">
+              <%= (@case.renta_brut*100).round(2) %> %
+            </p>
+            <% end %>
           </div>
         </div> 
         <div class="col-md-6">
@@ -867,7 +872,11 @@
             <h4 class="text-white mb-3">
               Rentabilité net du projet à l'année
             </h4>
-
+            <% if !(@case.renta_net.nil?) %>
+            <p class="text-white text-muted mb-0", style="border:1px solid var(--primary); width:50%; margin:0 auto;">
+              <%= (@case.renta_net*100).round(2) %> %
+            </p>
+            <% end %>
           </div>
         </div> 
       </div>
@@ -881,9 +890,12 @@
         <div class="col-md text-<%= align %>">
             <%= link_to "Retour", cases_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;" %>  
         </div>
-        <% if @case.is_confirmed? && !(@case.total_rent_monthly.nil?) %>
+        <% if !(@case.renta_brut.nil?) %>
           <div class="col-md text-center">
-              <%= link_to "Générer le .pdf", generate_pdf_path, method: :post, class: "btn btn-outline-primary" %>
+              <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary mb-4" do %>
+                Mettre à jour le dossier
+              <% end %>
+              <%= link_to "Générer le .pdf", generate_pdf_case_path, method: :post, class: "btn btn-outline-primary" %>
           </div>
         <% end %>
         <% if current_user.administrator? %>
@@ -891,7 +903,4 @@
             <%= link_to "#{ @case.is_confirmed ? 'Fermer le dossier' : 'Confirmer le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: "btn btn-xs btn-#{ @case.is_confirmed ? 'danger' : 'primary' }"  %>
           </div>
         <% end %>
-      </div>
-    </div> 
-  </section>
 </div>

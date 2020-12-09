@@ -638,7 +638,8 @@
 										</div>
 									</div>
 									<div class="col-md-8 col-lg-4">
-											<div class="field form-group">
+										<div class="field form-group">
+											<%= form.label 'Loyer des chambres' %>
 											<%= form.fields_for :rooms do |room| %>
 													<%= render 'room_fields', f: room %>
 											<% end %>
@@ -649,7 +650,7 @@
 										<div class="field form-group">
 											<%= form.label 'Nombre de mois estimée' %>
 											<div class="input-group">
-												<%= form.number_field :month_count, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :month_count, autofocus: true, require: true, class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-calendar-alt"></i>
