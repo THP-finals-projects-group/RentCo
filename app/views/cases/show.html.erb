@@ -52,6 +52,15 @@
           <% end %>
         <% end %>
       </div> <!-- / .row -->
+
+
+      <p style="color:white;">Address: <%= @case.address %></p>
+      <p style="color:white;">Coordinates: <%= @case.latitude %> <%= @case.longitude %></p>
+      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@case.latitude},#{@case.longitude}&markers=#{@case.latitude},#{@case.longitude}&zoom=7&size=640x400&key=AIzaSyAS2OmUpaRuqvONQMhq-L1CGC-9G-QqIFU",
+                    class: 'img-fluid img-rounded', alt: "#{@case.title} on the map"%>
+
+
+
     </div> <!-- / .container -->
   </section>
 

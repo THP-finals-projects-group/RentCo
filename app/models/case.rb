@@ -9,6 +9,10 @@ class Case < ApplicationRecord
 
     after_create :mailer_new_case
 
+    #GEO CODER
+    geocoded_by :address
+    after_validation :geocode, if: :address_changed?
+
     # VALIDATES
     validates :title, presence: true, length: { minimum: 5, maximum: 140}
     validates :case_reference, presence: true, length: { minimum: 5, maximum: 140 }
@@ -73,6 +77,13 @@ class Case < ApplicationRecord
     # videos
     #validates :videos, presence: true, blob: { content_type: ['video/mp4', 'video/avi'], size_range: 1..20.megabytes }
 
+    def address
+        [street_number, street_name, zipcode, city].compact.join(",")
+    end
+
+    def address_changed?
+        street_number? || street_name? || zipcode? || city?
+    end
 
     private
   
