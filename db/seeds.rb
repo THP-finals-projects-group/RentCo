@@ -105,7 +105,7 @@ users.each do |user|
       street_name: Faker::Address.street_name,
       city: Faker::Address.city,
       zipcode: "5040#{n}",
-      is_confirmed: true,
+      is_confirmed: false,
       physical_description: generate_quote_sv,
       geographical_description: generate_quote_vfv,
       potential_description: generate_quote_s,
