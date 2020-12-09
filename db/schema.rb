@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_143703) do
     t.integer "agency_charges", default: 0
     t.integer "renovation_union", default: 0
     t.integer "pno_insurance_cost"
+    t.integer "pre_estimation_renovation_cost"
+    t.integer "indicator_pre_estimation_renovation"
     t.integer "total_renovation_cost"
     t.integer "renovation_demolition_cost", default: 0
     t.integer "renovation_preparation_cost", default: 0
