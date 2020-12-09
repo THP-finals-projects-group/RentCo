@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_143703) do
     t.string "street_name", null: false
     t.string "city", null: false
     t.string "zipcode", limit: 5, null: false
-    t.string "longitude"
-    t.string "latitude"
+    t.float "longitude"
+    t.float "latitude"
     t.datetime "visit_date", null: false
     t.boolean "is_confirmed", default: false, null: false
     t.text "physical_description"
