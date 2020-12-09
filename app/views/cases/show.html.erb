@@ -43,8 +43,8 @@
           </p>
         </div>
       </div> <!-- / .row -->
-      <div class="row video-card justify-content-center align-items-center">
-        <% if @case.videos.attached? %>
+      <% if @case.videos.attached? %>
+        <div class="row video-card justify-content-center align-items-center">
           <% @case.videos.length.times do |i| %>
             <div class="card border-0" style="width: 15rem; margin: 6px;">
               <div class="card-img-top">
@@ -58,8 +58,8 @@
               </div>
             </div>
           <% end %>
-        <% end %>
-      </div> <!-- / .row -->
+        </div> <!-- / .row -->
+      <% end %>
       <div id="map"></div> <!-- / Div to display GoogleMap -->
     </div> <!-- / .container -->
   </section>
