@@ -34,10 +34,12 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.integer :estimated_negociation,                   default: 0
       t.integer :notary_charges,                          default: 0
       t.integer :property_taxes,                          default: 0
-      t.integer :agency_charges,                         default: 0
+      t.integer :agency_charges,                          default: 0
       t.integer :renovation_union,                        default: 0
       # renovation
       t.integer :pno_insurance_cost
+      t.integer :pre_estimation_renovation_cost
+      t.integer :indicator_pre_estimation_renovation
       t.integer :total_renovation_cost
       t.integer :renovation_demolition_cost,              default: 0
       t.integer :renovation_preparation_cost,             default: 0
