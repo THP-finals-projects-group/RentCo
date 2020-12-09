@@ -1,3 +1,11 @@
+<% provide :head_tags do %>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=@case.latitude%>, <%=@case.longitude%>)
+    });
+    </script>
+<% end %>
+
 <div id="show-cases">
   <section class="section section-top section-full">
     <div class="bg-cover" style="background-image: url(<%= asset_path('48.jpg') %>);"></div>
@@ -55,6 +63,7 @@
           <% end %>
         </div> <!-- / .row -->
       <% end %>
+      <div id="map"></div> <!-- / Div to display GoogleMap -->
     </div> <!-- / .container -->
   </section>
 
@@ -468,6 +477,23 @@
           </div>
         </div> 
         <div class="row text-center">
+          <div class="col-md-12">
+            <div class="card border-0 mb-3 mb-md-0">
+              <div class="card-img-top">
+                <i class="fas fa-euro-sign fa-2x text-primary"></i>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Pré-estimation du coût total des travaux
+                </h4>
+                <p class="card-text text-muted">
+                  <%= @case.pre_estimation_renovation_cost %> € pour une surface de <%= @case.old_surface %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row text-center">
           <div class="col-md-4">
             <div class="card border-0 mb-3 mb-md-0">
               <div class="card-img-top">
@@ -716,7 +742,7 @@
   <!-- INFORMATIONS on the property after renovation
     ================================================== -->
     
-    <% if current_user.administrator? %>
+  <% if current_user.administrator? %>
     <section class="section bg-dark">
       <div class="line line-top"></div>
       <div class="bg-triangle bg-triangle-light bg-triangle-top bg-triangle-left"></div>
