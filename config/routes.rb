@@ -9,13 +9,12 @@ Rails.application.routes.draw do
     member do
       patch :toogle_is_confirmed
     end
+    member do
+      post :generate_pdf
+    end
   end
   
   resources :users, only: [:show, :index, :update]
   
-  post '/cases/:id/pdf' => 'cases#generate_pdf', as: 'generate_pdf'
-  post '/cases/:id/compute' => 'cases#generate_compute', as: 'generate_compute'
-
-
   root to: "cases#index"
 end
