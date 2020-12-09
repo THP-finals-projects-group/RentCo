@@ -14,6 +14,13 @@ class CasesController < ApplicationController
 	def show
         @case = Case.find(params[:id])
         @user = User.find(@case.user_id)
+        if current_user.administrator?
+        elsif
+            current_user.id == @user.id
+        else
+            flash[:warning]="Vous n'avez pas accès à cette page"
+            redirect_to root_path
+        end
     end
 
     def generate_pdf
