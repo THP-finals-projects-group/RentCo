@@ -206,6 +206,11 @@
             <h4>
               <span class="text-danger"><%= msg %> </span>
             </h4>
+          <%elsif msg == "Rooms can't be null" %>
+            <%msg = "Au minimum une chambre doit être créé" %>
+            <h4>
+              <span class="text-danger"><%= msg %> </span>
+            </h4>
           <%elsif msg == "New rooms count must be greater than or equal to 0"%>
             <%msg = "Le prix des nouvelles chambres de doit être supérieur ou égal à 0" %>
           <h4>
