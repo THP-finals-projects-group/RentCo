@@ -2,7 +2,7 @@ class Case < ApplicationRecord
     # DB RELATIONS
     has_one                 :user
     has_many                :rooms, dependent: :destroy
-    accepts_nested_attributes_for :rooms, allow_destroy: true, reject_if: proc { |attributes| attributes['rent_monthly'].blank? }
+    accepts_nested_attributes_for :rooms, allow_destroy: true
 
     # ACTIVE STORAGE
     has_many_attached       :videos
@@ -69,13 +69,14 @@ class Case < ApplicationRecord
     validates :new_rooms_count, numericality: {greater_than_or_equal_to: 0, only_integer: true, allow_blank: true}
     # validates :new_type, allow_blank: true
     # validates :new_project, allow_blank: true
+    validates_presence_of :rooms, message: "can't be null"
     validates :total_rent_annual_estimations, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :month_count, numericality: {greater_than_or_equal_to: 0, only_integer: true, allow_blank: true}
     validates :total_rent_monthly, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :renta_brut, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :renta_net, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     # videos
-    #validates :videos, presence: true, blob: { content_type: ['video/mp4', 'video/avi'], size_range: 1..20.megabytes }
+    # validates :videos, presence: true, blob: { content_type: ['video/mp4', 'video/avi'], size_range: 1..20.megabytes }
 
     private
   
