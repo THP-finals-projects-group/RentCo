@@ -25,114 +25,21 @@
         </div>
       </div>
     </div>
-    <% if current_user.administrator? %>
-      <% if @cases.length == 1 %>
-        <h3 class="text-center text-white custom"><U>Dossier géré par <%=@user.lastname.titleize%> <%=@user.firstname.titleize%> :</U></h3><br>
-      <%else%>
-        <h3 class="text-center text-white custom"><U>Dossiers gérés par <%=@user.lastname.titleize%> <%=@user.firstname.titleize%> :</U></h3><br>
-			<%end%>
-			<div class="row-inline">
-				<div class="col-12 col-md-2 col-lg-2 order-md-2 pl-md-3 border-left text-white first-row">
-					<h6 class="title text-primary">
-						Dossiers
-					</h6>
-					<nav class="nav-validation sidenav d-flex flex-column mb-5 mb-md-0 ">
-						<a class="nav-filter-a text-uppercase text-xs mb-2 active", style="cursor:pointer;">Tous</a>
-						<a class="nav-filter-1 text-uppercase text-xs mb-2", style="cursor:pointer;">Proposé</a>
-						<a class="nav-filter-2 text-uppercase text-xs mb-2", style="cursor:pointer;">En cours</a>
-						<a class="nav-filter-3 text-uppercase text-xs mb-2", style="cursor:pointer;">Validé</a>
-					</nav>
-				</div>
-				<div class="cards-usercases-admin" id="index_case">
-					<% @cases.each do |c| %>
-						<% 	
-							if !(c.is_confirmed?) && !(c.renta_brut.nil?)
-								data = "3"
-							elsif !(c.is_confirmed?)
-								data = "2"
-							else
-								data = "1"
-							end
-						%>
-						<div class="row" >
-							<div style="padding-left: 48px;">
-								<div class="card case-validation case-<%= data %>", style="width: 18rem; margin: 4px; ">
-									<div class="card-body card-top-margin">
-										<% if current_user.administrator? %>
-											<div class="row">
-												<div class=" ml-auto">
-													<%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes_vous sûr de vouloir supprimer ce dossier?' } do %>
-														<i class="fas fa-trash" style="color: var(--danger);"></i>
-													<% end %>
-												</div>
-											</div>
-										<% end %>
-										<div class="row">
-											<div class="col-md-6">
-												<p class="size"><%= "Modifié: #{sprintf '%02d', c.updated_at.day}/#{sprintf '%02d', c.updated_at.month}/#{c.updated_at.year}" %></p>
-											</div>
-											<div class="col-md-6">
-												<p class="size"><%= "Créé: #{sprintf '%02d', c.created_at.day}/#{sprintf '%02d', c.created_at.month}/#{c.created_at.year}" %></p>
-											</div>
-										</div>
-										<h2 class="card-header card-header-full text-center"><strong><%= c.title.capitalize %></strong></h2>
-										<hr>
-										<h6 class="card-subtitle mb-2 text-muted" style="margin-top: 10px"><%= "Date de visite : #{sprintf '%02d', c.visit_date.day}/#{sprintf '%02d', c.visit_date.month}/#{c.visit_date.year}" %></h6>
-										<hr>
-										<p class="card-text text-center"><strong> À <%= c.city.titleize %></strong></p>
-										<hr>
-										<% if (c.renta_brut.nil?) %>
-											<br>
-											<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
-										<%else%>
-											<%= link_to "Voir", case_path(c.id), class: "btn btn-outline-primary btn-sm "%><br>
-										<% end %>
-										<br>
-										<% if current_user.administrator? || (current_user.user? && c.is_confirmed?) %>
-											<% if !(c.renta_brut.nil?) %>
-												<%= link_to "pdf", generate_pdf_case_path(c.id), method: :post, class: "btn btn-outline-secondary btn-sm" %>
-											<% end %>
-										<% end %>
-										<hr>
-										<% if !(c.is_confirmed?) && !(c.renta_brut.nil?) %>
-										<p class="card-text margin">Dossier <span class="text-warning">en cours</span></p>
-										<% elsif !(c.is_confirmed?) %>
-											<p class="card-text margin">Dossier <span class="text-danger">proposé</span></p>
-										<%else%>
-											<p class="card-text margin">Dossier <span class="text-success">validé</span></p>
-										<%end%>
-										<hr>
-										<% if !(c.renta_brut.nil?) %>
-											<div class="row">
-												<div style="margin-left: 20px;">
-													<p id="muted" class="text-muted">&copy RentCo.</p>
-												</div>
-												<% if current_user.administrator? %>
-												<div style="margin-top: -6px; margin-left: 80px; margin-bottom: -14px">
-													<%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
-												</div>
-												<% end %>
-											</div>	
-										<%else%>			
-											<div class="row">
-												<div style="margin-left: 20px;">
-													<p id="muted" class="text-muted">&copy RentCo.</p>
-												</div>
-												<% if current_user.administrator? %>
-												<div style="margin-top: -6px; margin-left: 80px;">
-													<%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
-												</div>
-												<% end %>
-											</div>
-										<%end%>				
-									</div>				
-								</div>
-							</div>
-						</div>
-					<% end %>
+		<div id="index_case">
+			<div class="container">
+				<div class="row">
+					<% if current_user.administrator? %>
+						<% if @cases.length == 1 %>
+							<h3 class="text-center text-white custom">Dossier géré par <%=@user.lastname.titleize%> <%=@user.firstname.titleize%> :</h3>
+						<%else%>
+							<h3 class="text-center text-white custom">Dossiers gérés par <%=@user.lastname.titleize%> <%=@user.firstname.titleize%> :</h3>
+						<%end%>
+            <br>
+						<%= render 'cases/cases' %>
+					<%end%>
 				</div>
 			</div>
-		<%end%>
+		</div>
   </div>
 </section>
              

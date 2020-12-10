@@ -47,6 +47,7 @@ class Case < ApplicationRecord
     validates :agency_charges, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :renovation_union, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     # renovation
+    validates :indicator_pre_estimation_renovation, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :pno_insurance_cost, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :total_renovation_cost, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :renovation_demolition_cost, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
