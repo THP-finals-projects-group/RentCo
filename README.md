@@ -1,5 +1,5 @@
 ![logotype a happy-07](https://d29md5j3ph8xfz.cloudfront.net/100_percent/upload/Content/82047/THP_logoblock_grey.png)
-# ![logotype a happy-07](https://www.rentco.com.au/v2/wp-content/uploads/2016/03/rentco_logo_v2_1.3.png)
+![logotype a happy-07](https://raw.githubusercontent.com/THP-finals-projects-group/RentCo/master/app/assets/images/130764474_382950262998885_2805957376442774179_n.png)
 
 # Welcome on our final group project with THE HACKING PROJECT
 
@@ -17,14 +17,22 @@ RentCo, a real estate company, is involved in all stages of a real estate projec
 
 ### Tools :
 
-* Bootstrap
-* Ruby on Rails 
+* Ruby on Rails
+* [Bootstrap - Incline](https://themes.getbootstrap.com/preview/?theme_id=3569)
 * Active Storage
 
 ### APIs :
 
-* MailJet
+* [MailJet](https://github.com/mailjet/mailjet-gem)
 * Amazon S3
+* Googe Maps API
+
+### Gems :
+
+* [Devise](https://github.com/heartcombo/devise)
+* [WickedPdf](https://github.com/mileszs/wicked_pdf)
+* [Streamio](https://github.com/streamio/streamio-ffmpeg)
+
 
 ## How to use it :
 
