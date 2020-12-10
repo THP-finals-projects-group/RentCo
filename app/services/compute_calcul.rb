@@ -6,12 +6,14 @@ class ComputeCalcul < ApplicationController
         # Calcul of charges and price
         @case.total_monthly_charges = @case.water_cost + @case.heater_cost + @case.electricity_cost + @case.union_charges_cost + @case.common_charges_cost
         @case.total_buying_price = @case.seller_price - @case.estimated_negociation + @case.notary_charges + @case.agency_charges + @case.property_taxes + @case.renovation_union
+        self.calcul_confirmed = true
         @case.save
     end
     
-    def seld.compute_pre_estimation_renovation(id)
+    def self.compute_pre_estimation_renovation(id)
         # Calcul of the first estimation of renovation cost
         @case.pre_estimation_renovation_cost = @case.old_surface * @case.indicator_pre_estimation_renovation
+        @case.save
     end
 
     def self.compute_finals_calculs(id)
