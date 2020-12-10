@@ -1,34 +1,43 @@
 
 <div id="navbar">
-  <nav class="navbar navbar-expand-xl navbar-dark  navbar-togglable fixed-top">
-    <div class="container">
-      <%= link_to cases_path do%>
-        <%= image_tag asset_path('130764474_382950262998885_2805957376442774179_n.png'), style: "width: 60px; height: 60px;"%>
-      <%end%>
-        <ul class="navbar-nav margin-nav-items">
-          <li class="nav-item">
-            <%= link_to 'Creer un dossier',  new_case_path, class: "nav-link"%>  
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Liste des dossiers', cases_path, class: "nav-link" %> 
-          </li>
-          <li class="nav-item-divider">
-            <span class="nav-link"></span>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user fa-2x"></i>
-            </a>
-            <div class="dropdown-menu text-center">
-              <%= link_to 'Profil',  user_path(current_user.id), class: "dropdown-item" %>
-              <% if current_user.administrator? %>
-                <%= link_to "Confirmer les comptes", users_path, class: "dropdown-item"%>
-              <% end %>
-              <%= link_to 'Deconnexion', destroy_user_session_path, data: {confirm:'Étes vous sûr de vouloir vous déconnecter ?'}, method: :delete, class:"dropdown-item", style:"background-color: var(--danger)" %>
-            </div>
-          </li>
+  <nav class="navbar navbar-expand-xl navbar-dark  navbar-togglable fixed-top" role="navigation">
+
+    <div id="menuToggle" class="container">
+
+      <input class="checkbox-phone-view" type="checkbox" />
+    
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+
+        <ul id="menu" class="navbar-nav margin-nav-items">
+          <%= link_to cases_path do%>
+            <%= image_tag asset_path('130764474_382950262998885_2805957376442774179_n.png'), style: "width: 60px; height: 60px;"%>
+          <%end%>
+          <div class="first-row">
+            <li class="nav-item">
+              <%= link_to 'Creer un dossier',  new_case_path, class: "nav-link"%>  
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Liste des dossiers', cases_path, class: "nav-link" %> 
+            </li>
+          </div>
+          <div class="second-row">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user fa-2x"></i>
+              </a>
+              <div class="dropdown-menu text-center">
+                <%= link_to 'Profil',  user_path(current_user.id), class: "dropdown-item" %>
+                <% if current_user.administrator? %>
+                  <%= link_to "Confirmer les comptes", users_path, class: "dropdown-item"%>
+                <% end %>
+                <%= link_to 'Deconnexion', destroy_user_session_path, data: {confirm:'Étes vous sûr de vouloir vous déconnecter ?'}, method: :delete, class:"dropdown-item", style:"background-color: var(--danger)" %>
+              </div>
+            </li>
+          </div>
         </ul>
     </div>     
   </nav>
