@@ -1,5 +1,5 @@
 <div class="input-group">
-  <%= f.number_field :rent_monthly, require: true, class: "form-control order-1" %>
+  <%= f.number_field :rent_monthly, required: true, min: 0, class: "form-control order-1" %>
   <%= f.hidden_field :_destroy %>
   <%= link_to "x", '#', class: "remove_rooms btn btn-outline-danger btn-sm" %>
 </div>
