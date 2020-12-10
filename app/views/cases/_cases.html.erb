@@ -45,11 +45,34 @@
           <div class="card-body card-top-margin">
             <% if current_user.administrator? %>
               <div class="row">
-                <div class=" ml-auto">
-                  <%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes_vous sûr de vouloir supprimer ce dossier?' } do %>
-                    <i class="fas fa-trash" style="color: var(--danger);"></i>
+                <div class=" ml-auto" id="index-card-top">
+                  <% if c.renta_net != nil %>              
+                    <% if c.renta_net < 9 %>
+                      <div id="index-renta-light">
+                        <%= image_tag asset_path('redlight.png'), style: "width: 10%; height: 80%;"%>
+                      </div>
+                    <% elsif c.renta_net > 10 %>
+                      <div id="index-renta-light">
+                        <%= image_tag asset_path('greenlight.png'), style: "width: 10%; height: 80%;"%>
+                      </div>
+                    <% else %>
+                      <div id="index-renta-light">
+                        <%= image_tag asset_path('orangelight.png'), style: "width: 10%; height: 80%;"%>
+                      </div>
+                    <% end %>
+                    <div>
+                      <%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes_vous sûr de vouloir supprimer ce dossier?' } do %>
+                        <i class="fas fa-trash" style="color: var(--danger);"></i>
+                      <% end %>
+                    </div>  
+                  <% else %>
+                    <div>
+                      <%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes_vous sûr de vouloir supprimer ce dossier?' } do %>
+                        <i class="fas fa-trash" style="color: var(--danger); padding-bottom: 20px;"></i>
+                      <% end %>
+                    </div> 
                   <% end %>
-                </div>
+               </div>
               </div>
             <% end %>
             <div class="row">
