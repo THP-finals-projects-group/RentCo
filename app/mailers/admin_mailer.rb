@@ -30,7 +30,8 @@ class AdminMailer < Devise::Mailer
   end
   
   # Admin inform user that a case is closed and a pdf is available
-  def case_confirmed(email)
-    mail(from: "admin-rentco@yopmail.com", to: email, subject: "Le dossier confirmé et pdf disponible")
+  def case_confirmed(cases)
+    @case = cases
+    mail(from: "admin-rentco@yopmail.com", to: User.find(@case.user_id).email, subject: "le dossier #{@case.title} est confirmé et un pdf est disponible")
   end
 end
