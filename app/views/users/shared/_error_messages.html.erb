@@ -41,6 +41,11 @@
             <h4>
               <span class="text-danger"><%= message %> </span>
             </h4>
+          <%elsif message == "Current password can't be blank"%>
+            <% message = "Le mot de passe actuel doit être présent" %>
+            <h4>
+              <span class="text-danger"><%= message %> </span>
+            </h4>
           <%else%>
             <h4>
               <span class="text-danger"><%= message %> </span>
