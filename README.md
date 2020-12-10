@@ -25,7 +25,7 @@ RentCo, a real estate company, is involved in all stages of a real estate projec
 
 * [MailJet](https://github.com/mailjet/mailjet-gem)
 * Amazon S3
-* Googe Maps API
+* [Googe Maps API](https://image.spreadshirtmedia.net/image-server/v1/compositions/T6A7PA4289PT17X66Y37D140826452FS3660/views/1,width=650,height=650,appearanceId=7,backgroundColor=ffffff/une-grosse-merde-qui-dit-merde-un-vrais-t-shirt-de-merde-merde-alors.jpg)
 
 ### Gems :
 
