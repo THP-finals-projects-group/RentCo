@@ -22,7 +22,7 @@
 									<div class="field form-group">
 										<%= form.label 'Nom du dossier' %>
 										<div class="input-group">
-											<%= form.text_field :title, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :title, autofocus: true, required: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-file-invoice"></i>
@@ -35,7 +35,7 @@
 									<div class="field form-group">
 										<%= form.label 'Référence' %>
 										<div class="input-group">
-											<%= form.text_field :case_reference, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :case_reference, autofocus: true, required: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-list-ol"></i>
@@ -48,7 +48,7 @@
 									<div class="field form-group">
 										<%= form.label 'Date de visite' %>
 										<div class="input-group">
-											<%= form.date_field :visit_date, autofocus: true, class: "form-control order-1", require: true %>
+											<%= form.date_field :visit_date, autofocus: true, class: "form-control order-1", required: true %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-calendar-alt"></i>
@@ -67,7 +67,7 @@
 									<div class="field form-group">
 										<%= form.label 'Numéro de rue' %>
 										<div class="input-group">
-											<%= form.text_field :street_number, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :street_number, autofocus: true, required: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-sort-numeric-up-alt"></i>
@@ -80,7 +80,7 @@
 									<div class="field form-group">
 										<%= form.label 'Rue' %>
 										<div class="input-group">
-											<%= form.text_field :street_name, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :street_name, autofocus: true, required: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-road"></i>
@@ -93,7 +93,7 @@
 									<div class="field form-group">
 										<%= form.label 'Ville' %>
 										<div class="input-group">
-											<%= form.text_field :city, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :city, autofocus: true, required: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-city"></i>
@@ -106,7 +106,7 @@
 									<div class="field form-group">
 										<%= form.label 'Code postal' %>
 										<div class="input-group">
-											<%= form.text_field :zipcode, autofocus: true, class: "form-control order-1" %>
+											<%= form.text_field :zipcode, autofocus: true, required: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-map-marker-alt"></i>
@@ -125,7 +125,7 @@
 									<div class="field form-group">
 										<%= form.label 'Type de bien' %>
 										<div class="input-group">
-											<%= form.select(:old_project ,["Maison", "Appartement", "Local commercial"], {require: true}, {class: "custom-select"}) %>
+											<%= form.select(:old_project ,["Maison", "Appartement", "Local commercial"], {required: true}, {class: "custom-select"}) %>
 										</div>
 									</div>
 								</div>
@@ -133,7 +133,7 @@
 									<div class="field form-group">
 										<%= form.label 'Surface totale' %>
 										<div class="input-group">
-											<%= form.number_field :old_surface, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :old_surface, autofocus: true, required: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-expand"></i>
@@ -146,7 +146,7 @@
 									<div class="field form-group">
 										<%= form.label 'Type de logement' %><br/>
 										<div class="input-group">
-											<%= form.select(:old_type ,["T1", "T2", "T3", "T4"], {require: true}, {class: "custom-select"})%>
+											<%= form.select(:old_type ,["T1", "T2", "T3", "T4"], { required: true }, {class: "custom-select"})%>
 										</div>
 									</div>
 								</div>
@@ -154,7 +154,7 @@
 									<div class="field form-group">
 										<%= form.label 'Nombre de chambres' %>
 										<div class="input-group">
-											<%= form.number_field :old_rooms_count, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :old_rooms_count, autofocus: true, required: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-bed"></i>
@@ -173,7 +173,7 @@
 									<div class="field form-group">
 										<%= form.label 'Prix' %>
 										<div class="input-group">
-											<%= form.number_field :seller_price, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :seller_price, autofocus: true, min: 0, required: true, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-euro-sign"></i>
@@ -186,7 +186,7 @@
 									<div class="field form-group">
 										<%= form.label 'Négociation (estimée)' %>
 										<div class="input-group">
-											<%= form.number_field :estimated_negociation, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :estimated_negociation, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-comments-dollar"></i>
@@ -199,7 +199,7 @@
 									<div class="field form-group">
 										<%= form.label 'Taxe foncière' %>
 										<div class="input-group">
-											<%= form.number_field :property_taxes, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :property_taxes, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -212,7 +212,7 @@
 									<div class="field form-group">
 										<%= form.label 'Travaux de copropriété' %>
 										<div class="input-group">
-											<%= form.number_field :renovation_union, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :renovation_union, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -225,7 +225,7 @@
 									<div class="field form-group">
 									<%= form.label "Frais d'agence" %>
 										<div class="input-group">
-											<%= form.number_field :agency_charges, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :agency_charges, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -238,7 +238,7 @@
 									<div class="field form-group">
 										<%= form.label 'Frais de notaire' %>
 										<div class="input-group">
-											<%= form.number_field :notary_charges, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :notary_charges, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -257,7 +257,7 @@
 									<div class="field form-group">
 										<%= form.label 'Syndic de copropriété' %>
 										<div class="input-group">
-											<%= form.number_field :union_charges_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :union_charges_cost, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-money-check-alt"></i>
@@ -270,7 +270,7 @@
 									<div class="field form-group">
 										<%= form.label 'Eau' %>
 										<div class="input-group">
-											<%= form.number_field :water_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :water_cost, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-tint"></i>
@@ -283,7 +283,7 @@
 									<div class="field form-group">
 										<%= form.label 'Electricité' %>
 										<div class="input-group">
-											<%= form.number_field :electricity_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :electricity_cost, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-bolt"></i>
@@ -296,7 +296,7 @@
 									<div class="field form-group">
 										<%= form.label 'Entretiens communs' %>
 										<div class="input-group">
-											<%= form.number_field :common_charges_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :common_charges_cost, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-people-carry"></i>
@@ -309,7 +309,7 @@
 									<div class="field form-group">
 										<%= form.label 'Chauffage' %>
 										<div class="input-group">
-											<%= form.number_field :heater_cost, autofocus: true, class: "form-control order-1" %>
+											<%= form.number_field :heater_cost, autofocus: true, min: 0, class: "form-control order-1" %>
 											<div class="input-group-append order-0">
 												<div class="input-group-text">
 													<i class="fas fa-temperature-high"></i>
@@ -411,7 +411,7 @@
 										<div class="field form-group">
 											<%= form.label 'Estimation global du coût des travaux' %><br/>
 											<div class="input-group", style="display:flex;align-items:center;">
-												<%= form.select(:indicator_pre_estimation_renovation ,["22", "52", "82", "112"], {require: true}, {class: "custom-select"})%>   €/m²
+												<%= form.select(:indicator_pre_estimation_renovation ,[22, 52, 82, 112], { required: true }, {class: "custom-select"})%> €/m²
 											</div>
 										</div>
 									</div>
@@ -419,7 +419,7 @@
 										<div class="field form-group">
 											<%= form.label 'Démolition' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_demolition_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_demolition_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-bomb"></i>
@@ -432,7 +432,7 @@
 										<div class="field form-group">
 											<%= form.label 'Préparation' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_preparation_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_preparation_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-dolly"></i>
@@ -445,7 +445,7 @@
 										<div class="field form-group">
 											<%= form.label 'Menuiserie' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_carpentry_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_carpentry_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-chair"></i>
@@ -458,7 +458,7 @@
 										<div class="field form-group">
 											<%= form.label 'Platerie et isolation' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_plastering_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_plastering_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fab fa-buffer"></i>
@@ -471,7 +471,7 @@
 										<div class="field form-group">
 											<%= form.label 'Électricité' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_electricity_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_electricity_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-bolt"></i>
@@ -484,7 +484,7 @@
 										<div class="field form-group">
 											<%= form.label 'Plomberie' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_plumbing_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_plumbing_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-faucet"></i>
@@ -497,7 +497,7 @@
 										<div class="field form-group">
 											<%= form.label 'Mur et plafond' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_wall_ceiling_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_wall_ceiling_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-border-style"></i>
@@ -510,7 +510,7 @@
 										<div class="field form-group">
 											<%= form.label 'Peinture' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_painting_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_painting_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-paint-roller"></i>
@@ -523,7 +523,7 @@
 										<div class="field form-group">
 											<%= form.label 'Sol' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_flooring_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_flooring_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-square-full"></i>
@@ -536,7 +536,7 @@
 										<div class="field form-group">
 											<%= form.label 'Cuisine' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_kitchen_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_kitchen_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-sink"></i>
@@ -549,7 +549,7 @@
 										<div class="field form-group">
 											<%= form.label 'Mobilier' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_furniture_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_furniture_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-box-open"></i>
@@ -562,7 +562,7 @@
 										<div class="field form-group">
 											<%= form.label 'Façade' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_facade_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_facade_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-building"></i>
@@ -575,7 +575,7 @@
 										<div class="field form-group">
 											<%= form.label 'Sécurité' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_security_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_security_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-lock"></i>
@@ -588,7 +588,7 @@
 										<div class="field form-group">
 											<%= form.label 'Maçonnerie' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_masonry_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_masonry_cost, autofocus: true, min: 0,class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fab fa-linode"></i>
@@ -601,7 +601,7 @@
 										<div class="field form-group">
 											<%= form.label 'Couverture' %>
 											<div class="input-group">
-												<%= form.number_field :renovation_covering_cost, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :renovation_covering_cost, autofocus: true, min: 0, class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fab fa-accusoft"></i>
@@ -636,7 +636,7 @@
 										<div class="field form-group">
 											<%= form.label 'Nouvelle surface' %>
 											<div class="input-group">
-												<%= form.number_field :new_surface, autofocus: true, class: "form-control order-1" %>
+												<%= form.number_field :new_surface, autofocus: true, min: 0, class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-expand"></i>
@@ -658,7 +658,7 @@
 										<div class="field form-group">
 											<%= form.label 'Nombre de mois estimée' %>
 											<div class="input-group">
-												<%= form.number_field :month_count, autofocus: true, require: true, class: "form-control order-1" %>
+												<%= form.number_field :month_count, autofocus: true, required: true, in: 1..12, class: "form-control order-1" %>
 												<div class="input-group-append order-0">
 													<div class="input-group-text">
 														<i class="fas fa-calendar-alt"></i>
