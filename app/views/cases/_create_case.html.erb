@@ -649,7 +649,7 @@
 										<div class="field form-group">
 											<%= form.label 'Loyer des chambres' %>
 											<%= form.fields_for :rooms do |room| %>
-													<%= render 'room_fields', f: room %>
+												<%= render 'room_fields', f: room %>
 											<% end %>
 											<%= link_to_add_fields "Ajouter une chambre", form, :rooms %>
 										</div>

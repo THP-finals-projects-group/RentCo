@@ -25,6 +25,4 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :index, :update]
-  
-  root to: "cases#index"
 end
