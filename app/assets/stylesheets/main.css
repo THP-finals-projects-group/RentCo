@@ -219,6 +219,11 @@
     top: 0;
 }
 
+#index_case .big-hr {
+    height: 5px;
+    background-color: var(--primary);
+}
+
 #index_case .card {
     background-color: whitesmoke;
 }

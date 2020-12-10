@@ -34,10 +34,13 @@ class CasesController < ApplicationController
             end
             if @case.save
                 if current_user.administrator?
-                    flash[:success] = 'Votre dossier à bien été créé.'
+                    ComputeCalcul.compute_user_part(@case.id)
+                    ComputeCalcul.compute_finals_calculs(@case.id)
+                    flash[:success] = 'Votre dossier a bien été créé.'
                     redirect_to case_path(@case.id)
                 else
-                    flash[:success] = 'Votre dossier à bien été ouvert.'
+                    ComputeCalcul.compute_user_part(@case.id)
+                    flash[:success] = 'Votre dossier a bien été ouvert.'
                     redirect_to case_path(@case.id)
                 end
             end
@@ -63,11 +66,14 @@ class CasesController < ApplicationController
         if current_user.administrator? 
             @case.update(cases_params)
             params_rooms(params[:case])
-            flash[:success] =  "Le dossier à était mis à jour!"
+            ComputeCalcul.compute_user_part(params[:id])
+            ComputeCalcul.compute_finals_calculs(params[:id])
+            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
             redirect_to case_path(@case.id)
         else
             @case.update(cases_params)
-            flash[:success] =  "Le dossier à était mis à jour!"
+            ComputeCalcul.compute_user_part(params[:id])
+            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
             redirect_to case_path(@case.id)
         end
     end
@@ -75,7 +81,7 @@ class CasesController < ApplicationController
     def destroy 
         @case.destroy
         respond_to do |format|
-          format.html { redirect_to cases_url, notice: 'Le dossier a bien été supprimé' }
+          format.html { redirect_to cases_url, flash: {danger: "Le dossier | #{@case.title} | a bien été supprimé" } }
           format.json { head :no_content }
         end
     end
@@ -85,7 +91,7 @@ class CasesController < ApplicationController
         case_id = video.record_id
         video.purge
         respond_to do |format|
-          format.html { redirect_to URI(request.referrer).path, notice: 'La vidéo à bien été supprimée' }
+          format.html { redirect_to URI(request.referrer).path, flash: {danger: 'La video a bien été supprimé' } }
           format.json { head :no_content }
         end
     end
@@ -97,14 +103,14 @@ class CasesController < ApplicationController
             @case.update(is_confirmed: true)
             User.send_case_confirmed_mail(@user.email)
             respond_to do |format|
-                format.html { redirect_to cases_path, notice: 'Le dossier a bien été validé, le collaborateur en charge du dossier ne peut plus apporter de modifications. Il est prévenu par email' }
+                format.html { redirect_to cases_path, flash: {success: "Le dossier | #{@case.title} | a bien été validé, le collaborateur en charge du dossier ne peut plus apporter de modifications. Il à été prévenu par email"} }
                 format.json { head :no_content }
             end
 
         else
             @case.update(is_confirmed: false)
             respond_to do |format|
-                format.html { redirect_to cases_path, notice: 'Le dossier est maintenant modifiable par vous et le collaborateur en charge de ce dossier' }
+                format.html { redirect_to cases_path, flash: {info: "Le dossier | #{@case.title} | est maintenant modifiable par vous et le collaborateur en charge du dossier"} }
                 format.json { head :no_content }
             end
         end
