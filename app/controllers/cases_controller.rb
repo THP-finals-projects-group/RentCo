@@ -101,7 +101,7 @@ class CasesController < ApplicationController
         @user = User.find(@case.user_id)
         if @case.is_confirmed == false
             @case.update(is_confirmed: true)
-            User.send_case_confirmed_mail(@user.email)
+            User.send_case_confirmed_mail(@case)
             respond_to do |format|
                 format.html { redirect_to cases_path, notice: 'Le dossier a bien été validé, le collaborateur en charge du dossier ne peut plus apporter de modifications. Il est prévenu par email' }
                 format.json { head :no_content }

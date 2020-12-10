@@ -4,7 +4,7 @@ class  UsersController < ApplicationController
 
     def index
         if current_user.administrator?
-            @users = User.all.order(approved: :asc)
+            @users = User.all.order(:approved, :updated_at, :created_at)
         else
             flash[:warning]="Vous n'avez pas accès à cette page"
             redirect_to root_path

@@ -1,1 +1,10 @@
-<p>Votre dossier est validé, rendez vous sur l'application Rent-Co pour prendre connaissance des résultats.</p>
+<p>Le dossier <strong><U><%= @case.title %></U></strong> a fini d'être traiter par l'administrateur et un pdf est disponible.</p>
+<br>
+<p> informations sur le dossier:</p>
+<p> Référence : <%= @case.case_reference %> </p>
+
+<p> Date de visite : <%= @case.visit_date %> </p>
+
+<p> Adresse du bien : <%= @case.street_number %> <%= @case.street_name %>, <%= @case.city %> <%= @case.zipcode %> </p>
+<br>
+<p>rendez vous sur l'application <%= link_to "RentCo", "https://rent-co.herokuapp.com/users/sign_in"%> pour prendre connaissance des résultats.</p>
