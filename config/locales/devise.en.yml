@@ -7,16 +7,16 @@ en:
       send_instructions: "Nous vous avons envoyé un email de confirmation."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
-      already_authenticated: "Vous êtes déja connecté"
-      inactive: "Votre compte n'a pas encore été valider par l'administrateur ou (si vous vous êtes déja connecté) à été bloqué"
+      already_authenticated: "Vous êtes déjà connecté"
+      inactive: "Votre compte n'a pas encore été validé par l'administrateur ou (si vous vous êtes déjà connectés) a été bloqué"
       invalid: "%{authentication_keys} ou mot de passe invalide."
       locked: "Votre compte est bloqué."
       last_attempt: "Il vous reste 1 essai avant que votre compte soit bloqué."
       not_found_in_database: "%{authentication_keys} ou mot de passe invalide."
-      timeout: "Votre session à expiré, veuillez vous reconnecter pour continuer."
-      unauthenticated: "Vous devez vous connnecter ou vous inscrire pour continuer."
+      timeout: "Votre session a expiré, veuillez vous reconnecter pour continuer."
+      unauthenticated: "Vous devez vous connecter ou vous inscrire pour continuer."
       unconfirmed: "Vous devez confirmer votre email pour continuer."
-      not_approved: "Votre compte n'a pas encore été valider par l'administrateur ou (si vous vous êtes déja connecté) à été bloqué"
+      not_approved: "Votre compte n'a pas encore été validé par l'administrateur ou (si vous vous êtes déja connecté) à été bloqué"
     mailer:
       confirmation_instructions:
         subject: "Instruction de confirmation"
@@ -33,13 +33,13 @@ en:
       success: "Successfully authenticated from %{kind} account."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "Nous vous avons envoyé les instruction pour changer votre mot de passe à votre email."
+      send_instructions: "Nous vous avons envoyé les instructions pour changer votre mot de passe par email."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Votre mot de passe a bien été validé, vous êtes maintenant connecté."
       updated_not_active: "Votre mot de passe a bien été modifié."
     registrations:
       destroyed: "Compte supprimé."
-      signed_up: "Bienvenu, votre compte à bien été crée mais doit encore se faire valider par l'administrateur."
+      signed_up: "Bienvenu, votre compte a bien été créé mais doit encore se faire valider par l'administrateur."
       signed_up_but_inactive: "Vous êtes inscrit mais votre compte n'est pas encore validé."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
       signed_up_but_unconfirmed: "Nous vous avons envoyé un email pour confirmer la création de votre compte."
@@ -58,7 +58,7 @@ en:
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
-      already_confirmed: "à déja été validé, essayez de vous connecter"
+      already_confirmed: "a déjà été validé, essayez de vous connecter"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "a expiré, veuillez réssayer"
       not_found: "introuvable"
