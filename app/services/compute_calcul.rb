@@ -8,14 +8,17 @@ class ComputeCalcul < ApplicationController
         @case.total_buying_price = @case.seller_price - @case.estimated_negociation + @case.notary_charges + @case.agency_charges + @case.property_taxes + @case.renovation_union
         @case.save
     end
+    
+    def seld.compute_pre_estimation_renovation(id)
+        # Calcul of the first estimation of renovation cost
+        @case.pre_estimation_renovation_cost = @case.old_surface * @case.indicator_pre_estimation_renovation
+    end
+
     def self.compute_finals_calculs(id)
         @case = Case.find(id)
 
         # Calcul of PNO assurance
         @case.pno_insurance_cost = @case.new_surface * 3.50
-
-        # Calcul of the first estimation of renovation cost
-        @case.pre_estimation_renovation_cost = @case.old_surface * @case.indicator_pre_estimation_renovation
 
         # Calcul of the renovation cost
         @case.total_renovation_cost = @case.renovation_demolition_cost + @case.renovation_preparation_cost + @case.renovation_carpentry_cost + @case.renovation_plastering_cost + @case.renovation_electricity_cost + @case.renovation_plumbing_cost + @case.renovation_wall_ceiling_cost + @case.renovation_painting_cost + @case.renovation_flooring_cost + @case.renovation_kitchen_cost + @case.renovation_furniture_cost + @case.renovation_facade_cost + @case.renovation_security_cost + @case.renovation_masonry_cost + @case.renovation_covering_cost

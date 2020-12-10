@@ -34,12 +34,9 @@ class CasesController < ApplicationController
             end
             if @case.save
                 if current_user.administrator?
-                    ComputeCalcul.compute_user_part(@case.id)
-                    ComputeCalcul.compute_finals_calculs(@case.id)
                     flash[:success] = 'Votre dossier à bien été créé.'
                     redirect_to case_path(@case.id)
                 else
-                    ComputeCalcul.compute_user_part(@case.id)
                     flash[:success] = 'Votre dossier à bien été ouvert.'
                     redirect_to case_path(@case.id)
                 end
@@ -66,13 +63,10 @@ class CasesController < ApplicationController
         if current_user.administrator? 
             @case.update(cases_params)
             params_rooms(params[:case])
-            ComputeCalcul.compute_user_part(params[:id])
-            ComputeCalcul.compute_finals_calculs(params[:id])
             flash[:success] =  "Le dossier à était mis à jour!"
             redirect_to case_path(@case.id)
         else
             @case.update(cases_params)
-            ComputeCalcul.compute_user_part(params[:id])
             flash[:success] =  "Le dossier à était mis à jour!"
             redirect_to case_path(@case.id)
         end
