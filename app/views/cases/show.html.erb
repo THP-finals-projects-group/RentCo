@@ -14,9 +14,30 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
       <%= render "flash_messages" %>
-      <div style ="margin-left: 73em; margin-bottom: -2em;" >
-        <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
-      </div>
+      <% if @case.renta_net != nil %>              
+        <div id="show-cases-tricolor-show">
+          <% if @case.renta_net < 9 %>
+            <div id="show-cases-renta-light">
+              <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
+            </div>
+          <% elsif @case.renta_net > 10 %>
+            <div id="show-cases-renta-light">
+              <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
+            </div>
+          <% else %>
+            <div id="show-cases-renta-light">
+              <%= image_tag asset_path('orangelight.png'), style: "width: 5%; height: 40%;"%>
+            </div>
+          <% end %>
+        </div>
+        <div style ="margin-left: 73em;" >
+          <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+        </div>
+      <% else %>
+        <div style ="margin-left: 73em;" >
+          <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+        </div>
+      <% end %>
       <div class="row justify-content-center align-items-center">
         <div class="col-md-8 col-lg-7">
           <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
@@ -176,7 +197,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
           <h2 class="text-white text-center mb-4">
-            Information donné par <%= @user.lastname.titleize %> <%= @user.firstname.titleize %> à propos du bien
+            Informations données par <%= @user.lastname.titleize %> <%= @user.firstname.titleize %> à propos du bien
           </h2>
           <p class="text-white text-muted text-center mb-5">
             Informations relatives au bien en l'état avant travaux
@@ -488,7 +509,7 @@
                   Pré-estimation du coût total des travaux
                 </h4>
                 <p class="card-text text-muted">
-                  <%= @case.pre_estimation_renovation_cost %> € pour une surface de <%= @case.old_surface %>
+                  <%= @case.pre_estimation_renovation_cost %> € pour une surface de <%= @case.old_surface %> m²
                 </p>
               </div>
             </div>
@@ -842,7 +863,7 @@
           <div class="col-md-8 col-lg-6">
             <h2 class="text-white text-center mb-2 mt-5">
               <hr style="border-color:var(--primary)">
-              Calcul de rentabilité
+              Calculs de rentabilité
               <hr style="border-color:var(--primary)">
             </h2>
           </div>

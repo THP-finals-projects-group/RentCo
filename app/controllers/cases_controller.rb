@@ -119,7 +119,7 @@ class CasesController < ApplicationController
     def generate_pdf
         html = render_to_string(partial: "cases/case.pdf.erb")
         pdf = WickedPdf.new.pdf_from_string(html, title: "#{@case.id}_dossier")
-        send_data pdf, filename: "#{@case.id}_dossier"
+        send_data pdf, filename: "#{@case.id}_dossier.pdf"
     end
 
     private

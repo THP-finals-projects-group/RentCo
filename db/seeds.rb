@@ -57,7 +57,8 @@ User.create!(
   email: "validation@yopmail.com",
   password: "password",
   phone_number: "0639629030",
-  profession: professions[rand(0..(professions.length - 1))]
+  profession: professions[rand(0..(professions.length - 1))],
+  confirmed_at: Time.now.utc
 ).cases.new(
   title: "#{Faker::Address.community} - ValidTest",
   visit_date: Faker::Date.between(from: 5.days.ago, to: Date.today),
@@ -85,7 +86,8 @@ users = []
     email: "#{names[0]}.#{names[1]}0#{n}@yopmail.com",
     password: "#{names[0]}#{names[1]}",
     phone_number: "075043905#{n}",
-    profession: professions[rand(0..(professions.length - 1))]
+    profession: professions[rand(0..(professions.length - 1))],
+    confirmed_at: Time.now.utc
   )
 end
 p "#{tp User.all}"
