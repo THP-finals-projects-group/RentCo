@@ -15,13 +15,13 @@ p " *         BEGIN OF SEED         * "
 p " *                               * "
 p " ********************************* "
 
-p "Destroy curent data..."
-p "Destroying Cases... #{Case.count} "
-Case.destroy_all
-p "Destroying Users... #{User.count} "
-User.destroy_all
-p "-----------------------"
-p "-----------------------"
+# p "Destroy curent data..."
+# p "Destroying Cases... #{Case.count} "
+# Case.destroy_all
+# p "Destroying Users... #{User.count} "
+# User.destroy_all
+# p "-----------------------"
+# p "-----------------------"
 
 professions = ["Chasseur de bien", "Agent Immobilier", "Notaire"]
 types = ["T1", "T2", "T3", "T4"]
