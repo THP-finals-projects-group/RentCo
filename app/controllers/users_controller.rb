@@ -48,7 +48,7 @@ class  UsersController < ApplicationController
                     end
                 else
                     respond_to do |format|
-                        format.html { redirect_to users_path, notice: 'Impossible de desactivé le compte !'}
+                        format.html { redirect_to users_path, notice: 'Impossible de desactiver le compte !'}
                         format.js { }
                     end
                 end

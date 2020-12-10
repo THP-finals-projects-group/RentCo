@@ -1,5 +1,5 @@
 <div class="row-inline">
-  <div class="col-12 col-md-2 col-lg-2 order-md-2 pl-md-3 border-left text-white first-row">
+  <div class="col-12 col-md-2 col-lg-2 order-md-2 pl-md-3 border-left text-white first-row" >
     <h6 class="title text-primary">
       Dossiers
     </h6>
@@ -11,43 +11,58 @@
     </nav>
   </div>
   <div class="second-row" style="display: flex; flex-wrap: wrap">
-  <% if @cases.empty? %>
-    <div class="card empty-index">
-      <div class="card-body">
-        <div class="card-header card-header-empty text-center">
-          <p class="empty">Bienvenue !<p>
+    <% if @cases.empty? %>
+      <div class="card empty-index">
+        <div class="card-body">
+          <div class="card-header card-header-empty text-center">
+            <p class="empty">Bienvenue !<p>
+          </div>
         </div>
-      </div>
-      <div class="card-body muted-title">
-        <hr>
-        <p> Bonjour <%= current_user.lastname.titleize%> <%= current_user.firstname.titleize%> ,</p> 
-        <p class="text-muted">Vous n'avez pas encore de dossiers enregistrés sur RentCo. Pour pouvoir collaborer, commencez par créer votre premier dossier.</p>
-        <hr>
-      </div>
-      <div class="card-body">
-        <%= link_to 'Créer',  new_case_path, class: "btn btn-lg btn-success btn-sm" %>
+        <div class="card-body muted-title">
+          <hr>
+          <p> Bonjour <%= current_user.lastname.titleize%> <%= current_user.firstname.titleize%> ,</p> 
+          <p class="text-muted">Vous n'avez pas encore de dossiers enregistrés sur RentCo. Pour pouvoir collaborer, commencez par créer votre premier dossier.</p>
+          <hr>
+        </div>
+        <div class="card-body">
+          <%= link_to 'Créer',  new_case_path, class: "btn btn-lg btn-success btn-sm" %>
+        </div> 
       </div> 
-    </div> 
-  <% end %>
-  <% @cases.each do |c| %>
-    <% 	
-      if !(c.is_confirmed?) && !(c.renta_brut.nil?)
-        data = "3"
-      elsif !(c.is_confirmed?)
-        data = "2"
-      else
-        data = "1"
-      end
-    %>
-    <div class="row" >
-      <div style="padding-left: 48px;">
+    <% end %>
+    <% @cases.each do |c| %>
+      <% if !(c.is_confirmed?) && !(c.renta_brut.nil?)%>
+        <%data = "3"%>
+      <%elsif !(c.is_confirmed?)%>
+        <%data = "2"%>
+      <%else%>
+        <%data = "1"%>
+      <%end%>
+      <div class="row" >
         <div class="card case-validation case-<%= data %>", style="width: 18rem; margin: 4px; ">
           <div class="card-body card-top-margin">
             <% if current_user.administrator? %>
               <div class="row">
-                <div class=" ml-auto">
-                  <%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes_vous sûr de vouloir supprimer ce dossier?' } do %>
-                    <i class="fas fa-trash" style="color: var(--danger);"></i>
+                <div class=" ml-auto" id="index-card-top">
+                  <% if c.renta_net != nil %>              
+                    <% if c.renta_net < 9 %>
+                      <div id="index-renta-light">
+                        <%= image_tag asset_path('redlight.png'), style: "width: 10%; height: 80%;"%>
+                      </div>
+                    <% elsif c.renta_net > 10 %>
+                      <div id="index-renta-light">
+                        <%= image_tag asset_path('greenlight.png'), style: "width: 10%; height: 80%;"%>
+                      </div>
+                    <% else %>
+                      <div id="index-renta-light">
+                        <%= image_tag asset_path('orangelight.png'), style: "width: 10%; height: 80%;"%>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <div>
+                      <%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes vous sûr de vouloir supprimer ce dossier ?' } do %>
+                        <i class="fas fa-trash" style="color: var(--danger); padding-bottom: 20px;"></i>
+                      <% end %>
+                    </div> 
                   <% end %>
                 </div>
               </div>
@@ -80,7 +95,7 @@
             <% end %>
             <hr>
             <% if !(c.is_confirmed?) && !(c.renta_brut.nil?) %>
-            <p class="card-text margin">Dossier <span class="text-warning">en cours</span></p>
+              <p class="card-text margin">Dossier <span class="text-warning">en cours</span></p>
             <% elsif !(c.is_confirmed?) %>
               <p class="card-text margin">Dossier <span class="text-danger">proposé</span></p>
             <%else%>
@@ -93,9 +108,9 @@
                   <p id="muted" class="text-muted">&copy RentCo.</p>
                 </div>
                 <% if current_user.administrator? %>
-                <div style="margin-top: -6px; margin-left: 80px; margin-bottom: -14px">
-                  <%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
-                </div>
+                  <div style="margin-top: -6px; margin-left: 80px; margin-bottom: -14px">
+                    <%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
+                  </div>
                 <% end %>
               </div>	
             <%else%>			
@@ -104,15 +119,15 @@
                   <p id="muted" class="text-muted">&copy RentCo.</p>
                 </div>
                 <% if current_user.administrator? %>
-                <div style="margin-top: -6px; margin-left: 80px;">
-                  <%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
-                </div>
+                  <div style="margin-top: -6px; margin-left: 80px;">
+                    <%= link_to "Par #{@users.find(c.user_id).lastname.titleize} #{@users.find(c.user_id).firstname.titleize}", user_path(@users.find(c.user_id)), id:"muted", class: "text-muted" %>
+                  </div>
                 <% end %>
               </div>
-            <%end%>				
-          </div>				
+            <%end%>								
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
