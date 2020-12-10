@@ -13,9 +13,30 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
-      <div style ="margin-left: 73em; margin-bottom: -2em;" id="up" >
-        <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
-      </div>
+      <% if @case.renta_net != nil %>              
+        <div id="show-cases-tricolor-show">
+          <% if @case.renta_net < 9 %>
+            <div id="show-cases-renta-light">
+              <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
+            </div>
+          <% elsif @case.renta_net > 10 %>
+            <div id="show-cases-renta-light">
+              <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
+            </div>
+          <% else %>
+            <div id="show-cases-renta-light">
+              <%= image_tag asset_path('orangelight.png'), style: "width: 5%; height: 40%;"%>
+            </div>
+          <% end %>
+        </div>
+        <div style ="margin-left: 73em;" >
+          <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+        </div>
+      <% else %>
+        <div style ="margin-left: 73em;" >
+          <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+        </div>
+      <% end %>
       <div class="row justify-content-center align-items-center">
         <div class="col-md-8 col-lg-7">
           <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">

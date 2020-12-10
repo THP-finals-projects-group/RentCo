@@ -241,6 +241,15 @@
 
 /* PAGE CASE INDEX */
 
+#index-card-top{
+    display: flex;
+    justify-content:space-between;
+}
+
+#index-renta-light{
+    width: 50%;
+}
+
 #index_case .bg {
     height: 100%;
     width: 100%;
@@ -421,6 +430,14 @@
     color: var(--primary);
 }
 
+
+#show-cases-tricolor-show{
+    margin-bottom: -85px;
+}
+
+#show-cases-renta-light{
+    width: 50%;
+}
 
 @media only screen and (max-width: 1024px) {
     #sessions_new > section {
