@@ -7,9 +7,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= wicked_pdf_stylesheet_link_tag "pdf.css" %>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap"
-  type="text/javascript"></script>
-    <meta name="google-site-verification" content="QWZ_mwxwv-Luz8dA4-v2Onm7Bh9yVAafsxBa3-cHSsI" />
 
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ ENV['GOOGLE_MAP_API'] %>
 
