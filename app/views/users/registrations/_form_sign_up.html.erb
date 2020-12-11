@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="main-part-center-home"> 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => "form-styled bg-white" }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :class => "form-styled bg-white", style: "width:800px; max-width:800px;" }) do |f| %>
           <h4 class="text-center mb-4">
             Bienvenue, inscrivez vous
           </h4>
@@ -102,7 +102,9 @@
                   </div>
                 </div>
               </div>
-            <input id="boxid" type="checkbox" onclick="myFunction()"><span for="boxid"> Voir</span>
+              <div class="custom-control custom-checkbox mb-3 mb-md-0">
+                <input id="boxid" type="checkbox" class="custom-control-input" onclick="myFunction()"><label for="boxid" id="registration_new-see-password" class="custom-control-label"> Voir</label>
+              </div>
             </div>
             <div class="col-md-8 col-lg-6">
               <div class="field from-group">
@@ -133,11 +135,11 @@
               </div>
             </div>
           </div>
-          <div class="custom-control custom-checkbox ">
+          <div class="custom-control custom-checkbox mb-3 mb-md-0">
             <% if devise_mapping.rememberable? %>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :Se_souvenir_de_moi %>
+              <div class="field ">
+                <%= f.check_box :remember_me, class: "custom-control-input", id: "sign-in-checkbox" %>
+                <%= f.label :Se_souvenir_de_moi, class: "custom-control-label", for: "sign-in-checkbox" %>
               </div>
             <% end %>
           </div>
