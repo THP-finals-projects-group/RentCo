@@ -22,7 +22,7 @@
               <span class="text-danger"><%= message %> </span>
             </h4>
           <%elsif message == "Email has already been taken"%>
-            <% message = "L'email entrée est déja utilisée"%>
+            <% message = "L'email entrée est déjà utilisée"%>
             <h4>
               <span class="text-danger"><%= message %> </span>
             </h4>
@@ -38,6 +38,11 @@
             </h4>
           <%elsif message == "Lastname must be between 3 and 64 characters"%>
             <% message = "Le nom doit être compris entre 3 et 64 caractères" %>
+            <h4>
+              <span class="text-danger"><%= message %> </span>
+            </h4>
+          <%elsif message == "Current password can't be blank"%>
+            <% message = "Le mot de passe actuel doit être présent" %>
             <h4>
               <span class="text-danger"><%= message %> </span>
             </h4>

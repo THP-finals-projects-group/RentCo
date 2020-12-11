@@ -4,7 +4,7 @@ class  UsersController < ApplicationController
 
     def index
         if current_user.administrator?
-            @users = User.all.order(approved: :asc)
+            @users = User.all.order(:approved, :updated_at, :created_at)
         else
             flash[:warning]="Vous n'avez pas accès à cette page"
             redirect_to root_path
@@ -48,7 +48,7 @@ class  UsersController < ApplicationController
                     end
                 else
                     respond_to do |format|
-                        format.html { redirect_to users_path, notice: 'Impossible de desactivé le compte !'}
+                        format.html { redirect_to users_path, notice: 'Impossible de desactiver le compte !'}
                         format.js { }
                     end
                 end

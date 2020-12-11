@@ -1,22 +1,7 @@
+/* COMMON PART */
+
 /* NAVBAR */
 
-#navbar img{
-    width: 70%;
-    border-radius: 5px;
-    height: 38px;
-}
-
-#navbar .collapse {
-    margin-right: 180px;
-}
-
-#navbar .margin-nav-items {
-    margin-left: 250px;
-}
-
-#navbar .dropdown {
-    margin-left: 200px;
-}
 
 
 
@@ -68,41 +53,22 @@
     top: 0;
 }
 
-@media only screen and (min-width: 1024px) {
-    #sessions_new .main-part-center-home {
-        display:flex;
-        justify-content:space-evenly;
-        align-items:center;
-    }
-    
-    #sessions_new .main-part-center-home .title-home-page {
-        font-size:40px;
-        color:white;
-    }
-    
-    #sessions_new .main-part-center-home .p-text-home-page {
-        color:white;
-    }
-
-    #sessions_new > section {
-        padding-bottom:153px;
-        margin-top: -50px;
-    } 
-}
 
 
 /* PAGE PROFIL USERS SHOW */
+
+#section-user-show {
+    min-height:100vh;
+}
 
 #user_show .container  {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin-top: 17em;
+    margin-top: 4em;
 }
 
-
 #user_show .card {
-    margin-top: -70px;
     background-size: cover;
     background-color: whitesmoke;
     margin-right: 40px;
@@ -113,8 +79,14 @@
     margin-top: -25px;
 }
 
-#user_show .col-md-1 {
-    padding-bottom: 20px;
+#user_show .row-profile-btn {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#user_show .profile-btn {
+    padding-bottom: 1.5em;
+    margin-top: 1.5em;
 }
 
 #user_show .card-header {
@@ -133,16 +105,8 @@
     margin-top: 15px;
 }
 
-#user_show .custom {
-    margin-top: 8em;
-    position: relative;
-}
-
-#user_show .cards-usercases-admin {
-    margin-left: 12%; 
-    margin-right: 10%; 
-    display: flex; 
-    flex-wrap: wrap;
+#user_show .custom-title {
+    width: 100%;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */
@@ -241,11 +205,25 @@
 
 /* PAGE CASE INDEX */
 
+#index-card-top{
+    display: flex;
+    justify-content:space-between;
+}
+
+#index-renta-light{
+    width: 50%;
+}
+
 #index_case .bg {
     height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
+}
+
+#index_case .big-hr {
+    height: 5px;
+    background-color: var(--primary);
 }
 
 #index_case .card {
@@ -378,6 +356,13 @@
     -webkit-box-flex: 0;
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
+    justify-content:right;
+    width:95vw;
+}
+
+#index_case .row-inline .second-row > .row {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 /*PAGE CREATE CASE */
@@ -422,31 +407,19 @@
 }
 
 
-@media only screen and (max-width: 1024px) {
-    #sessions_new > section {
-        padding-top:20px;
-        padding-bottom:20px;
-    }
-
-    #show-cases .text-primary {
-        margin-top:15px;
-    }
+#show-cases-tricolor-show{
+    margin-bottom: -85px;
 }
+
+#show-cases-renta-light{
+    width: 50%;
+}
+
+
 
 /* PAGE CONNEXION REGISTRATION NEW */
 
-@media only screen and (min-width: 1024px) {
-    #registration_new > section {
-        padding-bottom: 109px;
-        margin-top: -179px;
-    } 
 
-    #registration_new .custom-control {
-        padding-top: 30px;
-        padding-right: 500px;
-    }
-
-}
 
 #registration_new .container {
     margin-top: 100px;
@@ -552,4 +525,296 @@
 
 
 
+/* RESPONSIVE */
 
+@media only screen and (min-width: 1024px) {
+    #registration_new > section {
+        padding-bottom: 109px;
+        margin-top: -179px;
+    } 
+
+    #registration_new .custom-control {
+        padding-top: 30px;
+        padding-right: 500px;
+    }
+
+    #sessions_new .main-part-center-home {
+        display:flex;
+        justify-content:space-evenly;
+        align-items:center;
+    }
+    
+    #sessions_new .main-part-center-home .title-home-page {
+        font-size:40px;
+        color:white;
+    }
+    
+    #sessions_new .main-part-center-home .p-text-home-page {
+        color:white;
+    }
+
+    #sessions_new > section {
+        padding-bottom:153px;
+        margin-top: -50px;
+    } 
+
+    /* Navbar on PC view */
+    #menuToggle .checkbox-phone-view {
+        display:none;
+    }
+
+    #menuToggle > span {
+        display:none;
+    }
+
+    #navbar img{
+        width: 70%;
+        border-radius: 5px;
+        height: 38px;
+    }
+    
+    #navbar #menu {
+        display:flex;
+        justify-content: space-between;
+        width:100%;
+    }
+
+    #navbar #menu .first-row {
+        display:flex;
+    }
+
+    #navbar #menu .second-row .dropdown-menu {
+        left:-150px;
+    }
+
+}
+
+@media only screen and (max-width: 1024px) {
+    #sessions_new > section {
+        padding-top:20px;
+        padding-bottom:20px;
+    }
+
+    #show-cases .text-primary {
+        margin-top:15px;
+    }
+
+    .navbar-light #menuToggle span { /* Navbar on phone view */
+        background:var(--primary);
+    }
+
+    #menuToggle 
+    {
+    display: block;
+    position: relative;
+    top: 10px;
+    z-index: 1;
+    
+    -webkit-user-select: none;
+    user-select: none;
+    }
+
+    #menuToggle a
+    {
+    text-decoration: none;
+    color: #232323;
+    text-align:center;
+    
+    transition: color 0.3s ease;
+    }
+
+    #menuToggle a:hover
+    {
+    color: var(--primary);
+    }
+
+    #menuToggle > ul > a:first-of-type {
+        position:absolute;
+        top:55px;
+        right:10px;
+    }
+
+
+    #menuToggle input
+    {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    
+    cursor: pointer;
+    
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+    
+    -webkit-touch-callout: none;
+    }
+
+    /*
+    * Just a quick hamburger
+    */
+    #menuToggle span
+    {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    
+    background: #cdcdcd;
+    border-radius: 3px;
+    
+    z-index: 1;
+    
+    transform-origin: 4px 0px;
+    
+    transition: all 0.55s ease;
+    }
+
+    #menuToggle span:first-child
+    {
+    transform-origin: 0% 0%;
+    }
+
+    #menuToggle span:nth-last-child(2)
+    {
+    transform-origin: 0% 100%;
+    }
+
+    /* 
+    * Transform all the slices of hamburger
+    * into a crossmark.
+    */
+    #menuToggle input:checked ~ span
+    {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+    }
+
+    /*
+    * But let's hide the middle one.
+    */
+    #menuToggle input:checked ~ span:nth-last-child(3)
+    {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    /*
+    * Ohyeah and the last one should go the other direction
+    */
+    #menuToggle input:checked ~ span:nth-last-child(2)
+    {
+    transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    /*
+    * Make this absolute positioned
+    * at the top left of the screen
+    */
+    #menu
+    {
+    position: absolute;
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+    
+    background: #ededed;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    }
+
+    #menu li
+    {
+    padding: 10px 0;
+    font-size: 22px;
+    }
+
+    /*
+    * And let's slide it in from the left
+    */
+    #menuToggle input:checked ~ ul
+    {
+    transform: none;
+    padding-right:20px;
+    }
+
+    /* INDEX CASE */
+
+    #index_case .row-inline .second-row {
+        max-width: 100%;
+        flex: 0 0 100%;
+        justify-content: center;
+    }
+
+    #index_case .card {
+        width:95vw !important;
+    }
+
+    #index_case .row-inline .first-row {
+        margin-left:20px;
+    }
+
+    /* CREATE CASE */
+
+    #create_case .text-right {
+        text-align:center !important;
+        margin:0;
+    }
+
+    #create_case .text-left {
+        text-align:center !important;
+        margin:0;
+        margin-bottom:20px;
+    }
+
+    /* SHOW CASE */
+
+    #show-cases #show-cases-tricolor-show #show-cases-renta-light img {
+        width:12% !important;
+    }
+
+    #show-cases .section .container > .row {
+        padding-left:10px;
+        text-align:center;
+        flex-direction:column;
+    }
+
+    #show-cases .section .container > .row .col {
+        margin:0 !important;
+        margin-bottom:20px !important;
+    }
+
+    #show-cases .section .container > .row .col a {
+        margin-left:0 !important;
+    }
+
+    /* SHOW USER */
+
+    #user_show .card {
+        width:95vw;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    /* EDIT USER */
+
+    #edit {
+        padding-right:0;
+        padding-left:0;
+    }
+
+    #edit .card {
+        width:100% !important;
+    }
+}
