@@ -28,8 +28,8 @@ class CasesController < ApplicationController
         @case = User.find(current_user.id).cases.new(cases_params)
         @case.rooms.new(rent_monthly: 0)
         if @case.save
-            if current_user.administrator? 
-                params_rooms(params[:case])
+            if current_user.administrator?
+                rooms_create(params[:case])
             end
             flash[:success] = 'Votre dossier a bien été ouvert.'
             redirect_to case_path(@case.id)
@@ -56,7 +56,17 @@ class CasesController < ApplicationController
         flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
         redirect_to case_path(@case.id)
         if current_user.administrator? 
-            params_rooms(params[:case])
+            rooms_create(params[:case])
+            @case.update(cases_params)
+            ComputeCalcul.compute_user_part(params[:id])
+            ComputeCalcul.compute_finals_calculs(params[:id])
+            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
+            redirect_to case_path(@case.id)
+        else
+            @case.update(cases_params)
+            ComputeCalcul.compute_user_part(params[:id])
+            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
+            redirect_to case_path(@case.id)
         end
     end
 
@@ -117,7 +127,7 @@ class CasesController < ApplicationController
         end
     end
 
-    def params_rooms(params)
+    def rooms_create(params)
         rooms_attribute = params[:rooms_attributes]
         if !(rooms_attribute.nil?)
             @case.rooms.destroy_all
