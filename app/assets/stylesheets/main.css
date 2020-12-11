@@ -611,13 +611,14 @@
     {
     text-decoration: none;
     color: #232323;
+    text-align:center;
     
     transition: color 0.3s ease;
     }
 
     #menuToggle a:hover
     {
-    color: tomato;
+    color: var(--primary);
     }
 
     #menuToggle > ul > a:first-of-type {
@@ -738,5 +739,75 @@
     #menuToggle input:checked ~ ul
     {
     transform: none;
+    padding-right:20px;
+    }
+
+    /* INDEX CASE */
+
+    #index_case .row-inline .second-row {
+        max-width: 100%;
+        flex: 0 0 100%;
+        justify-content: center;
+    }
+
+    #index_case .card {
+        width:95vw !important;
+    }
+
+    #index_case .row-inline .first-row {
+        margin-left:20px;
+    }
+
+    /* CREATE CASE */
+
+    #create_case .text-right {
+        text-align:center !important;
+        margin:0;
+    }
+
+    #create_case .text-left {
+        text-align:center !important;
+        margin:0;
+        margin-bottom:20px;
+    }
+
+    /* SHOW CASE */
+
+    #show-cases #show-cases-tricolor-show #show-cases-renta-light img {
+        width:12% !important;
+    }
+
+    #show-cases .section .container > .row {
+        padding-left:10px;
+        text-align:center;
+        flex-direction:column;
+    }
+
+    #show-cases .section .container > .row .col {
+        margin:0 !important;
+        margin-bottom:20px !important;
+    }
+
+    #show-cases .section .container > .row .col a {
+        margin-left:0 !important;
+    }
+
+    /* SHOW USER */
+
+    #user_show .card {
+        width:95vw;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    /* EDIT USER */
+
+    #edit {
+        padding-right:0;
+        padding-left:0;
+    }
+
+    #edit .card {
+        width:100% !important;
     }
 }
