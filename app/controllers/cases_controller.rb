@@ -29,8 +29,8 @@ class CasesController < ApplicationController
         @case = User.find(current_user.id).cases.new(cases_params)
         @case.rooms.new(rent_monthly: 0)
         if @case.save
-            if current_user.administrator? 
-                params_rooms(params[:case])
+            if current_user.administrator?
+                rooms_create(params[:case])
             end
             if @case.save
                 if current_user.administrator?
@@ -64,7 +64,7 @@ class CasesController < ApplicationController
     def update 
         @case = Case.find(params[:id])
         if current_user.administrator? 
-            params_rooms(params[:case])
+            rooms_create(params[:case])
             @case.update(cases_params)
             ComputeCalcul.compute_user_part(params[:id])
             ComputeCalcul.compute_finals_calculs(params[:id])
@@ -136,7 +136,7 @@ class CasesController < ApplicationController
         end
     end
 
-    def params_rooms(params)
+    def rooms_create(params)
         rooms_attribute = params[:rooms_attributes]
         if !(rooms_attribute.nil?)
             @case.rooms.destroy_all

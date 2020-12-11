@@ -70,7 +70,7 @@ class Case < ApplicationRecord
     validates :new_rooms_count, numericality: {greater_than_or_equal_to: 0, only_integer: true, allow_blank: true}
     # validates :new_type, allow_blank: true
     # validates :new_project, allow_blank: true
-    validates_presence_of :rooms, message: "can't be null"
+    # validates_presence_of :rooms, message: "can't be null"
     validates :total_rent_annual_estimations, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
     validates :month_count, numericality: { length: {in: 1...12} , only_integer: true, allow_blank: true}
     validates :total_rent_monthly, numericality: {greater_than_or_equal_to: 0, allow_blank: true}
