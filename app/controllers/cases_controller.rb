@@ -27,7 +27,6 @@ class CasesController < ApplicationController
 
     def create   
         @case = User.find(current_user.id).cases.new(cases_params)
-        @case.calcul_confirmed = false
         @case.rooms.new(rent_monthly: 0)
         if @case.save
             if current_user.administrator? 
@@ -53,7 +52,6 @@ class CasesController < ApplicationController
     end
 
     def update 
-        @case.calcul_confirmed = false
         @case = Case.find(params[:id])
         @case.update(cases_params)
         flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
