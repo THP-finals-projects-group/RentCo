@@ -14,13 +14,13 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
       <%= render "flash_messages" %>
-      <% if @case.renta_net != nil %>              
+      <% if @case.renta_brut != nil %>              
         <div id="show-cases-tricolor-show">
-          <% if @case.renta_net < 9 %>
+          <% if @case.renta_brut < 0.09 %>
             <div id="show-cases-renta-light">
               <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
             </div>
-          <% elsif @case.renta_net > 10 %>
+          <% elsif @case.renta_brut >= 0.10 %>
             <div id="show-cases-renta-light">
               <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
             </div>
