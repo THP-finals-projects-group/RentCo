@@ -14,7 +14,8 @@ class Case < ApplicationRecord
     after_validation :geocode, if: :address_changed?
 
     # COMPUTE CALCUL
-    after_save :compute_calculs, if: :calcul_confirmed == false
+    after_create :compute_calculs, if: :calcul_confirmed == false
+    after_update :compute_calculs, if: :calcul_confirmed == false
 
     # VALIDATES
     validates :title, presence: true, length: { minimum: 5, maximum: 140}
