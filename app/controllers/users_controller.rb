@@ -62,7 +62,6 @@ class  UsersController < ApplicationController
 
         def set_user
             @user = User.find(params[:id])
-            Rails.logger.info(@your_object.errors.inspect)
         end
 
 end
