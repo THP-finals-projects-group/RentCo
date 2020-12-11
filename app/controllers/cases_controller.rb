@@ -31,18 +31,8 @@ class CasesController < ApplicationController
             if current_user.administrator? 
                 params_rooms(params[:case])
             end
-            if @case.save
-                if current_user.administrator?
-                    ComputeCalcul.compute_user_part(@case.id)
-                    ComputeCalcul.compute_finals_calculs(@case.id)
-                    flash[:success] = 'Votre dossier a bien été créé.'
-                    redirect_to case_path(@case.id)
-                else
-                    ComputeCalcul.compute_user_part(@case.id)
-                    flash[:success] = 'Votre dossier a bien été ouvert.'
-                    redirect_to case_path(@case.id)
-                end
-            end
+            flash[:success] = 'Votre dossier a bien été ouvert.'
+            redirect_to case_path(@case.id)
         else 
             flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
             render 'new'
@@ -62,18 +52,11 @@ class CasesController < ApplicationController
 
     def update 
         @case = Case.find(params[:id])
+        @case.update(cases_params)
+        flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
+        redirect_to case_path(@case.id)
         if current_user.administrator? 
             params_rooms(params[:case])
-            @case.update(cases_params)
-            ComputeCalcul.compute_user_part(params[:id])
-            ComputeCalcul.compute_finals_calculs(params[:id])
-            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
-            redirect_to case_path(@case.id)
-        else
-            @case.update(cases_params)
-            ComputeCalcul.compute_user_part(params[:id])
-            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
-            redirect_to case_path(@case.id)
         end
     end
 
