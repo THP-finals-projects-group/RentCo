@@ -154,51 +154,59 @@
     background-color: white;
 }
 
-#forgot_password_email .container {
-    margin-top: 285px;
-    margin-right: 250px;
-    margin-left: 450px;
-}
-
-#forgot_password_email .margin-title {
-    margin-bottom: -30px;
-}
-
-#forgot_password_email .margin-email {
-    margin-top: -30px;
-}
-
-#forgot_password_email .margin-button {
-    padding-top: 9px;
-}
-
-#forgot_password_email .padding-back-button {
-    padding-left: 56px;
-    padding-bottom: 10px;
-}
-
-#forgot_password_email .container {
-    padding-left: 50px;
-}
-
-#forgot_password .padding-button {
-    padding-top: 10px;
-}
-
-#forgot_password .padding-button-back {
-    padding-left: 415px;
-}
-
 #forgot_password .card {
     background-color: white;
 }
 
-#forgot_password .container {
-    padding-top: 180px;
+#forgot_password_email .container  {
+    height: 975px; 
+    width: 100vw;
+}
+#forgot_password_email p {
+    font-size: 14px;
 }
 
-#forgot_password h3 {
-    padding-top: 30px;
+#forgot_password_email h3 {
+    margin-bottom: 0px;
+}
+
+#forgot_password_email .col  {
+   height: 975px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#forgot_password_email .card  {
+    display: flex; 
+    width: 600px;
+}
+
+#forgot_password_email #card-body-2  {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+#forgot_password_email .second-row  {
+    display: flex;
+    align-items: end;
+}
+
+#forgot_password_email .card-header{
+    padding-bottom: 0px;
+    padding-top: 35px;
+}
+
+#forgot_password_email .form-group {
+    margin-bottom: 0px;
+}
+
+#forgot_password_email #row-back {
+    margin-left: 0px;
+    margin-right: 0px; 
+    margin: 10px;
 }
 
 /* PAGE CASE INDEX */
