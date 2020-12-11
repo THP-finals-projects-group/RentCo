@@ -192,7 +192,7 @@
 
 #forgot_password_email .second-row  {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
 }
 
 #forgot_password_email .card-header{
@@ -228,7 +228,7 @@
     padding-right: 0px;
     height: 80px;
     display: flex; 
-    align-items: end;
+    align-items: flex-end;
 }
 
 #forgot_password #col-3 {

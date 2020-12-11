@@ -17,7 +17,9 @@
                   <div class="first-row">
                     <%= f.label :password, "Nouveau mot de passe" %><br />
                     <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: '6 caractères minimum', id:"myInput", style: "height: 47px;" %>
-                    <input id="boxid" type="checkbox" onclick="myFunction()"><span for="boxid"> Voir</span>
+                    <div id="session_new-see-password" class="custom-control custom-checkbox mb-3 mb-md-0">
+                      <input id="boxid" type="checkbox" class="custom-control-input" onclick="myFunction()"><label for="boxid" id="registration_new-see-password" class="custom-control-label"> Voir</label>
+                    </div>
                   </div>
                   <div class ="row">
                     <div class="second-row">
