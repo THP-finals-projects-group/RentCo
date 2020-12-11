@@ -24,5 +24,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :index, :update]
+  resources :users, only: [:show, :index, :update] do
+    member do 
+      get 'passreset'
+    end
+  end 
 end
+ 
