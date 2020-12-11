@@ -1,3 +1,9 @@
+/* COMMON PART */
+
+section.section {
+    min-height:100vh;
+}
+
 /* NAVBAR */
 
 
@@ -65,7 +71,6 @@
 #user_show .card {
     background-size: cover;
     background-color: whitesmoke;
-    margin-right: 40px;
     width: 50rem;
 }
 
@@ -351,6 +356,7 @@
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
     justify-content:right;
+    width:95vw;
 }
 
 #index_case .row-inline .second-row > .row {
