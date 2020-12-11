@@ -4,7 +4,7 @@
     <title>RentCo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag asset_path('130764474_382950262998885_2805957376442774179_n.png')%>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= wicked_pdf_stylesheet_link_tag 'pdf.css' %>
 
@@ -24,5 +24,5 @@
 
   </body>
     <script src="https://kit.fontawesome.com/5069487eeb.js" crossorigin="anonymous"></script>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-suppress-warning': 'true' %>
 </html>

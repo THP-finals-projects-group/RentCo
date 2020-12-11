@@ -27,4 +27,3 @@
 //= require theme.min
 //= require main
 //= require cases
-//= require functions
