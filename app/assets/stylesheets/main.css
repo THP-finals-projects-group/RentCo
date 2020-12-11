@@ -176,6 +176,7 @@
 #forgot_password_email .card  {
     display: flex; 
     width: 600px;
+    height: auto;
 }
 
 #forgot_password_email #card-body-2  {
