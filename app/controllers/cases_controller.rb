@@ -4,7 +4,6 @@ class CasesController < ApplicationController
     
 
     def index     
-
 		if current_user.administrator?
             @cases = Case.all.order(:updated_at, :created_at).reverse
             @users = User.all
@@ -106,7 +105,6 @@ class CasesController < ApplicationController
                 format.html { redirect_to cases_path, flash: {success: "Le dossier | #{@case.title} | a bien été validé, le collaborateur en charge du dossier ne peut plus apporter de modifications. Il à été prévenu par email"} }
                 format.json { head :no_content }
             end
-
         else
             @case.update(is_confirmed: false)
             respond_to do |format|
