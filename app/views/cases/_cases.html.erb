@@ -42,12 +42,12 @@
           <div class="card-body card-top-margin">      
             <div class="row">
               <div class=" ml-auto" id="index-card-top">
-                <% if c.renta_net != nil %>              
-                  <% if c.renta_net < 9 %>
+                <% if c.renta_brut != nil %>              
+                  <% if c.renta_brut < 0.09 %>
                     <div id="index-renta-light">
                       <%= image_tag asset_path('redlight.png'), style: "width: 10%; height: 80%;"%>
                     </div>
-                  <% elsif c.renta_net > 10 %>
+                  <% elsif c.renta_brut >= 0.10 %>
                     <div id="index-renta-light">
                       <%= image_tag asset_path('greenlight.png'), style: "width: 10%; height: 80%;"%>
                     </div>
@@ -138,4 +138,3 @@
     <% end %>
   </div>
 </div>
-<script type="text/javascript" src="/assets/functions"></script>
