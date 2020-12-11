@@ -14,30 +14,32 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
       <%= render "flash_messages" %>
-      <% if @case.renta_brut != nil %>              
-        <div id="show-cases-tricolor-show">
-          <% if @case.renta_brut < 0.09 %>
-            <div id="show-cases-renta-light">
-              <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
-            </div>
-          <% elsif @case.renta_brut >= 0.10 %>
-            <div id="show-cases-renta-light">
-              <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
-            </div>
-          <% else %>
-            <div id="show-cases-renta-light">
-              <%= image_tag asset_path('orangelight.png'), style: "width: 5%; height: 40%;"%>
-            </div>
-          <% end %>
-        </div>
-        <div style ="margin-left: 73em;" >
-          <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
-        </div>
-      <% else %>
-        <div style ="margin-left: 73em;" >
-          <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
-        </div>
-      <% end %>
+      <div class="top-fire-arrow">
+        <% if @case.renta_net != nil %>              
+          <div id="show-cases-tricolor-show">
+            <% if @case.renta_net < 9 %>
+              <div id="show-cases-renta-light">
+                <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
+              </div>
+            <% elsif @case.renta_net > 10 %>
+              <div id="show-cases-renta-light">
+                <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
+              </div>
+            <% else %>
+              <div id="show-cases-renta-light">
+                <%= image_tag asset_path('orangelight.png'), style: "width: 5%; height: 40%;"%>
+              </div>
+            <% end %>
+          </div>
+          <div>
+            <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+          </div>
+        <% else %>
+          <div>
+            <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+          </div>
+        <% end %>
+      </div>
       <div class="row justify-content-center align-items-center">
         <div class="col-md-8 col-lg-7">
           <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
@@ -56,22 +58,13 @@
             <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
               Mettre à jour le dossier
             <% end %>
-          </p><br>
-          <% if @case.videos.attached? %>
-            <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
-              <% if @case.videos.length == 1 %>
-                <%= @case.videos.length %> vidéo:
-              <%else%>
-                <%= @case.videos.length %> vidéos:
-              <%end%>
-            </p>
-          <%end%>
+          </p>
         </div>
       </div> <!-- / .row -->
       <% if @case.videos.attached? %>
-        <div class="row video-card justify-content-center align-items-center">
+        <div class="row video-card justify-content-center">
           <% @case.videos.length.times do |i| %>
-            <div class="card border-0" style="width: 15rem; margin: 6px;">
+            <div class="card border-0" style="width: 15rem; margin: 0.5em;">
               <div class="card-img-top">
                 <%= video_tag rails_blob_path(@case.videos[i]), size: "240x209", controls: true %>
               </div>
@@ -83,7 +76,7 @@
               </div>
             </div>
           <% end %>
-        </div> <!-- / .row -->
+        </div> 
       <% end %>
       <div id="map"></div> <!-- / Div to display GoogleMap -->
     </div> <!-- / .container -->
