@@ -7,7 +7,7 @@
     Remplissez le formulaire ci-dessous pour se connecter à votre compte
   </p>
   <div class="field form-group">
-  <%= render 'users/shared/flash_messages'%>
+    <%= render 'users/shared/flash_messages'%>
     <%= f.label :email %><br />
     <div class="input-group">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control order-1" %>
@@ -36,17 +36,19 @@
         </div>
       </div>
     </div>
-    <input id="boxid" type="checkbox" onclick="myFunction()"><span for="boxid"> Voir</span>
+    <div id="session_new-see-password" class="custom-control custom-checkbox mb-3 mb-md-0">
+      <input id="boxid" type="checkbox" class="custom-control-input" onclick="myFunction()"><label for="boxid" id="registration_new-see-password" class="custom-control-label"> Voir</label>
+    </div>
   </div>
   <br>
   <%= render "users/shared/links_forgot_password" %>
   <div class="form-row align-items-center btn-checkbox-login">
     <div class="col-md-auto">
-      <div class="custom-control custom-checkbox ">
+      <div class="custom-control custom-checkbox mb-3 mb-md-0">
         <% if devise_mapping.rememberable? %>
           <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :Se_souvenir_de_moi %>
+            <%= f.check_box :remember_me, class: "custom-control-input", id: "sign-in-checkbox" %>
+            <%= f.label :Se_souvenir_de_moi, class: "custom-control-label", for: "sign-in-checkbox"  %>
           </div>
         <% end %>
       </div>

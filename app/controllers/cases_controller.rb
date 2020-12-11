@@ -53,11 +53,11 @@ class CasesController < ApplicationController
     def update 
         @case = Case.find(params[:id])
         @case.update(cases_params)
+        if current_user.administrator? 
+            rooms_create(params[:case])
+        end
         flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
         redirect_to case_path(@case.id)
-        if current_user.administrator? 
-            params_rooms(params[:case])
-        end
     end
 
     def destroy 

@@ -5,34 +5,38 @@
     <div class="container">
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.hidden_field :reset_password_token %>
-        <div class="card">
-          <div class="card-header text-center">
-            <h3>Changement de mot de passe </h3>
-          </div>
-          <%= render "users/shared/error_messages", resource: resource %>
-          <div class="row">
-            <div class="col-md-4 ">      
-              <div class="card-body">
-                <%= f.label :password, "Nouveau mot de passe" %><br />
-                <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: '6 caractères minimum', id:"myInput" %>
-                <input id="boxid" type="checkbox" onclick="myFunction()"><span for="boxid"> Voir</span>
+        <div class="row">
+          <div class="col" id="col-1">
+            <div class="card">
+              <div class="card-header text-center">
+                <h3>Changement de mot de passe </h3>
               </div>
-            </div>
-            <div class="col-md-4 ">      
-              <div class="card-body">
-                <%= f.label :password_confirmation, "Confirmer" %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+              <%= render "users/shared/error_messages", resource: resource %>
+              <div class="card-body" id="card-body-1">
+                <div class="row" id="row-1">
+                  <div class="first-row">
+                    <%= f.label :password, "Nouveau mot de passe" %><br />
+                    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', placeholder: '6 caractères minimum', id:"myInput", style: "height: 47px;" %>
+                    <div id="session_new-see-password" class="custom-control custom-checkbox mb-3 mb-md-0">
+                      <input id="boxid" type="checkbox" class="custom-control-input" onclick="myFunction()"><label for="boxid" id="registration_new-see-password" class="custom-control-label"> Voir</label>
+                    </div>
+                  </div>
+                  <div class ="row">
+                    <div class="second-row">
+                      <%= f.label :password_confirmation, "Confirmer" %><br />
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', style: "height: 47px;" %>
+                    </div> 
+                    <div class="col" id="col-2">               
+                      <%= f.submit "Modifier", class:"btn btn-primary btn-outline btn-sm", style: "height: 47px;" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" id="row-2">
+                  <div class="col" id="col-3">
+                    <%= link_to "Retour", :back, class:"btn btn-secondary btn-outline btn-sm" %>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-4" style="padding-top: 35px;">      
-              <div class="card-body text-center">
-                <%= f.submit "Modifier", class:"btn btn-primary btn-outline btn-sm" %>                
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="card-body text-center">
-              <%= link_to "Retour", :back, class:"btn btn-secondary btn-outline btn-sm" %>
             </div>
           </div>
         </div>

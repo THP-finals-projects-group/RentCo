@@ -11,9 +11,9 @@ function myFunction() {
 
 $('#boxid').click(function() {
   if ($(this).is(':checked')) {
-    $(this).siblings('span').html(' Cacher');
+    $(this).siblings('label').html(' Cacher');
   } else {
-    $(this).siblings('span').html(' Voir');
+    $(this).siblings('label').html(' Voir');
   }
 });
 
