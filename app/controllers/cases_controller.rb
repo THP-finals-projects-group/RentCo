@@ -29,16 +29,16 @@ class CasesController < ApplicationController
         @case = User.find(current_user.id).cases.new(cases_params)
         @case.calcul_confirmed = false
         @case.rooms.new(rent_monthly: 0)
-        if @case.save
-            if current_user.administrator? 
-                params_rooms(params[:case])
-            end
-            flash[:success] = 'Votre dossier a bien été ouvert.'
-            redirect_to case_path(@case.id)
-        else 
-            flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
-            render 'new'
-        end  
+        @case.save
+        if current_user.administrator? 
+            params_rooms(params[:case])
+        end
+        flash[:success] = 'Votre dossier a bien été ouvert.'
+        redirect_to case_path(@case.id)
+ 
+        #     flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
+        #     render 'new'
+        # end  
     end
 
     def edit 
