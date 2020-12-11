@@ -4,7 +4,6 @@ class CasesController < ApplicationController
     
 
     def index     
-
 		if current_user.administrator?
             @cases = Case.all.order(:updated_at, :created_at).reverse
             @users = User.all
@@ -29,21 +28,11 @@ class CasesController < ApplicationController
         @case = User.find(current_user.id).cases.new(cases_params)
         @case.rooms.new(rent_monthly: 0)
         if @case.save
-            if current_user.administrator? 
-                params_rooms(params[:case])
+            if current_user.administrator?
+                rooms_create(params[:case])
             end
-            if @case.save
-                if current_user.administrator?
-                    ComputeCalcul.compute_user_part(@case.id)
-                    ComputeCalcul.compute_finals_calculs(@case.id)
-                    flash[:success] = 'Votre dossier a bien été créé.'
-                    redirect_to case_path(@case.id)
-                else
-                    ComputeCalcul.compute_user_part(@case.id)
-                    flash[:success] = 'Votre dossier a bien été ouvert.'
-                    redirect_to case_path(@case.id)
-                end
-            end
+            flash[:success] = 'Votre dossier a bien été ouvert.'
+            redirect_to case_path(@case.id)
         else 
             flash.now[:alert] = "Le dossier n'a pas pu être enregistré : #{@case.errors.messages}"
             render 'new'
@@ -63,19 +52,12 @@ class CasesController < ApplicationController
 
     def update 
         @case = Case.find(params[:id])
+        @case.update(cases_params)
         if current_user.administrator? 
-            params_rooms(params[:case])
-            @case.update(cases_params)
-            ComputeCalcul.compute_user_part(params[:id])
-            ComputeCalcul.compute_finals_calculs(params[:id])
-            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
-            redirect_to case_path(@case.id)
-        else
-            @case.update(cases_params)
-            ComputeCalcul.compute_user_part(params[:id])
-            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
-            redirect_to case_path(@case.id)
+            rooms_create(params[:case])
         end
+        flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
+        redirect_to case_path(@case.id)
     end
 
     def destroy 
@@ -106,7 +88,6 @@ class CasesController < ApplicationController
                 format.html { redirect_to cases_path, flash: {success: "Le dossier | #{@case.title} | a bien été validé, le collaborateur en charge du dossier ne peut plus apporter de modifications. Il à été prévenu par email"} }
                 format.json { head :no_content }
             end
-
         else
             @case.update(is_confirmed: false)
             respond_to do |format|
@@ -136,7 +117,7 @@ class CasesController < ApplicationController
         end
     end
 
-    def params_rooms(params)
+    def rooms_create(params)
         rooms_attribute = params[:rooms_attributes]
         if !(rooms_attribute.nil?)
             @case.rooms.destroy_all
