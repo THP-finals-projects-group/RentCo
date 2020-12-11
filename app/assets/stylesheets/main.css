@@ -2,19 +2,11 @@
 
 /* NAVBAR */
 
+/* FOOTER if existing */
 
+/* STYLE button */
 
-
-/* FOOTER si existant */
-
-
-
-
-/* STYLE BOUTON */
-
-
-
-/* PAGE CONNEXION SESSION NEW */
+/* CONNEXION PAGE SESSION NEW */
 
 #sessions_new {
     background-color:var(--gray-dark);
@@ -57,7 +49,7 @@
     padding-top: 12px;
 }
 
-/* PAGE PROFIL USERS SHOW */
+/* PROFILE USERS SHOW */
 
 #section-user-show {
     min-height:100vh;
@@ -110,7 +102,7 @@
     width: 100%;
 }
 
-/* PAGE EDIT REGISTRATION EDIT */
+/* REGISTRATION EDIT */
 
 #edit .container {
     margin-top: -60px;
@@ -157,11 +149,11 @@
     background-color: white;
 }
 
-
 #forgot_password_email .container  {
     height: 975px; 
     width: 100vw;
 }
+
 #forgot_password_email p {
     font-size: 14px;
 }
@@ -187,8 +179,6 @@
     display: flex;
     justify-content: center;
 }
-
-
 
 #forgot_password_email .second-row  {
     display: flex;
@@ -263,7 +253,7 @@
     margin-right: 0px
 }
 
-/* PAGE CASE INDEX */
+/* CASE INDEX */
 
 #index-card-top{
     display: flex;
@@ -307,7 +297,6 @@
     font-size: 15px;
 }
 
-
 #index_case .margin {
     margin-top: 10px;
     font-size: 14px;
@@ -317,7 +306,6 @@
     margin-top: 10px;
     margin-right: 10px;
 }
-
 
 #index_case .btn {
     width: 100%;
@@ -425,7 +413,7 @@
     margin-right: 5px;
 }
 
-/*PAGE CREATE CASE */
+/*CREATE CASE */
 
 #create_case .text-right {
     margin-right: 25px;
@@ -435,7 +423,7 @@
     margin-left: 25px;
 }
 
-/* PAGE CASE SHOW */
+/* CASE SHOW */
 
 #show-cases .col .btn-outline-info:hover {
     color: var(--info) !important;
@@ -473,18 +461,18 @@
     justify-content: space-between;
 }
 
-#show-cases-renta-light{
-    
+#show-cases .video-card {
+    display: -webkit-box;
 }
 
-/* PAGE CONNEXION REGISTRATION NEW */
+/* REGISTRATION NEW */
 
 #registration_new .container {
     margin-top: 100px;
     margin-bottom: -47px;
 }
 
-/*  PAGE INDEX USER */
+/* USER INDEX  */
 
 #index_user .bg {
     height: 100%;
@@ -527,7 +515,7 @@
     margin-bottom: 20px;
 }
 
-/* PAGE EDIT ROOMS */
+/* EDIT ROOMS */
 
 #edit_rooms .bg {
     height: 100%;
@@ -581,9 +569,7 @@
   width: 100%;
 }
 
-
-
-/* RESPONSIVE */
+/* RESPONSIVITY*/
 
 @media only screen and (min-width: 1024px) {
     #registration_new > section {
