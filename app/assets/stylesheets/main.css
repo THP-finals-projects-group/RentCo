@@ -369,9 +369,6 @@
 }
 
 /* PAGE CASE SHOW */
-#show-cases .video-card {
-    margin-top: -6em;
-}
 
 #show-cases .col .btn-outline-info:hover {
     color: var(--info) !important;
@@ -399,7 +396,6 @@
     color: var(--primary);
 }
 
-
 #show-cases-tricolor-show{
     margin-bottom: -85px;
 }
@@ -408,11 +404,7 @@
     width: 50%;
 }
 
-
-
 /* PAGE CONNEXION REGISTRATION NEW */
-
-
 
 #registration_new .container {
     margin-top: 100px;
