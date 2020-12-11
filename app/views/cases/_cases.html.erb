@@ -37,36 +37,43 @@
       <%else%>
         <%data = "1"%>
       <%end%>
-      <div class="row" >
-        <div class="card case-validation case-<%= data %>", style="width: 18rem; margin: 4px; ">
-          <div class="card-body card-top-margin">
-            <% if current_user.administrator? %>
-              <div class="row">
-                <div class=" ml-auto" id="index-card-top">
-                  <% if c.renta_net != nil %>              
-                    <% if c.renta_net < 9 %>
-                      <div id="index-renta-light">
-                        <%= image_tag asset_path('redlight.png'), style: "width: 10%; height: 80%;"%>
-                      </div>
-                    <% elsif c.renta_net > 10 %>
-                      <div id="index-renta-light">
-                        <%= image_tag asset_path('greenlight.png'), style: "width: 10%; height: 80%;"%>
-                      </div>
-                    <% else %>
-                      <div id="index-renta-light">
-                        <%= image_tag asset_path('orangelight.png'), style: "width: 10%; height: 80%;"%>
-                      </div>
-                    <% end %>
+      <div class="row case-validation case-<%= data %>" >
+        <div class="card", style="width: 18rem; margin: 4px;">
+          <div class="card-body card-top-margin">      
+            <div class="row">
+              <div class=" ml-auto" id="index-card-top">
+                <% if c.renta_net != nil %>              
+                  <% if c.renta_net < 9 %>
+                    <div id="index-renta-light">
+                      <%= image_tag asset_path('redlight.png'), style: "width: 10%; height: 80%;"%>
+                    </div>
+                  <% elsif c.renta_net > 10 %>
+                    <div id="index-renta-light">
+                      <%= image_tag asset_path('greenlight.png'), style: "width: 10%; height: 80%;"%>
+                    </div>
                   <% else %>
+                    <div id="index-renta-light">
+                      <%= image_tag asset_path('orangelight.png'), style: "width: 10%; height: 80%;"%>
+                    </div>
+                  <% end %>
+                    <% if current_user.administrator? %>
+                      <div>
+                        <%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes vous sûr de vouloir supprimer ce dossier ?' } do %>
+                          <i class="fas fa-trash" style="color: var(--danger); padding-bottom: 20px;"></i>
+                        <% end %>
+                      </div>
+                    <% end %> 
+                <% else %>
+                  <% if current_user.administrator? %>
                     <div>
                       <%= link_to case_path(c.id), method: :delete, data: { confirm: 'Etes vous sûr de vouloir supprimer ce dossier ?' } do %>
                         <i class="fas fa-trash" style="color: var(--danger); padding-bottom: 20px;"></i>
                       <% end %>
                     </div> 
                   <% end %>
-                </div>
+                <% end %>
               </div>
-            <% end %>
+            </div>
             <div class="row">
               <div class="col-md-6">
                 <p class="size"><%= "Modifié: #{sprintf '%02d', c.updated_at.day}/#{sprintf '%02d', c.updated_at.month}/#{c.updated_at.year}" %></p>
