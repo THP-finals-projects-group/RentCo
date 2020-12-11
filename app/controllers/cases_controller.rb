@@ -25,7 +25,7 @@ class CasesController < ApplicationController
         @s_title_document = "Création d'un nouveau dossier"
     end
 
-    def create   
+    def create
         @case = User.find(current_user.id).cases.new(cases_params)
         @case.rooms.new(rent_monthly: 0)
         if @case.save
@@ -64,8 +64,8 @@ class CasesController < ApplicationController
     def update 
         @case = Case.find(params[:id])
         if current_user.administrator? 
-            @case.update(cases_params)
             params_rooms(params[:case])
+            @case.update(cases_params)
             ComputeCalcul.compute_user_part(params[:id])
             ComputeCalcul.compute_finals_calculs(params[:id])
             flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
@@ -101,7 +101,7 @@ class CasesController < ApplicationController
         @user = User.find(@case.user_id)
         if @case.is_confirmed == false
             @case.update(is_confirmed: true)
-            User.send_case_confirmed_mail(@user.email)
+            User.send_case_confirmed_mail(@case)
             respond_to do |format|
                 format.html { redirect_to cases_path, flash: {success: "Le dossier | #{@case.title} | a bien été validé, le collaborateur en charge du dossier ne peut plus apporter de modifications. Il à été prévenu par email"} }
                 format.json { head :no_content }
@@ -135,14 +135,24 @@ class CasesController < ApplicationController
             params.require(:case).permit(:title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, videos: [])
         end
     end
-    # :rooms_attributes [[]=>["rent_monthly", "_destroy"]],
+
     def params_rooms(params)
-        @case.rooms.destroy_all
-        rooms = params[:rooms_attributes]
-            rooms.each do |hash|
-                (hash[1].values_at("_destroy")[0] == "false" && !(hash[1].values_at("rent_monthly")[0] == "0")) ? rent = hash[1].values_at("rent_monthly")[0] : next 
-                @case.rooms.create!(rent_monthly: rent.to_i)
+        rooms_attribute = params[:rooms_attributes]
+        if !(rooms_attribute.nil?)
+            @case.rooms.destroy_all
+            rooms_attribute.each do |hash|
+                if hash[1].values_at("rent_monthly")[0] == "0" && hash[1].values_at("_destroy")[0] == "1"
+                    @case.rooms.create!(rent_monthly: 0)
+                elsif hash[1].values_at("_destroy")[0] == "false" && (!(hash[1].values_at("rent_monthly")[0].empty?) || !(hash[1].values_at("rent_monthly")[0] == "0"))
+                    rent = hash[1].values_at("rent_monthly")[0]
+                    @case.rooms.create!(rent_monthly: rent.to_i) 
+                else
+                    next
+                end
             end
+        else
+            @case.rooms.create(rent_monthly: 0)
+        end
         @case.new_rooms_count = @case.rooms.length
         @case.save
     end

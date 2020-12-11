@@ -59,12 +59,10 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin-top: 17em;
+    margin-top: 4em;
 }
 
-
 #user_show .card {
-    margin-top: -70px;
     background-size: cover;
     background-color: whitesmoke;
     margin-right: 40px;
@@ -75,8 +73,14 @@
     margin-top: -25px;
 }
 
-#user_show .col-md-1 {
-    padding-bottom: 20px;
+#user_show .row-profile-btn {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#user_show .profile-btn {
+    padding-bottom: 1.5em;
+    margin-top: 1.5em;
 }
 
 #user_show .card-header {
@@ -95,16 +99,8 @@
     margin-top: 15px;
 }
 
-#user_show .custom {
-    margin-top: 8em;
-    position: relative;
-}
-
-#user_show .cards-usercases-admin {
-    margin-left: 12%; 
-    margin-right: 10%; 
-    display: flex; 
-    flex-wrap: wrap;
+#user_show .custom-title {
+    width: 100%;
 }
 
 /* PAGE EDIT REGISTRATION EDIT */
