@@ -465,8 +465,14 @@
     margin-bottom: -85px;
 }
 
+#show-cases .top-fire-arrow {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 #show-cases-renta-light{
-    width: 50%;
+    
 }
 
 /* PAGE CONNEXION REGISTRATION NEW */
