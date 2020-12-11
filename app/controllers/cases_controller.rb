@@ -2,9 +2,7 @@ class CasesController < ApplicationController
     before_action :authenticate_user!
     before_action :set_case, only: [:show, :edit, :update, :destroy, :generate_pdf]
     
-
     def index     
-
 		if current_user.administrator?
             @cases = Case.all.order(:updated_at, :created_at).reverse
             @users = User.all

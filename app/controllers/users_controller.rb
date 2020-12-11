@@ -1,10 +1,10 @@
 class  UsersController < ApplicationController
-    before_action :set_user, only: [:show, :update]
     before_action :authenticate_user!
+    before_action :set_user, only: [:show, :update]
 
     def index
         if current_user.administrator?
-            @users = User.all.order(:approved, :updated_at, :created_at)
+            @users = User.where.not(role: 1).order(:approved, :updated_at, :created_at)
         else
             flash[:warning]="Vous n'avez pas accès à cette page"
             redirect_to root_path
@@ -63,5 +63,6 @@ class  UsersController < ApplicationController
         def set_user
             @user = User.find(params[:id])
         end
+
 end
     

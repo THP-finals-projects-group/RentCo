@@ -1,12 +1,14 @@
 class User < ApplicationRecord
-  after_create :send_admin_mail
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable
-
+  :recoverable, :rememberable, :validatable,
+  :confirmable
+  
   enum role: { user: 0, administrator: 1 }
+
+  #Mailer
+  after_create :send_admin_mail
   
   # DB RELATIONS
   has_many :cases
