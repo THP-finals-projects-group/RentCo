@@ -56,17 +56,7 @@ class CasesController < ApplicationController
         flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
         redirect_to case_path(@case.id)
         if current_user.administrator? 
-            rooms_create(params[:case])
-            @case.update(cases_params)
-            ComputeCalcul.compute_user_part(params[:id])
-            ComputeCalcul.compute_finals_calculs(params[:id])
-            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
-            redirect_to case_path(@case.id)
-        else
-            @case.update(cases_params)
-            ComputeCalcul.compute_user_part(params[:id])
-            flash[:success] =  "Le dossier | #{@case.title} | a été mis à jour, le pdf est désormais disponible en bas de la page !"
-            redirect_to case_path(@case.id)
+            params_rooms(params[:case])
         end
     end
 
