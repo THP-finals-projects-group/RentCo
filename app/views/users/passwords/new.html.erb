@@ -1,45 +1,47 @@
-<div class="bg-overlay bg-dark"></div>
-<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
-<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
-<div id="forgot_password_email">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title text-center">Mot de passe oublié ? </h3><br>
-            <p>Veuillez renseigner votre email afin que nous puissions vous envoyer des instructions pour changer votre mot de passe</p>
-          </div>
-          <%= render "users/shared/error_messages", resource: resource %>
-          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            <div class="card-body" id="card-body-2">
-              <div class="first-row">
-                <div class="field form-group">
-                  <%= f.label :email %>
-                  <div class="input-group">
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control order-1', style: "width: auto; height: 41px;" %>
-                    <div class="input-group-append order-0">
-                      <div class="input-group-text">
-                        <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <path transform="translate(3 3)" d="
-                            M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
-                          </path>
-                        </svg>
+<section class="section section-top section-full">
+  <div class="bg-overlay bg-dark"></div>
+  <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+  <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+  <div id="forgot_password_email">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title text-center">Mot de passe oublié ? </h3><br>
+              <p>Veuillez renseigner votre email afin que nous puissions vous envoyer des instructions pour changer votre mot de passe</p>
+            </div>
+            <%= render "users/shared/error_messages", resource: resource %>
+            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+              <div class="card-body" id="card-body-2">
+                <div class="first-row">
+                  <div class="field form-group">
+                    <%= f.label :email %>
+                    <div class="input-group">
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control order-1', style: "width: auto; height: 41px;" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <svg class="input-group-icon icon-offset icon icon-envelope" viewBox="0 0 106 106" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path transform="translate(3 3)" d="
+                              M0 30 V 10 H 100 V 90 H 0 V 30 L 50 60 L 100 30">
+                            </path>
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div class="second-row">
+                  <%= f.submit "Envoyer", class:"btn btn-primary btn-outline btn-sm", style: "height: 41px;" %>
+                </div>
               </div>
-              <div class="second-row">
-                <%= f.submit "Envoyer", class:"btn btn-primary btn-outline btn-sm", style: "height: 41px;" %>
-              </div>
+            <% end %>
+            <div class="row" id="row-back">
+              <%= link_to "Retour", :back, class:"btn btn-secondary btn-outline btn-sm", style:"display: flex; width: inherit;" %>
             </div>
-          <% end %>
-          <div class="row" id="row-back">
-            <%= link_to "Retour", :back, class:"btn btn-secondary btn-outline btn-sm", style:"display: flex; width: inherit;" %>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
