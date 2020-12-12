@@ -21,7 +21,7 @@
               <div id="show-cases-renta-light">
                 <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
               </div>
-            <% elsif @case.renta_brut > 0.10 %>
+            <% elsif @case.renta_brut >= 0.10 %>
               <div id="show-cases-renta-light">
                 <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
               </div>
