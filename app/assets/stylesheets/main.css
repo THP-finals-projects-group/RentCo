@@ -264,6 +264,11 @@
     width: 50%;
 }
 
+#index-renta-space{
+    width: 50%;
+    margin-top: 2.5em;
+}
+
 #index_case .bg {
     height: 100%;
     width: 100%;
