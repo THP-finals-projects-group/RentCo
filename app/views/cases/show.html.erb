@@ -17,11 +17,11 @@
       <div class="top-fire-arrow">
         <% if @case.renta_net != nil %>              
           <div id="show-cases-tricolor-show">
-            <% if @case.renta_net < 9 %>
+            <% if @case.renta_brut < 0.09 %>
               <div id="show-cases-renta-light">
                 <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
               </div>
-            <% elsif @case.renta_net > 10 %>
+            <% elsif @case.renta_brut >= 0.10 %>
               <div id="show-cases-renta-light">
                 <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
               </div>
