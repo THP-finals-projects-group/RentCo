@@ -14,6 +14,8 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
       <%= render "flash_messages" %>
+
+
       <div class="top-fire-arrow">
         <% if @case.renta_net != nil %>              
           <div id="show-cases-tricolor-show">
@@ -36,10 +38,13 @@
           </div>
         <% else %>
           <div>
-            <a href="#down"><i class="fas fa-arrow-down fa-4x"></i></a>
+            <a href="#down"><i class="fas fa-arrow-down fa-4x" id="show-arrow-down"></i></a>
           </div>
         <% end %>
       </div>
+
+
+
       <div class="row justify-content-center align-items-center">
         <div class="col-md-8 col-lg-7">
           <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
@@ -933,7 +938,7 @@
       <% if current_user.administrator? && !(@case.renta_brut.nil?)%>
         <div class="row" style="padding-left: 10px;">
           <div class="col mx-1">
-            <%= link_to "Retour", :back, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>  
+            <%= link_to "Retour", authenticated_root_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>  
           </div>
           <div class="col mx-1">
             <% if @case.is_confirmed == false || current_user.administrator? %>
@@ -960,7 +965,7 @@
         <% if !(@case.renta_brut.nil?) %>
           <div class="row" style="padding-left: 145px;">
             <div class="col mx-1">
-              <%= link_to "Retour", :back, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
+              <%= link_to "Retour", authenticated_root_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
             </div>
             <div class="col mx-1">
               <%= link_to "Générer le .pdf", generate_pdf_case_path, method: :post, class: "btn btn-outline-primary" %>
@@ -972,7 +977,7 @@
         <%else%>
           <div class="row" style="padding-left: 270px;">
             <div class="col-md-6">
-              <%= link_to "Retour", :back, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
+              <%= link_to "Retour", authenticated_root_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
             </div>
             <div class="col-md-6">
               <a href="#up"><i class="fas fa-arrow-up fa-4x"></i></a>
