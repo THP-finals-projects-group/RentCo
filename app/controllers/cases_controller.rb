@@ -7,7 +7,7 @@ class CasesController < ApplicationController
             @cases = Case.all.order(:updated_at, :created_at).reverse
             @users = User.all
 		else
-			@cases = Case.where(user_id:current_user.id)
+			@cases = Case.where(user_id:current_user.id).order(:updated_at, :created_at).reverse
         end
 	end
 

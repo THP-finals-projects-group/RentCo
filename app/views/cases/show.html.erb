@@ -14,14 +14,16 @@
     <div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
     <div class="container">
       <%= render "flash_messages" %>
+
+
       <div class="top-fire-arrow">
         <% if @case.renta_net != nil %>              
           <div id="show-cases-tricolor-show">
-            <% if @case.renta_net < 9 %>
+            <% if @case.renta_brut < 0.09 %>
               <div id="show-cases-renta-light">
                 <%= image_tag asset_path('redlight.png'), style: "width: 5%; height: 40%;"%>
               </div>
-            <% elsif @case.renta_net > 10 %>
+            <% elsif @case.renta_brut >= 0.10 %>
               <div id="show-cases-renta-light">
                 <%= image_tag asset_path('greenlight.png'), style: "width: 5%; height: 40%;"%>
               </div>
@@ -40,6 +42,9 @@
           </div>
         <% end %>
       </div>
+
+
+
       <div class="row justify-content-center align-items-center">
         <div class="col-md-8 col-lg-7">
           <p class="font-weight-medium text-center text-xs text-uppercase text-white text-muted" data-toggle="animation" data-animation="fadeUp" data-animation-order="0" data-animation-trigger="load">
@@ -54,11 +59,13 @@
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             Date de visite du bien : <%= "#{@case.visit_date.day}/#{@case.visit_date.month}/#{@case.visit_date.year}" %>
           </p>
+          <% if !((!(@case.is_confirmed?) && !(@case.renta_brut.nil?) && !(current_user.administrator?)) || (@case.is_confirmed?)) %>
           <p class="text-center mb-0" data-toggle="animation" data-animation="fadeUp" data-animation-order="3" data-animation-trigger="load">
             <%= link_to edit_case_path(@case.id), method: :get, class: "btn btn-outline-primary" do %>
               Mettre à jour le dossier
             <% end %>
           </p>
+          <% end %>
         </div>
       </div> <!-- / .row -->
       <% if @case.videos.attached? %>
@@ -933,7 +940,7 @@
       <% if current_user.administrator? && !(@case.renta_brut.nil?)%>
         <div class="row" style="padding-left: 10px;">
           <div class="col mx-1">
-            <%= link_to "Retour", :back, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>  
+            <%= link_to "Retour", authenticated_root_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>  
           </div>
           <div class="col mx-1">
             <% if @case.is_confirmed == false || current_user.administrator? %>
@@ -949,7 +956,7 @@
           </div>
           <% if current_user.administrator? && !(@case.renta_brut.nil?)%>
             <div class="col mx-1 ">
-              <%= link_to "#{ @case.is_confirmed ? "Rendre modifiable" : 'Clore le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: " text-white btn btn-outline-#{ @case.is_confirmed ? 'info' : 'success' }", style: "width: #{ @case.is_confirmed ? '174px;' : '172px;'}"  %>
+              <%= link_to "#{ @case.is_confirmed ? "Rendre modifiable" : 'Valider le dossier' }", toogle_is_confirmed_case_path(@case), method: :patch, class: " text-white btn btn-outline-#{ @case.is_confirmed ? 'info' : 'success' }", style: "width: #{ @case.is_confirmed ? '174px;' : '174px;'}"  %>
             </div>
           <% end %>
           <div class="col mx-1">
@@ -960,7 +967,7 @@
         <% if !(@case.renta_brut.nil?) %>
           <div class="row" style="padding-left: 145px;">
             <div class="col mx-1">
-              <%= link_to "Retour", :back, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
+              <%= link_to "Retour", authenticated_root_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
             </div>
             <div class="col mx-1">
               <%= link_to "Générer le .pdf", generate_pdf_case_path, method: :post, class: "btn btn-outline-primary" %>
@@ -972,7 +979,7 @@
         <%else%>
           <div class="row" style="padding-left: 270px;">
             <div class="col-md-6">
-              <%= link_to "Retour", :back, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
+              <%= link_to "Retour", authenticated_root_path, class: "btn btn-secondary", style: "margin-left: 20px; color: white;", id:"down" %>
             </div>
             <div class="col-md-6">
               <a href="#up"><i class="fas fa-arrow-up fa-4x"></i></a>
