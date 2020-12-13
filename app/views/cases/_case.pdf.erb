@@ -1,118 +1,99 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Page title</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8">
-<%= wicked_pdf_stylesheet_link_tag 'pdf.css' %>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-</head>
-
-
-
-<body class="body-PDF">
-
-  <h1 class="PDF-title"><%= @case.case_reference %> : <%= @case.title %> </h1>
-
-  <br>
-
-  <div class="pdf-container-adress">
-    <div class="grid-item-adress">
-      <p><%= @case.street_number %> <%= @case.street_name %>, <%= @case.zipcode %> <%= @case.city %></p>
-    </div>
-    <div class="grid-item-adress">
-      <p>Contact référent : <%= @case.contact_referent%></p>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="pdf-container">
-    <h2 class="category-title">Information du bien à l'achat</h2>
-    <div class="grid-container">
-      <div class="grid-item-3">
-            Type : <%= @case.old_type %>       |           <%= @case.old_project %>  
+  <head>
+    <title>Page title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <%= wicked_pdf_stylesheet_link_tag 'pdf.css' %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  </head>
+  <body class="body-PDF">
+    <h1 class="PDF-title"><%= @case.case_reference %> : <%= @case.title %></h1>
+    <br>
+    <div class="pdf-container-adress">
+      <div class="grid-item-adress">
+        <p><%= @case.street_number %> <%= @case.street_name %>, <%= @case.zipcode %> <%= @case.city %></p>
       </div>
-      <div class="grid-item-3">
-            Surface : <%= @case.old_surface %> m²
-      </div>
-      <div class="grid-item-3">
-            Prix: <%= @case.seller_price %> €
+      <div class="grid-item-adress">
+        <p>Contact référent : <%= @case.contact_referent%></p>
       </div>
     </div>
-  </div>
-
-  <br>
-
-  <div class="pdf-container">
-    <h2 class="category-title">Description du bien</h2>
-    <div class="grid-container">
-      <div class="grid-item-3 description">
-        <h4>Physique: </h4>
-        <p><%= @case.physical_description %></p>
-      </div>
-      <div class="grid-item-3 description" id="middle-description">
-        <h4>Localisation:</h4>
-        <p><%= @case.geographical_description %></p>
-      </div>
-      <div class="grid-item-3 description">
-        <h4>Potentiel: </h4>
-        <p><%= @case.potential_description %></p>
+    <br>
+    <div class="pdf-container">
+      <h2 class="category-title">Information du bien à l'achat</h2>
+      <div class="grid-container">
+        <div class="grid-item-3">
+              Type : <%= @case.old_type %>       |           <%= @case.old_project %>  
+        </div>
+        <div class="grid-item-3">
+              Surface : <%= @case.old_surface %> m²
+        </div>
+        <div class="grid-item-3">
+              Prix: <%= @case.seller_price %> €
+        </div>
       </div>
     </div>
-  </div>
-
-  <br>
-
-  <div class="pdf-container">
-    <h2 class="category-title">Charges et taxes</h2>
-    <div class="grid-container">
-      <div class="grid-item-3">
-        <h4>A l'achat:</h4>
-        <p>Frais de notaire: <%= @case.notary_charges %> €</p>
-        <p>Frais d'agence: <%= @case.agency_charges %> €</p>
-      </div>
-      <div class="grid-item-3">
-        <h4>Mensuelles:</h4>
-        <p>Charges: <%= @case.total_monthly_charges %> €</p>
-      </div>
-      <div class="grid-item-3">
-        <h4>Annuelles:</h4>
-        <p>Assurance PNO: <%= @case.pno_insurance_cost %> €</p>
-        <p>Taxe foncière: <%= @case.property_taxes %> €</p>
+    <br>
+    <div class="pdf-container">
+      <h2 class="category-title">Description du bien</h2>
+      <div class="grid-container">
+        <div class="grid-item-3 description">
+          <h4>Physique: </h4>
+          <p><%= @case.physical_description %></p>
+        </div>
+        <div class="grid-item-3 description" id="middle-description">
+          <h4>Localisation:</h4>
+          <p><%= @case.geographical_description %></p>
+        </div>
+        <div class="grid-item-3 description">
+          <h4>Potentiel: </h4>
+          <p><%= @case.potential_description %></p>
+        </div>
       </div>
     </div>
-  </div>
-
-  <br>
-
-  <div class="pdf-container">
-    <h2 class="category-title">Projections</h2>
-    <div class="grid-container">
-      <div class="grid-item-2">
-        <p>Nombre de chambres : <%= @case.new_rooms_count %></p>
-      </div>
-      <div class="grid-item-2">
-        <p>Coût total des renovations : <%= @case.total_renovation_cost%> €</p>
-      </div>
-    </div>
-  </div>
-
-  <br>
-
-  <div class="pdf-container">
-    <h2 class="category-title">Rentabilité</h2>
-    <div class="grid-container">
-      <div class="grid-item-2">
-          <p>Rentabilité brut :<strong> <%= (@case.renta_brut*100).round(2) %> %</strong></p>
-      </div>
-      <div class="grid-item-2">
-        <p>Rentabilité net :<strong> <%= (@case.renta_net*100).round(2) %> %</strong></p>
+    <br>
+    <div class="pdf-container">
+      <h2 class="category-title">Charges et taxes</h2>
+      <div class="grid-container">
+        <div class="grid-item-3">
+          <h4>A l'achat:</h4>
+          <p>Frais de notaire: <%= @case.notary_charges %> €</p>
+          <p>Frais d'agence: <%= @case.agency_charges %> €</p>
+        </div>
+        <div class="grid-item-3">
+          <h4>Mensuelles:</h4>
+          <p>Charges: <%= @case.total_monthly_charges %> €</p>
+        </div>
+        <div class="grid-item-3">
+          <h4>Annuelles:</h4>
+          <p>Assurance PNO: <%= @case.pno_insurance_cost %> €</p>
+          <p>Taxe foncière: <%= @case.property_taxes %> €</p>
+        </div>
       </div>
     </div>
-  </div>
-
-
-</body>
-
+    <br>
+    <div class="pdf-container">
+      <h2 class="category-title">Projections</h2>
+      <div class="grid-container">
+        <div class="grid-item-2">
+          <p>Nombre de chambres : <%= @case.new_rooms_count %></p>
+        </div>
+        <div class="grid-item-2">
+          <p>Coût total des renovations : <%= @case.total_renovation_cost%> €</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="pdf-container">
+      <h2 class="category-title">Rentabilité</h2>
+      <div class="grid-container">
+        <div class="grid-item-2">
+            <p>Rentabilité brut :<strong> <%= (@case.renta_brut*100).round(2) %> %</strong></p>
+        </div>
+        <div class="grid-item-2">
+          <p>Rentabilité net :<strong> <%= (@case.renta_net*100).round(2) %> %</strong></p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
