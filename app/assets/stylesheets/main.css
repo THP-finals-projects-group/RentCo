@@ -648,6 +648,16 @@
         margin-top:15px;
     }
 
+    /* INSCRIPTION REGISTRATION_NEW */
+
+    #registration_new .container {
+        margin-top:0;
+    }
+
+    #registration_new .container form {
+        width:95vw !important;
+    }
+
     .navbar-light #menuToggle span { /* Navbar on phone view */
         background:var(--primary);
     }
