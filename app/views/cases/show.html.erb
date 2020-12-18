@@ -54,7 +54,7 @@
             <%= @case.title %>
           </h1>
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
-            Référence du dossier : <%= @case.case_reference %>
+            Adresse du dossier : <%= @case.street_number %> <%= @case.street_name %>, <%= @case.zipcode %> <%= @case.city %>
           </p>
           <p class="lead text-white text-muted text-center mb-5" data-toggle="animation" data-animation="fadeUp" data-animation-order="2" data-animation-trigger="load">
             Date de visite du bien : <%= "#{@case.visit_date.day}/#{@case.visit_date.month}/#{@case.visit_date.year}" %>
@@ -423,7 +423,7 @@
               <i class="fas fa-file-invoice-dollar fa-2x"></i>
             </div>
             <h4 class="text-white mb-3">
-              Charges totales
+              Charges totales mensuelles
             </h4>
             <p class="text-white text-muted mb-0">
               <%= @case.total_monthly_charges %> €
@@ -467,7 +467,7 @@
                 <i class="fas fa-money-bill-alt fa-2x"></i>
               </div>
               <h4 class="text-white mb-3">
-                Prix total du bien
+                Tarif acte en main
               </h4>
               <p class="text-white text-muted mb-0">
                 <%= @case.total_buying_price %> €
@@ -506,7 +506,7 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title">
-                  Pré-estimation du coût total des travaux
+                  Estimation indicative des travaux
                 </h4>
                 <p class="card-text text-muted">
                   <%= @case.pre_estimation_renovation_cost %> € pour une surface de <%= @case.old_surface %> m²
@@ -799,7 +799,7 @@
                 <i class="fas fa-expand fa-2x"></i>
               </div>
               <h4 class="text-white mb-3">
-                Surface prévue
+                Surface carrez
               </h4>
               <p class="text-white text-muted mb-0">
                 <%= @case.new_surface %> m²
@@ -901,11 +901,11 @@
                 <i class="fas fa-hand-holding-usd fa-2x"></i>
               </div>
               <h4 class="text-white mb-3">
-                Rentabilité brut du projet sur 10 ans
+                Rentabilité brut du projet
               </h4>
               <% if !(@case.renta_brut.nil?) %>
                 <p class="text-white text-muted mb-0", style="border:1px solid var(--primary); width:50%; margin:0 auto;">
-                  <%= (@case.renta_brut*100).round(2) %> %
+                  <%= (@case.renta_brut*10).round(2) %> %
                 </p>
               <% end %>
             </div>

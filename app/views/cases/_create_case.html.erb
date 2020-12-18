@@ -411,7 +411,7 @@
 										<div class="field form-group">
 											<%= form.label 'Estimation global du coût des travaux' %><br/>
 											<div class="input-group", style="display:flex;align-items:center;">
-												<%= form.select(:indicator_pre_estimation_renovation ,[22, 52, 82, 112], { required: true }, {class: "custom-select"})%> €/m²
+												<%= form.select(:indicator_pre_estimation_renovation ,[350, 450, 550, 700], { required: true }, {class: "custom-select"})%> €/m²
 											</div>
 										</div>
 									</div>
@@ -634,7 +634,7 @@
 									</div>
 									<div class="col-md-8 col-lg-4">
 										<div class="field form-group">
-											<%= form.label 'Nouvelle surface' %>
+											<%= form.label 'Surface carrez' %>
 											<div class="input-group">
 												<%= form.number_field :new_surface, autofocus: true, min: 0, class: "form-control order-1" %>
 												<div class="input-group-append order-0">
