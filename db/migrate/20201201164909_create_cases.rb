@@ -1,7 +1,6 @@
 class CreateCases < ActiveRecord::Migration[5.2]
   def change
     create_table :cases do |t|
-      # 1st new controller
       t.string :title,                                   unique: true, null: false 
       t.string :case_reference,                          null: false
       t.text :contact_referent,                          null: false, default: "Matthieu Gilette"
@@ -23,7 +22,6 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.string :old_project,                              null: false
       # BELOW ADMIN PART // ABOVE USER PART
       # monthly charges
-      # 2nd new controller
       t.integer :total_monthly_charges
       t.integer :water_cost,                              default: 0
       t.integer :heater_cost,                             default: 0
@@ -39,7 +37,6 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.integer :agency_charges,                          default: 0
       t.integer :renovation_union,                        default: 0
       # renovation
-      # 3rd new controller
       t.integer :pno_insurance_cost
       t.integer :pre_estimation_renovation_cost
       t.integer :indicator_pre_estimation_renovation
@@ -61,10 +58,9 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.integer :renovation_covering_cost,                default: 0      
       # new_information
       t.integer :new_surface,                             default: 0
+      t.integer :new_rooms_count,                         default: 0 
       t.string :new_type                                 
-      t.string :new_project
-      # 4th new controller
-      t.integer :new_rooms_count,                         default: 0      
+      t.string :new_project     
       t.integer :total_rent_annual_estimations
       t.integer :month_count,                             default: 0
       t.integer :total_rent_monthly
