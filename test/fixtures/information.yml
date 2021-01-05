@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  case_reference: MyString
+  contact_referent: MyText
+  street_number: MyString
+  street_name: MyString
+  city: MyString
+  zipcode: MyString
+  longitude: 1.5
+  latitude: 1.5
+  visit_date: 2021-01-04 16:19:52
+  is_confirmed: false
+  physical_description: MyText
+  geographical_description: MyText
+  potential_description: MyText
+  old_surface: 1
+  old_rooms_count: 1
+  old_type: MyString
+  old_project: MyString
+
+two:
+  title: MyString
+  case_reference: MyString
+  contact_referent: MyText
+  street_number: MyString
+  street_name: MyString
+  city: MyString
+  zipcode: MyString
+  longitude: 1.5
+  latitude: 1.5
+  visit_date: 2021-01-04 16:19:52
+  is_confirmed: false
+  physical_description: MyText
+  geographical_description: MyText
+  potential_description: MyText
+  old_surface: 1
+  old_rooms_count: 1
+  old_type: MyString
+  old_project: MyString
