@@ -1,6 +1,6 @@
 Un nouveau dossier "<%= @case.title %>" ajouté
 
-Par <%= @case.user.firstname.titleize %> <%= @case.user.lastname.titleize %> (<%= @case.user.email %>) - <%= @case.user.phone_number %> (<%= @case.user.profession %>)
+Par <%= User.find(@case.user_id).firstname.titleize %> <%= User.find(@case.user_id).lastname.titleize %> (<%= User.find(@case.user_id).email %>) - <%= User.find(@case.user_id).phone_number %> (<%= User.find(@case.user_id).profession %>)
 
 Référence : <%= @case.case_reference %>
 

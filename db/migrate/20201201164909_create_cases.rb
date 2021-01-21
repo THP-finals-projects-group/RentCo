@@ -66,6 +66,7 @@ class CreateCases < ActiveRecord::Migration[5.2]
       t.integer :total_rent_monthly
       t.float :renta_brut
       t.float :renta_net
+      t.string :hunter
 
       t.references :user,                                 foreign_key: true, null: false
       

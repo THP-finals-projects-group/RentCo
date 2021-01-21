@@ -26,7 +26,7 @@ class AdminMailer < Devise::Mailer
   # Admin inform user of a new case
   def new_case(cases)
     @case = cases
-    mail(from: "admin-rentco@yopmail.com", to: @case.user.email, subject: "#{@case.user.email} à soumis un nouveau dossier")
+    mail(from: "admin-rentco@yopmail.com", to: User.find(@case.user_id).email, subject: "#{User.find(@case.user_id).email} à soumis un nouveau dossier")
   end
   
   # Admin inform user that a case is closed and a pdf is available

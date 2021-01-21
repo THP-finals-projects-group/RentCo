@@ -2,12 +2,13 @@ class CasesController < ApplicationController
     before_action :authenticate_user!
     before_action :set_case, only: [:show, :edit, :update, :destroy, :generate_pdf]
     
-    def index     
+    def index
 		if current_user.administrator?
             @cases = Case.all.order(:updated_at, :created_at).reverse
             @users = User.all
 		else
-			@cases = Case.where(user_id:current_user.id).order(:updated_at, :created_at).reverse
+            @cases = Case.where(user_id:current_user.id).order(:updated_at, :created_at).reverse
+            @cases2 = Case.where(hunter:current_user.lastname)
         end
 	end
 
@@ -18,7 +19,9 @@ class CasesController < ApplicationController
 
     def new
         @case = Case.new
-        @case.rooms.new
+        @lastnames = []
+        @blank = []
+        @hunters = User.where(role: 0).each {|hunter| @lastnames << hunter.lastname}
         @s_button_submit = "Créer le dossier"
         @s_title_document = "Création d'un nouveau dossier"
     end
@@ -26,6 +29,7 @@ class CasesController < ApplicationController
     def create
         @case = User.find(current_user.id).cases.new(cases_params)
         @case.rooms.new(rent_monthly: 0)
+        
         if @case.save
             if current_user.administrator?
                 rooms_create(params[:case])
@@ -41,6 +45,8 @@ class CasesController < ApplicationController
     def edit 
         @case = Case.find(params[:id])
         if (current_user.user? && @case.is_confirmed == false) || current_user.administrator?
+            @lastnames = []
+            @hunters = User.where(role: 0).each {|hunter| @lastnames << hunter.lastname}
             @s_button_submit = "Modifier dossier"
             @s_title_document = "Modification du dossier"
         else
@@ -110,7 +116,7 @@ class CasesController < ApplicationController
 
     def cases_params
         if current_user.administrator?
-            params.require(:case).permit( :is_confirmed, :title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, :indicator_pre_estimation_renovation, :renovation_demolition_cost, :renovation_preparation_cost, :renovation_carpentry_cost, :renovation_plastering_cost, :renovation_electricity_cost, :renovation_plumbing_cost, :renovation_wall_ceiling_cost, :renovation_painting_cost, :renovation_flooring_cost, :renovation_kitchen_cost, :renovation_furniture_cost, :renovation_facade_cost, :renovation_security_cost, :renovation_masonry_cost, :renovation_covering_cost, :new_type, :new_project, :new_surface, :new_rooms_count, :month_count, videos: [])
+            params.require(:case).permit( :is_confirmed, :title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, :indicator_pre_estimation_renovation, :renovation_demolition_cost, :renovation_preparation_cost, :renovation_carpentry_cost, :renovation_plastering_cost, :renovation_electricity_cost, :renovation_plumbing_cost, :renovation_wall_ceiling_cost, :renovation_painting_cost, :renovation_flooring_cost, :renovation_kitchen_cost, :renovation_furniture_cost, :renovation_facade_cost, :renovation_security_cost, :renovation_masonry_cost, :renovation_covering_cost, :new_type, :new_project, :new_surface, :new_rooms_count, :month_count, :hunter, videos: [])
         else
             params.require(:case).permit(:title, :case_reference, :visit_date, :street_number, :street_name, :city, :zipcode, :old_project, :old_surface, :old_type, :old_rooms_count, :seller_price, :estimated_negociation, :property_taxes, :renovation_union, :notary_charges, :union_charges_cost, :heater_cost, :water_cost, :electricity_cost, :common_charges_cost, :agency_charges, :physical_description, :geographical_description, :potential_description, videos: [])
         end

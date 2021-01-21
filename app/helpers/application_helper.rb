@@ -19,4 +19,13 @@ module ApplicationHelper
         end
         link_to(name, "#", class: "add_rooms", data: {id: id, fields: fields.gsub("\n", "")})
       end
+
+      def link_to_add_users(name, f, association)
+        new_object = f.object.send(association).klass.new
+        id = new_object.object_id
+        fields = f.fields_for(association, new_object, child_index: id) do |hunter|
+          render(association.to_s.singularize + "_fields", f: hunter)
+        end
+        link_to(name, "#", class: "add_users", data: {id: id, fields: fields.gsub("\n", "")})
+      end
 end

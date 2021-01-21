@@ -2,7 +2,7 @@ class Case < ApplicationRecord
 
 
     # DB RELATIONS
-    has_one                 :user
+    has_many                 :users
     has_many                :rooms, dependent: :destroy
     accepts_nested_attributes_for :rooms, allow_destroy: true
 
@@ -84,9 +84,9 @@ class Case < ApplicationRecord
     # videos
     # validates :videos, presence: true, blob: { content_type: ['video/mp4', 'video/avi'], size_range: 1..20.megabytes }
 
-
+    
     private
-  
+
     def past_date
       errors.add(:visit_date, "Vous ne pouvez rentrer une date future") unless
         visit_date <= DateTime.now - 1.hour

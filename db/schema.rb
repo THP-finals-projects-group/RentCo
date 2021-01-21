@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_143703) do
+ActiveRecord::Schema.define(version: 2021_01_21_144134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_143703) do
     t.integer "total_rent_monthly"
     t.float "renta_brut"
     t.float "renta_net"
+    t.string "hunter"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
