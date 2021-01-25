@@ -1,0 +1,2 @@
+class CaseComputeCalculsController < ApplicationController
+end

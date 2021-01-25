@@ -1,0 +1,165 @@
+<section class="section section-top section-full">
+	<div class="bg-cover"></div>
+	<div class="bg-overlay bg-dark"></div>
+	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+	<div id="create_case">
+		<div class="container">
+      <%
+=begin%>
+ <%= render "error_messages", resource: resource %> 
+<%
+=end%>
+      <%= form_with(model: @case_fee_and_charge, local: true, class: "form-styled bg-white") do |form| %>
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-8 col-lg-12">
+            <h4 class="text-center mb-4">
+              <%= @s_title_document %>
+            </h4>
+            <fieldset class="col-md-8 col-lg-12">
+              <legend>Frais et charges liés au dossier</legend>
+              <div class="row">
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Frais de notaire' %>
+                    <div class="input-group">
+                      <%= form.number_field :notary_charges, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-money-check-alt"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Taxe foncière' %>
+                    <div class="input-group">
+                      <%= form.number_field :property_taxes, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-money-check-alt"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                  <%= form.label "Frais d'agence" %>
+                    <div class="input-group">
+                      <%= form.number_field :agency_charges, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-money-check-alt"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Travaux de copropriété' %>
+                    <div class="input-group">
+                      <%= form.number_field :renovation_union, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-money-check-alt"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Syndic de copropriété' %>
+                    <div class="input-group">
+                      <%= form.number_field :union_charges_cost, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-money-check-alt"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Eau' %>
+                    <div class="input-group">
+                      <%= form.number_field :water_cost, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-tint"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Chauffage' %>
+                    <div class="input-group">
+                      <%= form.number_field :heater_cost, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-temperature-high"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Electricité' %>
+                    <div class="input-group">
+                      <%= form.number_field :electricity_cost, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-bolt"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                  <div class="field form-group">
+                    <%= form.label 'Entretiens communs' %>
+                    <div class="input-group">
+                      <%= form.number_field :common_charges_cost, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-people-carry"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-8 col-lg-12">
+                  <div class="field form-group">
+                    <%= form.label 'Négociation (estimée)' %>
+                    <div class="input-group">
+                      <%= form.number_field :estimated_negociation, autofocus: true, min: 0, class: "form-control order-1" %>
+                      <div class="input-group-append order-0">
+                        <div class="input-group-text">
+                          <i class="fas fa-comments-dollar"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</section>

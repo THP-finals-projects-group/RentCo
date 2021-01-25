@@ -7,8 +7,8 @@ class CasesController < ApplicationController
             @cases = Case.all.order(:updated_at, :created_at).reverse
             @users = User.all
 		else
-            @cases = Case.where(user_id:current_user.id).order(:updated_at, :created_at).reverse
-            @cases2 = Case.where(hunter:current_user.lastname)
+            @cases2 = CaseMainInformation.where(hunter:current_user.lastname)
+            @cases = Case.where(user_id:current_user.id)
         end
 	end
 
@@ -20,7 +20,6 @@ class CasesController < ApplicationController
     def new
         @case = Case.new
         @lastnames = []
-        @blank = []
         @hunters = User.where(role: 0).each {|hunter| @lastnames << hunter.lastname}
         @s_button_submit = "Créer le dossier"
         @s_title_document = "Création d'un nouveau dossier"

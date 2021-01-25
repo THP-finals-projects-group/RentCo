@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_144134) do
+ActiveRecord::Schema.define(version: 2021_01_22_105639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,18 +36,47 @@ ActiveRecord::Schema.define(version: 2021_01_21_144134) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "cases", force: :cascade do |t|
+  create_table "case_compute_calculs", force: :cascade do |t|
+    t.integer "total_rent_annual_estimations"
+    t.integer "month_count", default: 0
+    t.integer "total_rent_monthly"
+    t.float "renta_brut"
+    t.float "renta_net"
+    t.bigint "case_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_compute_calculs_on_case_id"
+  end
+
+  create_table "case_fee_and_charges", force: :cascade do |t|
+    t.integer "estimated_negociation", default: 0
+    t.integer "notary_charges", default: 0
+    t.integer "property_taxes", default: 0
+    t.integer "agency_charges", default: 0
+    t.integer "renovation_union", default: 0
+    t.integer "total_monthly_charges"
+    t.integer "water_cost", default: 0
+    t.integer "heater_cost", default: 0
+    t.integer "electricity_cost", default: 0
+    t.integer "union_charges_cost", default: 0
+    t.integer "common_charges_cost", default: 0
+    t.bigint "case_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_fee_and_charges_on_case_id"
+  end
+
+  create_table "case_main_informations", force: :cascade do |t|
     t.string "title", null: false
+    t.string "city", null: false
     t.string "case_reference", null: false
     t.text "contact_referent", default: "Matthieu Gilette", null: false
     t.string "street_number", null: false
     t.string "street_name", null: false
-    t.string "city", null: false
     t.string "zipcode", limit: 5, null: false
     t.float "longitude"
     t.float "latitude"
     t.datetime "visit_date", null: false
-    t.boolean "is_confirmed", default: false, null: false
     t.text "physical_description"
     t.text "geographical_description"
     t.text "potential_description"
@@ -55,19 +84,16 @@ ActiveRecord::Schema.define(version: 2021_01_21_144134) do
     t.integer "old_rooms_count", default: 0, null: false
     t.string "old_type", null: false
     t.string "old_project", null: false
-    t.integer "total_monthly_charges"
-    t.integer "water_cost", default: 0
-    t.integer "heater_cost", default: 0
-    t.integer "electricity_cost", default: 0
-    t.integer "union_charges_cost", default: 0
-    t.integer "common_charges_cost", default: 0
+    t.string "hunter"
     t.integer "total_buying_price"
     t.integer "seller_price", default: 0
-    t.integer "estimated_negociation", default: 0
-    t.integer "notary_charges", default: 0
-    t.integer "property_taxes", default: 0
-    t.integer "agency_charges", default: 0
-    t.integer "renovation_union", default: 0
+    t.bigint "case_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_main_informations_on_case_id"
+  end
+
+  create_table "case_renovations", force: :cascade do |t|
     t.integer "pno_insurance_cost"
     t.integer "pre_estimation_renovation_cost"
     t.integer "indicator_pre_estimation_renovation"
@@ -91,12 +117,14 @@ ActiveRecord::Schema.define(version: 2021_01_21_144134) do
     t.integer "new_rooms_count", default: 0
     t.string "new_type"
     t.string "new_project"
-    t.integer "total_rent_annual_estimations"
-    t.integer "month_count", default: 0
-    t.integer "total_rent_monthly"
-    t.float "renta_brut"
-    t.float "renta_net"
-    t.string "hunter"
+    t.bigint "case_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_renovations_on_case_id"
+  end
+
+  create_table "cases", force: :cascade do |t|
+    t.boolean "is_confirmed", default: false, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -134,6 +162,10 @@ ActiveRecord::Schema.define(version: 2021_01_21_144134) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "case_compute_calculs", "cases"
+  add_foreign_key "case_fee_and_charges", "cases"
+  add_foreign_key "case_main_informations", "cases"
+  add_foreign_key "case_renovations", "cases"
   add_foreign_key "cases", "users"
   add_foreign_key "rooms", "cases"
 end
