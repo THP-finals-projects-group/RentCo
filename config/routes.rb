@@ -28,5 +28,9 @@ Rails.application.routes.draw do
   resources :case_main_informations, only: [:new, :create, :edit, :update]
 
   resources :case_fee_and_charges, only: [:new, :create, :edit, :update]
+
+  resources :case_renovations, only: [:new, :create, :edit, :update]
+
+  resources :case_compute_calculs, only: [:new, :create, :edit, :update]
 end
  

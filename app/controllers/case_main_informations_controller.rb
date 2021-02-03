@@ -4,7 +4,7 @@ class CaseMainInformationsController < ApplicationController
     @case_main_informations = CaseMainInformation.new
     @lastnames = []
     @hunters = User.where(role: 0).each {|hunter| @lastnames << hunter.lastname}
-    @s_button_submit = "Créer le dossier"
+    @s_button_submit = "Suivant"
     @s_title_document = "Création d'un nouveau dossier étape 1/4"
   end
 

@@ -1,0 +1,51 @@
+<section class="section section-top section-full" style="padding-bottom: 449px;">
+	<div class="bg-cover"></div>
+	<div class="bg-overlay bg-dark"></div>
+	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-left"></div>
+	<div class="bg-triangle bg-triangle-light bg-triangle-bottom bg-triangle-right"></div>
+	<div id="create_case">
+		<div class="container">
+      <%= form_with(model: @case_compute_calcul, local: true, class: "form-styled bg-white") do |form| %>
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-8 col-lg-12">
+            <h4 class="text-center mb-4">
+              <%= @s_title_document %>
+            </h4>
+            <fieldset class="col-md-8 col-lg-12">
+              <legend>Nombre de mois de location estimés</legend>
+              <br>
+              <div class="row" style="justify-content: center;">
+                <div class="col-md-8 col-lg-12">
+									<div class="field form-group">
+										<div class="input-group">
+											<%= form.number_field :month_count, autofocus: true, required: true, in: 1..12, class: "form-control order-1" %>
+											<div class="input-group-append order-0">
+												<div class="input-group-text">
+													<i class="fas fa-calendar-alt"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md">
+            <div class="actions text-left">
+              <%= link_to "Retour", :back, class: "btn btn-outline-secondary" %>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="actions text-right">
+              <%= form.submit @s_button_submit, class: "btn btn-outline-primary" %>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</section>
+      

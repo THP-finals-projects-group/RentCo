@@ -17,10 +17,10 @@
               <%= @s_title_document %>
             </h4>
             <p class="text-center text-muted mb-5">
-              Veuillez remplir le formulaire ci-dessous afin d'ouvrir un nouveau dossier
+              Veuillez remplir toutes les étapes du formulaire afin d'ouvrir un nouveau dossier
             </p> 
             <fieldset class="col-md-8 col-lg-12">
-              <legend>Informations relative au dossier</legend>
+              <legend>Informations principales relatives au dossier</legend>
               <div class="row">
                 <div class="col-md-8 col-lg-8">
                   <div class="field form-group">
@@ -218,6 +218,19 @@
                 <%end%>
               </div>
             </fieldset>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md">
+            <div class="actions text-left">
+              <%= link_to "Retour", :back, class: "btn btn-outline-secondary" %>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="actions text-right">
+              <%= form.submit @s_button_submit, class: "btn btn-outline-primary" %>
+            </div>
           </div>
         </div>
       <%end%>
